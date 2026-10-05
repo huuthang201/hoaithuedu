@@ -231,7 +231,9 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 .short-label{display:block;font-size:.9rem;color:var(--ink-2);margin-bottom:6px}
 .ans-input{width:100%;font:inherit;font-size:1.02rem;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);resize:vertical;min-height:84px}
 .ans-input:focus{outline:none;border-color:var(--accent)}
-.answer{font-size:1.12rem;font-weight:700;color:var(--accent);margin:0 0 8px !important}
+.answer{font-size:1.12rem;font-weight:700;color:var(--accent);margin:0 0 8px !important;padding:10px 14px;border-radius:12px;background:var(--accent-bg);animation:ansIn .6s .1s cubic-bezier(.22,1,.36,1) both}
+@keyframes ansIn{0%{opacity:0;transform:translateY(10px) scale(.96);box-shadow:0 0 0 0 var(--accent)}60%{opacity:1;transform:none;box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 25%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
+.show-ans{display:block;margin-top:12px}
 .selfgrade{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-weight:600}
 .selfgrade .btn{padding:8px 14px}
 .selfgrade .btn.on-ok{background:var(--ok);border-color:var(--ok);color:#fff}
@@ -913,12 +915,12 @@ function renderQ(){
     opts.innerHTML=q.items.map((it,k)=>`<div class="tf-row" data-k="${k}"><span class="key">${'abcd'[k]}</span><span class="tf-txt">${it.t}<span class="tf-e" hidden>${it.e}</span></span><span class="tf-btns"><button type="button" class="tf-btn" data-v="1">Đúng</button><button type="button" class="tf-btn" data-v="0">Sai</button></span></div>`).join('');
   } else if(q.type==='short'){
     opts.className='short-wrap';
-    opts.innerHTML=`<label class="short-label" for="ansIn">Nháp câu trả lời ở đây (không bắt buộc), rồi bấm Hiện đáp án để đối chiếu</label><textarea id="ansIn" class="ans-input" rows="3" placeholder="Câu trả lời…"></textarea>`;
+    opts.innerHTML=`<label class="short-label" for="ansIn">Nháp câu trả lời ở đây (không bắt buộc)</label><textarea id="ansIn" class="ans-input" rows="3" placeholder="Câu trả lời…"></textarea><button type="button" class="btn primary show-ans" id="btnShowAns">Hiện đáp án</button>`;
   } else {
     opts.className='opts';
     opts.innerHTML=q.o.map((t,k)=>`<button class="opt" type="button" data-k="${k}"><span class="key">${KEYS[k]}</span><span class="txt">${t}</span></button>`).join('');
   }
-  $('#exp').hidden=true; $('#btnNext').hidden=true; $('#btnReveal').hidden=false;
+  $('#exp').hidden=true; $('#btnNext').hidden=true; $('#btnReveal').hidden=q.type==='short';
   timerEl.hidden=!isTimed();
   if(isTimed()) startTimer(); else stopTimer();
 }
@@ -994,6 +996,7 @@ function reveal(picked,timedOut,instant){
 
   if(q.type==='short'){
     S.ans[S.i]={type:'short',self:null};
+    const sb=$('#btnShowAns'); if(sb) sb.hidden=true;
     exp.className='exp neutral';
     exp.innerHTML=`<strong>Đáp án</strong>${expBody(q,`<p class="answer">${q.ans}</p>`)}`;
     exp.hidden=false; finishReveal(n);
@@ -1161,6 +1164,7 @@ $('#opts').addEventListener('click',e=>{
 });
 $('#exp').addEventListener('click',e=>{ const b=e.target.closest('.sg'); if(b&&!b.disabled) selfGrade(b.dataset.v==='1'); });
 $('#btnReveal').addEventListener('click',()=>reveal(null,false));
+$('#opts').addEventListener('click',e=>{ if(e.target.closest('#btnShowAns')) reveal(null,false); });
 $('#btnNext').addEventListener('click',next);
 $('#btnHome').addEventListener('click',renderHome);
 $('#btnAgain').addEventListener('click',()=>startSet(SETS.indexOf(S.set), S.mode&&S.mode.id));
