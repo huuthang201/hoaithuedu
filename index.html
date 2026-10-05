@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trắc nghiệm KHTN 7, 8, 9: Đồ thị, Khối lượng riêng, Động năng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#FBFCFE; --grid:#E1E9F4; --surface:#FFFFFF; --line:#C9D3E3;
+  --ink:#15213A; --ink-2:#5C6980;
+  --ok:#1B8A4A; --ok-bg:#E3F4E9; --bad:#D63A3A; --bad-bg:#FBE7E7; --warn:#C98A00;
+  --alt:#D9731E; --rule:#F08A9B; --water:#3B8BEA;
+  --dn:#0E8A6E; --dn-bg:#DCF4EC; --tn:#1E6FD9; --tn-bg:#E4EEFC;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1626; --grid:#1A2440; --surface:#172035; --line:#2E3B59;
+    --ink:#EEF2FA; --ink-2:#A3AFC6;
+    --ok:#3DBF72; --ok-bg:#152E1F; --bad:#FF6B6B; --bad-bg:#3A1D1D; --warn:#F5C542;
+    --alt:#FFA14F; --rule:#C65A6E; --water:#5EA2FF;
+    --dn:#3FD1A9; --dn-bg:#12342B; --tn:#6CA6FF; --tn-bg:#1B2B4B;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1626; --grid:#1A2440; --surface:#172035; --line:#2E3B59;
+  --ink:#EEF2FA; --ink-2:#A3AFC6;
+  --ok:#3DBF72; --ok-bg:#152E1F; --bad:#FF6B6B; --bad-bg:#3A1D1D; --warn:#F5C542;
+  --alt:#FFA14F; --rule:#C65A6E; --water:#5EA2FF;
+    --dn:#3FD1A9; --dn-bg:#12342B; --tn:#6CA6FF; --tn-bg:#1B2B4B;
+}
+/* per-grade accent: light/dark pairs set on .app (active set) or inline on each home row */
+.app{--a-light:#1E6FD9;--a-bg-light:#E4EEFC;--a-dark:#6CA6FF;--a-bg-dark:#1B2B4B}
+.app,.row,.grade-group{--accent:var(--a-light);--accent-bg:var(--a-bg-light)}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) :is(.app,.row,.grade-group){--accent:var(--a-dark);--accent-bg:var(--a-bg-dark)}
+}
+:root[data-theme="dark"] :is(.app,.row,.grade-group){--accent:var(--a-dark);--accent-bg:var(--a-bg-dark)}
+
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;min-height:100%;
+  font-family:"Be Vietnam Pro",system-ui,"Segoe UI",Roboto,Arial,sans-serif;
+  color:var(--ink);background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;line-height:1.45;-webkit-font-smoothing:antialiased;
+}
+[hidden]{display:none !important}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.app{max-width:1040px;margin:0 auto;padding:0 20px 56px}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:14px;padding:14px 0;background:var(--paper);border-bottom:2px solid var(--line)}
+.back{width:40px;height:40px;border-radius:10px;border:2px solid var(--line);background:var(--surface);cursor:pointer;font-size:1.5rem;line-height:1;padding:0 0 3px}
+.back:hover{border-color:var(--accent);color:var(--accent)}
+.tm{font-weight:800;font-size:1.05rem;line-height:1.25}
+.ts{font-size:.85rem;color:var(--ink-2)}
+.counter{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.snd{margin-left:auto;width:40px;height:40px;border-radius:10px;border:2px solid var(--line);background:var(--surface);cursor:pointer;font-size:1.05rem;line-height:1;padding:0}
+.snd:hover{border-color:var(--accent)}
+.counter:not([hidden])+.snd{margin-left:0}
+.progress{height:4px;background:var(--line);overflow:hidden}
+.progress span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s ease}
+
+/* home */
+h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px;letter-spacing:-.01em}
+.lead{color:var(--ink-2);margin:0 0 18px;max-width:60ch}
+.toc{margin:0}
+.grade-group{margin-top:26px}
+.grade-head{display:flex;align-items:baseline;gap:14px;padding-bottom:4px;border-bottom:2px solid var(--accent)}
+.grade-head .grade{font-size:2.4rem}
+.grade-sub{color:var(--ink-2);font-size:.95rem}
+.sets{list-style:none;padding:0;margin:0}
+.row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:18px;width:100%;text-align:left;padding:16px 6px;background:none;border:0;border-bottom:2px dashed var(--line);cursor:pointer;border-radius:4px}
+.kind{display:inline-block;padding:1px 9px;border-radius:999px;background:var(--accent-bg);color:var(--accent);font-size:.78rem;font-weight:600;margin-right:6px;vertical-align:1px}
+.row:hover{background:var(--accent-bg)}
+.row:hover .go{background:var(--accent);color:#fff}
+.grade{font-size:3rem;font-weight:800;color:var(--accent);line-height:1}
+.rt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.rt-title{font-weight:600;font-size:1.12rem;line-height:1.3}
+.rt-sub{color:var(--ink-2);font-size:.92rem}
+.go{padding:10px 16px;border-radius:12px;border:2px solid var(--accent);color:var(--accent);font-weight:600;white-space:nowrap}
+.row.has-modes{grid-template-columns:1fr;cursor:default}
+.row.has-modes:hover{background:transparent}
+.modes{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.mode{font:inherit;font-weight:600;padding:9px 14px;border-radius:12px;border:2px solid var(--accent);background:var(--surface);color:var(--accent);cursor:pointer}
+.mode:hover,.mode:focus-visible{background:var(--accent);color:#fff}
+.mode small{font-weight:500;font-size:.8rem;opacity:.85;margin-left:2px}
+.hint{color:var(--ink-2);font-size:.9rem;margin-top:22px;max-width:70ch}
+
+/* question */
+.qwrap{display:flex;gap:28px;align-items:flex-start;margin:28px 0 22px}
+.qcard{flex:1 1 auto;position:relative;margin-left:52px;padding:4px 0 6px 18px;border-left:2px solid var(--rule);min-height:140px}
+.qnum{position:absolute;left:-54px;top:-4px;width:40px;text-align:right;font-size:2.1rem;font-weight:800;color:var(--rule);line-height:1;font-variant-numeric:tabular-nums}
+.qmeta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.level,.topic{display:inline-block;padding:3px 11px;border-radius:999px;font-size:.8rem;font-weight:600;line-height:1.5}
+.level{background:var(--accent-bg);color:var(--accent)}
+.topic{border:1.5px solid transparent}
+.topic.dn{background:var(--dn-bg);color:var(--dn)}
+.topic.tn{background:var(--tn-bg);color:var(--tn)}
+.topic.both{background:linear-gradient(90deg,var(--dn-bg) 0 50%,var(--tn-bg) 50% 100%);color:var(--ink);border-color:var(--line)}
+.topic.kind{background:var(--accent-bg);color:var(--accent)}
+.review .topic{font-size:.72rem;padding:1px 8px;margin-left:6px;vertical-align:middle}
+.level.apply{background:var(--accent);color:#fff}
+.qbody{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-start}
+.qtext{flex:1 1 300px;font-size:clamp(1.15rem,1rem + 1vw,1.6rem);font-weight:500;line-height:1.4;max-width:62ch}
+.qfig{flex:0 1 400px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px}
+
+/* timer */
+.timer{flex:none;width:136px;height:136px;position:relative;border:0;background:none;padding:0;cursor:pointer;border-radius:50%}
+.timer svg{width:100%;height:100%;display:block}
+.t-track{fill:none;stroke:var(--line);stroke-width:10}
+.t-ring{fill:none;stroke:var(--accent);stroke-width:10;stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset .2s linear,stroke .3s}
+.t-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;pointer-events:none}
+.t-num b{font-size:2.3rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.t-num small{font-size:.78rem;font-weight:500;color:var(--ink-2)}
+.timer.low .t-ring{stroke:var(--bad)}
+.timer.low .t-num b{color:var(--bad);animation:pulse 1s ease-in-out infinite}
+.timer.paused .t-ring{opacity:.3}
+.timer.paused .t-num small{color:var(--warn);font-weight:600}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+
+/* options */
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.opt{display:flex;gap:14px;align-items:center;text-align:left;padding:14px 16px;min-height:66px;border:2px solid var(--line);border-radius:14px;background:var(--surface);font-size:1.05rem;font-weight:500;line-height:1.35;cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .key{flex:none;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--accent-bg);color:var(--accent);font-weight:800}
+.opt:disabled{cursor:default}
+.opt.correct{border-color:var(--ok);background:var(--ok-bg)}
+.opt.correct .key{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.opt.wrong .key{background:var(--bad);color:#fff}
+.opt.dim{opacity:.45}
+
+/* explanation + actions */
+.exp{margin-top:18px;padding:16px 20px;border-left:4px solid var(--accent);background:var(--surface);border-radius:0 12px 12px 0;font-size:1.02rem}
+.exp strong{display:block;margin-bottom:8px;color:var(--accent);font-size:1.08rem}
+.exp-grid{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:flex-start}
+.exp-text{flex:1 1 300px;min-width:0}
+.exp-text p{margin:0;line-height:1.55}
+.exp-text .k{color:var(--accent);font-weight:600}
+.formula{display:inline-block;margin-top:10px;padding:9px 14px;border-radius:10px;background:var(--accent-bg);color:var(--ink);font-weight:600;font-size:1.05rem;border:1px solid var(--line);line-height:1.5}
+.formula small{display:block;font-weight:500;font-size:.82rem;color:var(--ink-2);margin-top:3px}
+.exp-fig{flex:0 1 380px;max-width:100%;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:8px}
+.exp-fig .fig{max-width:380px}
+.exp.good{border-color:var(--ok)} .exp.good strong{color:var(--ok)}
+.exp.bad{border-color:var(--bad)} .exp.bad strong{color:var(--bad)}
+.actions{display:flex;gap:12px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+.btn{font-weight:600;padding:12px 22px;border-radius:12px;border:2px solid transparent;cursor:pointer}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* result */
+.score{font-size:4.5rem;font-weight:800;line-height:1;margin-top:36px;color:var(--accent)}
+.score span{font-size:2rem;color:var(--ink-2);font-weight:600}
+.score-msg{font-size:1.2rem;margin:8px 0 22px}
+.review{list-style:none;padding:0;margin:0 0 22px}
+.review li{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line)}
+.review .st{font-weight:800;text-align:center}
+.review .ok .st{color:var(--ok)} .review .bad .st{color:var(--bad)} .review .skip .st{color:var(--ink-2)}
+.review .ra{color:var(--ink-2);font-size:.9rem;white-space:nowrap}
+.review .ok .ra{color:var(--ok)}
+#result .actions{justify-content:flex-start}
+
+/* figures (SVG) */
+.fig{display:block;width:100%;max-width:400px;height:auto;color:var(--ink);margin:0 auto}
+.g-grid{stroke:var(--line);stroke-width:1;opacity:.7}
+.g-axis{stroke:currentColor;stroke-width:1.6}
+.g-arrow{fill:currentColor}
+.g-lab{font-size:12px;fill:var(--ink-2)}
+.g-title{font-size:12px;font-weight:600;fill:currentColor}
+.g-line{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.g-guide{fill:none;stroke:var(--ink-2);stroke-width:1.2;stroke-dasharray:4 4}
+.g-pt{fill:var(--accent);stroke:var(--surface);stroke-width:2}
+.g-plab,.g-slab{font-size:13px;font-weight:700;fill:currentColor}
+.c-water{fill:var(--water);opacity:.25}
+.c-surface{stroke:var(--water);stroke-width:2}
+.c-glass{fill:none;stroke:currentColor;stroke-width:2}
+.c-tick{stroke:currentColor;stroke-width:1.2}
+.c-stone{fill:var(--ink-2)}
+.c-cap{font-size:13px;fill:currentColor;font-weight:500}
+.c-call{font-size:12px;font-weight:700;fill:var(--accent)}
+.c-note{font-size:12px;fill:var(--ink-2)}
+.g-hl{font-size:12px;font-weight:800;fill:var(--accent)}
+.g-guide.hl{stroke:var(--accent);stroke-width:1.6}
+.h-blk{fill:var(--accent);opacity:.92}
+.h-blk.ghost{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:4 3;opacity:.75}
+.h-ball{fill:var(--accent)}
+.h-ball.ghost{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:4 3}
+.h-in{font-size:12px;font-weight:700;fill:#fff}
+.h-hatch{stroke:var(--ink-2);stroke-width:1}
+.h-arr{stroke:var(--ink-2);stroke-width:1.5} .h-arr-h{fill:var(--ink-2)}
+.h-p{stroke:var(--bad);stroke-width:2.2} .h-p-h{fill:var(--bad)} .h-lab-p{font-size:12px;font-weight:700;fill:var(--bad)}
+.h-v{stroke:var(--ok);stroke-width:2.2} .h-v-h{fill:var(--ok)} .h-lab-v{font-size:12px;font-weight:700;fill:var(--ok)}
+.h-tn{stroke:var(--tn);stroke-width:2.4} .h-tn-h{fill:var(--tn)} .h-lab-tn{font-size:13px;font-weight:700;fill:var(--tn)}
+.h-dn{stroke:var(--dn);stroke-width:2.4} .h-dn-h{fill:var(--dn)} .h-lab-dn{font-size:13px;font-weight:700;fill:var(--dn)}
+.b-bar{fill:var(--accent)} .b-val{font-size:13px;font-weight:700;fill:currentColor}
+.t-tri{fill:var(--accent-bg);stroke:currentColor;stroke-width:2} .t-sym{font-size:26px;font-weight:800;fill:currentColor}
+.t-formula{font-size:16px;font-weight:800;fill:var(--accent)}
+.p-line{fill:none;stroke:currentColor;stroke-width:2} .p-fill{fill:var(--line);stroke:currentColor;stroke-width:1.5}
+.p-disp{fill:var(--ok-bg);stroke:currentColor;stroke-width:1} .p-obj{fill:var(--accent);opacity:.85}
+.p-needle{stroke:var(--bad);stroke-width:2} .p-dot{fill:currentColor} .p-water{fill:var(--water);opacity:.3}
+.s-box{fill:var(--accent-bg);stroke:var(--line);stroke-width:1.2} .s-txt{font-size:13px;font-weight:600;fill:currentColor}
+
+/* Đúng/Sai + tự luận */
+.tf-list{display:flex;flex-direction:column;gap:10px}
+.tf-row{display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:start;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:var(--surface)}
+.tf-row .key{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--accent-bg);color:var(--accent);font-weight:800;font-size:.95rem}
+.tf-txt{font-size:1.02rem;line-height:1.45;padding-top:3px}
+.tf-e{display:block;margin-top:6px;font-size:.92rem;color:var(--ink-2)}
+.tf-btns{display:flex;gap:6px}
+.tf-btn{font:inherit;font-weight:600;padding:7px 14px;border-radius:10px;border:2px solid var(--line);background:transparent;cursor:pointer}
+.tf-btn:hover:not(:disabled){border-color:var(--accent)}
+.tf-btn.on{border-color:var(--accent);background:var(--accent-bg);color:var(--accent)}
+.tf-btn.correct{border-color:var(--ok);background:var(--ok);color:#fff}
+.tf-btn.wrong{border-color:var(--bad);background:var(--bad-bg);color:var(--bad)}
+.tf-btn:disabled{cursor:default}
+.tf-row.ok{border-color:var(--ok)} .tf-row.bad{border-color:var(--bad)}
+.short-wrap{display:block}
+.short-label{display:block;font-size:.9rem;color:var(--ink-2);margin-bottom:6px}
+.ans-input{width:100%;font:inherit;font-size:1.02rem;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);resize:vertical;min-height:84px}
+.ans-input:focus{outline:none;border-color:var(--accent)}
+.answer{font-size:1.12rem;font-weight:700;color:var(--accent);margin:0 0 8px !important}
+.selfgrade{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-weight:600}
+.selfgrade .btn{padding:8px 14px}
+.selfgrade .btn.on-ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.selfgrade .btn.on-bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.review .part .st{color:var(--warn)}
+
+/* effects */
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
+#vignette{position:fixed;inset:0;pointer-events:none;z-index:59;opacity:0;box-shadow:inset 0 0 140px 40px rgba(214,58,58,.6)}
+#vignette.on{animation:vig .65s ease-out}
+@keyframes vig{0%{opacity:0}15%{opacity:1}100%{opacity:0}}
+#quiz.shake{animation:shake .5s cubic-bezier(.36,.07,.19,.97)}
+@keyframes shake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-8px)}40%,60%{transform:translateX(8px)}}
+.opt.correct{animation:pop .4s ease-out}
+.exp.good strong{animation:pop .4s ease-out}
+@keyframes pop{0%{transform:scale(.92)}55%{transform:scale(1.04)}100%{transform:scale(1)}}
+
+@media (max-width:640px){
+  .qwrap{flex-direction:column-reverse;align-items:stretch;gap:12px}
+  .timer{width:104px;height:104px;align-self:flex-end}
+  .t-num b{font-size:1.7rem}
+  .qcard{margin-left:40px}
+  .qnum{left:-42px;width:30px;font-size:1.6rem}
+  .opts{grid-template-columns:1fr}
+  .tf-row{grid-template-columns:30px 1fr}
+  .tf-btns{grid-column:2}
+  .row{grid-template-columns:1fr;gap:10px}
+  .grade-head .grade{font-size:2rem}
+  .go{display:none}
+  .review li{grid-template-columns:28px 1fr}
+  .review .ra{grid-column:2;white-space:normal}
+}
+@media (prefers-reduced-motion:reduce){
+  .t-ring,.progress span,.opt{transition:none}
+  .timer.low .t-num b,#quiz.shake,#vignette.on,.opt.correct,.exp.good strong{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top">
+    <button class="back" id="btnHome" type="button" hidden aria-label="Về trang chọn bài" title="Về trang chọn bài (Esc)">‹</button>
+    <div class="top-title">
+      <div class="tm" id="topMain">Trắc nghiệm KHTN</div>
+      <div class="ts" id="topSub">Chọn lớp, chọn bài rồi bắt đầu</div>
+    </div>
+    <div class="counter" id="counter" hidden></div>
+    <button class="snd" id="btnSound" type="button" aria-label="Bật hoặc tắt âm thanh" title="Âm thanh (phím M)">🔊</button>
+  </header>
+  <div class="progress" id="progress" hidden><span id="progressBar"></span></div>
+
+  <main>
+    <section id="home">
+      <h1>Chọn bài để bắt đầu</h1>
+      <p class="lead">Bài trắc nghiệm: 25 giây cho câu dễ, 30 giây cho câu vừa và vận dụng; hết giờ tự hiện đáp án kèm giải thích, công thức và hình minh hoạ. Bài Đúng/Sai và tự luận: không tính giờ, làm xong tự đối chiếu đáp án.</p>
+      <div class="toc" id="toc"></div>
+      <p class="hint">Phím tắt: bấm 7, 8 hoặc 9 để nhảy tới lớp đó; 1–4 hoặc A–D để chọn đáp án; Enter để hiện đáp án hoặc sang câu tiếp; P để tạm dừng đồng hồ; M bật/tắt âm thanh; Esc để quay lại.</p>
+    </section>
+
+    <section id="quiz" hidden>
+      <div class="qwrap">
+        <div class="qcard">
+          <div class="qnum" id="qnum" aria-hidden="true">1</div>
+          <div class="qmeta"><span class="level" id="level"></span><span class="topic" id="topic" hidden></span></div>
+          <div class="qbody">
+            <div class="qtext" id="qtext"></div>
+            <div class="qfig" id="qfig" hidden></div>
+          </div>
+        </div>
+        <button class="timer" id="timer" type="button" title="Bấm để tạm dừng hoặc tiếp tục (phím P)" aria-label="Đồng hồ đếm ngược, bấm để tạm dừng">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="t-track" cx="60" cy="60" r="52"/>
+            <circle class="t-ring" id="ring" cx="60" cy="60" r="52"/>
+          </svg>
+          <span class="t-num"><b id="tnum">30</b><small id="tlab">giây</small></span>
+        </button>
+      </div>
+      <div class="opts" id="opts"></div>
+      <div class="exp" id="exp" hidden aria-live="polite"></div>
+      <div class="actions">
+        <button class="btn ghost" id="btnReveal" type="button">Hiện đáp án</button>
+        <button class="btn primary" id="btnNext" type="button" hidden>Câu tiếp theo</button>
+      </div>
+    </section>
+
+    <section id="result" hidden>
+      <div class="score"><b id="scoreNum">0</b><span id="scoreDen">/10</span></div>
+      <p class="score-msg" id="scoreMsg"></p>
+      <ol class="review" id="review"></ol>
+      <div class="actions">
+        <button class="btn primary" id="btnAgain" type="button">Làm lại bài này</button>
+        <button class="btn ghost" id="btnOther" type="button">Chọn bài khác</button>
+      </div>
+    </section>
+  </main>
+</div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div id="vignette" aria-hidden="true"></div>
+
+<script>
+/* ---------- figure helpers ---------- */
+const fmt = n => String(n).replace('.', ',');
+const sub = t => String(t).replace(/_\{([^}]*)\}([^_]*)/g,'<tspan dy="4" font-size="72%">$1</tspan><tspan dy="-4">$2</tspan>');
+
+function graph(o){
+  const W=400,H=260,L=56,R=46,T=34,B=34, pw=W-L-R, ph=H-T-B;
+  const X=x=>+(L+x/o.xMax*pw).toFixed(1), Y=y=>+(T+ph-y/o.yMax*ph).toFixed(1);
+  const x0=L, y0=T+ph, xr=L+pw, guides=o.guides||[];
+  const gx=new Set(guides.filter(g=>g.xl).map(g=>g.x)), gy=new Set(guides.filter(g=>g.yl).map(g=>g.y));
+  let s=`<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="${o.alt||'Đồ thị quãng đường – thời gian'}">`;
+  o.xTicks.forEach(t=>{ if(t>0) s+=`<line class="g-grid" x1="${X(t)}" y1="${T}" x2="${X(t)}" y2="${y0}"/>`; });
+  o.yTicks.forEach(t=>{ if(t>0) s+=`<line class="g-grid" x1="${x0}" y1="${Y(t)}" x2="${xr}" y2="${Y(t)}"/>`; });
+  guides.forEach(g=>{ s+=`<path class="g-guide${g.hl?' hl':''}" d="M${x0} ${Y(g.y)} H${X(g.x)} V${y0}"/>`; });
+  s+=`<line class="g-axis" x1="${x0}" y1="${y0}" x2="${xr+8}" y2="${y0}"/><polygon class="g-arrow" points="${xr+16},${y0} ${xr+6},${y0-5} ${xr+6},${y0+5}"/>`;
+  s+=`<line class="g-axis" x1="${x0}" y1="${y0}" x2="${x0}" y2="${T-4}"/><polygon class="g-arrow" points="${x0},${T-12} ${x0-5},${T-2} ${x0+5},${T-2}"/>`;
+  o.xTicks.forEach(t=>{ if(t===0) s+=`<text class="g-lab" x="${X(0)}" y="${y0+18}" text-anchor="middle">O</text>`; else if(!o.noTickLabels && !gx.has(t)) s+=`<text class="g-lab" x="${X(t)}" y="${y0+18}" text-anchor="middle">${fmt(t)}</text>`; });
+  o.yTicks.forEach(t=>{ if(t>0 && !o.noTickLabels && !gy.has(t)) s+=`<text class="g-lab" x="${x0-8}" y="${Y(t)+4}" text-anchor="end">${fmt(t)}</text>`; });
+  guides.forEach(g=>{ if(g.xl) s+=`<text class="g-hl" x="${X(g.x)}" y="${y0+18}" text-anchor="middle">${g.xl}</text>`; if(g.yl) s+=`<text class="g-hl" x="${x0-6}" y="${Y(g.y)+4}" text-anchor="end">${g.yl}</text>`; });
+  s+=`<text class="g-title" x="${xr+20}" y="${y0+5}">${o.xLabel||''}</text>`;
+  s+=`<text class="g-title" x="${x0}" y="${T-16}" text-anchor="middle">${o.yLabel||''}</text>`;
+  (o.series||[]).forEach(sr=>{
+    const col=sr.color||'var(--accent)';
+    s+=`<polyline class="g-line" points="${sr.pts.map(p=>`${X(p[0])},${Y(p[1])}`).join(' ')}" style="stroke:${col}"/>`;
+    if(sr.label){ const l=sr.pts[sr.pts.length-1]; s+=`<text class="g-slab" x="${X(l[0])+6}" y="${Y(l[1])-4}" style="fill:${col}">${sr.label}</text>`; }
+  });
+  (o.points||[]).forEach(p=>{
+    s+=`<circle class="g-pt" cx="${X(p.x)}" cy="${Y(p.y)}" r="4.5"/>`;
+    if(p.label) s+=`<text class="g-plab" x="${X(p.x)+(p.dx??8)}" y="${Y(p.y)+(p.dy??-8)}">${p.label}</text>`;
+  });
+  if(o.extra) s+=o.extra(X,Y);
+  return s+'</svg>';
+}
+
+function cylinders(o){
+  const W=400,H=260;
+  const one=(cx,level,stone,cap)=>{
+    const cw=96, top=30, bottom=212, ch=bottom-top, left=cx-cw/2;
+    const yOf=v=>+(bottom-v/o.max*ch).toFixed(1);
+    let s=`<rect class="c-water" x="${left+3}" y="${yOf(level)}" width="${cw-6}" height="${bottom-3-yOf(level)}" rx="3"/>`;
+    s+=`<line class="c-surface" x1="${left+3}" y1="${yOf(level)}" x2="${left+cw-3}" y2="${yOf(level)}"/>`;
+    if(stone) s+=`<ellipse class="c-stone" cx="${cx-6}" cy="${bottom-20}" rx="21" ry="13" transform="rotate(-14 ${cx-6} ${bottom-20})"/>`;
+    s+=`<path class="c-glass" d="M${left} ${top-8} V${bottom-12} q0 12 12 12 h${cw-24} q12 0 12-12 V${top-8}"/>`;
+    for(let v=0; v<=o.max; v+=o.minor){
+      const y=yOf(v), major=v%o.major===0;
+      s+=`<line class="c-tick" x1="${left+cw}" y1="${y}" x2="${left+cw-(major?16:9)}" y2="${y}"/>`;
+      if(major) s+=`<text class="g-lab" x="${left+cw-20}" y="${y+4}" text-anchor="end">${v}</text>`;
+    }
+    s+=`<text class="g-lab" x="${left+cw-20}" y="${top-14}" text-anchor="end">cm³</text>`;
+    s+=`<text class="c-cap" x="${cx}" y="${bottom+28}" text-anchor="middle">${cap}</text>`;
+    return s;
+  };
+  return `<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="${o.alt||'Bình chia độ trước và sau khi thả vật'}">${one(110,o.before,false,o.cap1||'Trước khi thả sỏi')}${one(290,o.after,true,o.cap2||'Sau khi thả sỏi')}</svg>`;
+}
+
+/* arrow with head: from (x1,y1) to (x2,y2) */
+function arrow(x1,y1,x2,y2,cls){
+  cls=cls||'h-arr';
+  const a=Math.atan2(y2-y1,x2-x1), hx=x2-10*Math.cos(a), hy=y2-10*Math.sin(a);
+  return `<line class="${cls}" x1="${x1}" y1="${y1}" x2="${hx.toFixed(1)}" y2="${hy.toFixed(1)}"/><polygon class="${cls}-h" points="${x2},${y2} ${(hx+6*Math.sin(a)).toFixed(1)},${(hy-6*Math.cos(a)).toFixed(1)} ${(hx-6*Math.sin(a)).toFixed(1)},${(hy+6*Math.cos(a)).toFixed(1)}"/>`;
+}
+
+function figAxes(){
+  return graph({alt:'Hệ trục của đồ thị: trục đứng Os là quãng đường, trục ngang Ot là thời gian', xMax:4, yMax:4, xTicks:[0,1,2,3], yTicks:[0,1,2,3], noTickLabels:true, xLabel:'t', yLabel:'s',
+    series:[{pts:[[0,0],[3.4,3.4]]}],
+    extra:(X,Y)=>`<text class="c-call" x="${X(0.15)}" y="${Y(3.55)}">Os (đứng): quãng đường đi được</text><text class="c-call" x="${X(1.9)}" y="${Y(0.3)}">Ot (ngang): thời gian</text><text class="c-note" x="${X(0.15)}" y="${Y(3.15)}">mỗi vạch = một giá trị theo tỉ lệ xích</text>`});
+}
+
+function figHeight(o){
+  const W=400,H=250,gy=204, m=o.mode||'static';
+  const blk=(x,y,ghost)=>`<rect class="h-blk${ghost?' ghost':''}" x="${x-22}" y="${y}" width="44" height="32" rx="6"/>`;
+  let s=`<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="${o.alt||'Hình minh hoạ vật ở độ cao h so với mặt đất'}">`;
+  s+=`<line class="g-axis" x1="24" y1="${gy}" x2="${W-24}" y2="${gy}"/>`;
+  for(let x=32;x<W-24;x+=16) s+=`<line class="h-hatch" x1="${x}" y1="${gy}" x2="${x-9}" y2="${gy+10}"/>`;
+  s+=`<text class="g-lab" x="${W-24}" y="${gy+28}" text-anchor="end">${o.ground||'Gốc thế năng (mặt đất): h = 0'}</text>`;
+  if(m==='static'){
+    const bx=210, by=56;
+    s+=blk(bx,by);
+    if(o.m) s+=`<text class="h-in" x="${bx}" y="${by+21}" text-anchor="middle">${sub(o.m)}</text>`;
+    s+=arrow(120,gy-2,120,by+34)+arrow(120,by+34,120,gy-2);
+    s+=`<text class="c-call" x="110" y="${(gy+by+34)/2+4}" text-anchor="end">${sub(o.h||'h')}</text>`;
+    s+=arrow(bx,by+32,bx,by+32+54,'h-p');
+    s+=`<text class="h-lab-p" x="${bx+10}" y="${by+32+50}">${sub(o.P||'P')}</text>`;
+    if(o.v){ s+=arrow(bx+24,by+16,bx+24+58,by+16,'h-v'); s+=`<text class="h-lab-v" x="${bx+26}" y="${by+6}">${sub(o.v)}</text>`; }
+    if(o.note) s+=`<text class="c-call" x="${W-24}" y="30" text-anchor="end">${sub(o.note)}</text>`;
+  } else if(m==='fall'||m==='up'){
+    const bx=200, top=44, bot=146, fall=m==='fall';
+    const solid=fall?bot:top, ghost=fall?top:bot;
+    s+=blk(bx,ghost,true)+blk(bx,solid);
+    s+=`<line class="g-guide" x1="${bx}" y1="${top+32}" x2="${bx}" y2="${bot}"/>`;
+    if(fall){ s+=arrow(bx+36,solid+2,bx+36,solid+56,'h-v'); s+=`<text class="h-lab-v" x="${bx+44}" y="${solid+36}">v tăng</text>`; }
+    else { s+=arrow(bx+36,solid+30,bx+36,solid-26,'h-v'); s+=`<text class="h-lab-v" x="${bx+44}" y="${solid+4}">v giảm</text>`; }
+    s+=arrow(66,fall?62:150,66,fall?150:62,'h-tn')+`<text class="h-lab-tn" x="76" y="110">${fall?'Thế năng giảm':'Thế năng tăng'}</text>`;
+    s+=arrow(334,fall?150:62,334,fall?62:150,'h-dn')+`<text class="h-lab-dn" x="324" y="110" text-anchor="end">${fall?'Động năng tăng':'Động năng giảm'}</text>`;
+  } else if(m==='flat'){
+    const y=96;
+    s+=`<line class="g-guide" x1="62" y1="${y+32}" x2="${W-30}" y2="${y+32}"/>`;
+    s+=blk(100,y,true)+blk(206,y)+blk(316,y,true);
+    s+=arrow(124,y+16,146,y+16,'h-v')+arrow(230,y+16,272,y+16,'h-v')+arrow(340,y+16,398,y+16,'h-v');
+    s+=`<text class="h-lab-dn" x="206" y="${y-14}" text-anchor="middle">v tăng dần → động năng tăng</text>`;
+    s+=arrow(40,gy-2,40,y+32)+arrow(40,y+32,40,gy-2);
+    s+=`<text class="h-lab-tn" x="50" y="${(gy+y+32)/2+4}">h không đổi → thế năng không đổi</text>`;
+  } else if(m==='ground'){
+    s+=`<circle class="h-ball ghost" cx="120" cy="${gy-21}" r="20"/><circle class="h-ball" cx="230" cy="${gy-21}" r="20"/>`;
+    s+=arrow(254,gy-21,316,gy-21,'h-v')+`<text class="h-lab-dn" x="286" y="${gy-32}" text-anchor="middle">v ≠ 0 → có động năng</text>`;
+    s+=`<text class="h-lab-tn" x="230" y="${gy-60}" text-anchor="middle">đang ở gốc thế năng: h = 0 → thế năng = 0</text>`;
+  }
+  return s+'</svg>';
+}
+
+function figBars(o){
+  const W=400, rowH=44, H=o.rows.length*rowH+14, max=o.max||Math.max(...o.rows.map(r=>r.val));
+  const bx=150, bw=W-bx-72;
+  let s=`<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="${o.alt||'So sánh độ lớn'}">`;
+  o.rows.forEach((r,i)=>{
+    const y=10+i*rowH, w=Math.max(6,r.val/max*bw);
+    s+=`<text class="g-lab" x="8" y="${y+18}">${sub(r.label)}</text>`;
+    s+=`<rect class="b-bar" x="${bx}" y="${y+2}" width="${w.toFixed(1)}" height="24" rx="5" style="fill:${r.color||'var(--accent)'}"/>`;
+    s+=`<text class="b-val" x="${(bx+w+8).toFixed(1)}" y="${y+19}">${sub(r.text)}</text>`;
+  });
+  return s+'</svg>';
+}
+
+function figTriangle(){
+  const ax=250, ay=16, bx=160, by=152, cx=340, cy=152, ym=84;
+  const lx=ax+(ym-ay)/(by-ay)*(bx-ax), rx=ax+(ym-ay)/(cy-ay)*(cx-ax);
+  let s=`<svg class="fig" viewBox="0 0 400 180" role="img" aria-label="Tam giác công thức: m ở trên, D và V ở dưới">`;
+  s+=`<polygon class="t-tri" points="${ax},${ay} ${bx},${by} ${cx},${cy}"/>`;
+  s+=`<line class="g-axis" x1="${lx.toFixed(1)}" y1="${ym}" x2="${rx.toFixed(1)}" y2="${ym}"/><line class="g-axis" x1="${ax}" y1="${ym}" x2="${ax}" y2="${by}"/>`;
+  s+=`<text class="t-sym" x="${ax}" y="68" text-anchor="middle">m</text><text class="t-sym" x="${ax-32}" y="134" text-anchor="middle">D</text><text class="t-sym" x="${ax+32}" y="134" text-anchor="middle">V</text>`;
+  s+=`<text class="c-call" x="14" y="46">D = m : V</text><text class="c-call" x="14" y="76">m = D × V</text><text class="c-call" x="14" y="106">V = m : D</text>`;
+  s+=`<text class="c-note" x="200" y="174" text-anchor="middle">Che chữ cần tìm, phần còn lại chính là cách tính nó</text>`;
+  return s+'</svg>';
+}
+
+function pict(kind,cx,top){
+  switch(kind){
+    case 'scale': return `<rect class="p-obj" x="${cx-14}" y="${top+10}" width="28" height="22" rx="3"/><rect class="p-line" x="${cx-28}" y="${top+32}" width="56" height="6" rx="2"/><rect class="p-fill" x="${cx-32}" y="${top+40}" width="64" height="18" rx="5"/><rect class="p-disp" x="${cx+6}" y="${top+44}" width="20" height="10" rx="2"/>`;
+    case 'dial': return `<rect class="p-fill" x="${cx-24}" y="${top+46}" width="48" height="12" rx="3"/><circle class="p-line" cx="${cx}" cy="${top+24}" r="21"/><line class="p-needle" x1="${cx}" y1="${top+24}" x2="${cx+11}" y2="${top+9}"/><circle class="p-dot" cx="${cx}" cy="${top+24}" r="2.5"/>`;
+    case 'balance': return `<line class="p-line" x1="${cx}" y1="${top+8}" x2="${cx}" y2="${top+54}"/><rect class="p-fill" x="${cx-18}" y="${top+54}" width="36" height="5" rx="2"/><line class="p-line" x1="${cx-32}" y1="${top+14}" x2="${cx+32}" y2="${top+14}"/><line class="p-line" x1="${cx-32}" y1="${top+14}" x2="${cx-32}" y2="${top+40}"/><line class="p-line" x1="${cx+32}" y1="${top+14}" x2="${cx+32}" y2="${top+40}"/><path class="p-line" d="M${cx-44} ${top+40} q12 10 24 0"/><path class="p-line" d="M${cx+20} ${top+40} q12 10 24 0"/>`;
+    case 'cyl': return `<rect class="p-water" x="${cx-11}" y="${top+30}" width="22" height="26"/><path class="p-line" d="M${cx-13} ${top+4} V${top+54} q0 6 6 6 h14 q6 0 6-6 V${top+4}"/>${[12,20,28,36,44,52].map(y=>`<line class="c-tick" x1="${cx+13}" y1="${top+y}" x2="${cx+(y%16===4?4:8)}" y2="${top+y}"/>`).join('')}`;
+    case 'ruler': return `<rect class="p-line" x="${cx-38}" y="${top+22}" width="76" height="18" rx="2"/>${[0,1,2,3,4,5,6,7,8,9,10].map(i=>`<line class="c-tick" x1="${cx-34+i*7}" y1="${top+22}" x2="${cx-34+i*7}" y2="${top+(i%5===0?34:29)}"/>`).join('')}`;
+  }
+  return '';
+}
+
+function figTools(o){
+  const n=o.items.length, W=400, colW=Math.min(150,(W-20)/n), x0=(W-colW*n)/2, H=o.formula?172:130;
+  let s=`<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="${o.alt||'Dụng cụ đo và đại lượng đo được'}">`;
+  o.items.forEach((it,i)=>{
+    const cx=x0+colW*i+colW/2;
+    s+=pict(it.kind,cx,6);
+    s+=`<text class="c-cap" x="${cx}" y="84" text-anchor="middle">${it.label}</text>`;
+    s+=`<text class="c-call" x="${cx}" y="106" text-anchor="middle">→ ${sub(it.gives)}</text>`;
+  });
+  if(o.formula) s+=`<text class="t-formula" x="${W/2}" y="152" text-anchor="middle">${sub(o.formula)}</text>`;
+  return s+'</svg>';
+}
+
+function figSteps(list){
+  const W=400, bh=34, gap=14, H=list.length*(bh+gap)-gap+12;
+  let s=`<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="Các bước thực hiện theo thứ tự">`;
+  list.forEach((t,i)=>{
+    const y=6+i*(bh+gap);
+    s+=`<rect class="s-box" x="40" y="${y}" width="320" height="${bh}" rx="9"/><text class="s-txt" x="200" y="${y+22}" text-anchor="middle">${sub(t)}</text>`;
+    if(i<list.length-1) s+=arrow(200,y+bh+1,200,y+bh+gap-1);
+  });
+  return s+'</svg>';
+}
+
+function figAvg(){
+  const vals=[[29.8,120,'Lần 1: 29,8 g'],[30.3,320,'Lần 2: 30,3 g'],[30.2,280,'Lần 3: 30,2 g']];
+  let s=`<svg class="fig" viewBox="0 0 400 130" role="img" aria-label="Ba lần đo lệch nhau một chút quanh giá trị trung bình">`;
+  s+=`<line class="g-axis" x1="40" y1="78" x2="370" y2="78"/><polygon class="g-arrow" points="378,78 368,73 368,83"/>`;
+  s+=`<line class="g-guide hl" x1="240" y1="20" x2="240" y2="78"/><text class="c-call" x="240" y="14" text-anchor="middle">trung bình ≈ 30,1 g</text>`;
+  vals.forEach(([v,x,l],i)=>{ s+=`<circle class="g-pt" cx="${x}" cy="78" r="6"/><text class="g-lab" x="${x}" y="${i===1?110:98}" text-anchor="middle">${l}</text>`; });
+  return s+'</svg>';
+}
+
+function figUnits(){
+  const rows=[['Khối lượng','m','kg (hoặc g)'],['Thể tích','V','m³ (hoặc cm³)'],['Khối lượng riêng','D = m : V','kg/m³ (hoặc g/cm³)']];
+  let s=`<svg class="fig" viewBox="0 0 400 150" role="img" aria-label="Bảng đơn vị của khối lượng, thể tích và khối lượng riêng">`;
+  s+=`<text class="c-cap" x="12" y="22">Đại lượng</text><text class="c-cap" x="170" y="22">Kí hiệu</text><text class="c-cap" x="268" y="22">Đơn vị</text><line class="g-axis" x1="8" y1="30" x2="392" y2="30"/>`;
+  rows.forEach((r,i)=>{ const y=56+i*34; s+=`<text class="g-lab" x="12" y="${y}">${r[0]}</text><text class="g-plab" x="170" y="${y}">${r[1]}</text><text class="c-call" x="268" y="${y}">${r[2]}</text><line class="g-grid" x1="8" y1="${y+12}" x2="392" y2="${y+12}"/>`; });
+  return s+'</svg>';
+}
+
+function figKinetic(){
+  let s=`<svg class="fig" viewBox="0 0 400 140" role="img" aria-label="Vật đang chuyển động có động năng, vật đứng yên thì không">`;
+  s+=`<line class="g-axis" x1="20" y1="92" x2="380" y2="92"/>`;
+  s+=`<circle class="h-ball" cx="90" cy="70" r="22"/>`+arrow(118,70,196,70,'h-v')+`<text class="h-lab-v" x="156" y="60" text-anchor="middle">v</text>`;
+  s+=`<text class="h-lab-dn" x="120" y="120" text-anchor="middle">đang chuyển động → có động năng</text>`;
+  s+=`<circle class="h-ball ghost" cx="300" cy="70" r="22"/><text class="c-note" x="300" y="44" text-anchor="middle">v = 0</text>`;
+  s+=`<text class="g-lab" x="300" y="120" text-anchor="middle">đứng yên → ${sub('W_{đ} = 0')}</text>`;
+  return s+'</svg>';
+}
+
+/* ---------- question bank ---------- */
+const G7=()=>graph({alt:'Đồ thị ba đoạn: OA từ O đến (2 h; 180 km), AB nằm ngang đến (3 h; 180 km), BC lên (4 h; 270 km)', xMax:4.4, yMax:300, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,90,180,270], series:[{pts:[[0,0],[2,180],[3,180],[4,270]]}], points:[{x:2,y:180,label:'A',dx:-16,dy:-8},{x:3,y:180,label:'B',dx:6,dy:18},{x:4,y:270,label:'C',dx:8,dy:4}]});
+const G7X=(extraGuides,extra)=>graph({alt:'Đồ thị ba đoạn OA, AB, BC có chú thích', xMax:4.4, yMax:300, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,90,180,270], series:[{pts:[[0,0],[2,180],[3,180],[4,270]]}], guides:extraGuides||[], points:[{x:2,y:180,label:'A',dx:-16,dy:-8},{x:3,y:180,label:'B',dx:6,dy:18},{x:4,y:270,label:'C',dx:8,dy:4}], extra});
+
+const SETS=[
+{
+  grade:'7', lesson:'Bài 10', title:'Đồ thị quãng đường – thời gian', sub:'Khoa học tự nhiên 7, Kết nối tri thức', note:'', kind:'4 lựa chọn',
+  accent:'#1E6FD9', accentBg:'#E4EEFC', accentDark:'#6CA6FF', accentBgDark:'#1B2B4B',
+  questions:[
+    {lv:'easy', q:'Trục tung Os trong đồ thị quãng đường – thời gian dùng để',
+     o:['biểu diễn các độ lớn của quãng đường đi được theo một tỉ lệ xích thích hợp.','biểu diễn thời gian theo một tỉ lệ xích thích hợp.','biểu diễn tốc độ theo một tỉ lệ xích thích hợp.','biểu diễn độ dời theo một tỉ lệ xích thích hợp.'], a:0,
+     e:'Hệ trục của đồ thị: trục <span class="k">đứng Os</span> ghi quãng đường s, trục <span class="k">ngang Ot</span> ghi thời gian t. Mỗi vạch chia trên trục ứng với một giá trị theo tỉ lệ xích đã chọn, ví dụ 1 ô = 20 km.',
+     ef:figAxes},
+    {lv:'easy', q:'Trục hoành Ot trong đồ thị quãng đường – thời gian dùng để',
+     o:['biểu diễn các độ lớn của quãng đường đi được theo một tỉ lệ xích thích hợp.','biểu diễn thời gian theo một tỉ lệ xích thích hợp.','biểu diễn tốc độ theo một tỉ lệ xích thích hợp.','biểu diễn độ dời theo một tỉ lệ xích thích hợp.'], a:1,
+     e:'Trục nằm ngang Ot luôn là thời gian, thời gian "chạy" từ trái sang phải. Mẹo nhớ: t là <span class="k">time</span>, nằm ngang như dòng thời gian.',
+     ef:figAxes},
+    {lv:'easy', q:'Trong đồ thị quãng đường – thời gian, gốc tọa độ O là điểm khởi hành biểu diễn',
+     o:['s = 0, t = 1 s.','s = 1, t = 1 s.','s = 1, t = 0 s.','s = 0, t = 0 s.'], a:3,
+     e:'Gốc O là lúc bắt đầu bấm giờ: thời gian t = 0 và vật chưa đi được mét nào, s = 0. Vì vậy đồ thị của một vật luôn xuất phát từ O.',
+     fm:'Tại O: t = 0 và s = 0',
+     ef:()=>graph({alt:'Đường thẳng xuất phát từ gốc O', xMax:4.4, yMax:88, xTicks:[0,1,2,3,4], yTicks:[0,20,40,60,80], xLabel:'t (h)', yLabel:'s (km)', series:[{pts:[[0,0],[4,80]]}], points:[{x:0,y:0}], extra:(X,Y)=>`<text class="c-call" x="${X(0.3)}" y="${Y(78)}">Xuất phát từ O: chưa đi (s = 0),</text><text class="c-call" x="${X(0.3)}" y="${Y(66)}">chưa tính giờ (t = 0)</text>`})},
+    {lv:'easy', q:'Khi đồ thị quãng đường – thời gian là đường thẳng song song với trục thời gian thì',
+     o:['vật chuyển động nhanh dần.','vật chuyển động chậm dần.','vật chuyển động đều.','vật không chuyển động.'], a:3,
+     e:'Đường nằm ngang nghĩa là thời gian cứ trôi (t tăng) mà s vẫn giữ nguyên: vật không đi thêm được mét nào, tức là <span class="k">đứng yên</span>. Tốc độ lúc này bằng 0.',
+     fm:'s không đổi ⇒ v = 0',
+     ef:()=>graph({alt:'Đoạn đồ thị nằm ngang: quãng đường giữ nguyên 40 m trong khi thời gian tăng', xMax:5, yMax:60, xTicks:[0,1,2,3,4,5], yTicks:[0,20,40], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[1.5,40],[4.5,40]]}], extra:(X,Y)=>`<text class="c-call" x="${X(3)}" y="${Y(40)-10}" text-anchor="middle">s giữ nguyên 40 m</text><text class="c-note" x="${X(3)}" y="${Y(40)+20}" text-anchor="middle">t vẫn tăng → vật đứng yên</text>`})},
+    {lv:'easy', q:'Chọn đáp án đúng nhất. Đồ thị quãng đường – thời gian cho biết những gì?',
+     o:['Tốc độ chuyển động, quãng đường đi được và thời gian đi của vật.','Quãng đường đi được và thời gian đi của vật.','Tốc độ chuyển động của vật.','Vị trí của vật ở những thời điểm xác định.'], a:0,
+     e:'Chọn một điểm bất kì trên đồ thị: dóng xuống trục ngang được t, dóng sang trục đứng được s. Có s và t thì tính được tốc độ v = s : t. Vậy đồ thị cho biết cả ba đại lượng.',
+     fm:'v = s : t',
+     ef:()=>graph({alt:'Từ một điểm trên đồ thị đọc được s và t rồi tính v', xMax:5, yMax:100, xTicks:[0,1,2,3,4,5], yTicks:[0,20,40,60,80,100], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[4.6,92]]}], guides:[{x:3,y:60,xl:'t',yl:'s',hl:true}], points:[{x:3,y:60}], extra:(X,Y)=>`<text class="c-call" x="${X(0.3)}" y="${Y(92)}">đọc s và t rồi tính v = s : t</text>`})},
+    {lv:'easy', q:'Đồ thị quãng đường – thời gian của chuyển động có tốc độ không đổi có dạng là đường gì?',
+     o:['Đường thẳng.','Đường cong.','Đường tròn.','Đường gấp khúc.'], a:0,
+     e:'Tốc độ không đổi thì mỗi giây đi thêm đúng một quãng như nhau, nên các điểm xếp thành một <span class="k">đường thẳng đi lên từ O</span>. Đường càng dốc, tốc độ càng lớn.',
+     ef:()=>graph({alt:'Hai đường thẳng qua O, đường dốc hơn ứng với tốc độ lớn hơn', xMax:5, yMax:100, xTicks:[0,1,2,3,4,5], yTicks:[0,20,40,60,80,100], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[4.6,92]],label:'nhanh'},{pts:[[0,0],[4.6,46]],label:'chậm',color:'var(--alt)'}], extra:(X,Y)=>`<text class="c-call" x="${X(0.3)}" y="${Y(92)}">càng dốc → tốc độ càng lớn</text>`})},
+    {lv:'mid', q:'Hình bên là đồ thị quãng đường – thời gian của một vật chuyển động. Xác định trên đồ thị cho biết, sau 3 h vật đi được quãng đường là bao nhiêu?',
+     fig:()=>graph({alt:'Đường thẳng đi qua O, trục thời gian chia mỗi 1 h, trục quãng đường chia mỗi 20 km', xMax:4.4, yMax:88, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,20,40,60,80], series:[{pts:[[0,0],[4.2,84]]}]}),
+     o:['40 km.','80 km.','60 km.','20 km.'], a:2,
+     e:'Cách đọc đồ thị: từ vạch <span class="k">3 h</span> trên trục ngang, dóng thẳng lên gặp đường đồ thị, rồi dóng ngang sang trục đứng: gặp vạch <span class="k">60 km</span>. Mỗi ô ngang là 1 h, mỗi ô đứng là 20 km.',
+     ef:()=>graph({alt:'Dóng từ 3 h lên đồ thị rồi sang trục quãng đường được 60 km', xMax:4.4, yMax:88, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,20,40,60,80], series:[{pts:[[0,0],[4.2,84]]}], guides:[{x:3,y:60,xl:'3 h',yl:'60 km',hl:true}], points:[{x:3,y:60}]})},
+    {lv:'mid', q:'Hình bên là đồ thị quãng đường – thời gian của một vật chuyển động. Xác định tốc độ chuyển động của vật.',
+     fig:()=>graph({alt:'Đường thẳng đi qua O và điểm (1 h; 20 km)', xMax:2.2, yMax:44, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,0.5,1,1.5,2], yTicks:[0,10,20,30,40], series:[{pts:[[0,0],[2.1,42]]}]}),
+     o:['10 km/h.','20 km/h.','30 km/h.','40 km/h.'], a:1,
+     e:'Đồ thị là đường thẳng nằm nghiêng nên tốc độ không đổi. Chọn một điểm dễ đọc: tại t = 1 h thì s = 20 km. Lấy quãng đường chia thời gian là ra tốc độ.',
+     fm:'v = s : t = 20 km : 1 h = 20 km/h',
+     ef:()=>graph({alt:'Đọc điểm (1 h; 20 km) trên đồ thị', xMax:2.2, yMax:44, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,0.5,1,1.5,2], yTicks:[0,10,20,30,40], series:[{pts:[[0,0],[2.1,42]]}], guides:[{x:1,y:20,xl:'1 h',yl:'20 km',hl:true}], points:[{x:1,y:20}]})},
+    {lv:'apply', q:'Hình bên là đồ thị quãng đường – thời gian của một ô tô chuyển động. Xác định tốc độ chuyển động của ô tô trên đoạn OA.',
+     fig:G7,
+     o:['40 km/h.','90 km/h.','120 km/h.','180 km/h.'], a:1,
+     e:'Đoạn OA đi từ O (0 h; 0 km) đến A (2 h; 180 km): trong <span class="k">2 h</span> ô tô đi được <span class="k">180 km</span>. Chỉ dùng số liệu của đoạn OA, không lấy số của đoạn BC.',
+     fm:'v = s : t = 180 km : 2 h = 90 km/h',
+     ef:()=>G7X([{x:2,y:180,xl:'2 h',yl:'180 km',hl:true}])},
+    {lv:'mid', q:'Hình bên là đồ thị quãng đường – thời gian của một ô tô chuyển động. Hãy mô tả chuyển động của ô tô trên các đoạn OA, AB và BC.',
+     fig:G7,
+     o:['OA: chuyển động nhanh dần; AB: không chuyển động; BC: chuyển động chậm dần.','OA: chuyển động chậm dần; AB: không chuyển động; BC: chuyển động chậm dần.','OA: chuyển động với tốc độ không đổi; AB: chuyển động nhanh dần; BC: chuyển động với tốc độ không đổi.','OA: chuyển động với tốc độ không đổi; AB: không chuyển động; BC: chuyển động với tốc độ không đổi.'], a:3,
+     e:'Đoạn <span class="k">nằm nghiêng</span> (OA, BC): xe chạy với tốc độ không đổi. Đoạn <span class="k">nằm ngang</span> (AB): từ 2 h đến 3 h quãng đường vẫn là 180 km, xe đang dừng. Lưu ý: nằm nghiêng không phải "nhanh dần"; nhanh dần thì đồ thị phải cong lên.',
+     ef:()=>G7X([],(X,Y)=>`<text class="c-call" x="${X(0.55)}" y="${Y(112)}" text-anchor="middle">chạy đều</text><text class="c-call" x="${X(2.5)}" y="${Y(205)}" text-anchor="middle">dừng</text><text class="c-call" x="${X(3.2)}" y="${Y(258)}" text-anchor="middle">chạy đều</text>`)}
+  ]
+},
+{
+  grade:'7', lesson:'Bài 10', title:'Đồ thị quãng đường – thời gian', sub:'Khoa học tự nhiên 7, Kết nối tri thức', note:'', kind:'Đúng/Sai + tự luận', timed:false,
+  accent:'#1E6FD9', accentBg:'#E4EEFC', accentDark:'#6CA6FF', accentBgDark:'#1B2B4B',
+  questions:[
+    {type:'tf', lv:'mid', q:'Xét các phát biểu sau đây về đồ thị quãng đường – thời gian của một vật chuyển động thẳng với tốc độ không đổi. Chọn Đúng hoặc Sai cho từng phát biểu.',
+     items:[
+       {t:'Đồ thị quãng đường – thời gian mô tả mối liên hệ giữa quãng đường đi được của vật và thời gian.', ans:true, e:'Đúng. Đó chính là ý nghĩa của đồ thị: nhìn vào là biết sau mỗi khoảng thời gian vật đi được bao xa.'},
+       {t:'Trong hệ tọa độ (s, t), trục nằm ngang Ot biểu diễn quãng đường, trục thẳng đứng Os biểu diễn thời gian.', ans:false, e:'Sai, nói ngược rồi: trục nằm ngang Ot biểu diễn thời gian, trục thẳng đứng Os biểu diễn quãng đường.'},
+       {t:'Đồ thị của chuyển động có tốc độ không đổi là một đường thẳng đi qua gốc tọa độ O.', ans:true, e:'Đúng. Tốc độ không đổi thì s tỉ lệ thuận với t, các điểm xếp thành một đường thẳng xuất phát từ O.'},
+       {t:'Độ dốc của đường thẳng trên đồ thị càng lớn thì tốc độ của vật càng nhỏ.', ans:false, e:'Sai. Đường càng dốc thì trong cùng một thời gian vật đi được quãng đường càng dài, tức là tốc độ càng lớn.'}
+     ],
+     e:'Mẹo kiểm tra nhanh: ý nào nói <span class="k">ngược trục</span> (câu b) hoặc <span class="k">ngược độ dốc</span> (câu d) là sai. Hình bên: đường (1) dốc hơn đường (2) nên vật (1) chạy nhanh hơn.',
+     ef:()=>graph({alt:'Hai đường thẳng qua O, đường dốc hơn ứng với tốc độ lớn hơn', xMax:5, yMax:100, xTicks:[0,1,2,3,4,5], yTicks:[0,20,40,60,80,100], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[4.6,92]],label:'(1)'},{pts:[[0,0],[4.6,46]],label:'(2)',color:'var(--alt)'}], extra:(X,Y)=>`<text class="c-call" x="${X(0.3)}" y="${Y(92)}">(1) dốc hơn → nhanh hơn</text>`})},
+    {type:'short', lv:'mid', q:'Dựa vào đồ thị quãng đường – thời gian, nếu vật chuyển động được 20 m trong 4 s, tốc độ của vật là bao nhiêu m/s?',
+     ans:'5 m/s',
+     e:'Tốc độ bằng quãng đường chia thời gian. Trên đồ thị, điểm (4 s; 20 m) nằm trên đường thẳng đi qua O; dóng từ điểm đó xuống hai trục là đọc được s và t.',
+     fm:'v = s : t = 20 : 4 = 5 m/s',
+     ef:()=>graph({alt:'Đường thẳng qua O và điểm (4 s; 20 m)', xMax:5.2, yMax:26, xTicks:[0,1,2,3,4,5], yTicks:[0,5,10,15,20,25], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[5,25]]}], guides:[{x:4,y:20,xl:'4 s',yl:'20 m',hl:true}], points:[{x:4,y:20}]})},
+    {type:'short', lv:'mid', q:'Một đoạn đồ thị quãng đường – thời gian là đường thẳng nằm ngang ứng với giá trị quãng đường s = 50 m. Điều này có nghĩa là gì?',
+     ans:'Vật đang đứng yên (quãng đường không đổi theo thời gian).',
+     e:'Đoạn nằm ngang: thời gian cứ trôi mà s vẫn là 50 m, vật không đi thêm được mét nào, tức là đang dừng lại. Trước đó vật đã đi được 50 m rồi mới dừng.',
+     fm:'s không đổi ⇒ v = 0',
+     ef:()=>graph({alt:'Đồ thị đi lên tới 50 m rồi nằm ngang', xMax:6, yMax:60, xTicks:[0,1,2,3,4,5,6], yTicks:[0,25,50], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[2,50],[5.6,50]]}], extra:(X,Y)=>`<text class="c-call" x="${X(3.8)}" y="${Y(50)-10}" text-anchor="middle">s = 50 m không đổi → đứng yên</text>`})}
+  ]
+},
+{
+  grade:'8', lesson:'Bài 14', title:'Thực hành xác định khối lượng riêng', sub:'Khoa học tự nhiên 8, Kết nối tri thức', note:'', kind:'4 lựa chọn',
+  accent:'#D4701A', accentBg:'#FCEBDD', accentDark:'#FFA14F', accentBgDark:'#3B2614',
+  questions:[
+    {lv:'easy', q:'Để xác định được khối lượng riêng của một vật liệu ta cần biết',
+     o:['khối lượng của vật liệu đó.','thể tích của vật liệu đó.','khối lượng và thể tích của vật liệu đó.','chiều dài, chiều rộng, chiều cao của vật liệu đó.'], a:2,
+     e:'Khối lượng riêng cho biết <span class="k">1 m³ (hay 1 cm³) chất đó nặng bao nhiêu</span>. Muốn tính phải đem khối lượng chia cho thể tích, nên bắt buộc cần cả m và V. Tam giác bên: che chữ nào thì phần còn lại là cách tính chữ đó.',
+     fm:'D = m : V', ef:figTriangle},
+    {lv:'easy', q:'Để xác định khối lượng riêng của vật hình hộp chữ nhật ta cần',
+     o:['cân điện tử để đo khối lượng vật.','thước đo để đo chiều dài các cạnh của vật.','sử dụng công thức tính khối lượng riêng của vật.','Cả A, B, C.'], a:3,
+     e:'Ba việc, thiếu một là không ra kết quả: <span class="k">cân</span> để có m; <span class="k">thước</span> đo ba cạnh a, b, c để tính V = a.b.c; cuối cùng lắp vào <span class="k">công thức</span> D = m/V.',
+     fm:'V = a · b · c ; D = m : V',
+     ef:()=>figTools({items:[{kind:'scale',label:'Cân điện tử',gives:'khối lượng m'},{kind:'ruler',label:'Thước',gives:'a, b, c → V = a.b.c'}], formula:'D = m : V'})},
+    {lv:'mid', q:'Để xác định khối lượng riêng của các viên sỏi, ba bạn Anh, Nhi, Hiếu đưa ra ý kiến như sau:<br>Anh: Mình chỉ cần một cái cân là đủ.<br>Nhi: Theo mình, thì chỉ cần một bình chia độ.<br>Hiếu: Còn tớ nghĩ, cần một cái cân và một bình chia độ.<br>Theo em, ý kiến nào đúng?',
+     o:['Anh đúng.','Nhi đúng.','Hiếu đúng.','Cả ba bạn cùng sai.'], a:2,
+     e:'Viên sỏi méo mó, không có cạnh để đo bằng thước, nên thể tích phải lấy bằng cách <span class="k">thả vào bình chia độ</span>: nước dâng lên bao nhiêu thì đó là thể tích sỏi. Cân cho m, bình chia độ cho V, nên Hiếu đúng.',
+     fm:'V<sub>sỏi</sub> = V<sub>sau</sub> – V<sub>trước</sub> ; D = m : V',
+     ef:()=>figTools({items:[{kind:'scale',label:'Cân',gives:'khối lượng m'},{kind:'cyl',label:'Bình chia độ',gives:'thể tích V'}], formula:'D = m : V'})},
+    {lv:'apply', q:'Em hãy sắp xếp lại thứ tự các bước dưới đây để xác định được khối lượng riêng của một lượng nước.<br>(1) Xác định khối lượng của ống đong.<br>(2) Xác định khối lượng nước trong ống đong.<br>(3) Xác định khối lượng của ống đong có đựng nước.<br>(4) Sử dụng công thức tính khối lượng riêng.',
+     o:['(1) – (2) – (3) – (4).','(1) – (2) – (4) – (3).','(1) – (3) – (2) – (4).','(2) – (1) – (3) – (4).'], a:2,
+     e:'Muốn biết riêng khối lượng nước thì phải cân <span class="k">hai lần</span>: ống rỗng (m₁) và ống có nước (m₂), rồi lấy hiệu. Chưa cân lần hai thì chưa có gì để trừ, nên bước (3) phải đứng trước bước (2).',
+     fm:'m<sub>nước</sub> = m₂ – m₁ ; D = m<sub>nước</sub> : V',
+     ef:()=>figSteps(['(1) Cân ống đong rỗng → m₁','(3) Cân ống đong có nước → m₂','(2) Khối lượng nước = m₂ – m₁','(4) D = m : V, với V đọc trên ống đong'])},
+    {lv:'easy', q:'Phát biểu nào sau đây là <u>sai</u>?',
+     o:['Để đo khối lượng vật ta cần dùng một ống đong.','Để đo khối lượng vật ta cần dùng một cái cân.','Để đo thể tích vật ta cần dùng một ống đong.','Để tính khối lượng của vật ta sử dụng công thức m = D.V.'], a:0,
+     e:'Mỗi dụng cụ đo một thứ: <span class="k">cân đo khối lượng</span>, <span class="k">ống đong đo thể tích</span>. Ống đong chỉ có vạch chia ml nên không "cân" được. Công thức m = D.V là đúng, nó chỉ là D = m/V viết ngược lại.',
+     fm:'m = D × V',
+     ef:()=>figTools({items:[{kind:'scale',label:'Cân',gives:'khối lượng m'},{kind:'cyl',label:'Ống đong',gives:'thể tích V'}]})},
+    {lv:'easy', q:'Để đo thể tích của vật ta cần sử dụng dụng cụ nào?',
+     o:['Cân.','Bình chia độ.','Ống đong.','Cả B và C đều được.'], a:3,
+     e:'Bình chia độ hay ống đong đều là bình có vạch chia ml (1 ml = 1 cm³). Đổ chất lỏng vào rồi đọc vạch là có thể tích; với vật rắn thì đọc mực nước trước và sau khi thả vật, lấy hiệu.',
+     fm:'V<sub>vật</sub> = V<sub>sau</sub> – V<sub>trước</sub> = 80 – 60 = 20 cm³',
+     ef:()=>cylinders({before:60, after:80, max:100, major:20, minor:10, cap1:'Trước: 60 cm³', cap2:'Sau khi thả vật: 80 cm³'})},
+    {lv:'easy', q:'Dụng cụ nào có thể dùng để xác định khối lượng của vật?',
+     o:['Cân đồng hồ.','Cân tiểu li.','Cân điện tử.','Cả A, B, C.'], a:3,
+     e:'Cân đồng hồ (kim chỉ), cân tiểu li (đòn cân rất nhạy) hay cân điện tử (hiện số) đều đo khối lượng. Chọn loại theo vật cần cân: vật nhỏ, nhẹ thì dùng cân nhạy; vật lớn thì cân đồng hồ.',
+     ef:()=>figTools({items:[{kind:'dial',label:'Cân đồng hồ',gives:'m'},{kind:'balance',label:'Cân tiểu li',gives:'m'},{kind:'scale',label:'Cân điện tử',gives:'m'}]})},
+    {lv:'mid', q:'Tại sao khi làm thí nghiệm, ta thường phải lặp lại thí nghiệm nhiều lần?',
+     o:['Vì thừa thời gian.','Để cho kết quả thu được chính xác hơn.','Vì thừa nguyên liệu.','Cả A và C.'], a:1,
+     e:'Mỗi lần đo đều có sai số nhỏ (tay cầm, mắt nhìn, cân lệch). Đo 3 lần rồi lấy <span class="k">giá trị trung bình</span> thì sai số bù trừ nhau, kết quả gần giá trị thật hơn.',
+     fm:'m<sub>tb</sub> = (m₁ + m₂ + m₃) : 3', ef:figAvg},
+    {lv:'mid', q:'Muốn đo khối lượng riêng của quả cầu bằng sắt người ta dùng những dụng cụ gì?',
+     o:['Chỉ cần dùng một cái cân.','Chỉ cần dùng một lực kế.','Cần dùng một cái cân và bình chia độ.','Chỉ cần dùng một bình chia độ.'], a:2,
+     e:'Quả cầu tròn không có cạnh để đo bằng thước. Cách nhanh và đúng: cân lấy m, thả vào bình chia độ để lấy V, rồi D = m/V. Lực kế chỉ đo lực, không đo được thể tích.',
+     fm:'D = m : V',
+     ef:()=>figTools({items:[{kind:'scale',label:'Cân',gives:'khối lượng m'},{kind:'cyl',label:'Bình chia độ',gives:'thể tích V'}], formula:'D = m : V'})},
+    {lv:'easy', q:'Phát biểu nào sau đây là đúng?',
+     o:['Đơn vị khối lượng riêng là N/m³.','Đơn vị khối lượng riêng là kg/m³.','Đơn vị thể tích là N/m³.','Đơn vị khối lượng là N/m³.'], a:1,
+     e:'Đơn vị của D = đơn vị khối lượng chia đơn vị thể tích: kg/m³ (hoặc g/cm³). N/m³ là niutơn trên mét khối, tức là <span class="k">trọng lượng riêng</span> (d = 10D), không phải khối lượng riêng.',
+     fm:'1 g/cm³ = 1000 kg/m³', ef:figUnits}
+  ]
+},
+{
+  grade:'9', lesson:'Bài 2', title:'Động năng. Thế năng', sub:'Khoa học tự nhiên 9, Kết nối tri thức', note:'', kind:'4 lựa chọn',
+  accent:'#7A3DE0', accentBg:'#EFE8FC', accentDark:'#B48CFF', accentBgDark:'#2B1F4C',
+  modes:[
+    {id:'dn', label:'Động năng', filter:q=>q.tag==='dn'},
+    {id:'tn', label:'Thế năng', filter:q=>q.tag==='tn'},
+    {id:'both', label:'Động năng + Thế năng', filter:q=>q.tag==='both'||q.core}
+  ],
+  questions:[
+    /* ---- Động năng ---- */
+    {lv:'easy', tag:'dn', q:'Động năng là năng lượng mà một vật có được do',
+     o:['vật ở trên cao.','vật đang chuyển động.','vật bị biến dạng.','vật bị nung nóng.'], a:1,
+     e:'Cứ vật <span class="k">đang chuyển động</span> là có động năng: ô tô đang chạy, gió đang thổi, nước đang chảy. Vật đứng yên (v = 0) thì động năng bằng 0.',
+     fm:'W<sub>đ</sub> = ½ · m · v²', ef:figKinetic},
+    {lv:'easy', tag:'dn', core:true, q:'Công thức tính động năng của vật có khối lượng m đang chuyển động với tốc độ v là',
+     o:['W<sub>đ</sub> = m.v','W<sub>đ</sub> = ½ m.v','W<sub>đ</sub> = m.v²','W<sub>đ</sub> = ½ m.v²'], a:3,
+     e:'Đọc công thức thành lời: <span class="k">một nửa, nhân khối lượng, nhân tốc độ bình phương</span>. m tính bằng kg, v bằng m/s thì W<sub>đ</sub> ra jun (J).',
+     fm:'W<sub>đ</sub> = ½ · m · v²<small>m: khối lượng (kg) · v: tốc độ (m/s) · W<sub>đ</sub>: động năng (J)</small>'},
+    {lv:'easy', tag:'dn', q:'Trong hệ đơn vị SI, động năng có đơn vị là',
+     o:['niutơn (N).','jun (J).','oát (W).','kilôgam (kg).'], a:1,
+     e:'Động năng là một dạng năng lượng, mà năng lượng đo bằng <span class="k">jun (J)</span>, giống như công. Niutơn là đơn vị lực, oát là công suất, kilôgam là khối lượng.',
+     fm:'1 J = 1 kg · (m/s)²'},
+    {lv:'easy', tag:'dn', core:true, q:'Động năng của một vật phụ thuộc vào',
+     o:['chỉ khối lượng của vật.','chỉ tốc độ của vật.','khối lượng và tốc độ của vật.','độ cao của vật so với mặt đất.'], a:2,
+     e:'Nhìn vào công thức: có m và có v, nên vật càng nặng, chạy càng nhanh thì động năng càng lớn. Độ cao không xuất hiện trong công thức, độ cao thuộc về thế năng.',
+     fm:'W<sub>đ</sub> = ½ · m · v²'},
+    {lv:'mid', tag:'dn', core:true, q:'Một vật có khối lượng 0,5 kg chuyển động với tốc độ 6 m/s. Động năng của vật có giá trị là',
+     o:['18 J','9 J','3 J','1,5 J'], a:1,
+     e:'Bình phương tốc độ trước (6² = 36), nhân với khối lượng (0,5 × 36 = 18), rồi chia đôi (= 9 J). Bẫy hay gặp: quên chia đôi thì ra 18 J, quên bình phương thì ra 1,5 J.',
+     fm:'W<sub>đ</sub> = ½ · 0,5 · 6² = ½ · 0,5 · 36 = 9 J'},
+    {lv:'mid', tag:'dn', core:true, q:'Khối lượng không đổi, nếu tốc độ của vật tăng gấp đôi thì động năng của vật',
+     o:['tăng 2 lần.','không đổi.','tăng 4 lần.','giảm 2 lần.'], a:2,
+     e:'Động năng đi theo <span class="k">v²</span> chứ không theo v. Tốc độ gấp đôi thì bình phương gấp bốn, nên động năng gấp bốn. Vì thế xe chạy nhanh gấp đôi thì "sức phá" khi va chạm gấp bốn.',
+     fm:'v → 2v ⇒ v² → 4v² ⇒ W<sub>đ</sub> → 4 W<sub>đ</sub>',
+     ef:()=>figBars({rows:[{label:'Tốc độ v',val:1,text:'W_{đ}'},{label:'Tốc độ 2v',val:4,text:'4 W_{đ}',color:'var(--dn)'}]})},
+    {lv:'mid', tag:'dn', core:true, q:'Vật nào sau đây <u>không</u> có động năng?',
+     o:['Quyển sách nằm yên trên bàn.','Ô tô đang chạy trên đường.','Quả bóng đang lăn trên sân.','Gió đang thổi.'], a:0,
+     e:'Không chuyển động thì v = 0, thay vào công thức được W<sub>đ</sub> = 0. Gió là không khí đang chuyển động nên vẫn có động năng, gió mạnh còn quật đổ cây.',
+     fm:'v = 0 ⇒ W<sub>đ</sub> = ½ · m · 0² = 0', ef:figKinetic},
+    {lv:'mid', tag:'dn', q:'Xe thứ nhất nặng 1000 kg và xe thứ hai nặng 2000 kg cùng chạy với tốc độ 10 m/s. So sánh động năng của hai xe:',
+     o:['Động năng xe thứ hai gấp 2 lần xe thứ nhất.','Động năng xe thứ nhất gấp 2 lần xe thứ hai.','Hai xe có động năng bằng nhau.','Động năng xe thứ hai gấp 4 lần xe thứ nhất.'], a:0,
+     e:'Cùng tốc độ thì động năng <span class="k">tỉ lệ thuận với khối lượng</span>: nặng gấp đôi → động năng gấp đôi. Gấp bốn chỉ xảy ra khi tốc độ gấp đôi.',
+     fm:'W<sub>đ1</sub> = ½ · 1000 · 10² = 50 000 J ; W<sub>đ2</sub> = ½ · 2000 · 10² = 100 000 J',
+     ef:()=>figBars({rows:[{label:'Xe 1 (1000 kg)',val:1,text:'50 000 J'},{label:'Xe 2 (2000 kg)',val:2,text:'100 000 J',color:'var(--dn)'}]})},
+    {lv:'mid', tag:'dn', q:'Một vật có khối lượng 2 kg và động năng 100 J. Tốc độ của vật là',
+     o:['50 m/s','5 m/s','100 m/s','10 m/s'], a:3,
+     e:'Làm ngược công thức: nhân đôi động năng rồi chia cho khối lượng sẽ được v², sau đó khai căn. Vì 100 = 10² nên v = 10 m/s.',
+     fm:'v² = 2 W<sub>đ</sub> : m = 2 · 100 : 2 = 100 ⇒ v = 10 m/s'},
+    {lv:'apply', tag:'dn', q:'Một ô tô có khối lượng 1,2 tấn đang chạy với tốc độ 54 km/h. Động năng của ô tô là',
+     o:['1 749 600 J','135 000 J','270 000 J','32 400 J'], a:1,
+     e:'Phải <span class="k">đổi đơn vị trước</span> khi tính: 1,2 tấn = 1200 kg; 54 km/h = 54 000 m : 3600 s = 15 m/s. Nếu để nguyên 54 mà bình phương sẽ ra 1 749 600 J, sai.',
+     fm:'W<sub>đ</sub> = ½ · 1200 · 15² = ½ · 1200 · 225 = 135 000 J'},
+    /* ---- Thế năng ---- */
+    {lv:'easy', tag:'tn', q:'Dạng năng lượng tương tác giữa Trái Đất và vật là',
+     o:['Thế năng đàn hồi.','Động năng.','Cơ năng.','Thế năng trọng trường.'], a:3,
+     e:'Trái Đất luôn hút vật (trọng lực P). Đưa vật lên cao là "tích" năng lượng nhờ lực hút ấy, gọi là <span class="k">thế năng trọng trường</span>. Buông ra, vật rơi và năng lượng đó chuyển thành chuyển động.',
+     fm:'W<sub>t</sub> = P · h', ef:()=>figHeight({mode:'static'})},
+    {lv:'easy', tag:'tn', core:true, q:'Một vật có trọng lượng P đang ở độ cao h so với gốc thế năng. Thế năng trọng trường của vật được tính bằng công thức',
+     o:['W<sub>t</sub> = d.h','W<sub>t</sub> = P.h','W<sub>t</sub> = m.h','W<sub>t</sub> = ½ P.h²'], a:1,
+     e:'Thế năng = <span class="k">trọng lượng × độ cao</span>. P tính bằng niutơn (N), h bằng mét (m) thì W<sub>t</sub> ra jun (J). Đề cho khối lượng m (kg) thì tính P = 10.m trước rồi mới nhân với h.',
+     fm:'W<sub>t</sub> = P · h, với P = 10 · m<small>P: trọng lượng (N) · h: độ cao so với gốc thế năng (m) · W<sub>t</sub>: jun (J)</small>',
+     ef:()=>figHeight({mode:'static',m:'m'})},
+    {lv:'easy', tag:'tn', core:true, q:'Thế năng trọng trường của một vật <u>không</u> phụ thuộc vào',
+     o:['khối lượng của vật.','trọng lượng của vật.','độ cao của vật.','tốc độ của vật.'], a:3,
+     e:'Trong công thức chỉ có P (tức khối lượng) và h. Vật đứng yên hay đang bay với tốc độ bao nhiêu thì thế năng vẫn chỉ phụ thuộc nó đang ở <span class="k">cao bao nhiêu</span> và <span class="k">nặng bao nhiêu</span>.',
+     fm:'W<sub>t</sub> = P · h (không có v trong công thức)', ef:()=>figHeight({mode:'static',note:'tốc độ v không ảnh hưởng'})},
+    {lv:'easy', tag:'tn', q:'Thế năng của một vật không phụ thuộc vào (xét vật rơi trong trọng trường)?',
+     o:['Vị trí vật.','Vận tốc vật.','Khối lượng vật.','Độ cao.'], a:1,
+     e:'Hỏi kiểu khác của câu trên: vị trí (độ cao) và khối lượng đều nằm trong công thức, chỉ vận tốc là không. Mẹo nhớ: <span class="k">tốc độ đi với động năng, độ cao đi với thế năng</span>.',
+     fm:'W<sub>t</sub> = P · h (độ cao) ; W<sub>đ</sub> = ½ · m · v² (tốc độ)'},
+    {lv:'mid', tag:'tn', core:true, q:'Cho một vật có khối lượng m đang đặt ở độ cao h so với mặt đất. Khi tăng khối lượng lên 10 lần thì thế năng của vật',
+     o:['tăng 10 lần.','giảm 10 lần.','tăng 100 lần.','giảm 100 lần.'], a:0,
+     e:'Khối lượng gấp 10 thì trọng lượng P gấp 10, độ cao giữ nguyên, nên tích P.h cũng gấp 10. Thế năng <span class="k">tỉ lệ thuận với khối lượng</span>.',
+     fm:'W<sub>t</sub>′ = (10P) · h = 10 · W<sub>t</sub>',
+     ef:()=>figBars({rows:[{label:'Khối lượng m',val:1,text:'W_{t}'},{label:'Khối lượng 10m',val:10,text:'10 W_{t}',color:'var(--tn)'}]})},
+    {lv:'mid', tag:'tn', q:'Cho một vật có khối lượng m đang đặt ở độ cao h so với mặt đất. Khi giảm độ cao của vật xuống 4 lần thì thế năng của vật',
+     o:['tăng 4 lần.','giảm 4 lần.','tăng 2 lần.','giảm 2 lần.'], a:1,
+     e:'Hạ vật xuống còn 1/4 độ cao thì thế năng cũng còn 1/4, vì thế năng <span class="k">tỉ lệ thuận với độ cao h</span>.',
+     fm:'W<sub>t</sub>′ = P · (h : 4) = W<sub>t</sub> : 4',
+     ef:()=>figBars({rows:[{label:'Độ cao h',val:4,text:'W_{t}'},{label:'Độ cao h : 4',val:1,text:'W_{t} : 4',color:'var(--tn)'}]})},
+    {lv:'mid', tag:'tn', core:true, q:'Cho một vật có khối lượng m đang đặt ở độ cao h so với mặt đất. Khi tăng khối lượng và độ cao của vật lên 4 lần thì thế năng của vật',
+     o:['tăng 8 lần.','giảm 8 lần.','tăng 16 lần.','giảm 16 lần.'], a:2,
+     e:'Hai yếu tố cùng tăng 4 lần thì <span class="k">nhân</span> với nhau: 4 × 4 = 16 lần, không phải cộng 4 + 4 = 8.',
+     fm:'W<sub>t</sub>′ = (4P) · (4h) = 16 · P · h = 16 W<sub>t</sub>',
+     ef:()=>figBars({rows:[{label:'m, h',val:1,text:'W_{t}'},{label:'4m, h',val:4,text:'4 W_{t}'},{label:'4m, 4h',val:16,text:'16 W_{t}',color:'var(--tn)'}]})},
+    {lv:'mid', tag:'tn', q:'Một vật khối lượng m ở độ cao 20 m so với mặt đất có thế năng 100 J đối với mặt đất. Chọn mốc thế năng ở mặt đất. Khối lượng của vật là',
+     o:['5 kg','0,5 kg','2 kg','50 kg'], a:1,
+     e:'Từ W<sub>t</sub> = P.h suy ra P = W<sub>t</sub> : h = 100 : 20 = 5 N. Nhưng 5 N là <span class="k">trọng lượng</span>, muốn ra khối lượng phải chia 10: m = 0,5 kg. Bẫy: chọn 5 kg là quên bước đổi P → m.',
+     fm:'P = W<sub>t</sub> : h = 100 : 20 = 5 N ⇒ m = P : 10 = 0,5 kg',
+     ef:()=>figHeight({mode:'static',h:'h = 20 m',P:'P = ?',note:'W_{t} = 100 J',m:'m = ?'})},
+    {lv:'mid', tag:'tn', core:true, q:'Một vật khối lượng 2 kg có thế năng 8 J đối với mặt đất. Chọn mốc thế năng ở mặt đất, khi đó vật ở độ cao bao nhiêu?',
+     o:['0,4 m','4 m','0,8 m','16 m'], a:0,
+     e:'Tính trọng lượng trước: P = 10.m = 20 N. Rồi h = W<sub>t</sub> : P = 8 : 20 = 0,4 m. Nếu chia nhầm cho khối lượng 2 kg sẽ ra 4 m, sai.',
+     fm:'P = 10 · 2 = 20 N ⇒ h = W<sub>t</sub> : P = 8 : 20 = 0,4 m',
+     ef:()=>figHeight({mode:'static',h:'h = ?',P:'P = 20 N',note:'W_{t} = 8 J',m:'2 kg'})},
+    {lv:'apply', tag:'tn', q:'Một vận động viên có khối lượng 70 kg leo lên đỉnh tháp cao 20 m so với mặt đất. Lấy g = 9,8 m/s², thế năng trọng trường của người đó tại đỉnh tháp là',
+     o:['1 400 J','14 000 J','13 720 J','1 372 J'], a:2,
+     e:'Trọng lượng P = m.g = 70 × 9,8 = 686 N, rồi W<sub>t</sub> = P.h = 686 × 20 = 13 720 J. Nếu lấy g = 10 thì ra 14 000 J, nhưng đề bắt lấy 9,8 nên chọn 13 720 J.',
+     fm:'W<sub>t</sub> = m · g · h = 70 · 9,8 · 20 = 13 720 J',
+     ef:()=>figHeight({mode:'static',h:'h = 20 m',P:'P = 686 N',m:'70 kg'})},
+    /* ---- Động năng + Thế năng ---- */
+    {lv:'easy', tag:'both', q:'Khi một vật chuyển động rơi tự do từ trên xuống dưới thì',
+     o:['thế năng của vật giảm dần.','động năng của vật giảm dần.','thế năng của vật tăng dần.','động lượng của vật giảm dần.'], a:0,
+     e:'Càng rơi, vật càng gần mặt đất (h giảm) nên <span class="k">thế năng giảm</span>; đồng thời càng rơi càng nhanh (v tăng) nên <span class="k">động năng tăng</span>. Thế năng "chảy" dần sang động năng.',
+     fm:'h ↓ ⇒ W<sub>t</sub> = P·h ↓ ; v ↑ ⇒ W<sub>đ</sub> = ½mv² ↑', ef:()=>figHeight({mode:'fall'})},
+    {lv:'mid', tag:'both', q:'Xét một vật chuyển động nhanh dần theo phương nằm ngang. Đại lượng nào sau đây không đổi?',
+     o:['Động năng.','Cơ năng.','Thế năng.','Vận tốc.'], a:2,
+     e:'Chạy trên mặt phẳng ngang thì độ cao so với mốc không đổi → <span class="k">thế năng không đổi</span>. "Nhanh dần" nghĩa là v tăng → động năng tăng, và cơ năng (tổng của hai thứ) cũng tăng.',
+     fm:'h không đổi ⇒ W<sub>t</sub> không đổi ; v ↑ ⇒ W<sub>đ</sub> ↑', ef:()=>figHeight({mode:'flat'})},
+    {lv:'mid', tag:'both', q:'Một vật được ném thẳng đứng từ dưới lên cao. Trong quá trình chuyển động của vật thì',
+     o:['Thế năng của vật giảm, động năng của vật tăng.','Thế năng của vật giảm, động năng của vật giảm.','Thế năng của vật tăng, động năng của vật tăng.','Thế năng của vật tăng, động năng của vật giảm.'], a:3,
+     e:'Ngược với rơi: vật bay lên cao dần (<span class="k">thế năng tăng</span>) nhưng chậm dần vì bị trọng lực kéo lại (<span class="k">động năng giảm</span>). Lên tới đỉnh thì v = 0: động năng bằng 0, thế năng lớn nhất.',
+     fm:'h ↑ ⇒ W<sub>t</sub> ↑ ; v ↓ ⇒ W<sub>đ</sub> ↓', ef:()=>figHeight({mode:'up'})},
+    {lv:'mid', tag:'both', q:'Một vật đang chuyển động có thể không có',
+     o:['động lượng.','động năng.','thế năng.','cơ năng.'], a:2,
+     e:'Đang chuyển động thì chắc chắn có động năng (v ≠ 0). Nhưng nếu vật đang lăn ngay trên mặt đất, tức là ở <span class="k">gốc thế năng</span>, thì h = 0 và thế năng bằng 0.',
+     fm:'h = 0 ⇒ W<sub>t</sub> = P · 0 = 0', ef:()=>figHeight({mode:'ground'})},
+    {lv:'apply', tag:'both', q:'Một vật khối lượng 5 kg, ở độ cao 15 m so với mặt đất và chuyển động với tốc độ 2 m/s. Chọn mốc thế năng ở mặt đất. Thế năng và động năng của vật là',
+     o:['W<sub>t</sub> = 750 J; W<sub>đ</sub> = 10 J','W<sub>t</sub> = 75 J; W<sub>đ</sub> = 20 J','W<sub>t</sub> = 750 J; W<sub>đ</sub> = 20 J','W<sub>t</sub> = 75 J; W<sub>đ</sub> = 10 J'], a:0,
+     e:'Hai công thức tách bạch: thế năng dùng <span class="k">độ cao</span>, động năng dùng <span class="k">tốc độ</span>. Trọng lượng P = 10.5 = 50 N nên W<sub>t</sub> = 50 × 15 = 750 J. Động năng W<sub>đ</sub> = ½ × 5 × 2² = 10 J.',
+     fm:'W<sub>t</sub> = P · h = 50 · 15 = 750 J ; W<sub>đ</sub> = ½ · 5 · 2² = 10 J',
+     ef:()=>figHeight({mode:'static',h:'h = 15 m',P:'P = 50 N',v:'v = 2 m/s',m:'5 kg'})}
+  ]
+}
+];
+
+/* ---------- app ---------- */
+const $=s=>document.querySelector(s);
+const app=$('#app'), home=$('#home'), quiz=$('#quiz'), result=$('#result');
+const timerEl=$('#timer'), ring=$('#ring'), tnum=$('#tnum'), tlab=$('#tlab');
+const C=2*Math.PI*52;
+const DUR_OF={easy:25, mid:30, apply:30};   // giây cho mỗi mức độ
+let dur=30;
+const durFor=q=>DUR_OF[q.lv]||30;
+const LV={easy:'Dễ', mid:'Vừa', apply:'Vận dụng'};
+const TAG={dn:'Động năng', tn:'Thế năng', both:'Động năng + Thế năng'};
+const KEYS=['A','B','C','D'];
+let S={set:null, qs:[], mode:null, i:0, ans:[], pick:null, revealed:false};
+let T={end:0, left:30000, on:false, iv:0};
+const N=()=>S.qs.length;
+const isTimed=()=>S.set && S.set.timed!==false;
+ring.style.strokeDasharray=C;
+
+function show(sec){
+  [home,quiz,result].forEach(x=>x.hidden=(x!==sec));
+  $('#btnHome').hidden=(sec===home);
+  $('#counter').hidden=(sec!==quiz);
+  $('#progress').hidden=(sec!==quiz);
+  window.scrollTo({top:0});
+}
+
+function setVars(s){ return `--a-light:${s.accent};--a-bg-light:${s.accentBg};--a-dark:${s.accentDark};--a-bg-dark:${s.accentBgDark}`; }
+
+function renderHome(){
+  stopTimer();
+  const grades=[...new Set(SETS.map(s=>s.grade))];
+  $('#toc').innerHTML=grades.map(g=>{
+    const list=SETS.map((s,i)=>({s,i})).filter(x=>x.s.grade===g);
+    const first=list[0].s;
+    const rows=list.map(({s,i})=>{
+      const meta=`<span class="kind">${s.kind||'4 lựa chọn'}</span>`;
+      if(s.modes){
+        const btns=s.modes.map(m=>`<button class="mode" type="button" data-i="${i}" data-mode="${m.id}">${m.label} <small>${s.questions.filter(m.filter).length} câu</small></button>`).join('');
+        return `<li><div class="row has-modes"><span class="rt"><span class="rt-title">${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}25–30 giây mỗi câu. Chọn phần muốn ôn:</span><span class="modes">${btns}</span></span></div></li>`;
+      }
+      const info=s.timed===false?`${s.questions.length} câu, không tính giờ, làm xong tự đối chiếu đáp án`:`${s.questions.length} câu, 25–30 giây mỗi câu`;
+      return `<li><button class="row" type="button" data-i="${i}"><span class="rt"><span class="rt-title">${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}${info}</span></span><span class="go">Bắt đầu</span></button></li>`;
+    }).join('');
+    return `<div class="grade-group" data-grade="${g}" style="${setVars(first)}"><div class="grade-head"><span class="grade">${g}</span><span class="grade-sub">${first.sub}</span></div><ul class="sets">${rows}</ul></div>`;
+  }).join('');
+  $('#topMain').textContent='Trắc nghiệm KHTN';
+  $('#topSub').textContent='Chọn lớp, chọn bài rồi bắt đầu';
+  ['--a-light','--a-bg-light','--a-dark','--a-bg-dark'].forEach(p=>app.style.removeProperty(p));
+  show(home);
+}
+
+function startSet(i,modeId){
+  const s=SETS[i];
+  let qs=s.questions, mode=null;
+  if(s.modes){ mode=s.modes.find(m=>m.id===modeId)||s.modes[0]; qs=qs.filter(mode.filter); }
+  S={set:s, qs, mode, i:0, ans:[], pick:null, revealed:false};
+  app.style.setProperty('--a-light',s.accent); app.style.setProperty('--a-bg-light',s.accentBg);
+  app.style.setProperty('--a-dark',s.accentDark); app.style.setProperty('--a-bg-dark',s.accentBgDark);
+  $('#topMain').textContent=`Lớp ${s.grade}, ${s.lesson.toLowerCase()}: ${s.title}`;
+  const bits=[s.kind||'4 lựa chọn'];
+  if(mode) bits.push(`phần ${mode.label} (${qs.length} câu)`);
+  bits.push(s.timed===false?'không tính giờ':'25 giây câu dễ, 30 giây câu khó hơn');
+  $('#topSub').textContent=bits.join(', ');
+  show(quiz);
+  renderQ();
+}
+
+function renderQ(){
+  const n=N(), q=S.qs[S.i]; S.revealed=false; S.pick=null; clearFx();
+  $('#counter').textContent=`Câu ${S.i+1}/${n}`;
+  $('#progressBar').style.width=`${S.i/n*100}%`;
+  $('#qnum').textContent=S.i+1;
+  const lv=$('#level'); lv.textContent=LV[q.lv]; lv.className='level '+q.lv;
+  const tp=$('#topic');
+  if(q.tag){ tp.textContent=TAG[q.tag]; tp.className='topic '+q.tag; tp.hidden=false; }
+  else if(q.type==='tf'){ tp.textContent='Đúng / Sai'; tp.className='topic kind'; tp.hidden=false; }
+  else if(q.type==='short'){ tp.textContent='Tự luận'; tp.className='topic kind'; tp.hidden=false; }
+  else tp.hidden=true;
+  $('#qtext').innerHTML=q.q;
+  const f=$('#qfig'); f.innerHTML=q.fig?q.fig():''; f.hidden=!q.fig;
+  const opts=$('#opts');
+  if(q.type==='tf'){
+    opts.className='tf-list'; S.pick=q.items.map(()=>null);
+    opts.innerHTML=q.items.map((it,k)=>`<div class="tf-row" data-k="${k}"><span class="key">${'abcd'[k]}</span><span class="tf-txt">${it.t}<span class="tf-e" hidden>${it.e}</span></span><span class="tf-btns"><button type="button" class="tf-btn" data-v="1">Đúng</button><button type="button" class="tf-btn" data-v="0">Sai</button></span></div>`).join('');
+  } else if(q.type==='short'){
+    opts.className='short-wrap';
+    opts.innerHTML=`<label class="short-label" for="ansIn">Nháp câu trả lời của em ở đây (không bắt buộc), rồi bấm Hiện đáp án để đối chiếu</label><textarea id="ansIn" class="ans-input" rows="3" placeholder="Câu trả lời…"></textarea>`;
+  } else {
+    opts.className='opts';
+    opts.innerHTML=q.o.map((t,k)=>`<button class="opt" type="button" data-k="${k}"><span class="key">${KEYS[k]}</span><span class="txt">${t}</span></button>`).join('');
+  }
+  $('#exp').hidden=true; $('#btnNext').hidden=true; $('#btnReveal').hidden=false;
+  timerEl.hidden=!isTimed();
+  if(isTimed()) startTimer(); else stopTimer();
+}
+
+/* timer */
+function paint(ms){
+  ring.style.strokeDashoffset=C*(1-ms/(dur*1000));
+  tnum.textContent=Math.ceil(ms/1000);
+  timerEl.classList.toggle('low', ms>0 && ms<=(dur<=30?5000:10000));
+}
+function startTimer(){
+  clearInterval(T.iv);
+  dur=durFor(S.qs[S.i]); T.left=dur*1000; T.end=Date.now()+T.left; T.on=true;
+  timerEl.classList.remove('paused'); tlab.textContent='giây';
+  paint(T.left);
+  T.iv=setInterval(tick,200);
+}
+function tick(){
+  if(!T.on) return;
+  const left=Math.max(0,T.end-Date.now());
+  paint(left);
+  if(left<=0){ stopTimer(); reveal(null,true); }
+}
+function stopTimer(){ T.on=false; clearInterval(T.iv); timerEl.classList.remove('paused'); }
+function togglePause(){
+  if(S.revealed || quiz.hidden || !isTimed()) return;
+  if(T.on){
+    T.left=Math.max(0,T.end-Date.now()); T.on=false; clearInterval(T.iv);
+    timerEl.classList.add('paused'); tlab.textContent='tạm dừng';
+  } else {
+    T.end=Date.now()+T.left; T.on=true;
+    timerEl.classList.remove('paused'); tlab.textContent='giây';
+    T.iv=setInterval(tick,200);
+  }
+}
+
+/* explanation block shared by all question types */
+function expBody(q,lead){
+  return `<div class="exp-grid"><div class="exp-text">${lead||''}${q.e?`<p>${q.e}</p>`:''}${q.fm?`<div class="formula">${q.fm}</div>`:''}</div>${q.ef?`<div class="exp-fig">${q.ef()}</div>`:''}</div>`;
+}
+function finishReveal(n){
+  $('#progressBar').style.width=`${(S.i+1)/n*100}%`;
+  $('#btnReveal').hidden=true;
+  const nb=$('#btnNext'); nb.textContent=S.i<n-1?'Câu tiếp theo':'Xem kết quả'; nb.hidden=false;
+  nb.focus({preventScroll:true});
+}
+
+/* answer + reveal */
+function reveal(picked,timedOut){
+  if(S.revealed) return;
+  stopTimer(); S.revealed=true;
+  const n=N(), q=S.qs[S.i], exp=$('#exp');
+
+  if(q.type==='tf'){
+    const pick=S.pick||[]; let c=0;
+    q.items.forEach((it,k)=>{ if(pick[k]===it.ans) c++; });
+    const marked=pick.some(v=>v!==null), total=q.items.length, ok=c===total;
+    S.ans[S.i]={type:'tf',correct:c,total,marked};
+    document.querySelectorAll('.tf-row').forEach(row=>{
+      const k=+row.dataset.k, it=q.items[k];
+      row.querySelectorAll('.tf-btn').forEach(b=>{ b.disabled=true; const v=b.dataset.v==='1'; if(v===it.ans) b.classList.add('correct'); else if(pick[k]===v) b.classList.add('wrong'); });
+      row.querySelector('.tf-e').hidden=false;
+      row.classList.add(pick[k]===it.ans?'ok':(pick[k]===null?'skip':'bad'));
+    });
+    const line=q.items.map((it,k)=>`${'abcd'[k]}) ${it.ans?'Đúng':'Sai'}`).join('; ');
+    const head= !marked ? `Đáp án: ${line}.` : ok ? `Chính xác cả ${total} ý!` : `Đúng ${c}/${total} ý. Đáp án: ${line}.`;
+    exp.className='exp '+(ok&&marked?'good':marked?'bad':'neutral');
+    exp.innerHTML=`<strong>${head}</strong>${expBody(q)}`;
+    exp.hidden=false; finishReveal(n);
+    if(marked&&ok){ confetti(); ding(); } else if(marked){ wrongFx(true); buzz(); }
+    return;
+  }
+
+  if(q.type==='short'){
+    S.ans[S.i]={type:'short',self:null};
+    exp.className='exp neutral';
+    exp.innerHTML=`<strong>Đáp án</strong>${expBody(q,`<p class="answer">${q.ans}</p>`)}<div class="selfgrade"><span>Em tự chấm:</span><button type="button" class="btn ghost sg" data-v="1">Đúng rồi</button><button type="button" class="btn ghost sg" data-v="0">Chưa đúng</button></div>`;
+    exp.hidden=false; finishReveal(n);
+    return;
+  }
+
+  S.ans[S.i]={picked,timedOut};
+  document.querySelectorAll('.opt').forEach(b=>{
+    const k=+b.dataset.k; b.disabled=true;
+    if(k===q.a) b.classList.add('correct');
+    else if(k===picked) b.classList.add('wrong');
+    else b.classList.add('dim');
+  });
+  const ok=picked===q.a, L=KEYS[q.a];
+  const head= ok ? 'Chính xác!' : timedOut ? `Hết giờ! Đáp án đúng là ${L}.` : picked===null ? `Đáp án đúng là ${L}.` : `Chưa đúng. Đáp án đúng là ${L}.`;
+  exp.className='exp '+(ok?'good':(picked===null&&!timedOut)?'neutral':'bad');
+  exp.innerHTML=`<strong>${head}</strong>${expBody(q)}`;
+  exp.hidden=false; finishReveal(n);
+  if(ok){ confetti(); ding(); }
+  else if(picked!==null){ wrongFx(true); buzz(); }
+  else if(timedOut){ wrongFx(false); buzz(); }
+}
+function selfGrade(v){
+  const a=S.ans[S.i]; if(!a||a.type!=='short'||a.self!==null) return;
+  a.self=v; const exp=$('#exp');
+  exp.className='exp '+(v?'good':'bad');
+  exp.querySelector('strong').textContent=v?'Chính xác! Đáp án:':'Chưa đúng. Đáp án:';
+  exp.querySelectorAll('.sg').forEach(b=>{ b.disabled=true; if((b.dataset.v==='1')===v) b.classList.add(v?'on-ok':'on-bad'); });
+  if(v){ confetti(); ding(); } else { wrongFx(true); buzz(); }
+}
+function next(){
+  if(!S.revealed) return;
+  if(S.i<N()-1){ S.i++; renderQ(); } else showResult();
+}
+
+/* result */
+function plain(html){
+  const d=document.createElement('div'); d.innerHTML=html;
+  const t=d.textContent.replace(/\s+/g,' ').trim();
+  return t.length>90 ? t.slice(0,88)+'…' : t;
+}
+function showResult(){
+  const qs=S.qs, n=qs.length; let score=0;
+  const items=qs.map((q,i)=>{
+    const a=S.ans[i]||{picked:null,timedOut:false,self:null,marked:false};
+    let st,icon,yours;
+    if(q.type==='tf'){
+      const pts=a.marked?a.correct/a.total:0; score+=pts;
+      st= !a.marked?'skip' : a.correct===a.total?'ok' : a.correct>0?'part':'bad';
+      icon= st==='ok'?'✓':st==='skip'?'–':st==='part'?'½':'✗';
+      yours= a.marked?`Đúng ${a.correct}/${a.total} ý`:'Không chọn';
+    } else if(q.type==='short'){
+      if(a.self===true) score++;
+      st= a.self===true?'ok':a.self===false?'bad':'skip';
+      icon= st==='ok'?'✓':st==='bad'?'✗':'–';
+      yours= a.self===true?'Tự chấm: đúng':a.self===false?'Tự chấm: chưa đúng':'Chưa tự chấm';
+    } else {
+      const ok=a.picked===q.a; if(ok) score++;
+      st= ok?'ok' : a.picked===null?'skip' : 'bad';
+      icon= ok?'✓' : a.picked===null?'–' : '✗';
+      yours= (a.picked===null ? (a.timedOut?'Hết giờ':'Không chọn') : `Bạn chọn ${KEYS[a.picked]}`) + (ok?'':', đáp án '+KEYS[q.a]);
+    }
+    const tag= q.tag ? `<span class="topic ${q.tag}">${TAG[q.tag]}</span>` : q.type==='tf'?'<span class="topic kind">Đúng / Sai</span>':q.type==='short'?'<span class="topic kind">Tự luận</span>':'';
+    return `<li class="${st}"><span class="st">${icon}</span><span class="rq">${i+1}. ${plain(q.q)}${tag}</span><span class="ra">${yours}</span></li>`;
+  });
+  score=Math.round(score*100)/100;
+  $('#scoreNum').textContent=fmt(score);
+  $('#scoreDen').textContent=`/${n}`;
+  $('#scoreMsg').textContent= score===n ? 'Tuyệt đối. Nắm chắc bài rồi!' : score>=n*0.8 ? 'Rất tốt, chỉ còn vài chỗ cần để ý.' : score>=n*0.5 ? 'Khá ổn, xem lại mấy câu sai nhé.' : 'Ôn lại bài này thêm một lượt rồi thử lại nhé.';
+  $('#review').innerHTML=items.join('');
+  show(result); clearFx();
+  if(score===n){ confetti(); setTimeout(confetti,500); ding(); }
+}
+
+/* ---------- effects: confetti, wrong-answer shake, sounds ---------- */
+const fx=$('#fx'), fxc=fx.getContext('2d');
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let parts=[], fxRaf=0;
+function fxSize(){ const r=devicePixelRatio||1; fx.width=innerWidth*r; fx.height=innerHeight*r; fxc.setTransform(r,0,0,r,0,0); }
+addEventListener('resize',fxSize); fxSize();
+function fxLoop(){
+  fxc.clearRect(0,0,innerWidth,innerHeight);
+  const now=performance.now();
+  parts=parts.filter(p=>now<p.die);
+  for(const p of parts){
+    p.vy+=p.g; p.vx*=p.drag; p.vy*=p.drag; p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr;
+    fxc.globalAlpha=Math.min(1,(p.die-now)/p.ttl*3);
+    fxc.save(); fxc.translate(p.x,p.y); fxc.rotate(p.rot); fxc.fillStyle=p.color;
+    if(p.text){ fxc.font=`800 ${p.s}px "Be Vietnam Pro",system-ui,sans-serif`; fxc.textAlign='center'; fxc.textBaseline='middle'; fxc.fillText(p.text,0,0); }
+    else fxc.fillRect(-p.s/2,-p.s/2,p.s,p.s*0.6);
+    fxc.restore();
+  }
+  fxc.globalAlpha=1;
+  fxRaf=parts.length?requestAnimationFrame(fxLoop):0;
+}
+function clearFx(){ parts=[]; fxc.clearRect(0,0,innerWidth,innerHeight); }
+function spawn(list){ parts.push(...list); if(!fxRaf) fxRaf=requestAnimationFrame(fxLoop); }
+const CONF=['#FFC700','#FF4D6D','#2EC4B6','#3A86FF','#8338EC','#FB5607','#06D6A0','#00B4D8'];
+function confetti(){
+  if(reduceMotion) return;
+  const W=innerWidth,H=innerHeight,now=performance.now(),list=[];
+  [[W*0.12,-1],[W*0.88,1]].forEach(([x,dir])=>{
+    for(let i=0;i<75;i++){
+      const ang=-Math.PI/2-dir*Math.PI/6+(Math.random()-.5)*(Math.PI/3), sp=9+Math.random()*10;
+      list.push({x,y:H*0.92,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,g:0.28,drag:0.985,rot:Math.random()*6,vr:(Math.random()-.5)*0.3,s:7+Math.random()*8,color:CONF[i%CONF.length],ttl:2600,die:now+2600-Math.random()*700});
+    }
+  });
+  spawn(list);
+}
+function wrongFx(withX){
+  if(reduceMotion) return;
+  const v=$('#vignette'); v.classList.remove('on'); void v.offsetWidth; v.classList.add('on');
+  quiz.classList.remove('shake'); void quiz.offsetWidth; quiz.classList.add('shake');
+  if(!withX) return;
+  const W=innerWidth,now=performance.now(),list=[];
+  const red=getComputedStyle(document.documentElement).getPropertyValue('--bad').trim()||'#D63A3A';
+  for(let i=0;i<30;i++) list.push({x:Math.random()*W,y:-20-Math.random()*140,vx:(Math.random()-.5)*1.5,vy:3+Math.random()*4,g:0.12,drag:1,rot:(Math.random()-.5)*.6,vr:(Math.random()-.5)*.08,s:22+Math.random()*24,color:red,text:'✗',ttl:2400,die:now+2400-Math.random()*600});
+  spawn(list);
+}
+
+let AC=null, soundOn=true;
+try{ soundOn=localStorage.getItem('khtn-quiz-sound')!=='off'; }catch(e){}
+function paintSound(){ const b=$('#btnSound'); b.textContent=soundOn?'🔊':'🔇'; b.setAttribute('aria-pressed',soundOn); }
+function toggleSound(){ soundOn=!soundOn; paintSound(); try{ localStorage.setItem('khtn-quiz-sound',soundOn?'on':'off'); }catch(e){} if(soundOn) ding(); }
+function ac(){
+  if(!AC){ try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return null; } }
+  if(AC.state==='suspended') AC.resume();
+  return AC;
+}
+function tone(f,t0,dur,type,vol){
+  const c=ac(); if(!c) return;
+  const o=c.createOscillator(), g=c.createGain(), t=c.currentTime+t0;
+  o.type=type||'sine'; o.frequency.setValueAtTime(f,t);
+  g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(vol||0.16,t+0.015); g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+  o.connect(g).connect(c.destination); o.start(t); o.stop(t+dur+0.05);
+}
+function ding(){ if(!soundOn) return; tone(659,0,.16); tone(880,.14,.18); tone(1319,.28,.32); }
+function buzz(){
+  if(!soundOn) return; const c=ac(); if(!c) return;
+  const o=c.createOscillator(), g=c.createGain(), t=c.currentTime;
+  o.type='sawtooth'; o.frequency.setValueAtTime(180,t); o.frequency.exponentialRampToValueAtTime(100,t+.38);
+  g.gain.setValueAtTime(.1,t); g.gain.exponentialRampToValueAtTime(.0001,t+.42);
+  o.connect(g).connect(c.destination); o.start(t); o.stop(t+.45);
+}
+paintSound();
+document.addEventListener('pointerdown',()=>ac(),{once:true});
+document.addEventListener('keydown',()=>ac(),{once:true});
+
+/* events */
+$('#toc').addEventListener('click',e=>{
+  const m=e.target.closest('.mode'); if(m){ startSet(+m.dataset.i, m.dataset.mode); return; }
+  const b=e.target.closest('button.row'); if(b) startSet(+b.dataset.i);
+});
+$('#opts').addEventListener('click',e=>{
+  const tb=e.target.closest('.tf-btn');
+  if(tb){ if(S.revealed||!S.pick) return; const row=tb.closest('.tf-row'), k=+row.dataset.k; S.pick[k]=tb.dataset.v==='1'; row.querySelectorAll('.tf-btn').forEach(b=>b.classList.toggle('on',b===tb)); return; }
+  const b=e.target.closest('.opt'); if(b&&!b.disabled) reveal(+b.dataset.k,false);
+});
+$('#exp').addEventListener('click',e=>{ const b=e.target.closest('.sg'); if(b&&!b.disabled) selfGrade(b.dataset.v==='1'); });
+$('#btnReveal').addEventListener('click',()=>reveal(null,false));
+$('#btnNext').addEventListener('click',next);
+$('#btnHome').addEventListener('click',renderHome);
+$('#btnAgain').addEventListener('click',()=>startSet(SETS.indexOf(S.set), S.mode&&S.mode.id));
+$('#btnOther').addEventListener('click',renderHome);
+$('#btnSound').addEventListener('click',toggleSound);
+timerEl.addEventListener('click',togglePause);
+
+document.addEventListener('keydown',e=>{
+  if(e.altKey||e.ctrlKey||e.metaKey) return;
+  const k=e.key.toLowerCase();
+  if(e.target.matches('textarea,input')){ if(k==='escape') e.target.blur(); return; }
+  if(k==='m' && !e.target.closest('button')){ toggleSound(); return; }
+  if(!home.hidden){
+    if(k==='7'||k==='8'||k==='9'){ const b=document.querySelector(`.grade-group[data-grade="${k}"] button`); if(b){ b.scrollIntoView({block:'center'}); b.focus(); } }
+    return;
+  }
+  if(!quiz.hidden){
+    const q=S.qs[S.i], mcq=!q.type;
+    if(mcq && '1234'.includes(k)&&k!==''){ reveal(+k-1,false); return; }
+    if(mcq && 'abcd'.includes(k)&&k!==''){ reveal('abcd'.indexOf(k),false); return; }
+    if(k==='p'){ togglePause(); return; }
+    if(k==='escape'){ renderHome(); return; }
+    if(k==='enter'||k===' '){
+      if(e.target.closest('button')) return;
+      e.preventDefault();
+      S.revealed ? next() : reveal(null,false);
+    }
+    return;
+  }
+  if(!result.hidden && k==='escape') renderHome();
+});
+
+renderHome();
+</script>
+</body>
+</html>
