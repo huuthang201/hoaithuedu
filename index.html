@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Trắc nghiệm KHTN 7, 8, 9: Đồ thị, Khối lượng riêng, Động năng</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E6FD9'/%3E%3Cpath d='M14 50V14M14 50h36' stroke='%23fff' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M16 46l12-14 8 6 12-18' stroke='%23FFD34D' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&display=swap" rel="stylesheet">
@@ -266,6 +267,42 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 @media (prefers-reduced-motion:reduce){
   .t-ring,.progress span,.opt{transition:none}
   .timer.low .t-num b,#quiz.shake,#vignette.on,.opt.correct,.exp.good strong{animation:none}
+}
+/* ---------- motion ---------- */
+:root{--ease:cubic-bezier(.22,1,.36,1)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+section:not([hidden]){animation:fade .35s var(--ease)}
+#home h1,#home .lead{animation:rise .5s var(--ease) both}
+#home .lead{animation-delay:.06s}
+.grade-group{animation:rise .5s var(--ease) both}
+.grade-group:nth-child(2){animation-delay:.08s}.grade-group:nth-child(3){animation-delay:.16s}.grade-group:nth-child(4){animation-delay:.24s}
+.row{transition:background .2s var(--ease),transform .2s var(--ease)}
+.row:not(.has-modes):hover{transform:translateX(4px)}
+.qcard.enter{animation:rise .45s var(--ease) both}
+.opts>.opt,.tf-list>.tf-row,.short-wrap{animation:rise .45s var(--ease) both}
+.opts>.opt:nth-child(2),.tf-list>.tf-row:nth-child(2){animation-delay:.05s}
+.opts>.opt:nth-child(3),.tf-list>.tf-row:nth-child(3){animation-delay:.1s}
+.opts>.opt:nth-child(4),.tf-list>.tf-row:nth-child(4){animation-delay:.15s}
+.opt:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 16px -8px rgba(20,40,80,.35)}
+.opt{transition:border-color .2s,background .2s,transform .2s var(--ease),box-shadow .2s,opacity .3s}
+.tf-row{transition:border-color .25s,background .25s}
+.tf-btn{transition:border-color .2s,background .2s,color .2s,transform .15s var(--ease)}
+.tf-btn:active:not(:disabled),.btn:active,.opt:active:not(:disabled){transform:scale(.97)}
+.tf-btn.correct,.opts>.opt.correct{animation:pop .4s ease-out}
+.tf-e:not([hidden]){animation:rise .35s var(--ease)}
+.exp:not([hidden]){animation:rise .45s var(--ease)}
+.btn{transition:background .2s,border-color .2s,color .2s,transform .15s var(--ease),box-shadow .2s}
+.btn:not([hidden]){animation:fade .3s var(--ease)}
+.progress span{transition:width .5s var(--ease)}
+#result .score{animation:rise .55s var(--ease) both}
+#result .score-msg{animation:rise .55s .08s var(--ease) both}
+#result .review>li{animation:rise .45s var(--ease) both}
+#result .review>li:nth-child(n+2){animation-delay:.12s}
+#result .review>li:nth-child(n+4){animation-delay:.2s}
+#result .review>li:nth-child(n+7){animation-delay:.28s}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
@@ -867,6 +904,7 @@ function renderQ(){
   else if(q.type==='tf'){ tp.textContent='Đúng / Sai'; tp.className='topic kind'; tp.hidden=false; }
   else if(q.type==='short'){ tp.textContent='Tự luận'; tp.className='topic kind'; tp.hidden=false; }
   else tp.hidden=true;
+  const qc=document.querySelector('.qcard'); qc.classList.remove('enter'); void qc.offsetWidth; qc.classList.add('enter');
   $('#qtext').innerHTML=q.q;
   const f=$('#qfig'); f.innerHTML=q.fig?q.fig():''; f.hidden=!q.fig;
   const opts=$('#opts');
