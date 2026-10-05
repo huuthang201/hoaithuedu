@@ -995,7 +995,7 @@ function reveal(picked,timedOut,instant){
   if(q.type==='short'){
     S.ans[S.i]={type:'short',self:null};
     exp.className='exp neutral';
-    exp.innerHTML=`<strong>Đáp án</strong>${expBody(q,`<p class="answer">${q.ans}</p>`)}<div class="selfgrade"><span>Em tự chấm:</span><button type="button" class="btn ghost sg" data-v="1">Đúng rồi</button><button type="button" class="btn ghost sg" data-v="0">Chưa đúng</button></div>`;
+    exp.innerHTML=`<strong>Đáp án</strong>${expBody(q,`<p class="answer">${q.ans}</p>`)}`;
     exp.hidden=false; finishReveal(n);
     return;
   }
@@ -1046,7 +1046,7 @@ function plain(html){
   return t.length>90 ? t.slice(0,88)+'…' : t;
 }
 function showResult(){
-  const qs=S.qs, n=qs.length; let score=0;
+  const qs=S.qs, n=qs.filter(q=>q.type!=='short').length; let score=0;
   const items=qs.map((q,i)=>{
     const a=S.ans[i]||{picked:null,timedOut:false,self:null,marked:false};
     let st,icon,yours;
@@ -1056,10 +1056,7 @@ function showResult(){
       icon= st==='ok'?'✓':st==='skip'?'–':st==='part'?'½':'✗';
       yours= a.marked?`Đúng ${a.correct}/${a.total} ý`:'Không chọn';
     } else if(q.type==='short'){
-      if(a.self===true) score++;
-      st= a.self===true?'ok':a.self===false?'bad':'skip';
-      icon= st==='ok'?'✓':st==='bad'?'✗':'–';
-      yours= a.self===true?'Tự chấm: đúng':a.self===false?'Tự chấm: chưa đúng':'Chưa tự chấm';
+      st='skip'; icon='✎'; yours='Tự luận, không tính điểm';
     } else {
       const ok=a.picked===q.a; if(ok) score++;
       st= ok?'ok' : a.picked===null?'skip' : 'bad';
