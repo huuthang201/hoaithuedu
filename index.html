@@ -929,7 +929,7 @@ function finishReveal(n){
 }
 
 /* answer + reveal */
-function reveal(picked,timedOut){
+function reveal(picked,timedOut,instant){
   if(S.revealed) return;
   stopTimer(); S.revealed=true;
   const n=N(), q=S.qs[S.i], exp=$('#exp');
@@ -950,7 +950,7 @@ function reveal(picked,timedOut){
     exp.className='exp '+(ok&&marked?'good':marked?'bad':'neutral');
     exp.innerHTML=`<strong>${head}</strong>${expBody(q)}`;
     exp.hidden=false; finishReveal(n);
-    if(marked&&ok){ confetti(); ding(); } else if(marked){ wrongFx(true); buzz(); }
+    if(marked&&ok){ confetti(); ding(); } else if(marked&&!instant){ wrongFx(true); buzz(); } else if(marked){ buzz(); }
     return;
   }
 
@@ -977,6 +977,16 @@ function reveal(picked,timedOut){
   if(ok){ confetti(); ding(); }
   else if(picked!==null){ wrongFx(true); buzz(); }
   else if(timedOut){ wrongFx(false); buzz(); }
+}
+/* Đúng/Sai: chấm ngay từng ý khi bấm; trả lời hết các ý thì hiện lời giải chung */
+function tfAnswer(tb){
+  const q=S.qs[S.i], row=tb.closest('.tf-row'), k=+row.dataset.k, it=q.items[k], v=tb.dataset.v==='1';
+  S.pick[k]=v;
+  row.querySelectorAll('.tf-btn').forEach(b=>{ b.disabled=true; const bv=b.dataset.v==='1'; if(bv===it.ans) b.classList.add('correct'); else if(bv===v) b.classList.add('wrong'); });
+  row.querySelector('.tf-e').hidden=false;
+  row.classList.add(v===it.ans?'ok':'bad');
+  if(S.pick.every(x=>x!==null)) reveal(null,false,true);
+  else if(v===it.ans) ding(); else buzz();
 }
 function selfGrade(v){
   const a=S.ans[S.i]; if(!a||a.type!=='short'||a.self!==null) return;
@@ -1111,7 +1121,7 @@ $('#toc').addEventListener('click',e=>{
 });
 $('#opts').addEventListener('click',e=>{
   const tb=e.target.closest('.tf-btn');
-  if(tb){ if(S.revealed||!S.pick) return; const row=tb.closest('.tf-row'), k=+row.dataset.k; S.pick[k]=tb.dataset.v==='1'; row.querySelectorAll('.tf-btn').forEach(b=>b.classList.toggle('on',b===tb)); return; }
+  if(tb){ if(S.revealed||!S.pick||tb.disabled) return; tfAnswer(tb); return; }
   const b=e.target.closest('.opt'); if(b&&!b.disabled) reveal(+b.dataset.k,false);
 });
 $('#exp').addEventListener('click',e=>{ const b=e.target.closest('.sg'); if(b&&!b.disabled) selfGrade(b.dataset.v==='1'); });
