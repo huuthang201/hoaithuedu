@@ -875,7 +875,7 @@ function renderQ(){
     opts.innerHTML=q.items.map((it,k)=>`<div class="tf-row" data-k="${k}"><span class="key">${'abcd'[k]}</span><span class="tf-txt">${it.t}<span class="tf-e" hidden>${it.e}</span></span><span class="tf-btns"><button type="button" class="tf-btn" data-v="1">Đúng</button><button type="button" class="tf-btn" data-v="0">Sai</button></span></div>`).join('');
   } else if(q.type==='short'){
     opts.className='short-wrap';
-    opts.innerHTML=`<label class="short-label" for="ansIn">Nháp câu trả lời của em ở đây (không bắt buộc), rồi bấm Hiện đáp án để đối chiếu</label><textarea id="ansIn" class="ans-input" rows="3" placeholder="Câu trả lời…"></textarea>`;
+    opts.innerHTML=`<label class="short-label" for="ansIn">Nháp câu trả lời ở đây (không bắt buộc), rồi bấm Hiện đáp án để đối chiếu</label><textarea id="ansIn" class="ans-input" rows="3" placeholder="Câu trả lời…"></textarea>`;
   } else {
     opts.className='opts';
     opts.innerHTML=q.o.map((t,k)=>`<button class="opt" type="button" data-k="${k}"><span class="key">${KEYS[k]}</span><span class="txt">${t}</span></button>`).join('');
