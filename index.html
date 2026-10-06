@@ -569,7 +569,7 @@ const G7X=(extraGuides,extra)=>graph({alt:'Đồ thị ba đoạn OA, AB, BC có
 
 const SETS=[
 {
-  grade:'7', lesson:'Bài 10', title:'Đồ thị quãng đường – thời gian', sub:'Khoa học tự nhiên 7, Kết nối tri thức', note:'', kind:'4 lựa chọn',
+  grade:'7', lesson:'Bài 10', title:'Đồ thị quãng đường – thời gian', sub:'Khoa học tự nhiên 7, Kết nối tri thức', note:'', kind:'Trắc nghiệm + Đúng/Sai + tự luận',
   accent:'#1E6FD9', accentBg:'#E4EEFC', accentDark:'#6CA6FF', accentBgDark:'#1B2B4B',
   questions:[
     {lv:'easy', q:'Trục tung Os trong đồ thị quãng đường – thời gian dùng để',
@@ -620,13 +620,7 @@ const SETS=[
      fig:G7,
      o:['OA: chuyển động nhanh dần; AB: không chuyển động; BC: chuyển động chậm dần.','OA: chuyển động chậm dần; AB: không chuyển động; BC: chuyển động chậm dần.','OA: chuyển động với tốc độ không đổi; AB: chuyển động nhanh dần; BC: chuyển động với tốc độ không đổi.','OA: chuyển động với tốc độ không đổi; AB: không chuyển động; BC: chuyển động với tốc độ không đổi.'], a:3,
      e:'Đoạn <span class="k">nằm nghiêng</span> (OA, BC): xe chạy với tốc độ không đổi. Đoạn <span class="k">nằm ngang</span> (AB): từ 2 h đến 3 h quãng đường vẫn là 180 km, xe đang dừng. Lưu ý: nằm nghiêng không phải "nhanh dần"; nhanh dần thì đồ thị phải cong lên.',
-     ef:()=>G7X([],(X,Y)=>`<text class="c-call" x="${X(0.55)}" y="${Y(112)}" text-anchor="middle">chạy đều</text><text class="c-call" x="${X(2.5)}" y="${Y(205)}" text-anchor="middle">dừng</text><text class="c-call" x="${X(3.2)}" y="${Y(258)}" text-anchor="middle">chạy đều</text>`)}
-  ]
-},
-{
-  grade:'7', lesson:'Bài 10', title:'Đồ thị quãng đường – thời gian', sub:'Khoa học tự nhiên 7, Kết nối tri thức', note:'', kind:'Đúng/Sai + tự luận', timed:false,
-  accent:'#1E6FD9', accentBg:'#E4EEFC', accentDark:'#6CA6FF', accentBgDark:'#1B2B4B',
-  questions:[
+     ef:()=>G7X([],(X,Y)=>`<text class="c-call" x="${X(0.55)}" y="${Y(112)}" text-anchor="middle">chạy đều</text><text class="c-call" x="${X(2.5)}" y="${Y(205)}" text-anchor="middle">dừng</text><text class="c-call" x="${X(3.2)}" y="${Y(258)}" text-anchor="middle">chạy đều</text>`)},
     {type:'tf', lv:'mid', q:'Xét các phát biểu sau đây về đồ thị quãng đường – thời gian của một vật chuyển động thẳng với tốc độ không đổi. Chọn Đúng hoặc Sai cho từng phát biểu.',
      items:[
        {t:'Đồ thị quãng đường – thời gian mô tả mối liên hệ giữa quãng đường đi được của vật và thời gian.', ans:true, e:'Đúng. Đó chính là ý nghĩa của đồ thị: nhìn vào là biết sau mỗi khoảng thời gian vật đi được bao xa.'},
@@ -649,7 +643,7 @@ const SETS=[
   ]
 },
 {
-  grade:'8', lesson:'Bài 14', title:'Thực hành xác định khối lượng riêng', sub:'Khoa học tự nhiên 8, Kết nối tri thức', note:'', kind:'4 lựa chọn',
+  grade:'8', lesson:'Bài 14', title:'Thực hành xác định khối lượng riêng', sub:'Khoa học tự nhiên 8, Kết nối tri thức', note:'', kind:'Trắc nghiệm + Đúng/Sai + tự luận',
   accent:'#D4701A', accentBg:'#FCEBDD', accentDark:'#FFA14F', accentBgDark:'#3B2614',
   questions:[
     {lv:'easy', q:'Để xác định được khối lượng riêng của một vật liệu ta cần biết',
@@ -697,13 +691,7 @@ const SETS=[
     {lv:'easy', q:'Phát biểu nào sau đây là đúng?',
      o:['Đơn vị khối lượng riêng là N/m³.','Đơn vị khối lượng riêng là kg/m³.','Đơn vị thể tích là N/m³.','Đơn vị khối lượng là N/m³.'], a:1,
      e:'Đơn vị của D = đơn vị khối lượng chia đơn vị thể tích: kg/m³ (hoặc g/cm³). N/m³ là niutơn trên mét khối, tức là <span class="k">trọng lượng riêng</span> (d = 10D), không phải khối lượng riêng.',
-     fm:'1 g/cm³ = 1000 kg/m³', ef:figUnits}
-  ]
-},
-{
-  grade:'8', lesson:'Bài 14', title:'Thực hành xác định khối lượng riêng', sub:'Khoa học tự nhiên 8, Kết nối tri thức', note:'', kind:'Đúng/Sai + tự luận', timed:false,
-  accent:'#D4701A', accentBg:'#FCEBDD', accentDark:'#FFA14F', accentBgDark:'#3B2614',
-  questions:[
+     fm:'1 g/cm³ = 1000 kg/m³', ef:figUnits},
     {type:'tf', lv:'mid', q:'Xét quy trình đo khối lượng riêng của một vật rắn có hình dạng bất kì và không thấm nước (như một hòn sỏi). Chọn Đúng hoặc Sai cho từng phát biểu.',
      items:[
        {t:'Ta cần sử dụng cân điện tử để xác định khối lượng m của hòn sỏi.', ans:true, e:'Đúng. Cân dùng để đo khối lượng m của hòn sỏi.'},
@@ -866,7 +854,7 @@ const KEYS=['A','B','C','D'];
 let S={set:null, qs:[], mode:null, i:0, ans:[], pick:null, revealed:false};
 let T={end:0, left:30000, on:false, iv:0};
 const N=()=>S.qs.length;
-const isTimed=()=>S.set && S.set.timed!==false;
+const isTimed=()=>S.set && S.set.timed!==false && !(S.qs[S.i]||{}).type;
 ring.style.strokeDasharray=C;
 
 function show(sec){
@@ -891,7 +879,8 @@ function renderHome(){
         const btns=s.modes.map(m=>`<button class="mode" type="button" data-i="${i}" data-mode="${m.id}">${m.label} <small>${s.questions.filter(m.filter).length} câu</small></button>`).join('');
         return `<li><div class="row has-modes"><span class="rt"><span class="rt-title">${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}25–30 giây mỗi câu. Chọn phần muốn ôn:</span><span class="modes">${btns}</span></span></div></li>`;
       }
-      const info=s.timed===false?`${s.questions.length} câu, không tính giờ, làm xong tự đối chiếu đáp án`:`${s.questions.length} câu, 25–30 giây mỗi câu`;
+      const mixed=s.questions.some(q=>q.type);
+      const info=s.timed===false?`${s.questions.length} câu, không tính giờ, làm xong tự đối chiếu đáp án`:mixed?`${s.questions.length} câu; trắc nghiệm 25–30 giây mỗi câu, Đúng/Sai và tự luận không tính giờ`:`${s.questions.length} câu, 25–30 giây mỗi câu`;
       return `<li><button class="row" type="button" data-i="${i}"><span class="rt"><span class="rt-title">${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}${info}</span></span><span class="go">Bắt đầu</span></button></li>`;
     }).join('');
     return `<div class="grade-group" data-grade="${g}" style="${setVars(first)}"><div class="grade-head"><span class="grade">${g}</span><span class="grade-sub">${first.sub}</span></div><ul class="sets">${rows}</ul></div>`;
@@ -912,7 +901,7 @@ function startSet(i,modeId){
   $('#topMain').textContent=`Lớp ${s.grade}, ${s.lesson.toLowerCase()}: ${s.title}`;
   const bits=[s.kind||'4 lựa chọn'];
   if(mode) bits.push(`phần ${mode.label} (${qs.length} câu)`);
-  bits.push(s.timed===false?'không tính giờ':'25 giây câu dễ, 30 giây câu khó hơn');
+  bits.push(s.timed===false?'không tính giờ':qs.some(q=>q.type)?'trắc nghiệm có tính giờ':'25 giây câu dễ, 30 giây câu khó hơn');
   $('#topSub').textContent=bits.join(', ');
   show(quiz);
   renderQ();
