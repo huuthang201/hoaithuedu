@@ -59,6 +59,11 @@ button{font:inherit;color:inherit}
 .app{max-width:1040px;margin:0 auto;padding:0 20px 56px}
 
 /* top bar */
+.teacher{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 0 2px}
+.teacher-badge{display:inline-flex;align-items:center;gap:10px;padding:5px 16px 5px 5px;border-radius:999px;background:var(--surface);border:2px solid var(--accent-bg);box-shadow:0 1px 0 var(--line)}
+.teacher-av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:800;font-size:.85rem;letter-spacing:.02em}
+.teacher-lab{color:var(--ink-2);font-size:.88rem}
+.teacher-name{font-weight:800;color:var(--accent);font-size:1rem}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:14px;padding:14px 0;background:var(--paper);border-bottom:2px solid var(--line)}
 .back{width:40px;height:40px;border-radius:10px;border:2px solid var(--line);background:var(--surface);cursor:pointer;font-size:1.5rem;line-height:1;padding:0 0 3px}
 .back:hover{border-color:var(--accent);color:var(--accent)}
@@ -127,6 +132,11 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 .timer.low .t-num b{color:var(--bad);animation:pulse 1s ease-in-out infinite}
 .timer.paused .t-ring{opacity:.3}
 .timer.paused .t-num small{color:var(--warn);font-weight:600}
+.timer-box{flex:none;display:flex;flex-direction:column;align-items:center;gap:10px}
+.pause-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:2px solid var(--accent);background:var(--surface);color:var(--accent);font-weight:700;font-size:.9rem;cursor:pointer;white-space:nowrap}
+.pause-btn:hover{background:var(--accent);color:#fff}
+.pause-btn.on{background:var(--warn);border-color:var(--warn);color:#fff}
+.pause-btn:disabled{opacity:.4;cursor:default;background:var(--surface);color:var(--ink-2);border-color:var(--line)}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
 
 /* options */
@@ -250,7 +260,8 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 
 @media (max-width:640px){
   .qwrap{flex-direction:column-reverse;align-items:stretch;gap:12px}
-  .timer{width:104px;height:104px;align-self:flex-end}
+  .timer-box{flex-direction:row;align-self:flex-end;gap:12px}
+  .timer{width:104px;height:104px}
   .t-num b{font-size:1.7rem}
   .qcard{margin-left:40px}
   .qnum{left:-42px;width:30px;font-size:1.6rem}
@@ -307,6 +318,7 @@ section:not([hidden]){animation:fade .35s var(--ease)}
 </head>
 <body>
 <div class="app" id="app">
+  <div class="teacher"><span class="teacher-badge"><span class="teacher-av" aria-hidden="true">HT</span><span><span class="teacher-lab">Giáo viên: </span><span class="teacher-name">Hoài Thu</span></span></span></div>
   <header class="top">
     <button class="back" id="btnHome" type="button" hidden aria-label="Về trang chọn bài" title="Về trang chọn bài (Esc)">‹</button>
     <div class="top-title">
@@ -336,6 +348,7 @@ section:not([hidden]){animation:fade .35s var(--ease)}
             <div class="qfig" id="qfig" hidden></div>
           </div>
         </div>
+        <div class="timer-box" id="timerBox">
         <button class="timer" id="timer" type="button" title="Bấm để tạm dừng hoặc tiếp tục (phím P)" aria-label="Đồng hồ đếm ngược, bấm để tạm dừng">
           <svg viewBox="0 0 120 120" aria-hidden="true">
             <circle class="t-track" cx="60" cy="60" r="52"/>
@@ -343,6 +356,8 @@ section:not([hidden]){animation:fade .35s var(--ease)}
           </svg>
           <span class="t-num"><b id="tnum">30</b><small id="tlab">giây</small></span>
         </button>
+        <button class="pause-btn" id="btnPause" type="button" title="Tạm dừng hoặc tiếp tục (phím P)">⏸ Tạm dừng</button>
+        </div>
       </div>
       <div class="opts" id="opts"></div>
       <div class="exp" id="exp" hidden aria-live="polite"></div>
@@ -933,7 +948,7 @@ function renderQ(){
     opts.innerHTML=q.o.map((t,k)=>`<button class="opt" type="button" data-k="${k}"><span class="key">${KEYS[k]}</span><span class="txt">${t}</span></button>`).join('');
   }
   $('#exp').hidden=true; $('#btnNext').hidden=true; $('#btnReveal').hidden=q.type==='short';
-  timerEl.hidden=!isTimed();
+  $('#timerBox').hidden=!isTimed();
   if(isTimed()) startTimer(); else stopTimer();
 }
 
@@ -949,6 +964,7 @@ function startTimer(){
   timerEl.classList.remove('paused'); tlab.textContent='giây';
   paint(T.left);
   T.iv=setInterval(tick,200);
+  syncPause();
 }
 function tick(){
   if(!T.on) return;
@@ -956,7 +972,12 @@ function tick(){
   paint(left);
   if(left<=0){ stopTimer(); reveal(null,true); }
 }
-function stopTimer(){ T.on=false; clearInterval(T.iv); timerEl.classList.remove('paused'); }
+function syncPause(){
+  const b=$('#btnPause'), paused=timerEl.classList.contains('paused');
+  b.textContent=paused?'▶ Tiếp tục':'⏸ Tạm dừng';
+  b.classList.toggle('on',paused); b.disabled=!T.on&&!paused;
+}
+function stopTimer(){ T.on=false; clearInterval(T.iv); timerEl.classList.remove('paused'); syncPause(); }
 function togglePause(){
   if(S.revealed || quiz.hidden || !isTimed()) return;
   if(T.on){
@@ -967,6 +988,7 @@ function togglePause(){
     timerEl.classList.remove('paused'); tlab.textContent='giây';
     T.iv=setInterval(tick,200);
   }
+  syncPause();
 }
 
 /* explanation block shared by all question types */
@@ -1183,6 +1205,7 @@ $('#btnAgain').addEventListener('click',()=>startSet(SETS.indexOf(S.set), S.mode
 $('#btnOther').addEventListener('click',renderHome);
 $('#btnSound').addEventListener('click',toggleSound);
 timerEl.addEventListener('click',togglePause);
+$('#btnPause').addEventListener('click',togglePause);
 
 document.addEventListener('keydown',e=>{
   if(e.altKey||e.ctrlKey||e.metaKey) return;
