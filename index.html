@@ -118,6 +118,8 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 .level.apply{background:var(--accent);color:#fff}
 .qbody{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-start}
 .qtext{flex:1 1 300px;font-size:clamp(1.15rem,1rem + 1vw,1.6rem);font-weight:500;line-height:1.4;max-width:62ch}
+.qtext .ql{display:block;margin-top:.5em;padding-left:.2em}
+.qtext .ql:first-of-type{margin-top:.7em}
 .qfig{flex:0 1 400px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px}
 
 /* timer */
@@ -670,12 +672,12 @@ const SETS=[
      e:'Ba việc, thiếu một là không ra kết quả: <span class="k">cân</span> để có m; <span class="k">thước</span> đo ba cạnh a, b, c để tính V = a.b.c; cuối cùng lắp vào <span class="k">công thức</span> D = m/V.',
      fm:'V = a · b · c ; D = m : V',
      ef:()=>figTools({items:[{kind:'scale',label:'Cân điện tử',gives:'khối lượng m'},{kind:'ruler',label:'Thước',gives:'a, b, c → V = a.b.c'}], formula:'D = m : V'})},
-    {lv:'mid', q:'Để xác định khối lượng riêng của các viên sỏi, ba bạn Anh, Nhi, Hiếu đưa ra ý kiến như sau:<br>Anh: Mình chỉ cần một cái cân là đủ.<br>Nhi: Theo mình, thì chỉ cần một bình chia độ.<br>Hiếu: Còn tớ nghĩ, cần một cái cân và một bình chia độ.<br>Theo em, ý kiến nào đúng?',
+    {lv:'mid', q:'Để xác định khối lượng riêng của các viên sỏi, ba bạn Anh, Nhi, Hiếu đưa ra ý kiến như sau:<span class="ql">Anh: Mình chỉ cần một cái cân là đủ.</span><span class="ql">Nhi: Theo mình, thì chỉ cần một bình chia độ.</span><span class="ql">Hiếu: Còn tớ nghĩ, cần một cái cân và một bình chia độ.</span><span class="ql">Theo em, ý kiến nào đúng?</span>',
      o:['Anh đúng.','Nhi đúng.','Hiếu đúng.','Cả ba bạn cùng sai.'], a:2,
      e:'Viên sỏi méo mó, không có cạnh để đo bằng thước, nên thể tích phải lấy bằng cách <span class="k">thả vào bình chia độ</span>: nước dâng lên bao nhiêu thì đó là thể tích sỏi. Cân cho m, bình chia độ cho V, nên Hiếu đúng.',
      fm:'V<sub>sỏi</sub> = V<sub>sau</sub> – V<sub>trước</sub> ; D = m : V',
      ef:()=>figTools({items:[{kind:'scale',label:'Cân',gives:'khối lượng m'},{kind:'cyl',label:'Bình chia độ',gives:'thể tích V'}], formula:'D = m : V'})},
-    {lv:'apply', q:'Em hãy sắp xếp lại thứ tự các bước dưới đây để xác định được khối lượng riêng của một lượng nước.<br>(1) Xác định khối lượng của ống đong.<br>(2) Xác định khối lượng nước trong ống đong.<br>(3) Xác định khối lượng của ống đong có đựng nước.<br>(4) Sử dụng công thức tính khối lượng riêng.',
+    {lv:'apply', q:'Em hãy sắp xếp lại thứ tự các bước dưới đây để xác định được khối lượng riêng của một lượng nước.<span class="ql">(1) Xác định khối lượng của ống đong.</span><span class="ql">(2) Xác định khối lượng nước trong ống đong.</span><span class="ql">(3) Xác định khối lượng của ống đong có đựng nước.</span><span class="ql">(4) Sử dụng công thức tính khối lượng riêng.</span>',
      o:['(1) – (2) – (3) – (4).','(1) – (2) – (4) – (3).','(1) – (3) – (2) – (4).','(2) – (1) – (3) – (4).'], a:2,
      e:'Muốn biết riêng khối lượng nước thì phải cân <span class="k">hai lần</span>: ống rỗng (m₁) và ống có nước (m₂), rồi lấy hiệu. Chưa cân lần hai thì chưa có gì để trừ, nên bước (3) phải đứng trước bước (2).',
      fm:'m<sub>nước</sub> = m₂ – m₁ ; D = m<sub>nước</sub> : V',
@@ -962,7 +964,7 @@ function startTimer(){
   clearInterval(T.iv);
   dur=durFor(S.qs[S.i]); T.left=dur*1000; T.end=Date.now()+T.left; T.on=true;
   timerEl.classList.remove('paused'); tlab.textContent='giây';
-  paint(T.left);
+  paint(T.left); T.sec=dur;
   T.iv=setInterval(tick,200);
   syncPause();
 }
@@ -970,6 +972,8 @@ function tick(){
   if(!T.on) return;
   const left=Math.max(0,T.end-Date.now());
   paint(left);
+  const sec=Math.ceil(left/1000);
+  if(sec!==T.sec){ T.sec=sec; if(sec>0&&sec<=5) tickSound(sec); }
   if(left<=0){ stopTimer(); reveal(null,true); }
 }
 function syncPause(){
@@ -1182,6 +1186,8 @@ function buzz(){
   g.gain.setValueAtTime(.1,t); g.gain.exponentialRampToValueAtTime(.0001,t+.42);
   o.connect(g).connect(c.destination); o.start(t); o.stop(t+.45);
 }
+/* tích tắc nhỏ ở 5 giây cuối, xen kẽ hai cao độ */
+function tickSound(sec){ if(!soundOn) return; tone(sec%2?1100:850,0,.12,'square',.28); tone(sec%2?2200:1700,0,.05,'square',.1); }
 paintSound();
 document.addEventListener('pointerdown',()=>ac(),{once:true});
 document.addEventListener('keydown',()=>ac(),{once:true});
