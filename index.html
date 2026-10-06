@@ -228,12 +228,9 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 .tf-btn:disabled{cursor:default}
 .tf-row.ok{border-color:var(--ok)} .tf-row.bad{border-color:var(--bad)}
 .short-wrap{display:block}
-.short-label{display:block;font-size:.9rem;color:var(--ink-2);margin-bottom:6px}
-.ans-input{width:100%;font:inherit;font-size:1.02rem;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);resize:vertical;min-height:84px}
-.ans-input:focus{outline:none;border-color:var(--accent)}
 .answer{font-size:1.12rem;font-weight:700;color:var(--accent);margin:0 0 8px !important;padding:10px 14px;border-radius:12px;background:var(--accent-bg);animation:ansIn .6s .1s cubic-bezier(.22,1,.36,1) both}
 @keyframes ansIn{0%{opacity:0;transform:translateY(10px) scale(.96);box-shadow:0 0 0 0 var(--accent)}60%{opacity:1;transform:none;box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 25%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
-.show-ans{display:block;margin-top:12px}
+.show-ans{display:block}
 .selfgrade{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-weight:600}
 .selfgrade .btn{padding:8px 14px}
 .selfgrade .btn.on-ok{background:var(--ok);border-color:var(--ok);color:#fff}
@@ -704,6 +701,32 @@ const SETS=[
   ]
 },
 {
+  grade:'8', lesson:'Bài 14', title:'Thực hành xác định khối lượng riêng', sub:'Khoa học tự nhiên 8, Kết nối tri thức', note:'', kind:'Đúng/Sai + tự luận', timed:false,
+  accent:'#D4701A', accentBg:'#FCEBDD', accentDark:'#FFA14F', accentBgDark:'#3B2614',
+  questions:[
+    {type:'tf', lv:'mid', q:'Xét quy trình đo khối lượng riêng của một vật rắn có hình dạng bất kì và không thấm nước (như một hòn sỏi). Chọn Đúng hoặc Sai cho từng phát biểu.',
+     items:[
+       {t:'Ta cần sử dụng cân điện tử để xác định khối lượng m của hòn sỏi.', ans:true, e:'Đúng. Cân dùng để đo khối lượng m của hòn sỏi.'},
+       {t:'Thể tích V của hòn sỏi được xác định bằng phương pháp hạ sỏi vào bình chia độ chứa nước và tính lượng nước dâng lên.', ans:true, e:'Đúng. Phần nước dâng lên đúng bằng thể tích hòn sỏi: V = V<sub>sau</sub> – V<sub>trước</sub>.'},
+       {t:'Sai số trong phép đo thể tích không ảnh hưởng đến kết quả cuối cùng của khối lượng riêng.', ans:false, e:'Sai. D = m : V, nên đo V lệch bao nhiêu thì D cũng lệch theo.'},
+       {t:'Nếu hòn sỏi quá lớn không bỏ lọt bình chia độ, ta có thể sử dụng bình tràn để đo thể tích.', ans:true, e:'Đúng. Thả vật vào bình tràn, hứng nước tràn ra rồi đổ vào bình chia độ: thể tích nước tràn ra bằng thể tích vật.'}
+     ],
+     e:'Cân cho <span class="k">m</span>, bình chia độ (hoặc bình tràn) cho <span class="k">V</span>. Vì D = m : V nên sai số của m hay của V đều làm kết quả D sai theo.',
+     fm:'D = m : V',
+     ef:()=>figTools({items:[{kind:'scale',label:'Cân',gives:'khối lượng m'},{kind:'cyl',label:'Bình chia độ',gives:'thể tích V'}], formula:'D = m : V'})},
+    {type:'short', lv:'mid', q:'Khi đo thể tích hòn sỏi bằng bình chia độ, mực nước ban đầu là 60 ml, sau khi thả hòn sỏi vào mực nước dâng lên đến vạch 85 ml. Tính thể tích hòn sỏi ra đơn vị cm³.',
+     ans:'25 cm³',
+     e:'Thể tích hòn sỏi bằng phần nước dâng lên: lấy mực nước sau trừ mực nước trước. Nhớ 1 ml = 1 cm³.',
+     fm:'V<sub>sỏi</sub> = V<sub>sau</sub> – V<sub>trước</sub> = 85 – 60 = 25 ml = 25 cm³',
+     ef:()=>cylinders({before:60, after:85, max:100, major:20, minor:5, cap1:'Trước: 60 cm³', cap2:'Sau khi thả sỏi: 85 cm³'})},
+    {type:'short', lv:'apply', q:'Trong thí nghiệm đo khối lượng riêng của nước, bạn An cân được khối lượng nước là 196 g và thể tích tương ứng là 200 ml. Tính khối lượng riêng của mẫu nước này ra đơn vị kg/m³.',
+     ans:'980 kg/m³',
+     e:'Lấy khối lượng chia thể tích được D theo g/cm³ (200 ml = 200 cm³), rồi đổi sang kg/m³ bằng cách nhân 1000.',
+     fm:'D = m : V = 196 : 200 = 0,98 g/cm³ = 980 kg/m³',
+     ef:figUnits}
+  ]
+},
+{
   grade:'9', lesson:'Bài 2', title:'Động năng. Thế năng', sub:'Khoa học tự nhiên 9, Kết nối tri thức', note:'', kind:'4 lựa chọn',
   accent:'#7A3DE0', accentBg:'#EFE8FC', accentDark:'#B48CFF', accentBgDark:'#2B1F4C',
   modes:[
@@ -915,7 +938,7 @@ function renderQ(){
     opts.innerHTML=q.items.map((it,k)=>`<div class="tf-row" data-k="${k}"><span class="key">${'abcd'[k]}</span><span class="tf-txt">${it.t}<span class="tf-e" hidden>${it.e}</span></span><span class="tf-btns"><button type="button" class="tf-btn" data-v="1">Đúng</button><button type="button" class="tf-btn" data-v="0">Sai</button></span></div>`).join('');
   } else if(q.type==='short'){
     opts.className='short-wrap';
-    opts.innerHTML=`<label class="short-label" for="ansIn">Nháp câu trả lời ở đây (không bắt buộc)</label><textarea id="ansIn" class="ans-input" rows="3" placeholder="Câu trả lời…"></textarea><button type="button" class="btn primary show-ans" id="btnShowAns">Hiện đáp án</button>`;
+    opts.innerHTML=`<button type="button" class="btn primary show-ans" id="btnShowAns">Hiện đáp án</button>`;
   } else {
     opts.className='opts';
     opts.innerHTML=q.o.map((t,k)=>`<button class="opt" type="button" data-k="${k}"><span class="key">${KEYS[k]}</span><span class="txt">${t}</span></button>`).join('');
