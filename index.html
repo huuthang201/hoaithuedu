@@ -249,6 +249,46 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 .selfgrade .btn.on-bad{background:var(--bad);border-color:var(--bad);color:#fff}
 .review .part .st{color:var(--warn)}
 
+/* đề kiểm tra: một đồng hồ chung cho cả đề, các câu hiện cùng lúc */
+.app.wide{max-width:min(1480px,100%);padding-bottom:16px}
+/* cỡ chữ theo cả chiều rộng lẫn chiều cao để cả đề vừa một màn hình HD trên máy chiếu */
+.ex-layout{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(20px,3vw,48px);align-items:start;margin-top:clamp(10px,2.4vh,28px);font-size:clamp(1rem,min(1.5vw,2.9vh),1.7rem)}
+.ex-main h2{font-size:1.05em;font-weight:800;line-height:1.3;margin:0 0 .35em}
+.ex-list{list-style:none;padding:0;margin:0}
+.ex-q{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px;align-items:start;padding:.75em 0;border-bottom:2px dashed var(--line)}
+.ex-q:last-child{border-bottom:0}
+.ex-q .qtext{font-size:1em;max-width:none;line-height:1.6}
+.ex-q .qtext .ql,.ex-q .qtext .ql:first-of-type{margin-top:.3em}
+.ex-q .qtext b{color:var(--accent)}
+.ex-pts{font-size:.8em;font-weight:600;color:var(--ink-2)}
+.ex-table{border-collapse:collapse;margin:.5em 0 .3em;font-size:.92em;font-variant-numeric:tabular-nums}
+.ex-table th,.ex-table td{border:1.5px solid var(--line);padding:.2em .9em;text-align:center}
+.ex-table th{background:var(--accent-bg);color:var(--accent);font-weight:700}
+.ex-q .show-ans{display:inline-block;font-size:max(.9rem,.55em);padding:.55em 1em;white-space:nowrap;margin-top:.15em}
+.ex-q .show-ans.on{border-color:var(--accent);color:var(--accent);background:var(--accent-bg)}
+.ex-q .exp{grid-column:1/-1;margin-top:4px;font-size:max(1rem,.68em)}
+.ex-over{margin:0 0 .3em;padding:.35em .7em;border-radius:12px;background:var(--bad-bg);color:var(--bad);font-weight:800;font-size:.95em}
+.ex-side{position:sticky;top:96px;display:flex;flex-direction:column;align-items:center;gap:12px;width:clamp(160px,28vh,260px)}
+.ex-timer{width:100%;height:auto;aspect-ratio:1}
+.ex-timer .t-num b{font-size:clamp(2rem,6.5vh,3.8rem)}
+.ex-timer .t-num small{font-size:clamp(.8rem,1.9vh,1.15rem)}
+.ex-timer.over .t-ring{stroke:var(--bad)}
+.ex-timer.over .t-num b,.ex-timer.over .t-num small{color:var(--bad)}
+.ex-side .pause-btn{font-size:clamp(.95rem,2.1vh,1.25rem);padding:.5em 1.3em}
+.ex-meta{margin:0;color:var(--ink-2);font-size:clamp(.9rem,1.9vh,1.2rem);text-align:center}
+.ex-side .btn{font-size:clamp(.9rem,1.8vh,1.15rem);padding:.55em 1em}
+@media (max-width:900px){
+  .ex-layout{grid-template-columns:1fr;font-size:clamp(1.05rem,1rem + .8vw,1.35rem)}
+  .ex-side{order:-1;position:static;width:auto;flex-direction:row;flex-wrap:wrap;justify-content:center}
+  .ex-timer{width:140px}
+  .ex-timer .t-num b{font-size:2rem}
+}
+@media (max-width:640px){
+  .ex-q{grid-template-columns:1fr}
+  .ex-q .show-ans{justify-self:start}
+  .ex-table th,.ex-table td{padding:.12em .5em}
+}
+
 /* effects */
 #fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
 #vignette{position:fixed;inset:0;pointer-events:none;z-index:59;opacity:0;box-shadow:inset 0 0 140px 40px rgba(214,58,58,.6)}
@@ -366,6 +406,28 @@ section:not([hidden]){animation:fade .35s var(--ease)}
       <div class="actions">
         <button class="btn ghost" id="btnReveal" type="button">Hiện đáp án</button>
         <button class="btn primary" id="btnNext" type="button" hidden>Câu tiếp theo</button>
+      </div>
+    </section>
+
+    <section id="exam" hidden>
+      <div class="ex-layout">
+        <div class="ex-main">
+          <h2 id="exTitle"></h2>
+          <p class="ex-over" id="exOver" hidden>Hết giờ! Các em dừng bút, nộp bài.</p>
+          <ol class="ex-list" id="exList"></ol>
+        </div>
+        <aside class="ex-side">
+          <button class="timer ex-timer" id="exTimer" type="button" title="Bấm để bắt đầu, tạm dừng hoặc tiếp tục (phím P)" aria-label="Đồng hồ làm bài, bấm để bắt đầu hoặc tạm dừng">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="t-track" cx="60" cy="60" r="52"/>
+              <circle class="t-ring" id="exRing" cx="60" cy="60" r="52"/>
+            </svg>
+            <span class="t-num"><b id="exNum">15:00</b><small id="exLab">phút</small></span>
+          </button>
+          <button class="pause-btn" id="exPause" type="button" title="Bắt đầu, tạm dừng hoặc tiếp tục (phím P)">▶ Bắt đầu</button>
+          <p class="ex-meta" id="exSub"></p>
+          <button class="btn ghost" id="exAll" type="button">Hiện tất cả đáp án</button>
+        </aside>
       </div>
     </section>
 
@@ -660,6 +722,28 @@ const SETS=[
   ]
 },
 {
+  grade:'7', lesson:'Kiểm tra 15 phút', title:'Tốc độ chuyển động và đồ thị quãng đường – thời gian', sub:'Khoa học tự nhiên 7, Kết nối tri thức', kind:'Tự luận',
+  accent:'#1E6FD9', accentBg:'#E4EEFC', accentDark:'#6CA6FF', accentBgDark:'#1B2B4B',
+  exam:15,   // số phút làm bài, một đồng hồ chung cho cả đề
+  questions:[
+    {pts:4, q:'Một vật chuyển động đều. Quãng đường vật đi được theo thời gian cho trong bảng:'
+       +'<table class="ex-table"><tr><th>t (s)</th><td>0</td><td>1</td><td>2</td><td>3</td></tr><tr><th>s (m)</th><td>0</td><td>6</td><td>12</td><td>18</td></tr></table>'
+       +'<span class="ql">a) Vẽ đồ thị quãng đường – thời gian của vật.</span><span class="ql">b) Dựa vào đồ thị, tính tốc độ của vật.</span>',
+     ans:'a) Đồ thị là đường thẳng đi qua gốc O và điểm (3&nbsp;s;&nbsp;18&nbsp;m).<br>b) v = 6 m/s',
+     e:'a) Trục ngang Ot ghi thời gian, mỗi ô 1 s; trục đứng Os ghi quãng đường, mỗi ô 6 m. Chấm 4 điểm trong bảng rồi nối lại được <span class="k">một đường thẳng đi qua O</span>. b) Chọn một điểm dễ đọc trên đồ thị, ví dụ (3&nbsp;s;&nbsp;18&nbsp;m), rồi lấy quãng đường chia thời gian.',
+     fm:'v = s : t = 18 : 3 = 6 m/s',
+     ef:()=>graph({alt:'Đường thẳng qua O và các điểm (1 s; 6 m) đến (3&nbsp;s;&nbsp;18&nbsp;m)', xMax:3.4, yMax:21, xTicks:[0,1,2,3], yTicks:[0,6,12,18], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[3,18]]}], guides:[{x:3,y:18,xl:'3 s',yl:'18 m',hl:true}], points:[[1,6],[2,12],[3,18]].map(([x,y])=>({x,y}))})},
+    {pts:3, q:'Một người chạy bộ đều được quãng đường 2&nbsp;400 m trong 20 phút. Tính tốc độ của người đó theo đơn vị m/s.',
+     ans:'v = 2 m/s',
+     e:'Đề hỏi m/s nên phải <span class="k">đổi phút ra giây</span> trước: 20 phút = 20 × 60 = 1&nbsp;200 s. Sau đó lấy quãng đường chia thời gian.',
+     fm:'v = s : t = 2&nbsp;400 : 1&nbsp;200 = 2 m/s'},
+    {pts:3, q:'Một máy bay bay đều với tốc độ 250 m/s.<span class="ql">a) Đổi tốc độ của máy bay sang km/h.</span><span class="ql">b) Máy bay cần bao nhiêu thời gian để bay quãng đường 2&nbsp;700 km?</span><span class="ql">c) Nếu máy bay cất cánh lúc 8 giờ 15 phút thì đến nơi lúc mấy giờ?</span>',
+     ans:'a) 900 km/h<br>b) 3 giờ<br>c) 11 giờ 15 phút',
+     e:'a) 1 m/s = 3,6 km/h nên 250 m/s = 250 × 3,6 = <span class="k">900 km/h</span>. b) Quãng đường tính bằng km, tốc độ bằng km/h nên chia thẳng ra giờ. c) Cộng thời gian bay vào giờ cất cánh.',
+     fm:'t = s : v = 2&nbsp;700 : 900 = 3 h<small>8 giờ 15 phút + 3 giờ = 11 giờ 15 phút</small>'}
+  ]
+},
+{
   grade:'8', lesson:'Bài 14', title:'Thực hành xác định khối lượng riêng', sub:'Khoa học tự nhiên 8, Kết nối tri thức', note:'', kind:'Trắc nghiệm + Đúng/Sai + tự luận',
   accent:'#D4701A', accentBg:'#FCEBDD', accentDark:'#FFA14F', accentBgDark:'#3B2614',
   questions:[
@@ -859,7 +943,7 @@ const SETS=[
 
 /* ---------- app ---------- */
 const $=s=>document.querySelector(s);
-const app=$('#app'), home=$('#home'), quiz=$('#quiz'), result=$('#result');
+const app=$('#app'), home=$('#home'), quiz=$('#quiz'), exam=$('#exam'), result=$('#result');
 const timerEl=$('#timer'), ring=$('#ring'), tnum=$('#tnum'), tlab=$('#tlab');
 const C=2*Math.PI*52;
 const DUR_OF={easy:25, mid:30, apply:30};   // giây cho mỗi mức độ
@@ -875,7 +959,8 @@ const isTimed=()=>S.set && S.set.timed!==false && !(S.qs[S.i]||{}).type;
 ring.style.strokeDasharray=C;
 
 function show(sec){
-  [home,quiz,result].forEach(x=>x.hidden=(x!==sec));
+  [home,quiz,exam,result].forEach(x=>x.hidden=(x!==sec));
+  app.classList.toggle('wide',sec===exam);
   $('#btnHome').hidden=(sec===home);
   $('#counter').hidden=(sec!==quiz);
   $('#progress').hidden=(sec!==quiz);
@@ -885,7 +970,7 @@ function show(sec){
 function setVars(s){ return `--a-light:${s.accent};--a-bg-light:${s.accentBg};--a-dark:${s.accentDark};--a-bg-dark:${s.accentBgDark}`; }
 
 function renderHome(){
-  stopTimer();
+  stopTimer(); exStop();
   const grades=[...new Set(SETS.map(s=>s.grade))];
   $('#toc').innerHTML=grades.map(g=>{
     const list=SETS.map((s,i)=>({s,i})).filter(x=>x.s.grade===g);
@@ -897,7 +982,7 @@ function renderHome(){
         return `<li><div class="row has-modes"><span class="rt"><span class="rt-title">${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}25–30 giây mỗi câu. Chọn phần muốn ôn:</span><span class="modes">${btns}</span></span></div></li>`;
       }
       const mixed=s.questions.some(q=>q.type);
-      const info=s.timed===false?`${s.questions.length} câu, không tính giờ, làm xong tự đối chiếu đáp án`:mixed?`${s.questions.length} câu; trắc nghiệm 25–30 giây mỗi câu, Đúng/Sai và tự luận không tính giờ`:`${s.questions.length} câu, 25–30 giây mỗi câu`;
+      const info=s.exam?`${s.questions.length} câu, làm bài trong ${s.exam} phút, ${s.questions.reduce((a,q)=>a+(q.pts||0),0)} điểm`:s.timed===false?`${s.questions.length} câu, không tính giờ, làm xong tự đối chiếu đáp án`:mixed?`${s.questions.length} câu; trắc nghiệm 25–30 giây mỗi câu, Đúng/Sai và tự luận không tính giờ`:`${s.questions.length} câu, 25–30 giây mỗi câu`;
       return `<li><button class="row" type="button" data-i="${i}"><span class="rt"><span class="rt-title">${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}${info}</span></span><span class="go">Bắt đầu</span></button></li>`;
     }).join('');
     return `<div class="grade-group" data-grade="${g}" style="${setVars(first)}"><div class="grade-head"><span class="grade">${g}</span><span class="grade-sub">${first.sub}</span></div><ul class="sets">${rows}</ul></div>`;
@@ -910,6 +995,7 @@ function renderHome(){
 
 function startSet(i,modeId){
   const s=SETS[i];
+  if(s.exam){ startExam(s); return; }
   let qs=s.questions, mode=null;
   if(s.modes){ mode=s.modes.find(m=>m.id===modeId)||s.modes[0]; qs=qs.filter(mode.filter); }
   S={set:s, qs, mode, i:0, ans:[], pick:null, revealed:false};
@@ -993,6 +1079,87 @@ function togglePause(){
     T.iv=setInterval(tick,200);
   }
   syncPause();
+}
+
+/* ---------- đề kiểm tra: các câu hiện cùng lúc, một đồng hồ đếm ngược chung ---------- */
+const exTimerEl=$('#exTimer'), exRing=$('#exRing'), exNum=$('#exNum'), exLab=$('#exLab');
+exRing.style.strokeDasharray=C;
+let E={set:null, total:0, left:0, end:0, on:false, iv:0, sec:0, over:false};
+const mmss=ms=>{ const t=Math.ceil(ms/1000); return `${Math.floor(t/60)}:${String(t%60).padStart(2,'0')}`; };
+
+function startExam(s){
+  exStop();
+  E={set:s, total:s.exam*60000, left:s.exam*60000, end:0, on:false, iv:0, sec:0, over:false};
+  S={set:s, qs:s.questions, mode:null, i:0, ans:[], pick:null, revealed:false};
+  app.style.setProperty('--a-light',s.accent); app.style.setProperty('--a-bg-light',s.accentBg);
+  app.style.setProperty('--a-dark',s.accentDark); app.style.setProperty('--a-bg-dark',s.accentBgDark);
+  const total=s.questions.reduce((a,q)=>a+(q.pts||0),0);
+  $('#topMain').textContent=`Lớp ${s.grade}, ${s.lesson.toLowerCase()}`;
+  $('#topSub').textContent=`${s.kind}, ${s.questions.length} câu, ${total} điểm`;
+  $('#exTitle').textContent=s.title;
+  $('#exSub').textContent=`${s.exam} phút · ${s.questions.length} câu · ${total} điểm`;
+  $('#exList').innerHTML=s.questions.map((q,k)=>`<li class="ex-q" data-k="${k}"><div class="qtext"><b>Câu ${k+1}</b> <span class="ex-pts">(${fmt(q.pts)} điểm)</span>: ${q.q}</div><button type="button" class="btn ghost show-ans">Hiện đáp án</button></li>`).join('');
+  $('#exOver').hidden=true; exSyncAll();
+  exTimerEl.classList.remove('low','over'); exTimerEl.classList.add('paused');
+  exLab.textContent='phút'; exPaint(E.left); exSync();
+  show(exam);
+}
+function exPaint(ms){
+  exRing.style.strokeDashoffset=C*(1-ms/E.total);
+  exNum.textContent=mmss(ms);
+  exTimerEl.classList.toggle('low', ms>0 && ms<=60000);
+}
+function exTick(){
+  if(!E.on) return;
+  const left=Math.max(0,E.end-Date.now()); E.left=left;
+  exPaint(left);
+  const sec=Math.ceil(left/1000);
+  if(sec!==E.sec){ E.sec=sec; if(sec>0&&sec<=5) tickSound(sec); }
+  if(left<=0) exTimeUp();
+}
+function exTimeUp(){
+  exStop(); E.over=true;
+  exTimerEl.classList.remove('paused','low'); exTimerEl.classList.add('over');
+  exLab.textContent='hết giờ'; exSync();
+  $('#exOver').hidden=false;
+  buzz(); setTimeout(buzz,500);
+}
+function exStop(){ E.on=false; clearInterval(E.iv); }
+function exSync(){
+  const b=$('#exPause'), fresh=!E.on&&E.left===E.total;
+  b.textContent=E.over?'Hết giờ':E.on?'⏸ Tạm dừng':fresh?'▶ Bắt đầu':'▶ Tiếp tục';
+  b.classList.toggle('on',!E.on&&!fresh&&!E.over);
+  b.disabled=E.over;
+}
+function exToggle(){
+  if(exam.hidden || E.over) return;
+  if(E.on){
+    E.left=Math.max(0,E.end-Date.now()); exStop();
+    exTimerEl.classList.add('paused'); exLab.textContent='tạm dừng';
+  } else {
+    E.end=Date.now()+E.left; E.on=true;
+    exTimerEl.classList.remove('paused'); exLab.textContent='còn lại';
+    E.iv=setInterval(exTick,200);
+  }
+  exSync();
+}
+/* hiện hoặc ẩn đáp án của một câu; show bỏ trống thì đảo trạng thái */
+function exReveal(li,show){
+  const q=E.set.questions[+li.dataset.k], b=li.querySelector('.show-ans');
+  let exp=li.querySelector('.exp');
+  if(show===undefined) show=!exp||exp.hidden;
+  if(show&&!exp){
+    li.insertAdjacentHTML('beforeend',`<div class="exp neutral"><strong>Đáp án</strong>${expBody(q,`<p class="answer">${q.ans}</p>`)}</div>`);
+    exp=li.querySelector('.exp');
+  }
+  if(exp) exp.hidden=!show;
+  b.textContent=show?'Ẩn đáp án':'Hiện đáp án';
+  b.classList.toggle('on',show);
+  exSyncAll();
+}
+function exSyncAll(){
+  const all=[...document.querySelectorAll('#exList .exp')].filter(x=>!x.hidden).length===E.set.questions.length;
+  $('#exAll').textContent=all?'Ẩn tất cả đáp án':'Hiện tất cả đáp án';
 }
 
 /* explanation block shared by all question types */
@@ -1212,6 +1379,14 @@ $('#btnOther').addEventListener('click',renderHome);
 $('#btnSound').addEventListener('click',toggleSound);
 timerEl.addEventListener('click',togglePause);
 $('#btnPause').addEventListener('click',togglePause);
+exTimerEl.addEventListener('click',exToggle);
+$('#exPause').addEventListener('click',exToggle);
+$('#exList').addEventListener('click',e=>{ if(e.target.closest('.show-ans')) exReveal(e.target.closest('.ex-q')); });
+$('#exAll').addEventListener('click',()=>{
+  const show=$('#exAll').textContent.startsWith('Hiện');
+  document.querySelectorAll('#exList .ex-q').forEach(li=>exReveal(li,show));
+  if(!show) scrollTo({top:0,behavior:'smooth'});
+});
 
 document.addEventListener('keydown',e=>{
   if(e.altKey||e.ctrlKey||e.metaKey) return;
@@ -1233,6 +1408,11 @@ document.addEventListener('keydown',e=>{
       e.preventDefault();
       S.revealed ? next() : reveal(null,false);
     }
+    return;
+  }
+  if(!exam.hidden){
+    if(k==='p'){ exToggle(); return; }
+    if(k==='escape') renderHome();
     return;
   }
   if(!result.hidden && k==='escape') renderHome();
