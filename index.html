@@ -642,6 +642,102 @@ function figKinetic(){
   return s+'</svg>';
 }
 
+/* ---------- Bài 11 lớp 7: biển báo, bảng, khoảng cách ---------- */
+const SG_RED='#D7262B', SG_BLUE='#1F5FB8', SG_INK='#111';
+function sign(kind,cx,cy,r,txt){
+  const fs=r*((txt||'').length>=3?0.62:0.86), ty=cy+fs*0.36;
+  const num=(fill)=>`<text x="${cx}" y="${ty.toFixed(1)}" text-anchor="middle" font-size="${fs.toFixed(1)}" font-weight="800" fill="${fill}" font-family="Arial,Helvetica,sans-serif">${txt}</text>`;
+  if(kind==='min') return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${SG_BLUE}" stroke="#fff" stroke-width="2"/>`+num('#fff');
+  if(kind==='end'){
+    let s=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fff" stroke="${SG_INK}" stroke-width="2"/>`+num('#8A8A8A');
+    const ri=r*0.9;
+    [-0.5,-0.25,0,0.25,0.5].forEach(k=>{ const d=k*ri, L=Math.sqrt(ri*ri-d*d), ox=cx+d/Math.SQRT2, oy=cy+d/Math.SQRT2, h=L/Math.SQRT2;
+      s+=`<line x1="${(ox-h).toFixed(1)}" y1="${(oy+h).toFixed(1)}" x2="${(ox+h).toFixed(1)}" y2="${(oy-h).toFixed(1)}" stroke="${SG_INK}" stroke-width="1.6"/>`; });
+    return s;
+  }
+  let s=`<circle cx="${cx}" cy="${cy}" r="${r-r*0.11}" fill="#fff" stroke="${SG_RED}" stroke-width="${(r*0.22).toFixed(1)}"/>`;
+  if(kind==='gap'){
+    const car=(x,y,w)=>`<rect x="${x}" y="${y}" width="${w}" height="${w*0.42}" rx="3" fill="${SG_INK}"/><circle cx="${x+w*0.25}" cy="${y+w*0.45}" r="${w*0.1}" fill="${SG_INK}"/><circle cx="${x+w*0.75}" cy="${y+w*0.45}" r="${w*0.1}" fill="${SG_INK}"/>`;
+    const w=r*0.5;
+    s+=car(cx-r*0.68,cy+r*0.02,w)+car(cx+r*0.18,cy+r*0.02,w);
+    s+=`<text x="${cx}" y="${(cy-r*0.22).toFixed(1)}" text-anchor="middle" font-size="${(r*0.42).toFixed(1)}" font-weight="800" fill="${SG_INK}" font-family="Arial,Helvetica,sans-serif">${txt}</text>`;
+    return s;
+  }
+  return s+num(SG_INK);
+}
+/* một hàng biển báo, mỗi biển có nhãn bên dưới */
+function figSigns(items,alt){
+  const n=items.length, W=400, col=W/n, r=n>2?44:50, H=r*2+(items.some(i=>i.note)?66:44);
+  let s=`<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="${alt||'Biển báo giao thông'}">`;
+  items.forEach((it,i)=>{
+    const cx=col*i+col/2;
+    s+=sign(it.kind,cx,r+4,r,it.txt);
+    if(it.label) s+=`<text class="${it.hl?'g-hl':'c-cap'}" x="${cx}" y="${r*2+28}" text-anchor="middle">${it.label}</text>`;
+    if(it.note) s+=`<text class="c-note" x="${cx}" y="${r*2+48}" text-anchor="middle">${it.note}</text>`;
+  });
+  return s+'</svg>';
+}
+/* bảng đơn giản: cols = vị trí x mỗi cột, hl = chỉ số hàng tô sáng */
+function figTable(o){
+  const W=400, rh=o.rh||32, top=o.title?30:6, H=top+rh*(o.rows.length+1)+8, cols=o.cols;
+  let s=`<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="${o.alt||'Bảng số liệu'}">`;
+  if(o.title) s+=`<text class="c-note" x="${W/2}" y="18" text-anchor="middle">${o.title}</text>`;
+  s+=`<rect x="4" y="${top}" width="${W-8}" height="${rh}" rx="6" style="fill:var(--accent-bg)"/>`;
+  o.head.forEach((h,j)=>{ s+=`<text class="c-cap" x="${cols[j]}" y="${top+rh/2+5}" text-anchor="${j?'middle':'start'}" font-weight="700">${h}</text>`; });
+  o.rows.forEach((r,i)=>{
+    const y=top+rh*(i+1), on=i===o.hl;
+    if(on) s+=`<rect x="4" y="${y+2}" width="${W-8}" height="${rh-4}" rx="6" style="fill:none;stroke:var(--accent);stroke-width:2"/>`;
+    r.forEach((c,j)=>{ s+=`<text class="${on?'g-hl':j?'g-plab':'g-lab'}" x="${cols[j]}" y="${y+rh/2+5}" text-anchor="${j?'middle':'start'}">${c}</text>`; });
+    if(i<o.rows.length-1) s+=`<line class="g-grid" x1="8" y1="${y+rh}" x2="${W-8}" y2="${y+rh}"/>`;
+  });
+  return s+'</svg>';
+}
+const SPEED_ROWS=[['Ô tô con; xe chở người ≤ 30 chỗ; tải ≤ 3,5 tấn','80'],['Xe chở người > 30 chỗ; ô tô tải > 3,5 tấn','70'],['Xe buýt; đầu kéo; xe mô tô; xe chuyên dùng','60'],['Ô tô kéo rơ moóc; xe trộn bê tông','50']];
+const figSpeed=hl=>figTable({alt:'Hình 11.1: tốc độ tối đa của từng loại xe trên đường không có giải phân cách cứng, ngoài khu đông dân cư', title:'Hình 11.1. Tốc độ tối đa (đường không có giải phân cách cứng)', head:['Loại xe','km/h'], cols:[14,360], rows:SPEED_ROWS, hl});
+const SAFE_ROWS=[['v = 60','35'],['60 < v ≤ 80','55'],['80 < v ≤ 100','70'],['100 < v ≤ 120','100']];
+const figSafe=hl=>figTable({alt:'Bảng 11.1: khoảng cách an toàn tối thiểu theo tốc độ', title:'Bảng 11.1. Khoảng cách an toàn tối thiểu', head:['Tốc độ v (km/h)','Khoảng cách (m)'], cols:[24,290], rows:SAFE_ROWS, hl});
+const ACC=[[2016,21589,8685],[2017,20080,8279],[2018,18232,8125],[2019,17626,7624],[2020,14510,6700]];
+const nf=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+const figAccTable=()=>figTable({alt:'Bảng 11.2: số vụ tai nạn và số người chết từ 2016 đến 2020', title:'Bảng 11.2. Tai nạn giao thông 2016 – 2020', head:['Năm','Số vụ tai nạn','Số người chết'], cols:[30,200,330], rh:28, rows:ACC.map(r=>[r[0],nf(r[1]),nf(r[2])])});
+const r100=n=>Math.round(n/100)*100;
+const figAccGraph=()=>graph({alt:'Đồ thị số vụ tai nạn giao thông từ 2016 đến 2020, giảm dần', xMax:5.6, yMax:24000, xTicks:[0,1,2,3,4,5], yTicks:[0,4000,8000,12000,16000,20000,24000], noTickLabels:true, xLabel:'năm', yLabel:'số vụ',
+  series:[{pts:ACC.map(r=>[r[0]-2015,r100(r[1])])}], points:ACC.map(r=>({x:r[0]-2015,y:r100(r[1]),label:nf(r100(r[1])),dx:-18,dy:-10})),
+  extra:(X,Y)=>ACC.map(r=>`<text class="g-lab" x="${X(r[0]-2015)}" y="${Y(0)+18}" text-anchor="middle">${r[0]}</text>`).join('')+[4000,8000,12000,16000,20000,24000].map(v=>`<text class="g-lab" x="${X(0)-6}" y="${Y(v)+4}" text-anchor="end">${nf(v)}</text>`).join('')});
+/* biển báo tốc độ trên đường cao tốc (Hình 11.2) */
+function figHighway(){
+  let s=`<svg class="fig" viewBox="0 0 400 230" role="img" aria-label="Hình 11.2: trên cao tốc, tối đa 120 km/h khi không mưa, 100 km/h khi trời mưa">`;
+  s+=`<rect x="20" y="8" width="130" height="214" rx="8" fill="${SG_BLUE}"/>`;
+  s+=`<path d="M70 52 L80 18 M100 52 L90 18 M85 50 V44 M85 36 V30 M85 24 V20" stroke="#fff" stroke-width="3" fill="none"/>`;
+  s+=`<rect x="28" y="62" width="114" height="72" rx="4" fill="#fff"/>`+sign('max',85,98,30,'120');
+  s+=`<rect x="28" y="142" width="114" height="72" rx="4" fill="#fff"/>`+sign('max',68,178,30,'100');
+  s+=`<path d="M108 172 q4-12 16-10 q10-8 18 4 q8 2 6 10 h-38 q-6-2-2-4z" fill="#888"/>`;
+  [112,122,132].forEach(x=>{ s+=`<line x1="${x}" y1="188" x2="${x-4}" y2="200" stroke="#888" stroke-width="2"/>`; });
+  s+=`<text class="c-cap" x="166" y="92" font-weight="700">Trời không mưa (nắng):</text><text class="c-call" x="166" y="114">tốc độ tối đa 120 km/h</text>`;
+  s+=`<text class="c-cap" x="166" y="172" font-weight="700">Trời mưa:</text><text class="c-call" x="166" y="194">tốc độ tối đa 100 km/h</text>`;
+  return s+'</svg>';
+}
+/* hai xe nối đuôi nhau và khoảng cách giữa chúng */
+function figGap(top,bottom){
+  const car=(x,col)=>`<rect x="${x}" y="58" width="64" height="26" rx="7" style="fill:${col}"/><rect x="${x+12}" y="46" width="36" height="16" rx="5" style="fill:${col}"/><circle cx="${x+15}" cy="86" r="7" class="p-dot"/><circle cx="${x+49}" cy="86" r="7" class="p-dot"/>`;
+  let s=`<svg class="fig" viewBox="0 0 400 150" role="img" aria-label="Hai ô tô đi cùng chiều, giữ khoảng cách an toàn">`;
+  s+=`<line class="g-axis" x1="8" y1="94" x2="392" y2="94"/>`;
+  s+=car(20,'var(--ink-2)')+car(316,'var(--accent)');
+  s+=arrow(90,70,312,70,'h-v')+arrow(312,70,90,70,'h-v');
+  s+=`<text class="c-call" x="200" y="60" text-anchor="middle">${top}</text>`;
+  if(bottom) s+=`<text class="c-note" x="200" y="124" text-anchor="middle">${bottom}</text>`;
+  return s+'</svg>';
+}
+/* trục tốc độ, tô vùng được phép */
+function figRange(lo,hi){
+  const X=v=>30+v/140*340;
+  let s=`<svg class="fig" viewBox="0 0 400 110" role="img" aria-label="Vùng tốc độ được phép từ ${lo} đến ${hi} km/h">`;
+  s+=`<line class="g-axis" x1="30" y1="60" x2="378" y2="60"/><polygon class="g-arrow" points="386,60 376,55 376,65"/>`;
+  s+=`<rect x="${X(lo)}" y="50" width="${X(hi)-X(lo)}" height="20" rx="4" style="fill:var(--accent);opacity:.3"/>`;
+  [0,20,40,60,80,100,120].forEach(v=>{ s+=`<line class="c-tick" x1="${X(v)}" y1="56" x2="${X(v)}" y2="64"/><text class="${v===lo||v===hi?'g-hl':'g-lab'}" x="${X(v)}" y="84" text-anchor="middle">${v}</text>`; });
+  s+=`<text class="c-call" x="${(X(lo)+X(hi))/2}" y="40" text-anchor="middle">được phép đi</text><text class="g-title" x="378" y="100" text-anchor="end">v (km/h)</text>`;
+  return s+'</svg>';
+}
+
 /* ---------- question bank ---------- */
 const G7=()=>graph({alt:'Đồ thị ba đoạn: OA từ O đến (2 h; 180 km), AB nằm ngang đến (3 h; 180 km), BC lên (4 h; 270 km)', xMax:4.4, yMax:300, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,90,180,270], series:[{pts:[[0,0],[2,180],[3,180],[4,270]]}], points:[{x:2,y:180,label:'A',dx:-16,dy:-8},{x:3,y:180,label:'B',dx:6,dy:18},{x:4,y:270,label:'C',dx:8,dy:4}]});
 const G7X=(extraGuides,extra)=>graph({alt:'Đồ thị ba đoạn OA, AB, BC có chú thích', xMax:4.4, yMax:300, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,90,180,270], series:[{pts:[[0,0],[2,180],[3,180],[4,270]]}], guides:extraGuides||[], points:[{x:2,y:180,label:'A',dx:-16,dy:-8},{x:3,y:180,label:'B',dx:6,dy:18},{x:4,y:270,label:'C',dx:8,dy:4}], extra});
@@ -719,6 +815,94 @@ const SETS=[
      e:'Đoạn nằm ngang: thời gian cứ trôi mà s vẫn là 50 m, vật không đi thêm được mét nào, tức là đang dừng lại. Trước đó vật đã đi được 50 m rồi mới dừng.',
      fm:'s không đổi ⇒ v = 0',
      ef:()=>graph({alt:'Đồ thị đi lên tới 50 m rồi nằm ngang', xMax:6, yMax:60, xTicks:[0,1,2,3,4,5,6], yTicks:[0,25,50], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[2,50],[5.6,50]]}], extra:(X,Y)=>`<text class="c-call" x="${X(3.8)}" y="${Y(50)-10}" text-anchor="middle">s = 50 m không đổi → đứng yên</text>`})}
+  ]
+},
+{
+  grade:'7', lesson:'Bài 11', title:'Thảo luận về ảnh hưởng của tốc độ trong an toàn giao thông', sub:'Khoa học tự nhiên 7, Kết nối tri thức', note:'', kind:'Trắc nghiệm + Đúng/Sai + tự luận',
+  accent:'#1E6FD9', accentBg:'#E4EEFC', accentDark:'#6CA6FF', accentBgDark:'#1B2B4B',
+  questions:[
+    {lv:'easy', q:'Biển báo nào dưới đây quy định tốc độ tối đa cho phép của phương tiện tham gia giao thông?',
+     fig:()=>figSigns([{kind:'end',txt:'40',label:'A'},{kind:'max',txt:'10T',label:'B'},{kind:'max',txt:'40',label:'C'}],'Ba biển báo A, B, C'),
+     o:['Biển A.','Biển B.','Biển C.'], a:2,
+     e:'Biển tốc độ tối đa là <span class="k">hình tròn, viền đỏ, số màu đen</span> chỉ km/h. Biển A (nền trắng, có các vạch chéo) là biển <span class="k">hết</span> hạn chế tốc độ tối đa; biển B ghi "10T" là hạn chế trọng tải 10 tấn.',
+     ef:()=>figSigns([{kind:'end',txt:'40',label:'A',note:'hết hạn chế tốc độ'},{kind:'max',txt:'10T',label:'B',note:'hạn chế trọng tải'},{kind:'max',txt:'40',label:'C',hl:true,note:'tối đa 40 km/h'}],'Ý nghĩa ba biển báo')},
+    {lv:'easy', q:'Cự li tối thiểu giữa 2 xe trên đoạn đường có biển báo này là bao nhiêu?',
+     fig:()=>figSigns([{kind:'gap',txt:'8m'}],'Biển cự li tối thiểu giữa hai xe, ghi 8 m'),
+     o:['5 m.','7 m.','8 m.','9 m.'], a:2,
+     e:'Biển vẽ hai ô tô nối đuôi nhau và ghi <span class="k">8 m</span>: các xe phải giữ khoảng cách với xe phía trước không nhỏ hơn 8 m.',
+     ef:()=>figGap('ít nhất 8 m','biển báo cự li tối thiểu giữa hai xe')},
+    {lv:'mid', q:'Trên đoạn đường có biển báo này, các phương tiện tham gia giao thông được đi với tốc độ trong khoảng',
+     fig:()=>figSigns([{kind:'max',txt:'100',label:'tối đa'},{kind:'min',txt:'60',label:'tối thiểu'}],'Biển tốc độ tối đa 100 và biển tốc độ tối thiểu 60'),
+     o:['lớn hơn 60 km/h.','từ 60 km/h đến dưới 100 km/h.','nhỏ hơn 100 km/h.','có thể đi với tốc độ tùy ý.'], a:1,
+     e:'Biển <span class="k">viền đỏ</span> ghi 100 là tốc độ tối đa: không được vượt quá 100 km/h. Biển <span class="k">nền xanh</span> ghi 60 là tốc độ tối thiểu: không được đi chậm hơn 60 km/h.',
+     ef:()=>figRange(60,100)},
+    {lv:'mid', q:'Trên đoạn đường áp dụng bảng tốc độ tối đa dưới đây, xe buýt được đi với tốc độ tối đa là',
+     fig:()=>figSpeed(),
+     o:['80 km/h.','70 km/h.','60 km/h.','50 km/h.'], a:2,
+     e:'Dò bảng tìm hàng có <span class="k">xe buýt</span> (xếp chung với ô tô đầu kéo, xe mô tô, xe chuyên dùng), cột bên phải ghi 60 km/h.',
+     ef:()=>figSpeed(2)},
+    {lv:'mid', q:'Một ô tô đi với tốc độ 20 m/s trên đoạn đường có biển báo này thì có vi phạm quy định về tốc độ không?',
+     fig:()=>figSigns([{kind:'max',txt:'80'}],'Biển tốc độ tối đa 80 km/h'),
+     o:['Không vi phạm.','Có vi phạm.'], a:0,
+     e:'Biển ghi tốc độ theo km/h, nên phải đổi 20 m/s sang km/h (nhân 3,6) rồi mới so sánh. 72 km/h nhỏ hơn 80 km/h nên xe không vi phạm.',
+     fm:'20 m/s = 20 × 3,6 = 72 km/h < 80 km/h',
+     ef:()=>figBars({alt:'So sánh 72 km/h với giới hạn 80 km/h', max:90, rows:[{label:'Tốc độ ô tô',val:72,text:'72 km/h'},{label:'Tối đa cho phép',val:80,text:'80 km/h',color:'var(--bad)'}]})},
+    {lv:'mid', q:'Khoảng cách an toàn đối với ô tô chạy với tốc độ 25 m/s là bao nhiêu?',
+     fig:()=>figSafe(),
+     o:['35 m.','55 m.','70 m.','100 m.'], a:2,
+     e:'Bảng ghi tốc độ theo km/h nên đổi trước: 25 m/s = 90 km/h. Tốc độ 90 km/h nằm trong khoảng <span class="k">80 &lt; v ≤ 100</span>, ứng với khoảng cách an toàn tối thiểu 70 m.',
+     fm:'25 m/s = 25 × 3,6 = 90 km/h',
+     ef:()=>figSafe(2)},
+    {lv:'mid', q:'Ô tô chạy trên đường cao tốc có biển báo tốc độ như trong Hình 11.2 với tốc độ v nào sau đây là an toàn?',
+     fig:figHighway,
+     o:['Khi trời mưa: 100 km/h < v < 120 km/h.','Khi trời nắng: v < 120 km/h.','Khi trời mưa: 100 km/h < v < 110 km/h.','Khi trời nắng: v > 120 km/h.'], a:1,
+     e:'Khi trời không mưa, tốc độ tối đa là <span class="k">120 km/h</span>, nên đi dưới 120 km/h là đúng. Khi trời mưa, tối đa chỉ còn <span class="k">100 km/h</span>, nên các phương án đi trên 100 km/h lúc mưa đều sai.',
+     ef:figHighway},
+    {lv:'apply', q:'Áp dụng quy tắc "3 giây" tính được khoảng cách an toàn của ô tô chạy với tốc độ 90 km/h là',
+     o:['75 m.','30 m.','100 m.','270 m.'], a:0,
+     e:'Quy tắc "3 giây": khoảng cách an toàn bằng quãng đường xe đi được trong 3 giây. Đổi tốc độ sang m/s rồi nhân với 3.',
+     fm:'90 km/h = 90 : 3,6 = 25 m/s ; s = 25 × 3 = 75 m',
+     ef:()=>figGap('s = 25 × 3 = 75 m','quãng đường xe đi được trong 3 giây')},
+    {lv:'apply', q:'Theo quy tắc "3 giây", khoảng cách 30 m là an toàn với xe chạy tốc độ tối đa bao nhiêu?',
+     o:['30 km/h.','36 km/h.','40 km/h.','46 km/h.'], a:1,
+     e:'Làm ngược lại quy tắc "3 giây": 30 m là quãng đường đi trong 3 giây, nên tốc độ bằng 30 chia 3, rồi đổi sang km/h.',
+     fm:'v = 30 : 3 = 10 m/s = 10 × 3,6 = 36 km/h',
+     ef:()=>figGap('30 m trong 3 s','v = 30 : 3 = 10 m/s = 36 km/h')},
+    {type:'tf', lv:'apply', q:'Người điều khiển phương tiện tham gia giao thông cần',
+     items:[
+       {t:'đi đúng hướng đường, làn đường cho phép.', ans:true, e:'Đúng. Đi sai làn, sai hướng dễ gây va chạm.'},
+       {t:'quan sát các biển báo và tuân thủ quy định an toàn.', ans:true, e:'Đúng. Biển báo cho biết tốc độ tối đa, tối thiểu, khoảng cách cần giữ.'},
+       {t:'đi với tốc độ nhanh nhất.', ans:false, e:'Sai. Phải đi đúng tốc độ quy định; đi càng nhanh càng khó dừng kịp và va chạm càng nặng.'},
+       {t:'giảm tốc độ khi trời mưa hoặc khi đi vào đoạn đường xấu.', ans:true, e:'Đúng. Đường trơn, tầm nhìn kém thì xe cần quãng đường dài hơn mới dừng được.'},
+       {t:'đi sát với phương tiện phía trước.', ans:false, e:'Sai. Phải giữ khoảng cách an toàn để kịp phanh khi xe trước dừng đột ngột.'}
+     ],
+     e:'Ý nào khuyên <span class="k">đi nhanh nhất</span> hoặc <span class="k">đi sát xe trước</span> là sai: cả hai đều làm giảm thời gian và quãng đường để xử lí tình huống.',
+     ef:()=>figGap('giữ khoảng cách an toàn','không đi sát xe phía trước')},
+    {type:'short', lv:'apply', q:'Camera của thiết bị bắn tốc độ đặt trên đường bộ không có giải phân cách cứng ghi được thời gian của một ô tô tải chở 4 tấn hàng chạy từ vạch mốc 1 sang vạch mốc 2 cách nhau 10 m là 0,50 s. Hỏi xe có vi phạm quy định về tốc độ tối đa trong Hình 11.1 không?',
+     fig:()=>figSpeed(),
+     ans:'Có vi phạm: xe chạy 72 km/h, vượt tốc độ tối đa 70 km/h.',
+     e:'Tính tốc độ xe từ quãng đường và thời gian, đổi sang km/h. Ô tô tải chở 4 tấn (trên 3,5 tấn) thuộc hàng tốc độ tối đa <span class="k">70 km/h</span>.',
+     fm:'v = 10 : 0,5 = 20 m/s = 72 km/h > 70 km/h',
+     ef:()=>figSpeed(1)},
+    {type:'short', lv:'apply', q:'Hãy dùng quy tắc "3 giây" để xác định khoảng cách an toàn của xe ô tô chạy với tốc độ 70 km/h. Khoảng cách tính được này có phù hợp với quy định về khoảng cách an toàn tối thiểu trong Bảng 11.1 không? Tại sao?',
+     fig:()=>figSafe(),
+     ans:'Khoảng 58 m. Phù hợp, vì Bảng 11.1 yêu cầu tối thiểu 55 m khi 60 < v ≤ 80 km/h, mà 58 m > 55 m.',
+     e:'Đổi 70 km/h sang m/s rồi nhân 3. Tốc độ 70 km/h thuộc khoảng 60 &lt; v ≤ 80, khoảng cách tối thiểu là 55 m; 58 m lớn hơn nên đạt yêu cầu.',
+     fm:'70 km/h = 70 : 3,6 ≈ 19,4 m/s ; s ≈ 19,4 × 3 ≈ 58 m',
+     ef:()=>figSafe(1)},
+    {type:'short', lv:'apply', q:'Dựa vào Bảng 11.2:<span class="ql">a) Vẽ đồ thị biểu diễn sự thay đổi về số vụ tai nạn giao thông hằng năm. Trục tung biểu diễn số vụ tai nạn, làm tròn tới hàng trăm (từ 50 trở lên coi là 100, dưới 50 coi là 0). Trục hoành biểu diễn thời gian theo đơn vị năm.</span><span class="ql">b) Dựa vào đồ thị, nhận xét về tình hình tai nạn giao thông nước ta từ năm 2016 đến năm 2020.</span>',
+     fig:figAccTable,
+     ans:'a) Các điểm: 21 600; 20 100; 18 200; 17 600; 14 500 (vụ). b) Số vụ tai nạn giảm liên tục qua từng năm, giảm mạnh nhất từ 2019 đến 2020; số người chết cũng giảm.',
+     e:'Làm tròn số vụ tới hàng trăm, chấm 5 điểm (năm; số vụ) rồi nối lại. Đường đồ thị đi xuống liên tục: tình hình tai nạn giao thông đã giảm, nhưng mỗi năm vẫn còn hàng chục nghìn vụ.',
+     fm:'21 589 ≈ 21 600 ; 20 080 ≈ 20 100 ; 18 232 ≈ 18 200 ; 17 626 ≈ 17 600 ; 14 510 ≈ 14 500',
+     ef:figAccGraph},
+    {type:'short', lv:'mid', q:'Để đảm bảo an toàn giao thông thì người tham gia giao thông cần phải làm những gì?',
+     ans:'Chấp hành luật giao thông: đi đúng làn, đúng tốc độ quy định; quan sát biển báo; giữ khoảng cách an toàn; giảm tốc khi trời mưa, đường xấu; đội mũ bảo hiểm, thắt dây an toàn; không sử dụng rượu bia khi lái xe.',
+     e:'Tốc độ càng lớn thì càng cần nhiều thời gian và quãng đường để dừng xe, va chạm càng nặng. Vì vậy quan trọng nhất là <span class="k">đi đúng tốc độ</span> và <span class="k">giữ khoảng cách</span>.',
+     ef:()=>figGap('khoảng cách an toàn','đi đúng tốc độ và giữ khoảng cách với xe phía trước')},
+    {type:'short', lv:'mid', q:'Sưu tầm tài liệu, tranh ảnh, video để trình bày và thảo luận về ảnh hưởng của tốc độ trong an toàn giao thông.',
+     ans:'Gợi ý: tốc độ càng cao thì quãng đường phanh càng dài và va chạm càng mạnh; nêu số liệu tai nạn do chạy quá tốc độ; giới thiệu biển báo tốc độ, quy tắc "3 giây", thiết bị bắn tốc độ; rút ra bài học: đi đúng tốc độ, giữ khoảng cách.',
+     e:'Bài trình bày nên có: nguyên nhân (chạy quá tốc độ, không giữ khoảng cách), hậu quả (số liệu, hình ảnh), biện pháp (biển báo, camera, ý thức người lái).'}
   ]
 },
 {
@@ -1027,7 +1211,7 @@ function renderQ(){
   const opts=$('#opts');
   if(q.type==='tf'){
     opts.className='tf-list'; S.pick=q.items.map(()=>null);
-    opts.innerHTML=q.items.map((it,k)=>`<div class="tf-row" data-k="${k}"><span class="key">${'abcd'[k]}</span><span class="tf-txt">${it.t}<span class="tf-e" hidden>${it.e}</span></span><span class="tf-btns"><button type="button" class="tf-btn" data-v="1">Đúng</button><button type="button" class="tf-btn" data-v="0">Sai</button></span></div>`).join('');
+    opts.innerHTML=q.items.map((it,k)=>`<div class="tf-row" data-k="${k}"><span class="key">${'abcde'[k]}</span><span class="tf-txt">${it.t}<span class="tf-e" hidden>${it.e}</span></span><span class="tf-btns"><button type="button" class="tf-btn" data-v="1">Đúng</button><button type="button" class="tf-btn" data-v="0">Sai</button></span></div>`).join('');
   } else if(q.type==='short'){
     opts.className='short-wrap';
     opts.innerHTML=`<button type="button" class="btn primary show-ans" id="btnShowAns">Hiện đáp án</button>`;
@@ -1190,7 +1374,7 @@ function reveal(picked,timedOut,instant){
       row.querySelector('.tf-e').hidden=false;
       row.classList.add(pick[k]===it.ans?'ok':(pick[k]===null?'skip':'bad'));
     });
-    const line=q.items.map((it,k)=>`${'abcd'[k]}) ${it.ans?'Đúng':'Sai'}`).join('; ');
+    const line=q.items.map((it,k)=>`${'abcde'[k]}) ${it.ans?'Đúng':'Sai'}`).join('; ');
     const head= !marked ? `Đáp án: ${line}.` : ok ? `Chính xác cả ${total} ý!` : `Đúng ${c}/${total} ý. Đáp án: ${line}.`;
     exp.className='exp '+(ok&&marked?'good':marked?'bad':'neutral');
     exp.innerHTML=`<strong>${head}</strong>${expBody(q)}`;
@@ -1399,8 +1583,8 @@ document.addEventListener('keydown',e=>{
   }
   if(!quiz.hidden){
     const q=S.qs[S.i], mcq=!q.type;
-    if(mcq && '1234'.includes(k)&&k!==''){ reveal(+k-1,false); return; }
-    if(mcq && 'abcd'.includes(k)&&k!==''){ reveal('abcd'.indexOf(k),false); return; }
+    if(mcq && '1234'.includes(k)&&k!==''&&+k<=q.o.length){ reveal(+k-1,false); return; }
+    if(mcq && 'abcd'.includes(k)&&k!==''&&'abcd'.indexOf(k)<q.o.length){ reveal('abcd'.indexOf(k),false); return; }
     if(k==='p'){ togglePause(); return; }
     if(k==='escape'){ renderHome(); return; }
     if(k==='enter'||k===' '){
