@@ -264,6 +264,13 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 .ex-table{border-collapse:collapse;margin:.5em 0 .3em;font-size:.92em;font-variant-numeric:tabular-nums}
 .ex-table th,.ex-table td{border:1.5px solid var(--line);padding:.2em .9em;text-align:center}
 .ex-table th{background:var(--accent-bg);color:var(--accent);font-weight:700}
+.ex-table.ex-tf{width:100%;font-size:1em;line-height:1.45;margin:.7em 0 .4em;border:2px solid color-mix(in srgb,var(--ink-2) 55%,transparent)}
+.ex-table.ex-tf th,.ex-table.ex-tf td{border:1.5px solid color-mix(in srgb,var(--ink-2) 45%,transparent);padding:.6em .8em}
+.ex-table.ex-tf th{font-size:1.02em;padding:.5em .8em}
+.ex-table.ex-tf tr:nth-child(odd) td{background:color-mix(in srgb,var(--accent-bg) 45%,transparent)}
+.ex-table.ex-tf td:first-child{text-align:left}
+.ex-table.ex-tf td+td,.ex-table.ex-tf th+th{width:4.2em}
+.ex-table.ex-tf td+td::before{content:"";display:inline-block;width:1.1em;height:1.1em;border:2px solid var(--ink-2);border-radius:4px;vertical-align:middle}
 .ex-q .show-ans{display:inline-block;font-size:max(.9rem,.55em);padding:.55em 1em;white-space:nowrap;margin-top:.15em}
 .ex-q .show-ans.on{border-color:var(--accent);color:var(--accent);background:var(--accent-bg)}
 .ex-q .exp{grid-column:1/-1;margin-top:4px;font-size:max(1rem,.68em)}
@@ -764,6 +771,8 @@ function figChain(steps,alt){
   return s+'</svg>';
 }
 
+/* bảng Đúng/Sai để trống cho đề kiểm tra */
+const exTF=list=>'<table class="ex-table ex-tf"><tr><th>Phát biểu</th><th>Đúng</th><th>Sai</th></tr>'+list.map((t,k)=>`<tr><td><b>${'abcd'[k]}.</b> ${t}</td><td></td><td></td></tr>`).join('')+'</table>';
 /* ---------- question bank ---------- */
 const G7=()=>graph({alt:'Đồ thị ba đoạn: OA từ O đến (2 h; 180 km), AB nằm ngang đến (3 h; 180 km), BC lên (4 h; 270 km)', xMax:4.4, yMax:300, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,90,180,270], series:[{pts:[[0,0],[2,180],[3,180],[4,270]]}], points:[{x:2,y:180,label:'A',dx:-16,dy:-8},{x:3,y:180,label:'B',dx:6,dy:18},{x:4,y:270,label:'C',dx:8,dy:4}]});
 const G7X=(extraGuides,extra)=>graph({alt:'Đồ thị ba đoạn OA, AB, BC có chú thích', xMax:4.4, yMax:300, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,90,180,270], series:[{pts:[[0,0],[2,180],[3,180],[4,270]]}], guides:extraGuides||[], points:[{x:2,y:180,label:'A',dx:-16,dy:-8},{x:3,y:180,label:'B',dx:6,dy:18},{x:4,y:270,label:'C',dx:8,dy:4}], extra});
@@ -1147,6 +1156,52 @@ const SETS=[
      e:'Hai công thức tách bạch: thế năng dùng <span class="k">độ cao</span>, động năng dùng <span class="k">tốc độ</span>. Trọng lượng P = 10.5 = 50 N nên W<sub>t</sub> = 50 × 15 = 750 J. Động năng W<sub>đ</sub> = ½ × 5 × 2² = 10 J.',
      fm:'W<sub>t</sub> = P · h = 50 · 15 = 750 J ; W<sub>đ</sub> = ½ · 5 · 2² = 10 J',
      ef:()=>figHeight({mode:'static',h:'h = 15 m',P:'P = 50 N',v:'v = 2 m/s',m:'5 kg'})}
+  ]
+},
+{
+  grade:'9', lesson:'Kiểm tra 15 phút', title:'Động năng. Thế năng', sub:'Khoa học tự nhiên 9, Kết nối tri thức', kind:'Tự luận',
+  accent:'#7A3DE0', accentBg:'#EFE8FC', accentDark:'#B48CFF', accentBgDark:'#2B1F4C',
+  exam:15,
+  questions:[
+    {pts:3, q:'Nếu một vật có động năng là 20 J và khối lượng là 10 kg thì tốc độ của vật là bao nhiêu?',
+     ans:'v = 2 m/s',
+     e:'Từ công thức động năng W<sub>đ</sub> = ½·m·v², rút ra v² = 2W<sub>đ</sub> : m, rồi <span class="k">khai căn</span> để được v.',
+     fm:'v² = 2 · 20 : 10 = 4 ⇒ v = √4 = 2 m/s', ef:figKinetic},
+    {pts:4, q:'Một máy bay có khối lượng 200 tấn đang bay với tốc độ ổn định 720 km/h ở độ cao 10 km so với mặt đất. Chọn gốc thế năng ở mặt đất, tính động năng và thế năng trọng trường của máy bay.',
+     ans:'W<sub>đ</sub> = 4 000 000 000 J = 4.10<sup>9</sup> J<br>W<sub>t</sub> = 20 000 000 000 J = 2.10<sup>10</sup> J',
+     e:'<span class="k">Đổi đơn vị trước</span>: m = 200 tấn = 200 000 kg; v = 720 km/h = 720 : 3,6 = 200 m/s; h = 10 km = 10 000 m. Trọng lượng P = 10·m = 2 000 000 N.',
+     fm:'W<sub>đ</sub> = ½ · 200 000 · 200² = 4.10<sup>9</sup> J<small>W<sub>t</sub> = P · h = 2 000 000 · 10 000 = 2.10<sup>10</sup> J</small>',
+     ef:()=>figHeight({mode:'static',h:'h = 10 000 m',P:'P = 2 000 000 N',v:'v = 200 m/s'})},
+    {pts:3, q:'Nếu tốc độ của một vật tăng lên gấp ba lần thì động năng của vật sẽ thay đổi như thế nào?',
+     ans:'Động năng tăng lên 9 lần.',
+     e:'Động năng tỉ lệ với <span class="k">bình phương tốc độ</span> (v²), khối lượng không đổi. Tốc độ gấp 3 thì v² gấp 3² = 9 lần.',
+     fm:'W<sub>đ</sub>\' = ½ · m · (3v)² = 9 · ½ · m · v² = 9W<sub>đ</sub>',
+     ef:()=>figBars({alt:'Tốc độ gấp 3 thì động năng gấp 9', max:9, rows:[{label:'Tốc độ',val:3,text:'× 3'},{label:'Động năng',val:9,text:'× 9',color:'var(--alt)'}]})}
+  ]
+},
+{
+  grade:'9', lesson:'Kiểm tra 15 phút', title:'Dãy hoạt động hoá học. Tách kim loại', sub:'Khoa học tự nhiên 9, Kết nối tri thức', kind:'Đúng/Sai + tự luận',
+  accent:'#7A3DE0', accentBg:'#EFE8FC', accentDark:'#B48CFF', accentBgDark:'#2B1F4C',
+  exam:15,
+  questions:[
+    {pts:2.5, q:'Cho các phát biểu sau, chọn Đúng hoặc Sai cho mỗi phát biểu:'+exTF(['Trong dãy hoạt động hoá học theo chiều từ phải sang trái, mức độ hoạt động hoá học giảm dần.','Ag không tác dụng được với dung dịch acid, giải phóng khí hydrogen.','Cu tác dụng với dung dịch AgNO<sub>3</sub>.','Ở điều kiện thường, Na tác dụng với nước giải phóng khí hydrogen.']),
+     ans:'a) Sai &nbsp; b) Đúng &nbsp; c) Đúng &nbsp; d) Đúng',
+     e:'a) Sai: dãy K, Na, Mg, Al, Zn, Fe, Pb, H, Cu, Ag, Au được xếp theo mức độ hoạt động <span class="k">giảm dần từ trái sang phải</span>, tức là từ phải sang trái thì <span class="k">tăng dần</span>.<br>b) Đúng: Ag đứng sau H nên không đẩy được H khỏi acid.<br>c) Đúng: Cu đứng trước Ag nên đẩy được Ag ra khỏi muối.<br>d) Đúng: Na là kim loại rất mạnh, phản ứng với nước ngay ở nhiệt độ thường.',
+     fm:'Cu + 2AgNO<sub>3</sub> → Cu(NO<sub>3</sub>)<sub>2</sub> + 2Ag<small>2Na + 2H<sub>2</sub>O → 2NaOH + H<sub>2</sub></small>',
+     ef:()=>figMethods(null,['Cu','Ag','Na'])},
+    {pts:2.5, q:'Hoà tan hoàn toàn 1,15 gam kim loại X vào nước, thu được dung dịch Y. Để trung hoà Y cần vừa đủ 50 gam dung dịch HCl 3,65%. Kim loại X là gì?',
+     ans:'X là sodium (Na).',
+     e:'Kim loại tan trong nước tạo dung dịch base nên là kim loại mạnh. Xét X hoá trị I: 2X + 2H<sub>2</sub>O → 2XOH + H<sub>2</sub>; XOH + HCl → XCl + H<sub>2</sub>O, nên n<sub>X</sub> = n<sub>HCl</sub>.<br>m<sub>HCl</sub> = 50 × 3,65% = 1,825 g ⇒ n<sub>HCl</sub> = 1,825 : 36,5 = 0,05 mol ⇒ n<sub>X</sub> = 0,05 mol.<br>(Nếu X hoá trị II thì n<sub>X</sub> = 0,025 mol, M = 46: không có kim loại nào phù hợp.)',
+     fm:'M<sub>X</sub> = 1,15 : 0,05 = 23 ⇒ X là Na'},
+    {pts:2.5, q:'Cho các phát biểu sau, chọn Đúng hoặc Sai cho mỗi phát biểu:'+exTF(['Kim loại Na được điều chế bằng cách điện phân nóng chảy NaCl.','Cho H<sub>2</sub> qua Fe<sub>3</sub>O<sub>4</sub> đun nóng có thể thu được kim loại Fe.','Cho Cu tác dụng với dung dịch FeCl<sub>2</sub> thu được kim loại Fe.','Cho CO dư đi qua hỗn hợp gồm Al<sub>2</sub>O<sub>3</sub>, MgO và CuO, sau phản ứng thu được chất rắn gồm Al<sub>2</sub>O<sub>3</sub>, MgO và Cu.']),
+     ans:'a) Đúng &nbsp; b) Đúng &nbsp; c) Sai &nbsp; d) Đúng',
+     e:'a) Đúng: Na hoạt động mạnh, chỉ tách được bằng điện phân nóng chảy.<br>b) Đúng: H<sub>2</sub> khử được oxide của kim loại trung bình như Fe (nhiệt luyện).<br>c) Sai: Cu đứng <span class="k">sau</span> Fe trong dãy hoạt động nên không đẩy được Fe ra khỏi muối.<br>d) Đúng: CO chỉ khử được CuO; Al<sub>2</sub>O<sub>3</sub> và MgO là oxide của kim loại mạnh nên giữ nguyên.',
+     fm:'Fe<sub>3</sub>O<sub>4</sub> + 4H<sub>2</sub> → 3Fe + 4H<sub>2</sub>O (t°)<small>CuO + CO → Cu + CO<sub>2</sub> (t°)</small>',
+     ef:()=>figMethods('nl',['Fe','Cu'])},
+    {pts:2.5, q:'Hoà tan hoàn toàn 6,5 gam Zn bằng dung dịch H<sub>2</sub>SO<sub>4</sub> loãng, thu được V lít H<sub>2</sub> (đkc). Tính giá trị của V.',
+     ans:'V = 2,479 L',
+     e:'n<sub>Zn</sub> = 6,5 : 65 = 0,1 mol. Theo phương trình, 1 mol Zn cho 1 mol H<sub>2</sub> nên n<sub>H₂</sub> = 0,1 mol. Ở điều kiện chuẩn (đkc), 1 mol khí chiếm 24,79 L.',
+     fm:'Zn + H<sub>2</sub>SO<sub>4</sub> → ZnSO<sub>4</sub> + H<sub>2</sub><small>V = 0,1 × 24,79 = 2,479 L</small>'}
   ]
 },
 {
