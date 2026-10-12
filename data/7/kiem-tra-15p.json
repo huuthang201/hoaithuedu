@@ -14,7 +14,7 @@
       "pts": 4,
       "q": "Một vật chuyển động đều. Quãng đường vật đi được theo thời gian cho trong bảng:<table class=\"ex-table\"><tr><th>t (s)</th><td>0</td><td>1</td><td>2</td><td>3</td></tr><tr><th>s (m)</th><td>0</td><td>6</td><td>12</td><td>18</td></tr></table><span class=\"ql\">a) Vẽ đồ thị quãng đường – thời gian của vật.</span><span class=\"ql\">b) Dựa vào đồ thị, tính tốc độ của vật.</span>",
       "ans": "a) Đồ thị là đường thẳng đi qua gốc O và điểm (3&nbsp;s;&nbsp;18&nbsp;m).<br>b) v = 6 m/s",
-      "e": "a) Trục ngang Ot ghi thời gian, mỗi ô 1 s; trục đứng Os ghi quãng đường, mỗi ô 6 m. Chấm 4 điểm trong bảng rồi nối lại được <span class=\"k\">một đường thẳng đi qua O</span>. b) Chọn một điểm dễ đọc trên đồ thị, ví dụ (3&nbsp;s;&nbsp;18&nbsp;m), rồi lấy quãng đường chia thời gian.",
+      "e": "a) Trục ngang Ot ghi thời gian, mỗi ô 1 s; trục đứng Os ghi quãng đường, mỗi ô 6 m. Chấm 4 điểm trong bảng rồi nối lại được <span class=\"k\">một đường thẳng đi qua O</span>.<br>b) Chọn một điểm dễ đọc trên đồ thị, ví dụ (3&nbsp;s;&nbsp;18&nbsp;m), rồi lấy quãng đường chia thời gian.",
       "fm": "v = s : t = 18 : 3 = 6 m/s",
       "ef": "graph({alt:'Đường thẳng qua O và các điểm (1 s; 6 m) đến (3&nbsp;s;&nbsp;18&nbsp;m)', xMax:3.4, yMax:21, xTicks:[0,1,2,3], yTicks:[0,6,12,18], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[3,18]]}], guides:[{x:3,y:18,xl:'3 s',yl:'18 m',hl:true}], points:[[1,6],[2,12],[3,18]].map(([x,y])=>({x,y}))})"
     },
@@ -29,7 +29,7 @@
       "pts": 3,
       "q": "Một máy bay bay đều với tốc độ 250 m/s.<span class=\"ql\">a) Đổi tốc độ của máy bay sang km/h.</span><span class=\"ql\">b) Máy bay cần bao nhiêu thời gian để bay quãng đường 2&nbsp;700 km?</span><span class=\"ql\">c) Nếu máy bay cất cánh lúc 8 giờ 15 phút thì đến nơi lúc mấy giờ?</span>",
       "ans": "a) 900 km/h<br>b) 3 giờ<br>c) 11 giờ 15 phút",
-      "e": "a) 1 m/s = 3,6 km/h nên 250 m/s = 250 × 3,6 = <span class=\"k\">900 km/h</span>. b) Quãng đường tính bằng km, tốc độ bằng km/h nên chia thẳng ra giờ. c) Cộng thời gian bay vào giờ cất cánh.",
+      "e": "a) 1 m/s = 3,6 km/h nên 250 m/s = 250 × 3,6 = <span class=\"k\">900 km/h</span>.<br>b) Quãng đường tính bằng km, tốc độ bằng km/h nên chia thẳng ra giờ.<br>c) Cộng thời gian bay vào giờ cất cánh.",
       "fm": "t = s : v = 2&nbsp;700 : 900 = 3 h<small>8 giờ 15 phút + 3 giờ = 11 giờ 15 phút</small>"
     }
   ]

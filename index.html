@@ -1271,7 +1271,7 @@ function showResult(){
   if(n===0){   // bài chỉ có hướng dẫn giải, không chấm điểm
     const seen=qs.filter((q,i)=>S.ans[i]).length;
     $('#scoreNum').textContent=seen; $('#scoreDen').textContent=`/${qs.length} câu`;
-    $('#scoreMsg').textContent= seen===qs.length ? 'Đã ôn xong tất cả các câu. Thử tự giải lại không xem hướng dẫn nhé!' : 'Còn vài câu chưa xem hết các bước, làm lại để ôn kĩ hơn nhé.';
+    $('#scoreMsg').textContent= seen===qs.length ? 'Đã ôn xong tất cả các câu. Thử tự giải lại không xem đáp án nhé!' : 'Còn vài câu chưa xem đáp án, làm lại để ôn kĩ hơn nhé.';
     show(result); clearFx(); if(seen===qs.length){ confetti(); ding(); } return;
   }
   show(result); clearFx();
