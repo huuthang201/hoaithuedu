@@ -168,6 +168,17 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 .exp.bad{border-color:var(--bad)} .exp.bad strong{color:var(--bad)}
 .actions{display:flex;gap:12px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
 .btn{font-weight:600;padding:12px 22px;border-radius:12px;border:2px solid transparent;cursor:pointer}
+.pass-dlg{overflow:hidden;border:0;border-radius:18px;padding:0;background:var(--surface);color:var(--ink);box-shadow:0 24px 60px -20px rgba(10,20,40,.45);width:min(360px,calc(100vw - 32px))}
+.pass-dlg::backdrop{background:rgba(15,22,38,.45)}
+.pass-dlg form{padding:24px;display:flex;flex-direction:column;gap:12px}
+.pass-dlg h3{margin:0;font-size:1.15rem}
+.pass-dlg p{margin:0;color:var(--ink-2);font-size:.92rem}
+.pass-in{font:inherit;font-size:1.1rem;padding:11px 14px;border:2px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);letter-spacing:.15em}
+.pass-in:focus{outline:none;border-color:var(--accent)}
+.pass-err{color:var(--bad)!important;font-weight:600;min-height:1.2em}
+.pass-dlg.shake form{animation:shake .45s}
+.pass-act{display:flex;gap:10px;justify-content:flex-end}
+.lock{margin-right:4px}
 .btn.primary{background:var(--accent);color:#fff}
 .btn.primary:hover{filter:brightness(1.08)}
 .btn.ghost{background:transparent;border-color:var(--line)}
@@ -448,6 +459,15 @@ section:not([hidden]){animation:fade .35s var(--ease)}
       </div>
     </section>
   </main>
+  <dialog class="pass-dlg" id="passDlg">
+    <form method="dialog" id="passForm">
+      <h3>🔒 Bài kiểm tra</h3>
+      <p>Nhập mật khẩu để mở đề.</p>
+      <input class="pass-in" id="passIn" type="password" autocomplete="off" aria-label="Mật khẩu">
+      <p class="pass-err" id="passErr" aria-live="polite"></p>
+      <div class="pass-act"><button class="btn ghost" type="button" id="passCancel">Huỷ</button><button class="btn primary" type="submit">Mở đề</button></div>
+    </form>
+  </dialog>
 </div>
 <canvas id="fx" aria-hidden="true"></canvas>
 <div id="vignette" aria-hidden="true"></div>
@@ -1338,7 +1358,7 @@ function renderHome(){
       }
       const mixed=s.questions.some(q=>q.type);
       const info=s.exam?`${s.questions.length} câu, làm bài trong ${s.exam} phút, ${s.questions.reduce((a,q)=>a+(q.pts||0),0)} điểm`:s.timed===false?`${s.questions.length} câu, không tính giờ, làm xong tự đối chiếu đáp án`:mixed?`${s.questions.length} câu; trắc nghiệm 25–30 giây mỗi câu, ${[s.questions.some(q=>q.type==='tf')&&'Đúng/Sai',s.questions.some(q=>q.type==='short')&&'tự luận'].filter(Boolean).join(' và ')} không tính giờ`:`${s.questions.length} câu, 25–30 giây mỗi câu`;
-      return `<li><button class="row" type="button" data-i="${i}"><span class="rt"><span class="rt-title">${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}${info}</span></span><span class="go">Bắt đầu</span></button></li>`;
+      return `<li><button class="row" type="button" data-i="${i}"><span class="rt"><span class="rt-title">${s.exam?'<span class="lock" title="Cần mật khẩu">🔒</span>':''}${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}${info}</span></span><span class="go">Bắt đầu</span></button></li>`;
     }).join('');
     return `<div class="grade-group" data-grade="${g}" style="${setVars(first)}"><div class="grade-head"><span class="grade">${g}</span><span class="grade-sub">${first.sub}</span></div><ul class="sets">${rows}</ul></div>`;
   }).join('');
@@ -1348,9 +1368,29 @@ function renderHome(){
   show(home);
 }
 
+/* mật khẩu mở các bài kiểm tra; nhập đúng một lần thì mở được cho tới khi đóng tab */
+const EXAM_PASS='123';
+function askPass(ok){
+  try{ if(sessionStorage.getItem('khtn-exam-ok')==='1'){ ok(); return; } }catch(e){}
+  const dlg=$('#passDlg'), inp=$('#passIn'), err=$('#passErr');
+  inp.value=''; err.textContent='';
+  $('#passForm').onsubmit=e=>{
+    e.preventDefault();
+    if(inp.value===EXAM_PASS){
+      try{ sessionStorage.setItem('khtn-exam-ok','1'); }catch(e){}
+      dlg.close(); ok();
+    } else {
+      err.textContent='Sai mật khẩu, thử lại nhé.'; inp.select();
+      dlg.classList.remove('shake'); void dlg.offsetWidth; dlg.classList.add('shake');
+    }
+  };
+  $('#passCancel').onclick=()=>dlg.close();
+  dlg.showModal(); inp.focus();
+}
+
 function startSet(i,modeId){
   const s=SETS[i];
-  if(s.exam){ startExam(s); return; }
+  if(s.exam){ askPass(()=>startExam(s)); return; }
   let qs=s.questions, mode=null;
   if(s.modes){ mode=s.modes.find(m=>m.id===modeId)||s.modes[0]; qs=qs.filter(mode.filter); }
   S={set:s, qs, mode, i:0, ans:[], pick:null, revealed:false};
