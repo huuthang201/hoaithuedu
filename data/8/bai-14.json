@@ -1,0 +1,201 @@
+{
+  "grade": "8",
+  "lesson": "Bài 14",
+  "title": "Thực hành xác định khối lượng riêng",
+  "sub": "Khoa học tự nhiên 8, Kết nối tri thức",
+  "note": "",
+  "kind": "Trắc nghiệm + Đúng/Sai + tự luận",
+  "accent": "#D4701A",
+  "accentBg": "#FCEBDD",
+  "accentDark": "#FFA14F",
+  "accentBgDark": "#3B2614",
+  "questions": [
+    {
+      "lv": "easy",
+      "q": "Để xác định được khối lượng riêng của một vật liệu ta cần biết",
+      "o": [
+        "khối lượng của vật liệu đó.",
+        "thể tích của vật liệu đó.",
+        "khối lượng và thể tích của vật liệu đó.",
+        "chiều dài, chiều rộng, chiều cao của vật liệu đó."
+      ],
+      "a": 2,
+      "e": "Khối lượng riêng cho biết <span class=\"k\">1 m³ (hay 1 cm³) chất đó nặng bao nhiêu</span>. Muốn tính phải đem khối lượng chia cho thể tích, nên bắt buộc cần cả m và V. Tam giác bên: che chữ nào thì phần còn lại là cách tính chữ đó.",
+      "fm": "D = m : V",
+      "ef": "figTriangle()"
+    },
+    {
+      "lv": "easy",
+      "q": "Để xác định khối lượng riêng của vật hình hộp chữ nhật ta cần",
+      "o": [
+        "cân điện tử để đo khối lượng vật.",
+        "thước đo để đo chiều dài các cạnh của vật.",
+        "sử dụng công thức tính khối lượng riêng của vật.",
+        "Cả A, B, C."
+      ],
+      "a": 3,
+      "e": "Ba việc, thiếu một là không ra kết quả: <span class=\"k\">cân</span> để có m; <span class=\"k\">thước</span> đo ba cạnh a, b, c để tính V = a.b.c; cuối cùng lắp vào <span class=\"k\">công thức</span> D = m/V.",
+      "fm": "V = a · b · c ; D = m : V",
+      "ef": "figTools({items:[{kind:'scale',label:'Cân điện tử',gives:'khối lượng m'},{kind:'ruler',label:'Thước',gives:'a, b, c → V = a.b.c'}], formula:'D = m : V'})"
+    },
+    {
+      "lv": "mid",
+      "q": "Để xác định khối lượng riêng của các viên sỏi, ba bạn Anh, Nhi, Hiếu đưa ra ý kiến như sau:<span class=\"ql\">Anh: Mình chỉ cần một cái cân là đủ.</span><span class=\"ql\">Nhi: Theo mình, thì chỉ cần một bình chia độ.</span><span class=\"ql\">Hiếu: Còn tớ nghĩ, cần một cái cân và một bình chia độ.</span><span class=\"ql\">Theo em, ý kiến nào đúng?</span>",
+      "o": [
+        "Anh đúng.",
+        "Nhi đúng.",
+        "Hiếu đúng.",
+        "Cả ba bạn cùng sai."
+      ],
+      "a": 2,
+      "e": "Viên sỏi méo mó, không có cạnh để đo bằng thước, nên thể tích phải lấy bằng cách <span class=\"k\">thả vào bình chia độ</span>: nước dâng lên bao nhiêu thì đó là thể tích sỏi. Cân cho m, bình chia độ cho V, nên Hiếu đúng.",
+      "fm": "V<sub>sỏi</sub> = V<sub>sau</sub> – V<sub>trước</sub> ; D = m : V",
+      "ef": "figTools({items:[{kind:'scale',label:'Cân',gives:'khối lượng m'},{kind:'cyl',label:'Bình chia độ',gives:'thể tích V'}], formula:'D = m : V'})"
+    },
+    {
+      "lv": "apply",
+      "q": "Em hãy sắp xếp lại thứ tự các bước dưới đây để xác định được khối lượng riêng của một lượng nước.<span class=\"ql\">(1) Xác định khối lượng của ống đong.</span><span class=\"ql\">(2) Xác định khối lượng nước trong ống đong.</span><span class=\"ql\">(3) Xác định khối lượng của ống đong có đựng nước.</span><span class=\"ql\">(4) Sử dụng công thức tính khối lượng riêng.</span>",
+      "o": [
+        "(1) – (2) – (3) – (4).",
+        "(1) – (2) – (4) – (3).",
+        "(1) – (3) – (2) – (4).",
+        "(2) – (1) – (3) – (4)."
+      ],
+      "a": 2,
+      "e": "Muốn biết riêng khối lượng nước thì phải cân <span class=\"k\">hai lần</span>: ống rỗng (m₁) và ống có nước (m₂), rồi lấy hiệu. Chưa cân lần hai thì chưa có gì để trừ, nên bước (3) phải đứng trước bước (2).",
+      "fm": "m<sub>nước</sub> = m₂ – m₁ ; D = m<sub>nước</sub> : V",
+      "ef": "figSteps(['(1) Cân ống đong rỗng → m₁','(3) Cân ống đong có nước → m₂','(2) Khối lượng nước = m₂ – m₁','(4) D = m : V, với V đọc trên ống đong'])"
+    },
+    {
+      "lv": "easy",
+      "q": "Phát biểu nào sau đây là <u>sai</u>?",
+      "o": [
+        "Để đo khối lượng vật ta cần dùng một ống đong.",
+        "Để đo khối lượng vật ta cần dùng một cái cân.",
+        "Để đo thể tích vật ta cần dùng một ống đong.",
+        "Để tính khối lượng của vật ta sử dụng công thức m = D.V."
+      ],
+      "a": 0,
+      "e": "Mỗi dụng cụ đo một thứ: <span class=\"k\">cân đo khối lượng</span>, <span class=\"k\">ống đong đo thể tích</span>. Ống đong chỉ có vạch chia ml nên không \"cân\" được. Công thức m = D.V là đúng, nó chỉ là D = m/V viết ngược lại.",
+      "fm": "m = D × V",
+      "ef": "figTools({items:[{kind:'scale',label:'Cân',gives:'khối lượng m'},{kind:'cyl',label:'Ống đong',gives:'thể tích V'}]})"
+    },
+    {
+      "lv": "easy",
+      "q": "Để đo thể tích của vật ta cần sử dụng dụng cụ nào?",
+      "o": [
+        "Cân.",
+        "Bình chia độ.",
+        "Ống đong.",
+        "Cả B và C đều được."
+      ],
+      "a": 3,
+      "e": "Bình chia độ hay ống đong đều là bình có vạch chia ml (1 ml = 1 cm³). Đổ chất lỏng vào rồi đọc vạch là có thể tích; với vật rắn thì đọc mực nước trước và sau khi thả vật, lấy hiệu.",
+      "fm": "V<sub>vật</sub> = V<sub>sau</sub> – V<sub>trước</sub> = 80 – 60 = 20 cm³",
+      "ef": "cylinders({before:60, after:80, max:100, major:20, minor:10, cap1:'Trước: 60 cm³', cap2:'Sau khi thả vật: 80 cm³'})"
+    },
+    {
+      "lv": "easy",
+      "q": "Dụng cụ nào có thể dùng để xác định khối lượng của vật?",
+      "o": [
+        "Cân đồng hồ.",
+        "Cân tiểu li.",
+        "Cân điện tử.",
+        "Cả A, B, C."
+      ],
+      "a": 3,
+      "e": "Cân đồng hồ (kim chỉ), cân tiểu li (đòn cân rất nhạy) hay cân điện tử (hiện số) đều đo khối lượng. Chọn loại theo vật cần cân: vật nhỏ, nhẹ thì dùng cân nhạy; vật lớn thì cân đồng hồ.",
+      "ef": "figTools({items:[{kind:'dial',label:'Cân đồng hồ',gives:'m'},{kind:'balance',label:'Cân tiểu li',gives:'m'},{kind:'scale',label:'Cân điện tử',gives:'m'}]})"
+    },
+    {
+      "lv": "mid",
+      "q": "Tại sao khi làm thí nghiệm, ta thường phải lặp lại thí nghiệm nhiều lần?",
+      "o": [
+        "Vì thừa thời gian.",
+        "Để cho kết quả thu được chính xác hơn.",
+        "Vì thừa nguyên liệu.",
+        "Cả A và C."
+      ],
+      "a": 1,
+      "e": "Mỗi lần đo đều có sai số nhỏ (tay cầm, mắt nhìn, cân lệch). Đo 3 lần rồi lấy <span class=\"k\">giá trị trung bình</span> thì sai số bù trừ nhau, kết quả gần giá trị thật hơn.",
+      "fm": "m<sub>tb</sub> = (m₁ + m₂ + m₃) : 3",
+      "ef": "figAvg()"
+    },
+    {
+      "lv": "mid",
+      "q": "Muốn đo khối lượng riêng của quả cầu bằng sắt người ta dùng những dụng cụ gì?",
+      "o": [
+        "Chỉ cần dùng một cái cân.",
+        "Chỉ cần dùng một lực kế.",
+        "Cần dùng một cái cân và bình chia độ.",
+        "Chỉ cần dùng một bình chia độ."
+      ],
+      "a": 2,
+      "e": "Quả cầu tròn không có cạnh để đo bằng thước. Cách nhanh và đúng: cân lấy m, thả vào bình chia độ để lấy V, rồi D = m/V. Lực kế chỉ đo lực, không đo được thể tích.",
+      "fm": "D = m : V",
+      "ef": "figTools({items:[{kind:'scale',label:'Cân',gives:'khối lượng m'},{kind:'cyl',label:'Bình chia độ',gives:'thể tích V'}], formula:'D = m : V'})"
+    },
+    {
+      "lv": "easy",
+      "q": "Phát biểu nào sau đây là đúng?",
+      "o": [
+        "Đơn vị khối lượng riêng là N/m³.",
+        "Đơn vị khối lượng riêng là kg/m³.",
+        "Đơn vị thể tích là N/m³.",
+        "Đơn vị khối lượng là N/m³."
+      ],
+      "a": 1,
+      "e": "Đơn vị của D = đơn vị khối lượng chia đơn vị thể tích: kg/m³ (hoặc g/cm³). N/m³ là niutơn trên mét khối, tức là <span class=\"k\">trọng lượng riêng</span> (d = 10D), không phải khối lượng riêng.",
+      "fm": "1 g/cm³ = 1000 kg/m³",
+      "ef": "figUnits()"
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Xét quy trình đo khối lượng riêng của một vật rắn có hình dạng bất kì và không thấm nước (như một hòn sỏi). Chọn Đúng hoặc Sai cho từng phát biểu.",
+      "items": [
+        {
+          "t": "Ta cần sử dụng cân điện tử để xác định khối lượng m của hòn sỏi.",
+          "ans": true,
+          "e": "Đúng. Cân dùng để đo khối lượng m của hòn sỏi."
+        },
+        {
+          "t": "Thể tích V của hòn sỏi được xác định bằng phương pháp hạ sỏi vào bình chia độ chứa nước và tính lượng nước dâng lên.",
+          "ans": true,
+          "e": "Đúng. Phần nước dâng lên đúng bằng thể tích hòn sỏi: V = V<sub>sau</sub> – V<sub>trước</sub>."
+        },
+        {
+          "t": "Sai số trong phép đo thể tích không ảnh hưởng đến kết quả cuối cùng của khối lượng riêng.",
+          "ans": false,
+          "e": "Sai. D = m : V, nên đo V lệch bao nhiêu thì D cũng lệch theo."
+        },
+        {
+          "t": "Nếu hòn sỏi quá lớn không bỏ lọt bình chia độ, ta có thể sử dụng bình tràn để đo thể tích.",
+          "ans": true,
+          "e": "Đúng. Thả vật vào bình tràn, hứng nước tràn ra rồi đổ vào bình chia độ: thể tích nước tràn ra bằng thể tích vật."
+        }
+      ],
+      "e": "Cân cho <span class=\"k\">m</span>, bình chia độ (hoặc bình tràn) cho <span class=\"k\">V</span>. Vì D = m : V nên sai số của m hay của V đều làm kết quả D sai theo.",
+      "fm": "D = m : V",
+      "ef": "figTools({items:[{kind:'scale',label:'Cân',gives:'khối lượng m'},{kind:'cyl',label:'Bình chia độ',gives:'thể tích V'}], formula:'D = m : V'})"
+    },
+    {
+      "type": "short",
+      "lv": "mid",
+      "q": "Khi đo thể tích hòn sỏi bằng bình chia độ, mực nước ban đầu là 60 ml, sau khi thả hòn sỏi vào mực nước dâng lên đến vạch 85 ml. Tính thể tích hòn sỏi ra đơn vị cm³.",
+      "ans": "25 cm³",
+      "e": "Thể tích hòn sỏi bằng phần nước dâng lên: lấy mực nước sau trừ mực nước trước. Nhớ 1 ml = 1 cm³.",
+      "fm": "V<sub>sỏi</sub> = V<sub>sau</sub> – V<sub>trước</sub> = 85 – 60 = 25 ml = 25 cm³",
+      "ef": "cylinders({before:60, after:85, max:100, major:20, minor:5, cap1:'Trước: 60 cm³', cap2:'Sau khi thả sỏi: 85 cm³'})"
+    },
+    {
+      "type": "short",
+      "lv": "apply",
+      "q": "Trong thí nghiệm đo khối lượng riêng của nước, bạn An cân được khối lượng nước là 196 g và thể tích tương ứng là 200 ml. Tính khối lượng riêng của mẫu nước này ra đơn vị kg/m³.",
+      "ans": "980 kg/m³",
+      "e": "Lấy khối lượng chia thể tích được D theo g/cm³ (200 ml = 200 cm³), rồi đổi sang kg/m³ bằng cách nhân 1000.",
+      "fm": "D = m : V = 196 : 200 = 0,98 g/cm³ = 980 kg/m³",
+      "ef": "figUnits()"
+    }
+  ]
+}

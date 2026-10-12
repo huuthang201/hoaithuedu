@@ -1,0 +1,218 @@
+{
+  "grade": "7",
+  "lesson": "Bài 11",
+  "title": "Thảo luận về ảnh hưởng của tốc độ trong an toàn giao thông",
+  "sub": "Khoa học tự nhiên 7, Kết nối tri thức",
+  "note": "",
+  "kind": "Trắc nghiệm + Đúng/Sai + tự luận",
+  "accent": "#1E6FD9",
+  "accentBg": "#E4EEFC",
+  "accentDark": "#6CA6FF",
+  "accentBgDark": "#1B2B4B",
+  "questions": [
+    {
+      "lv": "easy",
+      "q": "Biển báo nào dưới đây quy định tốc độ tối đa cho phép của phương tiện tham gia giao thông?",
+      "fig": "figSigns([{kind:'end',txt:'40',label:'A'},{kind:'max',txt:'10T',label:'B'},{kind:'max',txt:'40',label:'C'}],'Ba biển báo A, B, C')",
+      "o": [
+        "Biển A.",
+        "Biển B.",
+        "Biển C."
+      ],
+      "a": 2,
+      "e": "Biển tốc độ tối đa là <span class=\"k\">hình tròn, viền đỏ, số màu đen</span> chỉ km/h. Biển A (nền trắng, có các vạch chéo) là biển <span class=\"k\">hết</span> hạn chế tốc độ tối đa; biển B ghi \"10T\" là hạn chế trọng tải 10 tấn.",
+      "ef": "figSigns([{kind:'end',txt:'40',label:'A',note:'hết hạn chế tốc độ'},{kind:'max',txt:'10T',label:'B',note:'hạn chế trọng tải'},{kind:'max',txt:'40',label:'C',hl:true,note:'tối đa 40 km/h'}],'Ý nghĩa ba biển báo')"
+    },
+    {
+      "lv": "easy",
+      "q": "Cự li tối thiểu giữa 2 xe trên đoạn đường có biển báo này là bao nhiêu?",
+      "fig": "figSigns([{kind:'gap',txt:'8m'}],'Biển cự li tối thiểu giữa hai xe, ghi 8 m')",
+      "o": [
+        "5 m.",
+        "7 m.",
+        "8 m.",
+        "9 m."
+      ],
+      "a": 2,
+      "e": "Biển vẽ hai ô tô nối đuôi nhau và ghi <span class=\"k\">8 m</span>: các xe phải giữ khoảng cách với xe phía trước không nhỏ hơn 8 m.",
+      "ef": "figGap('ít nhất 8 m','biển báo cự li tối thiểu giữa hai xe')"
+    },
+    {
+      "lv": "mid",
+      "q": "Trên đoạn đường có biển báo này, các phương tiện tham gia giao thông được đi với tốc độ trong khoảng",
+      "fig": "figSigns([{kind:'max',txt:'100',label:'tối đa'},{kind:'min',txt:'60',label:'tối thiểu'}],'Biển tốc độ tối đa 100 và biển tốc độ tối thiểu 60')",
+      "o": [
+        "lớn hơn 60 km/h.",
+        "từ 60 km/h đến dưới 100 km/h.",
+        "nhỏ hơn 100 km/h.",
+        "có thể đi với tốc độ tùy ý."
+      ],
+      "a": 1,
+      "e": "Biển <span class=\"k\">viền đỏ</span> ghi 100 là tốc độ tối đa: không được vượt quá 100 km/h. Biển <span class=\"k\">nền xanh</span> ghi 60 là tốc độ tối thiểu: không được đi chậm hơn 60 km/h.",
+      "ef": "figRange(60,100)"
+    },
+    {
+      "lv": "mid",
+      "q": "Trên đoạn đường áp dụng bảng tốc độ tối đa dưới đây, xe buýt được đi với tốc độ tối đa là",
+      "fig": "figSpeed()",
+      "o": [
+        "80 km/h.",
+        "70 km/h.",
+        "60 km/h.",
+        "50 km/h."
+      ],
+      "a": 2,
+      "e": "Dò bảng tìm hàng có <span class=\"k\">xe buýt</span> (xếp chung với ô tô đầu kéo, xe mô tô, xe chuyên dùng), cột bên phải ghi 60 km/h.",
+      "ef": "figSpeed(2)"
+    },
+    {
+      "lv": "mid",
+      "q": "Một ô tô đi với tốc độ 20 m/s trên đoạn đường có biển báo này thì có vi phạm quy định về tốc độ không?",
+      "fig": "figSigns([{kind:'max',txt:'80'}],'Biển tốc độ tối đa 80 km/h')",
+      "o": [
+        "Không vi phạm.",
+        "Có vi phạm."
+      ],
+      "a": 0,
+      "e": "Biển ghi tốc độ theo km/h, nên phải đổi 20 m/s sang km/h (nhân 3,6) rồi mới so sánh. 72 km/h nhỏ hơn 80 km/h nên xe không vi phạm.",
+      "fm": "20 m/s = 20 × 3,6 = 72 km/h < 80 km/h",
+      "ef": "figBars({alt:'So sánh 72 km/h với giới hạn 80 km/h', max:90, rows:[{label:'Tốc độ ô tô',val:72,text:'72 km/h'},{label:'Tối đa cho phép',val:80,text:'80 km/h',color:'var(--bad)'}]})"
+    },
+    {
+      "lv": "mid",
+      "q": "Khoảng cách an toàn đối với ô tô chạy với tốc độ 25 m/s là bao nhiêu?",
+      "fig": "figSafe()",
+      "o": [
+        "35 m.",
+        "55 m.",
+        "70 m.",
+        "100 m."
+      ],
+      "a": 2,
+      "e": "Bảng ghi tốc độ theo km/h nên đổi trước: 25 m/s = 90 km/h. Tốc độ 90 km/h nằm trong khoảng <span class=\"k\">80 &lt; v ≤ 100</span>, ứng với khoảng cách an toàn tối thiểu 70 m.",
+      "fm": "25 m/s = 25 × 3,6 = 90 km/h",
+      "ef": "figSafe(2)"
+    },
+    {
+      "lv": "mid",
+      "q": "Ô tô chạy trên đường cao tốc có biển báo tốc độ như trong Hình 11.2 với tốc độ v nào sau đây là an toàn?",
+      "fig": "figHighway()",
+      "o": [
+        "Khi trời mưa: 100 km/h < v < 120 km/h.",
+        "Khi trời nắng: v < 120 km/h.",
+        "Khi trời mưa: 100 km/h < v < 110 km/h.",
+        "Khi trời nắng: v > 120 km/h."
+      ],
+      "a": 1,
+      "e": "Khi trời không mưa, tốc độ tối đa là <span class=\"k\">120 km/h</span>, nên đi dưới 120 km/h là đúng. Khi trời mưa, tối đa chỉ còn <span class=\"k\">100 km/h</span>, nên các phương án đi trên 100 km/h lúc mưa đều sai.",
+      "ef": "figHighway()"
+    },
+    {
+      "lv": "apply",
+      "q": "Áp dụng quy tắc \"3 giây\" tính được khoảng cách an toàn của ô tô chạy với tốc độ 90 km/h là",
+      "o": [
+        "75 m.",
+        "30 m.",
+        "100 m.",
+        "270 m."
+      ],
+      "a": 0,
+      "e": "Quy tắc \"3 giây\": khoảng cách an toàn bằng quãng đường xe đi được trong 3 giây. Đổi tốc độ sang m/s rồi nhân với 3.",
+      "fm": "90 km/h = 90 : 3,6 = 25 m/s ; s = 25 × 3 = 75 m",
+      "ef": "figGap('s = 25 × 3 = 75 m','quãng đường xe đi được trong 3 giây')"
+    },
+    {
+      "lv": "apply",
+      "q": "Theo quy tắc \"3 giây\", khoảng cách 30 m là an toàn với xe chạy tốc độ tối đa bao nhiêu?",
+      "o": [
+        "30 km/h.",
+        "36 km/h.",
+        "40 km/h.",
+        "46 km/h."
+      ],
+      "a": 1,
+      "e": "Làm ngược lại quy tắc \"3 giây\": 30 m là quãng đường đi trong 3 giây, nên tốc độ bằng 30 chia 3, rồi đổi sang km/h.",
+      "fm": "v = 30 : 3 = 10 m/s = 10 × 3,6 = 36 km/h",
+      "ef": "figGap('30 m trong 3 s','v = 30 : 3 = 10 m/s = 36 km/h')"
+    },
+    {
+      "type": "tf",
+      "lv": "apply",
+      "q": "Người điều khiển phương tiện tham gia giao thông cần",
+      "items": [
+        {
+          "t": "đi đúng hướng đường, làn đường cho phép.",
+          "ans": true,
+          "e": "Đúng. Đi sai làn, sai hướng dễ gây va chạm."
+        },
+        {
+          "t": "quan sát các biển báo và tuân thủ quy định an toàn.",
+          "ans": true,
+          "e": "Đúng. Biển báo cho biết tốc độ tối đa, tối thiểu, khoảng cách cần giữ."
+        },
+        {
+          "t": "đi với tốc độ nhanh nhất.",
+          "ans": false,
+          "e": "Sai. Phải đi đúng tốc độ quy định; đi càng nhanh càng khó dừng kịp và va chạm càng nặng."
+        },
+        {
+          "t": "giảm tốc độ khi trời mưa hoặc khi đi vào đoạn đường xấu.",
+          "ans": true,
+          "e": "Đúng. Đường trơn, tầm nhìn kém thì xe cần quãng đường dài hơn mới dừng được."
+        },
+        {
+          "t": "đi sát với phương tiện phía trước.",
+          "ans": false,
+          "e": "Sai. Phải giữ khoảng cách an toàn để kịp phanh khi xe trước dừng đột ngột."
+        }
+      ],
+      "e": "Ý nào khuyên <span class=\"k\">đi nhanh nhất</span> hoặc <span class=\"k\">đi sát xe trước</span> là sai: cả hai đều làm giảm thời gian và quãng đường để xử lí tình huống.",
+      "ef": "figGap('giữ khoảng cách an toàn','không đi sát xe phía trước')"
+    },
+    {
+      "type": "short",
+      "lv": "apply",
+      "q": "Camera của thiết bị bắn tốc độ đặt trên đường bộ không có giải phân cách cứng ghi được thời gian của một ô tô tải chở 4 tấn hàng chạy từ vạch mốc 1 sang vạch mốc 2 cách nhau 10 m là 0,50 s. Hỏi xe có vi phạm quy định về tốc độ tối đa trong Hình 11.1 không?",
+      "fig": "figSpeed()",
+      "ans": "Có vi phạm: xe chạy 72 km/h, vượt tốc độ tối đa 70 km/h.",
+      "e": "Tính tốc độ xe từ quãng đường và thời gian, đổi sang km/h. Ô tô tải chở 4 tấn (trên 3,5 tấn) thuộc hàng tốc độ tối đa <span class=\"k\">70 km/h</span>.",
+      "fm": "v = 10 : 0,5 = 20 m/s = 72 km/h > 70 km/h",
+      "ef": "figSpeed(1)"
+    },
+    {
+      "type": "short",
+      "lv": "apply",
+      "q": "Hãy dùng quy tắc \"3 giây\" để xác định khoảng cách an toàn của xe ô tô chạy với tốc độ 70 km/h. Khoảng cách tính được này có phù hợp với quy định về khoảng cách an toàn tối thiểu trong Bảng 11.1 không? Tại sao?",
+      "fig": "figSafe()",
+      "ans": "Khoảng 58 m. Phù hợp, vì Bảng 11.1 yêu cầu tối thiểu 55 m khi 60 < v ≤ 80 km/h, mà 58 m > 55 m.",
+      "e": "Đổi 70 km/h sang m/s rồi nhân 3. Tốc độ 70 km/h thuộc khoảng 60 &lt; v ≤ 80, khoảng cách tối thiểu là 55 m; 58 m lớn hơn nên đạt yêu cầu.",
+      "fm": "70 km/h = 70 : 3,6 ≈ 19,4 m/s ; s ≈ 19,4 × 3 ≈ 58 m",
+      "ef": "figSafe(1)"
+    },
+    {
+      "type": "short",
+      "lv": "apply",
+      "q": "Dựa vào Bảng 11.2:<span class=\"ql\">a) Vẽ đồ thị biểu diễn sự thay đổi về số vụ tai nạn giao thông hằng năm. Trục tung biểu diễn số vụ tai nạn, làm tròn tới hàng trăm (từ 50 trở lên coi là 100, dưới 50 coi là 0). Trục hoành biểu diễn thời gian theo đơn vị năm.</span><span class=\"ql\">b) Dựa vào đồ thị, nhận xét về tình hình tai nạn giao thông nước ta từ năm 2016 đến năm 2020.</span>",
+      "fig": "figTable({alt:'Bảng 11.2: số vụ tai nạn và số người chết từ 2016 đến 2020', title:'Bảng 11.2. Tai nạn giao thông 2016 – 2020', head:['Năm','Số vụ tai nạn','Số người chết'], cols:[30,200,330], rh:28, rows:ACC.map(r=>[r[0],nf(r[1]),nf(r[2])])})",
+      "ans": "a) Các điểm: 21 600; 20 100; 18 200; 17 600; 14 500 (vụ). b) Số vụ tai nạn giảm liên tục qua từng năm, giảm mạnh nhất từ 2019 đến 2020; số người chết cũng giảm.",
+      "e": "Làm tròn số vụ tới hàng trăm, chấm 5 điểm (năm; số vụ) rồi nối lại. Đường đồ thị đi xuống liên tục: tình hình tai nạn giao thông đã giảm, nhưng mỗi năm vẫn còn hàng chục nghìn vụ.",
+      "fm": "21 589 ≈ 21 600 ; 20 080 ≈ 20 100 ; 18 232 ≈ 18 200 ; 17 626 ≈ 17 600 ; 14 510 ≈ 14 500",
+      "ef": "graph({alt:'Đồ thị số vụ tai nạn giao thông từ 2016 đến 2020, giảm dần', xMax:5.6, yMax:24000, xTicks:[0,1,2,3,4,5], yTicks:[0,4000,8000,12000,16000,20000,24000], noTickLabels:true, xLabel:'năm', yLabel:'số vụ',\n  series:[{pts:ACC.map(r=>[r[0]-2015,r100(r[1])])}], points:ACC.map(r=>({x:r[0]-2015,y:r100(r[1]),label:nf(r100(r[1])),dx:-18,dy:-10})),\n  extra:(X,Y)=>ACC.map(r=>`<text class=\"g-lab\" x=\"${X(r[0]-2015)}\" y=\"${Y(0)+18}\" text-anchor=\"middle\">${r[0]}</text>`).join('')+[4000,8000,12000,16000,20000,24000].map(v=>`<text class=\"g-lab\" x=\"${X(0)-6}\" y=\"${Y(v)+4}\" text-anchor=\"end\">${nf(v)}</text>`).join('')})"
+    },
+    {
+      "type": "short",
+      "lv": "mid",
+      "q": "Để đảm bảo an toàn giao thông thì người tham gia giao thông cần phải làm những gì?",
+      "ans": "Chấp hành luật giao thông: đi đúng làn, đúng tốc độ quy định; quan sát biển báo; giữ khoảng cách an toàn; giảm tốc khi trời mưa, đường xấu; đội mũ bảo hiểm, thắt dây an toàn; không sử dụng rượu bia khi lái xe.",
+      "e": "Tốc độ càng lớn thì càng cần nhiều thời gian và quãng đường để dừng xe, va chạm càng nặng. Vì vậy quan trọng nhất là <span class=\"k\">đi đúng tốc độ</span> và <span class=\"k\">giữ khoảng cách</span>.",
+      "ef": "figGap('khoảng cách an toàn','đi đúng tốc độ và giữ khoảng cách với xe phía trước')"
+    },
+    {
+      "type": "short",
+      "lv": "mid",
+      "q": "Sưu tầm tài liệu, tranh ảnh, video để trình bày và thảo luận về ảnh hưởng của tốc độ trong an toàn giao thông.",
+      "ans": "Gợi ý: tốc độ càng cao thì quãng đường phanh càng dài và va chạm càng mạnh; nêu số liệu tai nạn do chạy quá tốc độ; giới thiệu biển báo tốc độ, quy tắc \"3 giây\", thiết bị bắn tốc độ; rút ra bài học: đi đúng tốc độ, giữ khoảng cách.",
+      "e": "Bài trình bày nên có: nguyên nhân (chạy quá tốc độ, không giữ khoảng cách), hậu quả (số liệu, hình ảnh), biện pháp (biển báo, camera, ý thức người lái)."
+    }
+  ]
+}

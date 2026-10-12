@@ -1,0 +1,416 @@
+{
+  "grade": "9",
+  "lesson": "Bài 2",
+  "title": "Động năng. Thế năng",
+  "sub": "Khoa học tự nhiên 9, Kết nối tri thức",
+  "note": "",
+  "kind": "4 lựa chọn",
+  "accent": "#7A3DE0",
+  "accentBg": "#EFE8FC",
+  "accentDark": "#B48CFF",
+  "accentBgDark": "#2B1F4C",
+  "modes": [
+    {
+      "id": "dn",
+      "label": "Động năng",
+      "tags": [
+        "dn"
+      ]
+    },
+    {
+      "id": "tn",
+      "label": "Thế năng",
+      "tags": [
+        "tn"
+      ]
+    },
+    {
+      "id": "both",
+      "label": "Động năng + Thế năng",
+      "tags": [
+        "both"
+      ],
+      "core": true
+    }
+  ],
+  "questions": [
+    {
+      "lv": "easy",
+      "tag": "dn",
+      "q": "Động năng là năng lượng mà một vật có được do",
+      "o": [
+        "vật ở trên cao.",
+        "vật đang chuyển động.",
+        "vật bị biến dạng.",
+        "vật bị nung nóng."
+      ],
+      "a": 1,
+      "e": "Cứ vật <span class=\"k\">đang chuyển động</span> là có động năng: ô tô đang chạy, gió đang thổi, nước đang chảy. Vật đứng yên (v = 0) thì động năng bằng 0.",
+      "fm": "W<sub>đ</sub> = ½ · m · v²",
+      "ef": "figKinetic()"
+    },
+    {
+      "lv": "easy",
+      "tag": "dn",
+      "core": true,
+      "q": "Công thức tính động năng của vật có khối lượng m đang chuyển động với tốc độ v là",
+      "o": [
+        "W<sub>đ</sub> = m.v",
+        "W<sub>đ</sub> = ½ m.v",
+        "W<sub>đ</sub> = m.v²",
+        "W<sub>đ</sub> = ½ m.v²"
+      ],
+      "a": 3,
+      "e": "Đọc công thức thành lời: <span class=\"k\">một nửa, nhân khối lượng, nhân tốc độ bình phương</span>. m tính bằng kg, v bằng m/s thì W<sub>đ</sub> ra jun (J).",
+      "fm": "W<sub>đ</sub> = ½ · m · v²<small>m: khối lượng (kg) · v: tốc độ (m/s) · W<sub>đ</sub>: động năng (J)</small>"
+    },
+    {
+      "lv": "easy",
+      "tag": "dn",
+      "q": "Trong hệ đơn vị SI, động năng có đơn vị là",
+      "o": [
+        "niutơn (N).",
+        "jun (J).",
+        "oát (W).",
+        "kilôgam (kg)."
+      ],
+      "a": 1,
+      "e": "Động năng là một dạng năng lượng, mà năng lượng đo bằng <span class=\"k\">jun (J)</span>, giống như công. Niutơn là đơn vị lực, oát là công suất, kilôgam là khối lượng.",
+      "fm": "1 J = 1 kg · (m/s)²"
+    },
+    {
+      "lv": "easy",
+      "tag": "dn",
+      "core": true,
+      "q": "Động năng của một vật phụ thuộc vào",
+      "o": [
+        "chỉ khối lượng của vật.",
+        "chỉ tốc độ của vật.",
+        "khối lượng và tốc độ của vật.",
+        "độ cao của vật so với mặt đất."
+      ],
+      "a": 2,
+      "e": "Nhìn vào công thức: có m và có v, nên vật càng nặng, chạy càng nhanh thì động năng càng lớn. Độ cao không xuất hiện trong công thức, độ cao thuộc về thế năng.",
+      "fm": "W<sub>đ</sub> = ½ · m · v²"
+    },
+    {
+      "lv": "mid",
+      "tag": "dn",
+      "core": true,
+      "q": "Một vật có khối lượng 0,5 kg chuyển động với tốc độ 6 m/s. Động năng của vật có giá trị là",
+      "o": [
+        "18 J",
+        "9 J",
+        "3 J",
+        "1,5 J"
+      ],
+      "a": 1,
+      "e": "Bình phương tốc độ trước (6² = 36), nhân với khối lượng (0,5 × 36 = 18), rồi chia đôi (= 9 J). Bẫy hay gặp: quên chia đôi thì ra 18 J, quên bình phương thì ra 1,5 J.",
+      "fm": "W<sub>đ</sub> = ½ · 0,5 · 6² = ½ · 0,5 · 36 = 9 J"
+    },
+    {
+      "lv": "mid",
+      "tag": "dn",
+      "core": true,
+      "q": "Khối lượng không đổi, nếu tốc độ của vật tăng gấp đôi thì động năng của vật",
+      "o": [
+        "tăng 2 lần.",
+        "không đổi.",
+        "tăng 4 lần.",
+        "giảm 2 lần."
+      ],
+      "a": 2,
+      "e": "Động năng đi theo <span class=\"k\">v²</span> chứ không theo v. Tốc độ gấp đôi thì bình phương gấp bốn, nên động năng gấp bốn. Vì thế xe chạy nhanh gấp đôi thì \"sức phá\" khi va chạm gấp bốn.",
+      "fm": "v → 2v ⇒ v² → 4v² ⇒ W<sub>đ</sub> → 4 W<sub>đ</sub>",
+      "ef": "figBars({rows:[{label:'Tốc độ v',val:1,text:'W_{đ}'},{label:'Tốc độ 2v',val:4,text:'4 W_{đ}',color:'var(--dn)'}]})"
+    },
+    {
+      "lv": "mid",
+      "tag": "dn",
+      "core": true,
+      "q": "Vật nào sau đây <u>không</u> có động năng?",
+      "o": [
+        "Quyển sách nằm yên trên bàn.",
+        "Ô tô đang chạy trên đường.",
+        "Quả bóng đang lăn trên sân.",
+        "Gió đang thổi."
+      ],
+      "a": 0,
+      "e": "Không chuyển động thì v = 0, thay vào công thức được W<sub>đ</sub> = 0. Gió là không khí đang chuyển động nên vẫn có động năng, gió mạnh còn quật đổ cây.",
+      "fm": "v = 0 ⇒ W<sub>đ</sub> = ½ · m · 0² = 0",
+      "ef": "figKinetic()"
+    },
+    {
+      "lv": "mid",
+      "tag": "dn",
+      "q": "Xe thứ nhất nặng 1000 kg và xe thứ hai nặng 2000 kg cùng chạy với tốc độ 10 m/s. So sánh động năng của hai xe:",
+      "o": [
+        "Động năng xe thứ hai gấp 2 lần xe thứ nhất.",
+        "Động năng xe thứ nhất gấp 2 lần xe thứ hai.",
+        "Hai xe có động năng bằng nhau.",
+        "Động năng xe thứ hai gấp 4 lần xe thứ nhất."
+      ],
+      "a": 0,
+      "e": "Cùng tốc độ thì động năng <span class=\"k\">tỉ lệ thuận với khối lượng</span>: nặng gấp đôi → động năng gấp đôi. Gấp bốn chỉ xảy ra khi tốc độ gấp đôi.",
+      "fm": "W<sub>đ1</sub> = ½ · 1000 · 10² = 50 000 J ; W<sub>đ2</sub> = ½ · 2000 · 10² = 100 000 J",
+      "ef": "figBars({rows:[{label:'Xe 1 (1000 kg)',val:1,text:'50 000 J'},{label:'Xe 2 (2000 kg)',val:2,text:'100 000 J',color:'var(--dn)'}]})"
+    },
+    {
+      "lv": "mid",
+      "tag": "dn",
+      "q": "Một vật có khối lượng 2 kg và động năng 100 J. Tốc độ của vật là",
+      "o": [
+        "50 m/s",
+        "5 m/s",
+        "100 m/s",
+        "10 m/s"
+      ],
+      "a": 3,
+      "e": "Làm ngược công thức: nhân đôi động năng rồi chia cho khối lượng sẽ được v², sau đó khai căn. Vì 100 = 10² nên v = 10 m/s.",
+      "fm": "v² = 2 W<sub>đ</sub> : m = 2 · 100 : 2 = 100 ⇒ v = 10 m/s"
+    },
+    {
+      "lv": "apply",
+      "tag": "dn",
+      "q": "Một ô tô có khối lượng 1,2 tấn đang chạy với tốc độ 54 km/h. Động năng của ô tô là",
+      "o": [
+        "1 749 600 J",
+        "135 000 J",
+        "270 000 J",
+        "32 400 J"
+      ],
+      "a": 1,
+      "e": "Phải <span class=\"k\">đổi đơn vị trước</span> khi tính: 1,2 tấn = 1200 kg; 54 km/h = 54 000 m : 3600 s = 15 m/s. Nếu để nguyên 54 mà bình phương sẽ ra 1 749 600 J, sai.",
+      "fm": "W<sub>đ</sub> = ½ · 1200 · 15² = ½ · 1200 · 225 = 135 000 J"
+    },
+    {
+      "lv": "easy",
+      "tag": "tn",
+      "q": "Dạng năng lượng tương tác giữa Trái Đất và vật là",
+      "o": [
+        "Thế năng đàn hồi.",
+        "Động năng.",
+        "Cơ năng.",
+        "Thế năng trọng trường."
+      ],
+      "a": 3,
+      "e": "Trái Đất luôn hút vật (trọng lực P). Đưa vật lên cao là \"tích\" năng lượng nhờ lực hút ấy, gọi là <span class=\"k\">thế năng trọng trường</span>. Buông ra, vật rơi và năng lượng đó chuyển thành chuyển động.",
+      "fm": "W<sub>t</sub> = P · h",
+      "ef": "figHeight({mode:'static'})"
+    },
+    {
+      "lv": "easy",
+      "tag": "tn",
+      "core": true,
+      "q": "Một vật có trọng lượng P đang ở độ cao h so với gốc thế năng. Thế năng trọng trường của vật được tính bằng công thức",
+      "o": [
+        "W<sub>t</sub> = d.h",
+        "W<sub>t</sub> = P.h",
+        "W<sub>t</sub> = m.h",
+        "W<sub>t</sub> = ½ P.h²"
+      ],
+      "a": 1,
+      "e": "Thế năng = <span class=\"k\">trọng lượng × độ cao</span>. P tính bằng niutơn (N), h bằng mét (m) thì W<sub>t</sub> ra jun (J). Đề cho khối lượng m (kg) thì tính P = 10.m trước rồi mới nhân với h.",
+      "fm": "W<sub>t</sub> = P · h, với P = 10 · m<small>P: trọng lượng (N) · h: độ cao so với gốc thế năng (m) · W<sub>t</sub>: jun (J)</small>",
+      "ef": "figHeight({mode:'static',m:'m'})"
+    },
+    {
+      "lv": "easy",
+      "tag": "tn",
+      "core": true,
+      "q": "Thế năng trọng trường của một vật <u>không</u> phụ thuộc vào",
+      "o": [
+        "khối lượng của vật.",
+        "trọng lượng của vật.",
+        "độ cao của vật.",
+        "tốc độ của vật."
+      ],
+      "a": 3,
+      "e": "Trong công thức chỉ có P (tức khối lượng) và h. Vật đứng yên hay đang bay với tốc độ bao nhiêu thì thế năng vẫn chỉ phụ thuộc nó đang ở <span class=\"k\">cao bao nhiêu</span> và <span class=\"k\">nặng bao nhiêu</span>.",
+      "fm": "W<sub>t</sub> = P · h (không có v trong công thức)",
+      "ef": "figHeight({mode:'static',note:'tốc độ v không ảnh hưởng'})"
+    },
+    {
+      "lv": "easy",
+      "tag": "tn",
+      "q": "Thế năng của một vật không phụ thuộc vào (xét vật rơi trong trọng trường)?",
+      "o": [
+        "Vị trí vật.",
+        "Vận tốc vật.",
+        "Khối lượng vật.",
+        "Độ cao."
+      ],
+      "a": 1,
+      "e": "Hỏi kiểu khác của câu trên: vị trí (độ cao) và khối lượng đều nằm trong công thức, chỉ vận tốc là không. Mẹo nhớ: <span class=\"k\">tốc độ đi với động năng, độ cao đi với thế năng</span>.",
+      "fm": "W<sub>t</sub> = P · h (độ cao) ; W<sub>đ</sub> = ½ · m · v² (tốc độ)"
+    },
+    {
+      "lv": "mid",
+      "tag": "tn",
+      "core": true,
+      "q": "Cho một vật có khối lượng m đang đặt ở độ cao h so với mặt đất. Khi tăng khối lượng lên 10 lần thì thế năng của vật",
+      "o": [
+        "tăng 10 lần.",
+        "giảm 10 lần.",
+        "tăng 100 lần.",
+        "giảm 100 lần."
+      ],
+      "a": 0,
+      "e": "Khối lượng gấp 10 thì trọng lượng P gấp 10, độ cao giữ nguyên, nên tích P.h cũng gấp 10. Thế năng <span class=\"k\">tỉ lệ thuận với khối lượng</span>.",
+      "fm": "W<sub>t</sub>′ = (10P) · h = 10 · W<sub>t</sub>",
+      "ef": "figBars({rows:[{label:'Khối lượng m',val:1,text:'W_{t}'},{label:'Khối lượng 10m',val:10,text:'10 W_{t}',color:'var(--tn)'}]})"
+    },
+    {
+      "lv": "mid",
+      "tag": "tn",
+      "q": "Cho một vật có khối lượng m đang đặt ở độ cao h so với mặt đất. Khi giảm độ cao của vật xuống 4 lần thì thế năng của vật",
+      "o": [
+        "tăng 4 lần.",
+        "giảm 4 lần.",
+        "tăng 2 lần.",
+        "giảm 2 lần."
+      ],
+      "a": 1,
+      "e": "Hạ vật xuống còn 1/4 độ cao thì thế năng cũng còn 1/4, vì thế năng <span class=\"k\">tỉ lệ thuận với độ cao h</span>.",
+      "fm": "W<sub>t</sub>′ = P · (h : 4) = W<sub>t</sub> : 4",
+      "ef": "figBars({rows:[{label:'Độ cao h',val:4,text:'W_{t}'},{label:'Độ cao h : 4',val:1,text:'W_{t} : 4',color:'var(--tn)'}]})"
+    },
+    {
+      "lv": "mid",
+      "tag": "tn",
+      "core": true,
+      "q": "Cho một vật có khối lượng m đang đặt ở độ cao h so với mặt đất. Khi tăng khối lượng và độ cao của vật lên 4 lần thì thế năng của vật",
+      "o": [
+        "tăng 8 lần.",
+        "giảm 8 lần.",
+        "tăng 16 lần.",
+        "giảm 16 lần."
+      ],
+      "a": 2,
+      "e": "Hai yếu tố cùng tăng 4 lần thì <span class=\"k\">nhân</span> với nhau: 4 × 4 = 16 lần, không phải cộng 4 + 4 = 8.",
+      "fm": "W<sub>t</sub>′ = (4P) · (4h) = 16 · P · h = 16 W<sub>t</sub>",
+      "ef": "figBars({rows:[{label:'m, h',val:1,text:'W_{t}'},{label:'4m, h',val:4,text:'4 W_{t}'},{label:'4m, 4h',val:16,text:'16 W_{t}',color:'var(--tn)'}]})"
+    },
+    {
+      "lv": "mid",
+      "tag": "tn",
+      "q": "Một vật khối lượng m ở độ cao 20 m so với mặt đất có thế năng 100 J đối với mặt đất. Chọn mốc thế năng ở mặt đất. Khối lượng của vật là",
+      "o": [
+        "5 kg",
+        "0,5 kg",
+        "2 kg",
+        "50 kg"
+      ],
+      "a": 1,
+      "e": "Từ W<sub>t</sub> = P.h suy ra P = W<sub>t</sub> : h = 100 : 20 = 5 N. Nhưng 5 N là <span class=\"k\">trọng lượng</span>, muốn ra khối lượng phải chia 10: m = 0,5 kg. Bẫy: chọn 5 kg là quên bước đổi P → m.",
+      "fm": "P = W<sub>t</sub> : h = 100 : 20 = 5 N ⇒ m = P : 10 = 0,5 kg",
+      "ef": "figHeight({mode:'static',h:'h = 20 m',P:'P = ?',note:'W_{t} = 100 J',m:'m = ?'})"
+    },
+    {
+      "lv": "mid",
+      "tag": "tn",
+      "core": true,
+      "q": "Một vật khối lượng 2 kg có thế năng 8 J đối với mặt đất. Chọn mốc thế năng ở mặt đất, khi đó vật ở độ cao bao nhiêu?",
+      "o": [
+        "0,4 m",
+        "4 m",
+        "0,8 m",
+        "16 m"
+      ],
+      "a": 0,
+      "e": "Tính trọng lượng trước: P = 10.m = 20 N. Rồi h = W<sub>t</sub> : P = 8 : 20 = 0,4 m. Nếu chia nhầm cho khối lượng 2 kg sẽ ra 4 m, sai.",
+      "fm": "P = 10 · 2 = 20 N ⇒ h = W<sub>t</sub> : P = 8 : 20 = 0,4 m",
+      "ef": "figHeight({mode:'static',h:'h = ?',P:'P = 20 N',note:'W_{t} = 8 J',m:'2 kg'})"
+    },
+    {
+      "lv": "apply",
+      "tag": "tn",
+      "q": "Một vận động viên có khối lượng 70 kg leo lên đỉnh tháp cao 20 m so với mặt đất. Lấy g = 9,8 m/s², thế năng trọng trường của người đó tại đỉnh tháp là",
+      "o": [
+        "1 400 J",
+        "14 000 J",
+        "13 720 J",
+        "1 372 J"
+      ],
+      "a": 2,
+      "e": "Trọng lượng P = m.g = 70 × 9,8 = 686 N, rồi W<sub>t</sub> = P.h = 686 × 20 = 13 720 J. Nếu lấy g = 10 thì ra 14 000 J, nhưng đề bắt lấy 9,8 nên chọn 13 720 J.",
+      "fm": "W<sub>t</sub> = m · g · h = 70 · 9,8 · 20 = 13 720 J",
+      "ef": "figHeight({mode:'static',h:'h = 20 m',P:'P = 686 N',m:'70 kg'})"
+    },
+    {
+      "lv": "easy",
+      "tag": "both",
+      "q": "Khi một vật chuyển động rơi tự do từ trên xuống dưới thì",
+      "o": [
+        "thế năng của vật giảm dần.",
+        "động năng của vật giảm dần.",
+        "thế năng của vật tăng dần.",
+        "động lượng của vật giảm dần."
+      ],
+      "a": 0,
+      "e": "Càng rơi, vật càng gần mặt đất (h giảm) nên <span class=\"k\">thế năng giảm</span>; đồng thời càng rơi càng nhanh (v tăng) nên <span class=\"k\">động năng tăng</span>. Thế năng \"chảy\" dần sang động năng.",
+      "fm": "h ↓ ⇒ W<sub>t</sub> = P·h ↓ ; v ↑ ⇒ W<sub>đ</sub> = ½mv² ↑",
+      "ef": "figHeight({mode:'fall'})"
+    },
+    {
+      "lv": "mid",
+      "tag": "both",
+      "q": "Xét một vật chuyển động nhanh dần theo phương nằm ngang. Đại lượng nào sau đây không đổi?",
+      "o": [
+        "Động năng.",
+        "Cơ năng.",
+        "Thế năng.",
+        "Vận tốc."
+      ],
+      "a": 2,
+      "e": "Chạy trên mặt phẳng ngang thì độ cao so với mốc không đổi → <span class=\"k\">thế năng không đổi</span>. \"Nhanh dần\" nghĩa là v tăng → động năng tăng, và cơ năng (tổng của hai thứ) cũng tăng.",
+      "fm": "h không đổi ⇒ W<sub>t</sub> không đổi ; v ↑ ⇒ W<sub>đ</sub> ↑",
+      "ef": "figHeight({mode:'flat'})"
+    },
+    {
+      "lv": "mid",
+      "tag": "both",
+      "q": "Một vật được ném thẳng đứng từ dưới lên cao. Trong quá trình chuyển động của vật thì",
+      "o": [
+        "Thế năng của vật giảm, động năng của vật tăng.",
+        "Thế năng của vật giảm, động năng của vật giảm.",
+        "Thế năng của vật tăng, động năng của vật tăng.",
+        "Thế năng của vật tăng, động năng của vật giảm."
+      ],
+      "a": 3,
+      "e": "Ngược với rơi: vật bay lên cao dần (<span class=\"k\">thế năng tăng</span>) nhưng chậm dần vì bị trọng lực kéo lại (<span class=\"k\">động năng giảm</span>). Lên tới đỉnh thì v = 0: động năng bằng 0, thế năng lớn nhất.",
+      "fm": "h ↑ ⇒ W<sub>t</sub> ↑ ; v ↓ ⇒ W<sub>đ</sub> ↓",
+      "ef": "figHeight({mode:'up'})"
+    },
+    {
+      "lv": "mid",
+      "tag": "both",
+      "q": "Một vật đang chuyển động có thể không có",
+      "o": [
+        "động lượng.",
+        "động năng.",
+        "thế năng.",
+        "cơ năng."
+      ],
+      "a": 2,
+      "e": "Đang chuyển động thì chắc chắn có động năng (v ≠ 0). Nhưng nếu vật đang lăn ngay trên mặt đất, tức là ở <span class=\"k\">gốc thế năng</span>, thì h = 0 và thế năng bằng 0.",
+      "fm": "h = 0 ⇒ W<sub>t</sub> = P · 0 = 0",
+      "ef": "figHeight({mode:'ground'})"
+    },
+    {
+      "lv": "apply",
+      "tag": "both",
+      "q": "Một vật khối lượng 5 kg, ở độ cao 15 m so với mặt đất và chuyển động với tốc độ 2 m/s. Chọn mốc thế năng ở mặt đất. Thế năng và động năng của vật là",
+      "o": [
+        "W<sub>t</sub> = 750 J; W<sub>đ</sub> = 10 J",
+        "W<sub>t</sub> = 75 J; W<sub>đ</sub> = 20 J",
+        "W<sub>t</sub> = 750 J; W<sub>đ</sub> = 20 J",
+        "W<sub>t</sub> = 75 J; W<sub>đ</sub> = 10 J"
+      ],
+      "a": 0,
+      "e": "Hai công thức tách bạch: thế năng dùng <span class=\"k\">độ cao</span>, động năng dùng <span class=\"k\">tốc độ</span>. Trọng lượng P = 10.5 = 50 N nên W<sub>t</sub> = 50 × 15 = 750 J. Động năng W<sub>đ</sub> = ½ × 5 × 2² = 10 J.",
+      "fm": "W<sub>t</sub> = P · h = 50 · 15 = 750 J ; W<sub>đ</sub> = ½ · 5 · 2² = 10 J",
+      "ef": "figHeight({mode:'static',h:'h = 15 m',P:'P = 50 N',v:'v = 2 m/s',m:'5 kg'})"
+    }
+  ]
+}

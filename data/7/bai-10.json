@@ -1,0 +1,200 @@
+{
+  "grade": "7",
+  "lesson": "Bài 10",
+  "title": "Đồ thị quãng đường – thời gian",
+  "sub": "Khoa học tự nhiên 7, Kết nối tri thức",
+  "note": "",
+  "kind": "Trắc nghiệm + Đúng/Sai + tự luận",
+  "accent": "#1E6FD9",
+  "accentBg": "#E4EEFC",
+  "accentDark": "#6CA6FF",
+  "accentBgDark": "#1B2B4B",
+  "questions": [
+    {
+      "lv": "easy",
+      "q": "Trục tung Os trong đồ thị quãng đường – thời gian dùng để",
+      "o": [
+        "biểu diễn các độ lớn của quãng đường đi được theo một tỉ lệ xích thích hợp.",
+        "biểu diễn thời gian theo một tỉ lệ xích thích hợp.",
+        "biểu diễn tốc độ theo một tỉ lệ xích thích hợp.",
+        "biểu diễn độ dời theo một tỉ lệ xích thích hợp."
+      ],
+      "a": 0,
+      "e": "Hệ trục của đồ thị: trục <span class=\"k\">đứng Os</span> ghi quãng đường s, trục <span class=\"k\">ngang Ot</span> ghi thời gian t. Mỗi vạch chia trên trục ứng với một giá trị theo tỉ lệ xích đã chọn, ví dụ 1 ô = 20 km.",
+      "ef": "figAxes()"
+    },
+    {
+      "lv": "easy",
+      "q": "Trục hoành Ot trong đồ thị quãng đường – thời gian dùng để",
+      "o": [
+        "biểu diễn các độ lớn của quãng đường đi được theo một tỉ lệ xích thích hợp.",
+        "biểu diễn thời gian theo một tỉ lệ xích thích hợp.",
+        "biểu diễn tốc độ theo một tỉ lệ xích thích hợp.",
+        "biểu diễn độ dời theo một tỉ lệ xích thích hợp."
+      ],
+      "a": 1,
+      "e": "Trục nằm ngang Ot luôn là thời gian, thời gian \"chạy\" từ trái sang phải. Mẹo nhớ: t là <span class=\"k\">time</span>, nằm ngang như dòng thời gian.",
+      "ef": "figAxes()"
+    },
+    {
+      "lv": "easy",
+      "q": "Trong đồ thị quãng đường – thời gian, gốc tọa độ O là điểm khởi hành biểu diễn",
+      "o": [
+        "s = 0, t = 1 s.",
+        "s = 1, t = 1 s.",
+        "s = 1, t = 0 s.",
+        "s = 0, t = 0 s."
+      ],
+      "a": 3,
+      "e": "Gốc O là lúc bắt đầu bấm giờ: thời gian t = 0 và vật chưa đi được mét nào, s = 0. Vì vậy đồ thị của một vật luôn xuất phát từ O.",
+      "fm": "Tại O: t = 0 và s = 0",
+      "ef": "graph({alt:'Đường thẳng xuất phát từ gốc O', xMax:4.4, yMax:88, xTicks:[0,1,2,3,4], yTicks:[0,20,40,60,80], xLabel:'t (h)', yLabel:'s (km)', series:[{pts:[[0,0],[4,80]]}], points:[{x:0,y:0}], extra:(X,Y)=>`<text class=\"c-call\" x=\"${X(0.3)}\" y=\"${Y(78)}\">Xuất phát từ O: chưa đi (s = 0),</text><text class=\"c-call\" x=\"${X(0.3)}\" y=\"${Y(66)}\">chưa tính giờ (t = 0)</text>`})"
+    },
+    {
+      "lv": "easy",
+      "q": "Khi đồ thị quãng đường – thời gian là đường thẳng song song với trục thời gian thì",
+      "o": [
+        "vật chuyển động nhanh dần.",
+        "vật chuyển động chậm dần.",
+        "vật chuyển động đều.",
+        "vật không chuyển động."
+      ],
+      "a": 3,
+      "e": "Đường nằm ngang nghĩa là thời gian cứ trôi (t tăng) mà s vẫn giữ nguyên: vật không đi thêm được mét nào, tức là <span class=\"k\">đứng yên</span>. Tốc độ lúc này bằng 0.",
+      "fm": "s không đổi ⇒ v = 0",
+      "ef": "graph({alt:'Đoạn đồ thị nằm ngang: quãng đường giữ nguyên 40 m trong khi thời gian tăng', xMax:5, yMax:60, xTicks:[0,1,2,3,4,5], yTicks:[0,20,40], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[1.5,40],[4.5,40]]}], extra:(X,Y)=>`<text class=\"c-call\" x=\"${X(3)}\" y=\"${Y(40)-10}\" text-anchor=\"middle\">s giữ nguyên 40 m</text><text class=\"c-note\" x=\"${X(3)}\" y=\"${Y(40)+20}\" text-anchor=\"middle\">t vẫn tăng → vật đứng yên</text>`})"
+    },
+    {
+      "lv": "easy",
+      "q": "Chọn đáp án đúng nhất. Đồ thị quãng đường – thời gian cho biết những gì?",
+      "o": [
+        "Tốc độ chuyển động, quãng đường đi được và thời gian đi của vật.",
+        "Quãng đường đi được và thời gian đi của vật.",
+        "Tốc độ chuyển động của vật.",
+        "Vị trí của vật ở những thời điểm xác định."
+      ],
+      "a": 0,
+      "e": "Chọn một điểm bất kì trên đồ thị: dóng xuống trục ngang được t, dóng sang trục đứng được s. Có s và t thì tính được tốc độ v = s : t. Vậy đồ thị cho biết cả ba đại lượng.",
+      "fm": "v = s : t",
+      "ef": "graph({alt:'Từ một điểm trên đồ thị đọc được s và t rồi tính v', xMax:5, yMax:100, xTicks:[0,1,2,3,4,5], yTicks:[0,20,40,60,80,100], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[4.6,92]]}], guides:[{x:3,y:60,xl:'t',yl:'s',hl:true}], points:[{x:3,y:60}], extra:(X,Y)=>`<text class=\"c-call\" x=\"${X(0.3)}\" y=\"${Y(92)}\">đọc s và t rồi tính v = s : t</text>`})"
+    },
+    {
+      "lv": "easy",
+      "q": "Đồ thị quãng đường – thời gian của chuyển động có tốc độ không đổi có dạng là đường gì?",
+      "o": [
+        "Đường thẳng.",
+        "Đường cong.",
+        "Đường tròn.",
+        "Đường gấp khúc."
+      ],
+      "a": 0,
+      "e": "Tốc độ không đổi thì mỗi giây đi thêm đúng một quãng như nhau, nên các điểm xếp thành một <span class=\"k\">đường thẳng đi lên từ O</span>. Đường càng dốc, tốc độ càng lớn.",
+      "ef": "graph({alt:'Hai đường thẳng qua O, đường dốc hơn ứng với tốc độ lớn hơn', xMax:5, yMax:100, xTicks:[0,1,2,3,4,5], yTicks:[0,20,40,60,80,100], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[4.6,92]],label:'nhanh'},{pts:[[0,0],[4.6,46]],label:'chậm',color:'var(--alt)'}], extra:(X,Y)=>`<text class=\"c-call\" x=\"${X(0.3)}\" y=\"${Y(92)}\">càng dốc → tốc độ càng lớn</text>`})"
+    },
+    {
+      "lv": "mid",
+      "q": "Hình bên là đồ thị quãng đường – thời gian của một vật chuyển động. Xác định trên đồ thị cho biết, sau 3 h vật đi được quãng đường là bao nhiêu?",
+      "fig": "graph({alt:'Đường thẳng đi qua O, trục thời gian chia mỗi 1 h, trục quãng đường chia mỗi 20 km', xMax:4.4, yMax:88, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,20,40,60,80], series:[{pts:[[0,0],[4.2,84]]}]})",
+      "o": [
+        "40 km.",
+        "80 km.",
+        "60 km.",
+        "20 km."
+      ],
+      "a": 2,
+      "e": "Cách đọc đồ thị: từ vạch <span class=\"k\">3 h</span> trên trục ngang, dóng thẳng lên gặp đường đồ thị, rồi dóng ngang sang trục đứng: gặp vạch <span class=\"k\">60 km</span>. Mỗi ô ngang là 1 h, mỗi ô đứng là 20 km.",
+      "ef": "graph({alt:'Dóng từ 3 h lên đồ thị rồi sang trục quãng đường được 60 km', xMax:4.4, yMax:88, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,20,40,60,80], series:[{pts:[[0,0],[4.2,84]]}], guides:[{x:3,y:60,xl:'3 h',yl:'60 km',hl:true}], points:[{x:3,y:60}]})"
+    },
+    {
+      "lv": "mid",
+      "q": "Hình bên là đồ thị quãng đường – thời gian của một vật chuyển động. Xác định tốc độ chuyển động của vật.",
+      "fig": "graph({alt:'Đường thẳng đi qua O và điểm (1 h; 20 km)', xMax:2.2, yMax:44, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,0.5,1,1.5,2], yTicks:[0,10,20,30,40], series:[{pts:[[0,0],[2.1,42]]}]})",
+      "o": [
+        "10 km/h.",
+        "20 km/h.",
+        "30 km/h.",
+        "40 km/h."
+      ],
+      "a": 1,
+      "e": "Đồ thị là đường thẳng nằm nghiêng nên tốc độ không đổi. Chọn một điểm dễ đọc: tại t = 1 h thì s = 20 km. Lấy quãng đường chia thời gian là ra tốc độ.",
+      "fm": "v = s : t = 20 km : 1 h = 20 km/h",
+      "ef": "graph({alt:'Đọc điểm (1 h; 20 km) trên đồ thị', xMax:2.2, yMax:44, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,0.5,1,1.5,2], yTicks:[0,10,20,30,40], series:[{pts:[[0,0],[2.1,42]]}], guides:[{x:1,y:20,xl:'1 h',yl:'20 km',hl:true}], points:[{x:1,y:20}]})"
+    },
+    {
+      "lv": "apply",
+      "q": "Hình bên là đồ thị quãng đường – thời gian của một ô tô chuyển động. Xác định tốc độ chuyển động của ô tô trên đoạn OA.",
+      "fig": "graph({alt:'Đồ thị ba đoạn: OA từ O đến (2 h; 180 km), AB nằm ngang đến (3 h; 180 km), BC lên (4 h; 270 km)', xMax:4.4, yMax:300, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,90,180,270], series:[{pts:[[0,0],[2,180],[3,180],[4,270]]}], points:[{x:2,y:180,label:'A',dx:-16,dy:-8},{x:3,y:180,label:'B',dx:6,dy:18},{x:4,y:270,label:'C',dx:8,dy:4}]})",
+      "o": [
+        "40 km/h.",
+        "90 km/h.",
+        "120 km/h.",
+        "180 km/h."
+      ],
+      "a": 1,
+      "e": "Đoạn OA đi từ O (0 h; 0 km) đến A (2 h; 180 km): trong <span class=\"k\">2 h</span> ô tô đi được <span class=\"k\">180 km</span>. Chỉ dùng số liệu của đoạn OA, không lấy số của đoạn BC.",
+      "fm": "v = s : t = 180 km : 2 h = 90 km/h",
+      "ef": "G7X([{x:2,y:180,xl:'2 h',yl:'180 km',hl:true}])"
+    },
+    {
+      "lv": "mid",
+      "q": "Hình bên là đồ thị quãng đường – thời gian của một ô tô chuyển động. Hãy mô tả chuyển động của ô tô trên các đoạn OA, AB và BC.",
+      "fig": "graph({alt:'Đồ thị ba đoạn: OA từ O đến (2 h; 180 km), AB nằm ngang đến (3 h; 180 km), BC lên (4 h; 270 km)', xMax:4.4, yMax:300, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,90,180,270], series:[{pts:[[0,0],[2,180],[3,180],[4,270]]}], points:[{x:2,y:180,label:'A',dx:-16,dy:-8},{x:3,y:180,label:'B',dx:6,dy:18},{x:4,y:270,label:'C',dx:8,dy:4}]})",
+      "o": [
+        "OA: chuyển động nhanh dần; AB: không chuyển động; BC: chuyển động chậm dần.",
+        "OA: chuyển động chậm dần; AB: không chuyển động; BC: chuyển động chậm dần.",
+        "OA: chuyển động với tốc độ không đổi; AB: chuyển động nhanh dần; BC: chuyển động với tốc độ không đổi.",
+        "OA: chuyển động với tốc độ không đổi; AB: không chuyển động; BC: chuyển động với tốc độ không đổi."
+      ],
+      "a": 3,
+      "e": "Đoạn <span class=\"k\">nằm nghiêng</span> (OA, BC): xe chạy với tốc độ không đổi. Đoạn <span class=\"k\">nằm ngang</span> (AB): từ 2 h đến 3 h quãng đường vẫn là 180 km, xe đang dừng. Lưu ý: nằm nghiêng không phải \"nhanh dần\"; nhanh dần thì đồ thị phải cong lên.",
+      "ef": "G7X([],(X,Y)=>`<text class=\"c-call\" x=\"${X(0.55)}\" y=\"${Y(112)}\" text-anchor=\"middle\">chạy đều</text><text class=\"c-call\" x=\"${X(2.5)}\" y=\"${Y(205)}\" text-anchor=\"middle\">dừng</text><text class=\"c-call\" x=\"${X(3.2)}\" y=\"${Y(258)}\" text-anchor=\"middle\">chạy đều</text>`)"
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Xét các phát biểu sau đây về đồ thị quãng đường – thời gian của một vật chuyển động thẳng với tốc độ không đổi. Chọn Đúng hoặc Sai cho từng phát biểu.",
+      "items": [
+        {
+          "t": "Đồ thị quãng đường – thời gian mô tả mối liên hệ giữa quãng đường đi được của vật và thời gian.",
+          "ans": true,
+          "e": "Đúng. Đó chính là ý nghĩa của đồ thị: nhìn vào là biết sau mỗi khoảng thời gian vật đi được bao xa."
+        },
+        {
+          "t": "Trong hệ tọa độ (s, t), trục nằm ngang Ot biểu diễn quãng đường, trục thẳng đứng Os biểu diễn thời gian.",
+          "ans": false,
+          "e": "Sai, nói ngược rồi: trục nằm ngang Ot biểu diễn thời gian, trục thẳng đứng Os biểu diễn quãng đường."
+        },
+        {
+          "t": "Đồ thị của chuyển động có tốc độ không đổi là một đường thẳng đi qua gốc tọa độ O.",
+          "ans": true,
+          "e": "Đúng. Tốc độ không đổi thì s tỉ lệ thuận với t, các điểm xếp thành một đường thẳng xuất phát từ O."
+        },
+        {
+          "t": "Độ dốc của đường thẳng trên đồ thị càng lớn thì tốc độ của vật càng nhỏ.",
+          "ans": false,
+          "e": "Sai. Đường càng dốc thì trong cùng một thời gian vật đi được quãng đường càng dài, tức là tốc độ càng lớn."
+        }
+      ],
+      "e": "Mẹo kiểm tra nhanh: ý nào nói <span class=\"k\">ngược trục</span> (câu b) hoặc <span class=\"k\">ngược độ dốc</span> (câu d) là sai. Hình bên: đường (1) dốc hơn đường (2) nên vật (1) chạy nhanh hơn.",
+      "ef": "graph({alt:'Hai đường thẳng qua O, đường dốc hơn ứng với tốc độ lớn hơn', xMax:5, yMax:100, xTicks:[0,1,2,3,4,5], yTicks:[0,20,40,60,80,100], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[4.6,92]],label:'(1)'},{pts:[[0,0],[4.6,46]],label:'(2)',color:'var(--alt)'}], extra:(X,Y)=>`<text class=\"c-call\" x=\"${X(0.3)}\" y=\"${Y(92)}\">(1) dốc hơn → nhanh hơn</text>`})"
+    },
+    {
+      "type": "short",
+      "lv": "mid",
+      "q": "Dựa vào đồ thị quãng đường – thời gian, nếu vật chuyển động được 20 m trong 4 s, tốc độ của vật là bao nhiêu m/s?",
+      "ans": "5 m/s",
+      "e": "Tốc độ bằng quãng đường chia thời gian. Trên đồ thị, điểm (4 s; 20 m) nằm trên đường thẳng đi qua O; dóng từ điểm đó xuống hai trục là đọc được s và t.",
+      "fm": "v = s : t = 20 : 4 = 5 m/s",
+      "ef": "graph({alt:'Đường thẳng qua O và điểm (4 s; 20 m)', xMax:5.2, yMax:26, xTicks:[0,1,2,3,4,5], yTicks:[0,5,10,15,20,25], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[5,25]]}], guides:[{x:4,y:20,xl:'4 s',yl:'20 m',hl:true}], points:[{x:4,y:20}]})"
+    },
+    {
+      "type": "short",
+      "lv": "mid",
+      "q": "Một đoạn đồ thị quãng đường – thời gian là đường thẳng nằm ngang ứng với giá trị quãng đường s = 50 m. Điều này có nghĩa là gì?",
+      "ans": "Vật đang đứng yên (quãng đường không đổi theo thời gian).",
+      "e": "Đoạn nằm ngang: thời gian cứ trôi mà s vẫn là 50 m, vật không đi thêm được mét nào, tức là đang dừng lại. Trước đó vật đã đi được 50 m rồi mới dừng.",
+      "fm": "s không đổi ⇒ v = 0",
+      "ef": "graph({alt:'Đồ thị đi lên tới 50 m rồi nằm ngang', xMax:6, yMax:60, xTicks:[0,1,2,3,4,5,6], yTicks:[0,25,50], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[2,50],[5.6,50]]}], extra:(X,Y)=>`<text class=\"c-call\" x=\"${X(3.8)}\" y=\"${Y(50)-10}\" text-anchor=\"middle\">s = 50 m không đổi → đứng yên</text>`})"
+    }
+  ]
+}

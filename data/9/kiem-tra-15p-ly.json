@@ -1,0 +1,38 @@
+{
+  "grade": "9",
+  "lesson": "Kiểm tra 15 phút",
+  "title": "Động năng. Thế năng",
+  "sub": "Khoa học tự nhiên 9, Kết nối tri thức",
+  "kind": "Tự luận",
+  "accent": "#7A3DE0",
+  "accentBg": "#EFE8FC",
+  "accentDark": "#B48CFF",
+  "accentBgDark": "#2B1F4C",
+  "exam": 15,
+  "questions": [
+    {
+      "pts": 3,
+      "q": "Nếu một vật có động năng là 20 J và khối lượng là 10 kg thì tốc độ của vật là bao nhiêu?",
+      "ans": "v = 2 m/s",
+      "e": "Từ công thức động năng W<sub>đ</sub> = ½·m·v², rút ra v² = 2W<sub>đ</sub> : m, rồi <span class=\"k\">khai căn</span> để được v.",
+      "fm": "v² = 2 · 20 : 10 = 4 ⇒ v = √4 = 2 m/s",
+      "ef": "figKinetic()"
+    },
+    {
+      "pts": 4,
+      "q": "Một máy bay có khối lượng 200 tấn đang bay với tốc độ ổn định 720 km/h ở độ cao 10 km so với mặt đất. Chọn gốc thế năng ở mặt đất, tính động năng và thế năng trọng trường của máy bay.",
+      "ans": "W<sub>đ</sub> = 4 000 000 000 J = 4.10<sup>9</sup> J<br>W<sub>t</sub> = 20 000 000 000 J = 2.10<sup>10</sup> J",
+      "e": "<span class=\"k\">Đổi đơn vị trước</span>: m = 200 tấn = 200 000 kg; v = 720 km/h = 720 : 3,6 = 200 m/s; h = 10 km = 10 000 m. Trọng lượng P = 10·m = 2 000 000 N.",
+      "fm": "W<sub>đ</sub> = ½ · 200 000 · 200² = 4.10<sup>9</sup> J<small>W<sub>t</sub> = P · h = 2 000 000 · 10 000 = 2.10<sup>10</sup> J</small>",
+      "ef": "figHeight({mode:'static',h:'h = 10 000 m',P:'P = 2 000 000 N',v:'v = 200 m/s'})"
+    },
+    {
+      "pts": 3,
+      "q": "Nếu tốc độ của một vật tăng lên gấp ba lần thì động năng của vật sẽ thay đổi như thế nào?",
+      "ans": "Động năng tăng lên 9 lần.",
+      "e": "Động năng tỉ lệ với <span class=\"k\">bình phương tốc độ</span> (v²), khối lượng không đổi. Tốc độ gấp 3 thì v² gấp 3² = 9 lần.",
+      "fm": "W<sub>đ</sub>' = ½ · m · (3v)² = 9 · ½ · m · v² = 9W<sub>đ</sub>",
+      "ef": "figBars({alt:'Tốc độ gấp 3 thì động năng gấp 9', max:9, rows:[{label:'Tốc độ',val:3,text:'× 3'},{label:'Động năng',val:9,text:'× 9',color:'var(--alt)'}]})"
+    }
+  ]
+}

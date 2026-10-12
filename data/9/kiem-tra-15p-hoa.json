@@ -1,0 +1,44 @@
+{
+  "grade": "9",
+  "lesson": "Kiểm tra 15 phút",
+  "title": "Dãy hoạt động hoá học. Tách kim loại",
+  "sub": "Khoa học tự nhiên 9, Kết nối tri thức",
+  "kind": "Đúng/Sai + tự luận",
+  "accent": "#7A3DE0",
+  "accentBg": "#EFE8FC",
+  "accentDark": "#B48CFF",
+  "accentBgDark": "#2B1F4C",
+  "exam": 15,
+  "questions": [
+    {
+      "pts": 2.5,
+      "q": "Cho các phát biểu sau, chọn Đúng hoặc Sai cho mỗi phát biểu:<table class=\"ex-table ex-tf\"><tr><th>Phát biểu</th><th>Đúng</th><th>Sai</th></tr><tr><td><b>a.</b> Trong dãy hoạt động hoá học theo chiều từ phải sang trái, mức độ hoạt động hoá học giảm dần.</td><td></td><td></td></tr><tr><td><b>b.</b> Ag không tác dụng được với dung dịch acid, giải phóng khí hydrogen.</td><td></td><td></td></tr><tr><td><b>c.</b> Cu tác dụng với dung dịch AgNO<sub>3</sub>.</td><td></td><td></td></tr><tr><td><b>d.</b> Ở điều kiện thường, Na tác dụng với nước giải phóng khí hydrogen.</td><td></td><td></td></tr></table>",
+      "ans": "a) Sai &nbsp; b) Đúng &nbsp; c) Đúng &nbsp; d) Đúng",
+      "e": "a) Sai: dãy K, Na, Mg, Al, Zn, Fe, Pb, H, Cu, Ag, Au được xếp theo mức độ hoạt động <span class=\"k\">giảm dần từ trái sang phải</span>, tức là từ phải sang trái thì <span class=\"k\">tăng dần</span>.<br>b) Đúng: Ag đứng sau H nên không đẩy được H khỏi acid.<br>c) Đúng: Cu đứng trước Ag nên đẩy được Ag ra khỏi muối.<br>d) Đúng: Na là kim loại rất mạnh, phản ứng với nước ngay ở nhiệt độ thường.",
+      "fm": "Cu + 2AgNO<sub>3</sub> → Cu(NO<sub>3</sub>)<sub>2</sub> + 2Ag<small>2Na + 2H<sub>2</sub>O → 2NaOH + H<sub>2</sub></small>",
+      "ef": "figMethods(null,['Cu','Ag','Na'])"
+    },
+    {
+      "pts": 2.5,
+      "q": "Hoà tan hoàn toàn 1,15 gam kim loại X vào nước, thu được dung dịch Y. Để trung hoà Y cần vừa đủ 50 gam dung dịch HCl 3,65%. Kim loại X là gì?",
+      "ans": "X là sodium (Na).",
+      "e": "Kim loại tan trong nước tạo dung dịch base nên là kim loại mạnh. Xét X hoá trị I: 2X + 2H<sub>2</sub>O → 2XOH + H<sub>2</sub>; XOH + HCl → XCl + H<sub>2</sub>O, nên n<sub>X</sub> = n<sub>HCl</sub>.<br>m<sub>HCl</sub> = 50 × 3,65% = 1,825 g ⇒ n<sub>HCl</sub> = 1,825 : 36,5 = 0,05 mol ⇒ n<sub>X</sub> = 0,05 mol.<br>(Nếu X hoá trị II thì n<sub>X</sub> = 0,025 mol, M = 46: không có kim loại nào phù hợp.)",
+      "fm": "M<sub>X</sub> = 1,15 : 0,05 = 23 ⇒ X là Na"
+    },
+    {
+      "pts": 2.5,
+      "q": "Cho các phát biểu sau, chọn Đúng hoặc Sai cho mỗi phát biểu:<table class=\"ex-table ex-tf\"><tr><th>Phát biểu</th><th>Đúng</th><th>Sai</th></tr><tr><td><b>a.</b> Kim loại Na được điều chế bằng cách điện phân nóng chảy NaCl.</td><td></td><td></td></tr><tr><td><b>b.</b> Cho H<sub>2</sub> qua Fe<sub>3</sub>O<sub>4</sub> đun nóng có thể thu được kim loại Fe.</td><td></td><td></td></tr><tr><td><b>c.</b> Cho Cu tác dụng với dung dịch FeCl<sub>2</sub> thu được kim loại Fe.</td><td></td><td></td></tr><tr><td><b>d.</b> Cho CO dư đi qua hỗn hợp gồm Al<sub>2</sub>O<sub>3</sub>, MgO và CuO, sau phản ứng thu được chất rắn gồm Al<sub>2</sub>O<sub>3</sub>, MgO và Cu.</td><td></td><td></td></tr></table>",
+      "ans": "a) Đúng &nbsp; b) Đúng &nbsp; c) Sai &nbsp; d) Đúng",
+      "e": "a) Đúng: Na hoạt động mạnh, chỉ tách được bằng điện phân nóng chảy.<br>b) Đúng: H<sub>2</sub> khử được oxide của kim loại trung bình như Fe (nhiệt luyện).<br>c) Sai: Cu đứng <span class=\"k\">sau</span> Fe trong dãy hoạt động nên không đẩy được Fe ra khỏi muối.<br>d) Đúng: CO chỉ khử được CuO; Al<sub>2</sub>O<sub>3</sub> và MgO là oxide của kim loại mạnh nên giữ nguyên.",
+      "fm": "Fe<sub>3</sub>O<sub>4</sub> + 4H<sub>2</sub> → 3Fe + 4H<sub>2</sub>O (t°)<small>CuO + CO → Cu + CO<sub>2</sub> (t°)</small>",
+      "ef": "figMethods('nl',['Fe','Cu'])"
+    },
+    {
+      "pts": 2.5,
+      "q": "Hoà tan hoàn toàn 6,5 gam Zn bằng dung dịch H<sub>2</sub>SO<sub>4</sub> loãng, thu được V lít H<sub>2</sub> (đkc). Tính giá trị của V.",
+      "ans": "V = 2,479 L",
+      "e": "n<sub>Zn</sub> = 6,5 : 65 = 0,1 mol. Theo phương trình, 1 mol Zn cho 1 mol H<sub>2</sub> nên n<sub>H₂</sub> = 0,1 mol. Ở điều kiện chuẩn (đkc), 1 mol khí chiếm 24,79 L.",
+      "fm": "Zn + H<sub>2</sub>SO<sub>4</sub> → ZnSO<sub>4</sub> + H<sub>2</sub><small>V = 0,1 × 24,79 = 2,479 L</small>"
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "grade": "9",
+  "lesson": "Bài 20",
+  "title": "Tách kim loại và việc sử dụng hợp kim",
+  "sub": "Khoa học tự nhiên 9, Kết nối tri thức",
+  "note": "",
+  "kind": "Trắc nghiệm + tự luận",
+  "accent": "#7A3DE0",
+  "accentBg": "#EFE8FC",
+  "accentDark": "#B48CFF",
+  "accentBgDark": "#2B1F4C",
+  "questions": [
+    {
+      "lv": "easy",
+      "q": "Kim loại Na được điều chế bằng phương pháp nào sau đây?",
+      "o": [
+        "Phương pháp điện phân nóng chảy.",
+        "Phương pháp nhiệt luyện với chất phản ứng là CO.",
+        "Phương pháp nhiệt luyện với chất phản ứng là H<sub>2</sub>.",
+        "Phương pháp thủy luyện."
+      ],
+      "a": 0,
+      "e": "Na là kim loại <span class=\"k\">hoạt động hoá học mạnh</span> (đứng đầu dãy hoạt động), CO hay H<sub>2</sub> không lấy được oxygen khỏi hợp chất của nó. Chỉ có dòng điện mới tách được: điện phân nóng chảy NaCl.",
+      "fm": "2NaCl <sub>(nóng chảy)</sub> → 2Na + Cl<sub>2</sub>",
+      "ef": "figMethods('dp',['Na'])"
+    },
+    {
+      "lv": "easy",
+      "q": "Phương pháp nhiệt luyện với chất phản ứng CO có thể tách được kim loại nào sau đây ra khỏi oxide của nó?",
+      "o": [
+        "Fe.",
+        "K.",
+        "Ca.",
+        "Al."
+      ],
+      "a": 0,
+      "e": "Nhiệt luyện dùng cho kim loại <span class=\"k\">hoạt động trung bình</span> như Zn, Fe, Pb, Cu. K, Ca, Al hoạt động mạnh, CO không khử được oxide của chúng nên phải điện phân nóng chảy.",
+      "fm": "Fe<sub>2</sub>O<sub>3</sub> + 3CO → 2Fe + 3CO<sub>2</sub> (t°)",
+      "ef": "figMethods('nl',['Fe'])"
+    },
+    {
+      "lv": "easy",
+      "q": "Thành phần chính của quặng bauxite là",
+      "o": [
+        "Fe<sub>3</sub>O<sub>4</sub>.",
+        "Al<sub>2</sub>O<sub>3</sub>.",
+        "AlCl<sub>3</sub>.",
+        "Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>."
+      ],
+      "a": 1,
+      "e": "Quặng bauxite chứa chủ yếu <span class=\"k\">aluminium oxide Al<sub>2</sub>O<sub>3</sub></span>, là nguyên liệu để sản xuất nhôm. Fe<sub>3</sub>O<sub>4</sub> là thành phần của quặng magnetite (quặng sắt).",
+      "fm": "2Al<sub>2</sub>O<sub>3</sub> → 4Al + 3O<sub>2</sub> (điện phân nóng chảy)"
+    },
+    {
+      "lv": "mid",
+      "q": "Chất/các chất phản ứng dùng để tách kẽm ra khỏi kẽm sulfide là",
+      "o": [
+        "CO.",
+        "O<sub>2</sub> và C.",
+        "HCl và Al.",
+        "H<sub>2</sub>."
+      ],
+      "a": 1,
+      "e": "Kẽm sulfide (ZnS) phải qua hai bước: <span class=\"k\">đốt với O<sub>2</sub></span> để chuyển thành ZnO, rồi <span class=\"k\">khử ZnO bằng C</span> (than cốc) ở nhiệt độ cao.",
+      "fm": "2ZnS + 3O<sub>2</sub> → 2ZnO + 2SO<sub>2</sub> ; 2ZnO + C → 2Zn + CO<sub>2</sub>",
+      "ef": "figChain(['ZnS','+ O_{2}, t° → ZnO + SO_{2}','+ C, t° → Zn'],'Sơ đồ tách kẽm từ ZnS')"
+    },
+    {
+      "lv": "easy",
+      "q": "Kim loại cơ bản của hợp kim duy-ra (duralumin) là",
+      "o": [
+        "Fe.",
+        "Cu.",
+        "Al.",
+        "Mg."
+      ],
+      "a": 2,
+      "e": "Duralumin là hợp kim của <span class=\"k\">nhôm</span> (khoảng 95% Al) với một ít Cu, Mg, Mn. Nhẹ mà bền nên dùng làm thân vỏ máy bay, ô tô.",
+      "ef": "figBars({alt:'Thành phần gần đúng của duralumin', max:100, rows:[{label:'Al',val:95,text:'≈ 95%'},{label:'Cu',val:4,text:'≈ 4%',color:'var(--alt)'},{label:'Mg, Mn',val:1,text:'≈ 1%',color:'var(--ink-2)'}]})"
+    },
+    {
+      "lv": "mid",
+      "q": "Gang và thép có thành phần nguyên tố cơ bản nào khác nhau?",
+      "o": [
+        "Sắt.",
+        "Manganese.",
+        "Carbon.",
+        "Nickel."
+      ],
+      "a": 2,
+      "e": "Gang và thép đều là hợp kim của sắt, nên sắt là thành phần <span class=\"k\">giống</span> nhau. Điểm khác cơ bản là <span class=\"k\">hàm lượng carbon</span>: gang chứa 2–5% C, thép chứa dưới 2% C. Vì vậy gang giòn, còn thép dẻo và bền hơn.",
+      "ef": "figBars({alt:'Hàm lượng carbon trong gang và thép', max:5.5, rows:[{label:'Gang',val:5,text:'2 – 5% C'},{label:'Thép',val:1.8,text:'dưới 2% C',color:'var(--alt)'}]})"
+    },
+    {
+      "lv": "easy",
+      "q": "Chất nào sau đây <u>không</u> phải là nguyên liệu sản xuất gang?",
+      "o": [
+        "Quặng sắt.",
+        "Than cốc.",
+        "Đá vôi.",
+        "Đất sét."
+      ],
+      "a": 3,
+      "e": "Lò cao sản xuất gang dùng <span class=\"k\">quặng sắt</span> (cung cấp Fe), <span class=\"k\">than cốc</span> (tạo CO để khử oxide sắt) và <span class=\"k\">đá vôi</span> (tạo xỉ, loại tạp chất). Đất sét không tham gia.",
+      "ef": "figChain(['Quặng sắt + than cốc + đá vôi','Lò cao: CO khử oxide sắt','Gang (Fe, 2 – 5% C) + xỉ'],'Nguyên liệu và sản phẩm của lò cao')"
+    },
+    {
+      "lv": "easy",
+      "q": "Chất nào sau đây <u>không</u> phải là nguyên liệu sản xuất thép?",
+      "o": [
+        "Gang.",
+        "Thép phế liệu.",
+        "Khí oxygen.",
+        "Khí carbon dioxide."
+      ],
+      "a": 3,
+      "e": "Luyện thép là <span class=\"k\">thổi khí oxygen</span> vào gang (có thể thêm thép phế liệu) để đốt bớt C, Si, Mn... CO<sub>2</sub> là khí thải sinh ra, không phải nguyên liệu.",
+      "fm": "C + O<sub>2</sub> → CO<sub>2</sub> (đốt bớt carbon trong gang)",
+      "ef": "figChain(['Gang + thép phế liệu','Thổi O_{2}: đốt bớt C, Si, Mn','Thép (dưới 2% C) + khí thải CO_{2}'],'Sơ đồ luyện thép')"
+    },
+    {
+      "lv": "apply",
+      "q": "Điện phân nóng chảy 1,53 tấn Al<sub>2</sub>O<sub>3</sub>, giả thiết hiệu suất 100%, thu được khối lượng nhôm là",
+      "o": [
+        "810 kg.",
+        "720 kg.",
+        "405 kg.",
+        "360 kg."
+      ],
+      "a": 0,
+      "e": "Theo phương trình, 102 phần khối lượng Al<sub>2</sub>O<sub>3</sub> cho 54 phần khối lượng Al (2 × 27). Lập tỉ lệ với 1,53 tấn.",
+      "fm": "Al<sub>2</sub>O<sub>3</sub> → 2Al + 3/2 O<sub>2</sub> ; m<sub>Al</sub> = 1,53 × 54 : 102 = 0,81 tấn = 810 kg"
+    },
+    {
+      "lv": "apply",
+      "q": "Một đồ vật bằng vàng tây, thành phần gồm có vàng và bạc, nặng 0,453 g; trong đó, khối lượng vàng là 0,170 g. Thành phần phần trăm khối lượng của vàng trong loại vàng tây đó là",
+      "o": [
+        "62,5%.",
+        "37,5%.",
+        "17,0%.",
+        "45,3%."
+      ],
+      "a": 1,
+      "e": "Phần trăm khối lượng vàng bằng khối lượng vàng chia khối lượng cả đồ vật, nhân 100%. Lưu ý 62,5% là phần trăm của <span class=\"k\">bạc</span>, không phải vàng.",
+      "fm": "%Au = 0,170 : 0,453 × 100% ≈ 37,5%",
+      "ef": "figBars({alt:'Tỉ lệ vàng và bạc trong vàng tây', max:100, rows:[{label:'Vàng (Au)',val:37.5,text:'37,5%'},{label:'Bạc (Ag)',val:62.5,text:'62,5%',color:'var(--ink-2)'}]})"
+    },
+    {
+      "lv": "apply",
+      "q": "Cần ít nhất bao nhiêu tấn Fe<sub>2</sub>O<sub>3</sub> để thu được 1 tấn gang có hàm lượng sắt 96,6%?",
+      "o": [
+        "1,035 tấn.",
+        "1,480 tấn.",
+        "0,69 tấn.",
+        "1,38 tấn."
+      ],
+      "a": 3,
+      "e": "Bước 1: tính khối lượng sắt trong 1 tấn gang. Bước 2: theo tỉ lệ Fe<sub>2</sub>O<sub>3</sub> → 2Fe, cứ 160 phần Fe<sub>2</sub>O<sub>3</sub> cho 112 phần Fe.",
+      "fm": "m<sub>Fe</sub> = 1 × 96,6% = 0,966 tấn ; m<sub>Fe₂O₃</sub> = 0,966 × 160 : 112 = 1,38 tấn"
+    },
+    {
+      "lv": "apply",
+      "q": "Từ 1 tấn gang có hàm lượng sắt 96% có thể thu được tối đa bao nhiêu kg thép có hàm lượng sắt 99%?",
+      "o": [
+        "960,0 kg.",
+        "950,4 kg.",
+        "969,7 kg.",
+        "1010 kg."
+      ],
+      "a": 2,
+      "e": "Lượng sắt không đổi khi luyện gang thành thép, chỉ tạp chất bị đốt bớt. 960 kg sắt chiếm 99% khối lượng thép, nên khối lượng thép = 960 : 99%.",
+      "fm": "m<sub>Fe</sub> = 1000 × 96% = 960 kg ; m<sub>thép</sub> = 960 : 0,99 ≈ 969,7 kg"
+    },
+    {
+      "type": "short",
+      "lv": "mid",
+      "q": "Trong quá trình điện phân nóng chảy aluminium oxide, cryolite được trộn vào để làm gì?",
+      "ans": "Làm giảm nhiệt độ nóng chảy của Al<sub>2</sub>O<sub>3</sub> (từ khoảng 2050 °C xuống khoảng 900 °C), tăng khả năng dẫn điện và tạo lớp bảo vệ, chống oxi hoá nhôm lỏng.",
+      "e": "Al<sub>2</sub>O<sub>3</sub> nóng chảy ở nhiệt độ rất cao, tốn nhiều năng lượng. Hỗn hợp với cryolite (Na<sub>3</sub>AlF<sub>6</sub>) nóng chảy ở nhiệt độ thấp hơn nhiều, giúp tiết kiệm điện."
+    },
+    {
+      "type": "short",
+      "lv": "mid",
+      "q": "Điện cực than chì có bền không trong quá trình điện phân nóng chảy aluminium oxide?",
+      "ans": "Không bền. Oxygen sinh ra ở cực dương đốt cháy dần điện cực than chì, tạo khí CO<sub>2</sub> và CO, nên phải thay điện cực định kì.",
+      "fm": "C + O<sub>2</sub> → CO<sub>2</sub> ; 2C + O<sub>2</sub> → 2CO",
+      "e": "Ở cực dương (anode) sinh ra O<sub>2</sub> ở nhiệt độ rất cao, mà than chì chính là carbon nên bị cháy dần."
+    },
+    {
+      "type": "short",
+      "lv": "mid",
+      "q": "Tại sao hợp kim được sử dụng phổ biến trong công nghiệp và cuộc sống?",
+      "ans": "Vì hợp kim có nhiều ưu điểm hơn kim loại thành phần: cứng hơn, bền hơn, khó bị ăn mòn hơn, có thể nhẹ hơn... Ví dụ hợp kim nhôm (duralumin) nhẹ và bền, dùng chế tạo thân vỏ máy bay, ô tô; thép không gỉ dùng làm dụng cụ nhà bếp.",
+      "e": "Bằng cách thay đổi thành phần, người ta tạo ra hợp kim có tính chất phù hợp từng mục đích sử dụng, điều mà kim loại nguyên chất không làm được."
+    },
+    {
+      "type": "short",
+      "lv": "mid",
+      "q": "Khí lò cao trong sản xuất gang thép thường chứa các khí gì? Các khí này ảnh hưởng thế nào tới môi trường xung quanh? Em hãy đề xuất cách xử lí các khí này trước khi thải ra môi trường xung quanh.",
+      "ans": "Chứa nhiều CO<sub>2</sub>, CO và một số khí như SO<sub>2</sub>, NO, NO<sub>2</sub>, CH<sub>4</sub>... Chúng làm tăng hiệu ứng nhà kính, gây mưa acid và ô nhiễm không khí. Cách xử lí: đốt cháy CO, CH<sub>4</sub> (tận dụng nhiệt), rồi dẫn khí thải qua dung dịch kiềm như Ca(OH)<sub>2</sub> để hấp thụ CO<sub>2</sub>, SO<sub>2</sub>, NO<sub>2</sub>.",
+      "fm": "SO<sub>2</sub> + Ca(OH)<sub>2</sub> → CaSO<sub>3</sub> + H<sub>2</sub>O",
+      "e": "CO độc, CO<sub>2</sub> và CH<sub>4</sub> gây hiệu ứng nhà kính, SO<sub>2</sub> và NO<sub>2</sub> gây mưa acid. Khí acid bị dung dịch kiềm giữ lại nên không thoát ra không khí."
+    },
+    {
+      "type": "short",
+      "lv": "apply",
+      "q": "Từ 1 tấn quặng sphalerite chứa 97% ZnS thu được khối lượng Zn và khối lượng SO<sub>2</sub> phát thải là bao nhiêu, biết hiệu suất của mỗi phản ứng là 90%? Khối lượng than cốc cần dùng cho quặng sphalerite là bao nhiêu, biết lượng cần dùng dư 20% so với lượng phản ứng?",
+      "ans": "m<sub>Zn</sub> = 526,5 kg ; m<sub>SO₂</sub> = 576 kg ; m<sub>than cốc</sub> ≈ 116,64 kg.",
+      "e": "m<sub>ZnS</sub> = 970 kg ⇒ n<sub>ZnS</sub> = 970 000 : 97 = 10 000 mol.<br>2ZnS + 3O<sub>2</sub> → 2ZnO + 2SO<sub>2</sub> (H = 90%): n<sub>ZnO</sub> = n<sub>SO₂</sub> = 9 000 mol ⇒ m<sub>SO₂</sub> = 9 000 × 64 = 576 kg.<br>ZnO + C → Zn + CO (H = 90%): n<sub>Zn</sub> = n<sub>C phản ứng</sub> = 8 100 mol ⇒ m<sub>Zn</sub> = 8 100 × 65 = 526,5 kg.<br>Than cốc dư 20%: m<sub>C</sub> = 8 100 × 12 × 1,2 = 116 640 g ≈ 116,64 kg.",
+      "ef": "figChain(['ZnS: 10 000 mol','×90% → ZnO, SO_{2}: 9 000 mol','×90% → Zn: 8 100 mol'],'Số mol qua từng bước, mỗi bước hiệu suất 90%')"
+    },
+    {
+      "type": "short",
+      "lv": "apply",
+      "q": "Nhúng một thanh kẽm vào 200 ml dung dịch AgNO<sub>3</sub>. Sau khi phản ứng xảy ra hoàn toàn, Ag sinh ra bám hết vào thanh kẽm, khối lượng thanh kim loại thu được tăng 1,51 g. Xác định nồng độ dung dịch AgNO<sub>3</sub> ban đầu.",
+      "ans": "C<sub>M</sub>(AgNO<sub>3</sub>) = 0,1 M.",
+      "e": "Gọi x là số mol Zn phản ứng. Zn + 2AgNO<sub>3</sub> → Zn(NO<sub>3</sub>)<sub>2</sub> + 2Ag: x mol Zn tan đi, 2x mol Ag bám vào.<br>Khối lượng tăng = m<sub>Ag</sub> − m<sub>Zn</sub> = 2x × 108 − 65x = 151x = 1,51 ⇒ x = 0,01 mol.<br>n<sub>AgNO₃</sub> = 2x = 0,02 mol.",
+      "fm": "C<sub>M</sub> = 0,02 : 0,2 = 0,1 M"
+    },
+    {
+      "type": "short",
+      "lv": "apply",
+      "q": "Cho 8 g một loại đồng thau (hợp kim đồng – kẽm) vào lượng dư dung dịch HCl 2M, sau khi phản ứng xảy ra hoàn toàn thu được 1,2395 L khí hydrogen (đkc). Xác định thành phần của đồng thau (giả thiết hợp kim này chỉ chứa hai nguyên tố).",
+      "ans": "%Zn = 40,625% ; %Cu = 59,375%.",
+      "e": "Cu không phản ứng với HCl, chỉ Zn phản ứng.<br>n<sub>H₂</sub> = 1,2395 : 24,79 = 0,05 mol. Zn + 2HCl → ZnCl<sub>2</sub> + H<sub>2</sub> ⇒ n<sub>Zn</sub> = 0,05 mol ⇒ m<sub>Zn</sub> = 0,05 × 65 = 3,25 g.",
+      "fm": "%Zn = 3,25 : 8 × 100% = 40,625% ; %Cu = 100% − 40,625% = 59,375%",
+      "ef": "figBars({alt:'Thành phần đồng thau', max:100, rows:[{label:'Cu',val:59.375,text:'59,375%',color:'var(--alt)'},{label:'Zn',val:40.625,text:'40,625%'}]})"
+    },
+    {
+      "type": "short",
+      "lv": "apply",
+      "q": "Cho 4,958 L khí CO (đkc) đi qua ống sứ đựng 8 g một oxide kim loại, nung nóng. Sau phản ứng thu được m gam kim loại M và hỗn hợp khí X có tỉ khối so với hydrogen bằng 20. Tính giá trị m và xác định công thức oxide của kim loại M.",
+      "ans": "m = 5,6 g ; oxide là Fe<sub>2</sub>O<sub>3</sub>.",
+      "e": "n<sub>CO</sub> = 4,958 : 24,79 = 0,2 mol. Mỗi CO lấy 1 O thành CO<sub>2</sub>, nên tổng số mol khí X vẫn là 0,2 mol; M<sub>X</sub> = 2 × 20 = 40 ⇒ m<sub>X</sub> = 8 g.<br>Bảo toàn khối lượng: 28 × 0,2 + 8 = m + 8 ⇒ m = 5,6 g.<br>m<sub>O</sub> bị lấy = 8 − 5,6 = 2,4 g ⇒ n<sub>O</sub> = 0,15 mol. Oxide M<sub>2</sub>O<sub>n</sub>: 2M : 16n = 5,6 : 2,4 ⇒ M = 56n/3. Với n = 3 thì M = 56 (Fe).",
+      "fm": "M<sub>2</sub>O<sub>n</sub> + nCO → 2M + nCO<sub>2</sub> ; n = 3 ⇒ M = 56 (Fe) ⇒ Fe<sub>2</sub>O<sub>3</sub>"
+    }
+  ]
+}
