@@ -1,0 +1,223 @@
+{
+  "grade": "7",
+  "lesson": "Ôn tập",
+  "title": "Tốc độ và đồ thị quãng đường – thời gian",
+  "sub": "Khoa học tự nhiên 7, Kết nối tri thức",
+  "note": "",
+  "kind": "Hướng dẫn giải từng bước",
+  "timed": false,
+  "accent": "#1E6FD9",
+  "accentBg": "#E4EEFC",
+  "accentDark": "#6CA6FF",
+  "accentBgDark": "#1B2B4B",
+  "modes": [
+    {
+      "id": "td",
+      "label": "Tốc độ",
+      "tags": [
+        "td"
+      ]
+    },
+    {
+      "id": "dt",
+      "label": "Đồ thị",
+      "tags": [
+        "dt"
+      ]
+    },
+    {
+      "id": "all",
+      "label": "Cả hai phần",
+      "tags": [
+        "td",
+        "dt"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "type": "steps",
+      "lv": "easy",
+      "tag": "td",
+      "q": "Một xe máy đi được quãng đường 60 km trong 2 giờ. Tính tốc độ của xe máy.",
+      "steps": [
+        {
+          "t": "Tóm tắt đề bài",
+          "c": "<p>Cho biết: quãng đường <span class=\"k\">s = 60 km</span>, thời gian <span class=\"k\">t = 2 h</span>.</p><p>Cần tìm: tốc độ v = ?</p>"
+        },
+        {
+          "t": "Kiểm tra đơn vị",
+          "c": "<p>Quãng đường đo bằng km, thời gian đo bằng giờ (h). Hai đơn vị này đi chung với nhau được, kết quả sẽ có đơn vị <span class=\"k\">km/h</span>, không cần đổi.</p>"
+        },
+        {
+          "t": "Viết công thức",
+          "c": "<p>Tốc độ bằng quãng đường chia cho thời gian.</p>",
+          "fm": "v = s : t"
+        },
+        {
+          "t": "Thay số và tính",
+          "c": "<p>Thay s = 60 km, t = 2 h vào công thức.</p>",
+          "fm": "v = 60 : 2 = 30 km/h"
+        },
+        {
+          "t": "Kết luận",
+          "c": "<p>Tốc độ của xe máy là 30 km/h, nghĩa là mỗi giờ xe đi được 30 km.</p>"
+        }
+      ],
+      "ans": "v = 30 km/h"
+    },
+    {
+      "type": "steps",
+      "lv": "mid",
+      "tag": "td",
+      "q": "Bạn An đi bộ từ nhà đến trường với tốc độ 1,5 m/s, hết 10 phút. Tính quãng đường từ nhà An đến trường.",
+      "steps": [
+        {
+          "t": "Tóm tắt đề bài",
+          "c": "<p>Cho biết: tốc độ <span class=\"k\">v = 1,5 m/s</span>, thời gian <span class=\"k\">t = 10 phút</span>.</p><p>Cần tìm: quãng đường s = ?</p>"
+        },
+        {
+          "t": "Đổi đơn vị",
+          "c": "<p>Tốc độ đo bằng <b>m/s</b> (mét trên <b>giây</b>) nhưng thời gian lại cho bằng <b>phút</b>. Phải đổi phút ra giây cho khớp: 1 phút = 60 s.</p>",
+          "fm": "t = 10 phút = 10 × 60 = 600 s"
+        },
+        {
+          "t": "Viết công thức",
+          "c": "<p>Từ v = s : t suy ra quãng đường bằng tốc độ nhân thời gian.</p>",
+          "fm": "s = v × t"
+        },
+        {
+          "t": "Thay số và tính",
+          "c": "<p>Thay v = 1,5 m/s, t = 600 s.</p>",
+          "fm": "s = 1,5 × 600 = 900 m"
+        },
+        {
+          "t": "Kết luận",
+          "c": "<p>Quãng đường từ nhà An đến trường là 900 m (= 0,9 km).</p>"
+        }
+      ],
+      "ans": "s = 900 m"
+    },
+    {
+      "type": "steps",
+      "lv": "apply",
+      "tag": "td",
+      "q": "Một ô tô chạy đều với tốc độ 72 km/h.<span class=\"ql\">a) Đổi tốc độ của ô tô ra đơn vị m/s.</span><span class=\"ql\">b) Tính quãng đường ô tô đi được trong 10 s.</span>",
+      "steps": [
+        {
+          "t": "Tóm tắt đề bài",
+          "c": "<p>Cho biết: <span class=\"k\">v = 72 km/h</span>, <span class=\"k\">t = 10 s</span>.</p><p>Cần tìm: a) v theo m/s; b) quãng đường s trong 10 s.</p>"
+        },
+        {
+          "t": "Nhớ cách đổi km/h ra m/s",
+          "c": "<p>1 km/h = 1000 m : 3600 s = 1/3,6 m/s, nên:</p>",
+          "fm": "km/h &nbsp;<b>: 3,6</b>&nbsp; → m/s<br>m/s &nbsp;<b>× 3,6</b>&nbsp; → km/h"
+        },
+        {
+          "t": "Làm câu a",
+          "c": "<p>Lấy 72 chia 3,6.</p>",
+          "fm": "v = 72 : 3,6 = 20 m/s"
+        },
+        {
+          "t": "Làm câu b",
+          "c": "<p>Thời gian cho bằng giây nên dùng tốc độ theo m/s vừa đổi được.</p>",
+          "fm": "s = v × t = 20 × 10 = 200 m"
+        },
+        {
+          "t": "Kết luận",
+          "c": "<p>a) 72 km/h = 20 m/s. b) Trong 10 s ô tô đi được 200 m.</p>"
+        }
+      ],
+      "ans": "a) v = 20 m/s<br>b) s = 200 m"
+    },
+    {
+      "type": "steps",
+      "lv": "mid",
+      "tag": "dt",
+      "q": "Một ô tô chuyển động đều, quãng đường đi được theo thời gian cho trong bảng:<table class=\"ex-table\"><tr><th>t (h)</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><th>s (km)</th><td>0</td><td>40</td><td>80</td><td>120</td><td>160</td></tr></table>Vẽ đồ thị quãng đường – thời gian của ô tô.",
+      "steps": [
+        {
+          "t": "Vẽ hai trục",
+          "c": "<p>Kẻ trục nằm ngang <span class=\"k\">Ot</span> biểu diễn thời gian, trục thẳng đứng <span class=\"k\">Os</span> biểu diễn quãng đường. Hai trục cắt nhau tại gốc O. Ghi tên và đơn vị ở đầu mỗi trục: t (h) và s (km).</p>",
+          "fig": "graph({alt:'Hai trục Ot và Os vuông góc tại O', xMax:4.4, yMax:176, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0], yTicks:[0]})"
+        },
+        {
+          "t": "Chia vạch trên hai trục",
+          "c": "<p>Nhìn bảng: thời gian tăng mỗi lần 1 h, quãng đường tăng mỗi lần 40 km. Chọn <span class=\"k\">mỗi ô ngang = 1 h</span>, <span class=\"k\">mỗi ô đứng = 40 km</span> rồi ghi số lên các vạch.</p>",
+          "fig": "graph({alt:'Trục Ot chia mỗi ô 1 h, trục Os chia mỗi ô 40 km', xMax:4.4, yMax:176, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,40,80,120,160]})"
+        },
+        {
+          "t": "Chấm các điểm",
+          "c": "<p>Mỗi cột trong bảng là một điểm (t; s): (0; 0), (1 h; 40 km), (2 h; 80 km), (3 h; 120 km), (4 h; 160 km). Từ vạch t trên trục ngang đi lên, gặp vạch s trên trục đứng thì chấm điểm.</p>",
+          "fig": "graph({alt:'Năm điểm được chấm trên lưới', xMax:4.4, yMax:176, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,40,80,120,160], points:[[0,0],[1,40],[2,80],[3,120],[4,160]].map(([x,y])=>({x,y}))})"
+        },
+        {
+          "t": "Nối các điểm",
+          "c": "<p>Dùng thước nối các điểm lại. Các điểm thẳng hàng nên ta được <span class=\"k\">một đường thẳng đi qua gốc O</span>: đó là đồ thị của chuyển động có tốc độ không đổi.</p>",
+          "fig": "graph({alt:'Nối các điểm được đường thẳng đi qua O', xMax:4.4, yMax:176, xLabel:'t (h)', yLabel:'s (km)', xTicks:[0,1,2,3,4], yTicks:[0,40,80,120,160], series:[{pts:[[0,0],[4,160]]}], points:[[1,40],[2,80],[3,120],[4,160]].map(([x,y])=>({x,y}))})"
+        }
+      ],
+      "ans": "Đồ thị là đường thẳng đi qua gốc O và điểm (4&nbsp;h;&nbsp;160&nbsp;km)."
+    },
+    {
+      "type": "steps",
+      "lv": "mid",
+      "tag": "dt",
+      "q": "Hình bên là đồ thị quãng đường – thời gian của một vật chuyển động. Tính tốc độ của vật.",
+      "fig": "graph({alt:'Đường thẳng đi qua O, trục thời gian mỗi ô 1 s, trục quãng đường mỗi ô 5 m', xMax:5.4, yMax:28, xTicks:[0,1,2,3,4,5], yTicks:[0,5,10,15,20,25], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[5,25]]}]})",
+      "steps": [
+        {
+          "t": "Nhận dạng đồ thị",
+          "c": "<p>Đồ thị là <span class=\"k\">đường thẳng đi qua O</span> nên vật chuyển động với tốc độ không đổi. Chỉ cần đọc một điểm bất kì trên đồ thị là tính được tốc độ.</p>"
+        },
+        {
+          "t": "Chọn một điểm dễ đọc",
+          "c": "<p>Chọn điểm nằm đúng chỗ giao của hai đường lưới để đọc cho chính xác, ví dụ điểm ứng với t = 4 s.</p>",
+          "fig": "graph({alt:'Chọn điểm (4 s; 20 m) nằm đúng giao điểm lưới', xMax:5.4, yMax:28, xTicks:[0,1,2,3,4,5], yTicks:[0,5,10,15,20,25], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[5,25]]}], points:[{x:4,y:20,label:'chọn điểm này',dx:-96,dy:-10}]})"
+        },
+        {
+          "t": "Đọc thời gian và quãng đường",
+          "c": "<p>Từ điểm đã chọn, dóng thẳng xuống trục Ot được <span class=\"k\">t = 4 s</span>; dóng ngang sang trục Os được <span class=\"k\">s = 20 m</span>.</p>",
+          "fig": "graph({alt:'Dóng điểm (4 s; 20 m) xuống hai trục', xMax:5.4, yMax:28, xTicks:[0,1,2,3,4,5], yTicks:[0,5,10,15,20,25], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[5,25]]}], guides:[{x:4,y:20,xl:'4 s',yl:'20 m',hl:true}], points:[{x:4,y:20}]})"
+        },
+        {
+          "t": "Tính tốc độ",
+          "c": "<p>Lấy quãng đường chia thời gian.</p>",
+          "fm": "v = s : t = 20 : 4 = 5 m/s"
+        }
+      ],
+      "ans": "v = 5 m/s"
+    },
+    {
+      "type": "steps",
+      "lv": "apply",
+      "tag": "dt",
+      "q": "Hình bên là đồ thị quãng đường – thời gian của một ô tô.<span class=\"ql\">a) Trên đoạn nào ô tô dừng lại? Dừng trong bao lâu?</span><span class=\"ql\">b) Tính tốc độ của ô tô trên đoạn BC.</span>",
+      "fig": "G7()",
+      "steps": [
+        {
+          "t": "Nhận dạng từng đoạn",
+          "c": "<p>Đoạn <span class=\"k\">nằm nghiêng</span> (OA, BC): thời gian tăng thì quãng đường cũng tăng, ô tô đang chạy. Đoạn <span class=\"k\">nằm ngang</span> (AB): thời gian tăng mà quãng đường không đổi, ô tô đứng yên.</p>",
+          "fig": "G7X([],(X,Y)=>`<text class=\"c-call\" x=\"${X(0.55)}\" y=\"${Y(112)}\" text-anchor=\"middle\">chạy</text><text class=\"c-call\" x=\"${X(2.5)}\" y=\"${Y(205)}\" text-anchor=\"middle\">dừng</text><text class=\"c-call\" x=\"${X(3.2)}\" y=\"${Y(258)}\" text-anchor=\"middle\">chạy</text>`)"
+        },
+        {
+          "t": "Làm câu a",
+          "c": "<p>Đoạn AB đi từ t = 2 h đến t = 3 h, quãng đường vẫn là 180 km. Vậy ô tô dừng trên đoạn <span class=\"k\">AB</span> trong thời gian 3 − 2 = <span class=\"k\">1 h</span>.</p>",
+          "fig": "G7X([{x:2,y:180,xl:'2 h'},{x:3,y:180,xl:'3 h',hl:true}])"
+        },
+        {
+          "t": "Đọc số liệu đoạn BC",
+          "c": "<p>Điểm B ứng với (3 h; 180 km), điểm C ứng với (4 h; 270 km). Trên đoạn BC: thời gian chạy là 4 − 3 = 1 h; quãng đường đi thêm là 270 − 180 = 90 km.</p>",
+          "fig": "G7X([{x:3,y:180,xl:'3 h',yl:'180 km'},{x:4,y:270,xl:'4 h',yl:'270 km',hl:true}])",
+          "fm": "t = 4 − 3 = 1 h ; s = 270 − 180 = 90 km"
+        },
+        {
+          "t": "Tính tốc độ đoạn BC",
+          "c": "<p>Chỉ dùng số liệu của riêng đoạn BC, không lấy 270 km chia 4 h.</p>",
+          "fm": "v = s : t = 90 : 1 = 90 km/h"
+        }
+      ],
+      "ans": "a) Ô tô dừng trên đoạn AB, trong 1 h.<br>b) v<sub>BC</sub> = 90 km/h"
+    }
+  ]
+}

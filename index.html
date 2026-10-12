@@ -113,7 +113,19 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 .topic.dn{background:var(--dn-bg);color:var(--dn)}
 .topic.tn{background:var(--tn-bg);color:var(--tn)}
 .topic.both{background:linear-gradient(90deg,var(--dn-bg) 0 50%,var(--tn-bg) 50% 100%);color:var(--ink);border-color:var(--line)}
-.topic.kind{background:var(--accent-bg);color:var(--accent)}
+.topic.kind,.topic.td,.topic.dt{background:var(--accent-bg);color:var(--accent)}
+/* bài ôn tập có hướng dẫn từng bước */
+.steps-wrap{display:flex;flex-direction:column;gap:14px}
+.step-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.step{border:2px solid var(--line);border-left:6px solid var(--accent);border-radius:14px;background:var(--surface);padding:12px 16px;animation:rise .4s var(--ease) both}
+.step-h{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;margin-bottom:8px}
+.step-n{background:var(--accent);color:#fff;border-radius:999px;padding:2px 12px;font-size:.85rem;white-space:nowrap}
+.step-b p{margin:0 0 6px;line-height:1.55}
+.step.final{border-color:var(--ok);border-left-color:var(--ok);background:var(--ok-bg)}
+.step.final .step-n{background:var(--ok)}
+.step.final .answer{color:var(--ok);background:var(--surface)}
+.step-ctl{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.step-prog{color:var(--ink-2);font-size:.92rem;margin-left:auto;font-variant-numeric:tabular-nums}
 .review .topic{font-size:.72rem;padding:1px 8px;margin-left:6px;vertical-align:middle}
 .level.apply{background:var(--accent);color:#fff}
 .qbody{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-start}
@@ -821,7 +833,7 @@ async function loadSets(){
   const list=await fetch('data/index.json',{cache:'no-cache'}).then(r=>r.json());
   const sets=await Promise.all(list.map(f=>fetch('data/'+f,{cache:'no-cache'}).then(r=>{ if(!r.ok) throw Error(f); return r.json(); })));
   sets.forEach(s=>{
-    s.questions.forEach(q=>{ if(q.fig) q.fig=toFig(q.fig); if(q.ef) q.ef=toFig(q.ef); });
+    s.questions.forEach(q=>{ if(q.fig) q.fig=toFig(q.fig); if(q.ef) q.ef=toFig(q.ef); (q.steps||[]).forEach(st=>{ if(st.fig) st.fig=toFig(st.fig); }); });
     (s.modes||[]).forEach(m=>{ m.filter=q=>(m.tags||[]).includes(q.tag)||(!!m.core&&!!q.core); });
   });
   return sets;
@@ -836,7 +848,7 @@ const DUR_OF={easy:25, mid:30, apply:30};   // giây cho mỗi mức độ
 let dur=30;
 const durFor=q=>DUR_OF[q.lv]||30;
 const LV={easy:'Dễ', mid:'Vừa', apply:'Vận dụng'};
-const TAG={dn:'Động năng', tn:'Thế năng', both:'Động năng + Thế năng'};
+const TAG={dn:'Động năng', tn:'Thế năng', both:'Động năng + Thế năng', td:'Tốc độ', dt:'Đồ thị'};
 const KEYS=['A','B','C','D'];
 let S={set:null, qs:[], mode:null, i:0, ans:[], pick:null, revealed:false};
 let T={end:0, left:30000, on:false, iv:0};
@@ -865,7 +877,7 @@ function renderHome(){
       const meta=`<span class="kind">${s.kind||'4 lựa chọn'}</span>`;
       if(s.modes){
         const btns=s.modes.map(m=>`<button class="mode" type="button" data-i="${i}" data-mode="${m.id}">${m.label} <small>${s.questions.filter(m.filter).length} câu</small></button>`).join('');
-        return `<li><div class="row has-modes"><span class="rt"><span class="rt-title">${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}25–30 giây mỗi câu. Chọn phần muốn ôn:</span><span class="modes">${btns}</span></span></div></li>`;
+        return `<li><div class="row has-modes"><span class="rt"><span class="rt-title">${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}${s.timed===false?'Không tính giờ.':'25–30 giây mỗi câu.'} Chọn phần muốn ôn:</span><span class="modes">${btns}</span></span></div></li>`;
       }
       const mixed=s.questions.some(q=>q.type);
       const info=s.exam?`${s.questions.length} câu, làm bài trong ${s.exam} phút, ${s.questions.reduce((a,q)=>a+(q.pts||0),0)} điểm`:s.timed===false?`${s.questions.length} câu, không tính giờ, làm xong tự đối chiếu đáp án`:mixed?`${s.questions.length} câu; trắc nghiệm 25–30 giây mỗi câu, ${[s.questions.some(q=>q.type==='tf')&&'Đúng/Sai',s.questions.some(q=>q.type==='short')&&'tự luận'].filter(Boolean).join(' và ')} không tính giờ`:`${s.questions.length} câu, 25–30 giây mỗi câu`;
@@ -932,6 +944,7 @@ function renderQ(){
   if(q.tag){ tp.textContent=TAG[q.tag]; tp.className='topic '+q.tag; tp.hidden=false; }
   else if(q.type==='tf'){ tp.textContent='Đúng / Sai'; tp.className='topic kind'; tp.hidden=false; }
   else if(q.type==='short'){ tp.textContent='Tự luận'; tp.className='topic kind'; tp.hidden=false; }
+  else if(q.type==='steps'){ tp.textContent='Hướng dẫn giải'; tp.className='topic kind'; tp.hidden=false; }
   else tp.hidden=true;
   const qc=document.querySelector('.qcard'); qc.classList.remove('enter'); void qc.offsetWidth; qc.classList.add('enter');
   $('#qtext').innerHTML=q.q;
@@ -940,6 +953,10 @@ function renderQ(){
   if(q.type==='tf'){
     opts.className='tf-list'; S.pick=q.items.map(()=>null);
     opts.innerHTML=q.items.map((it,k)=>`<div class="tf-row" data-k="${k}"><span class="key">${'abcde'[k]}</span><span class="tf-txt">${it.t}<span class="tf-e" hidden>${it.e}</span></span><span class="tf-btns"><button type="button" class="tf-btn" data-v="1">Đúng</button><button type="button" class="tf-btn" data-v="0">Sai</button></span></div>`).join('');
+  } else if(q.type==='steps'){
+    opts.className='steps-wrap'; S.step=0;
+    opts.innerHTML=`<ol class="step-list" id="stepList"></ol><div class="step-ctl"><button type="button" class="btn ghost" id="stepPrev" hidden>◀ Bước trước</button><button type="button" class="btn primary" id="stepNext">Bước 1 ▶</button><button type="button" class="btn ghost" id="stepAll">Hiện tất cả các bước</button><span class="step-prog" id="stepProg"></span></div>`;
+    stepSync();
   } else if(q.type==='short'){
     opts.className='short-wrap';
     opts.innerHTML=`<button type="button" class="btn primary show-ans" id="btnShowAns">Hiện đáp án</button>`;
@@ -947,7 +964,7 @@ function renderQ(){
     opts.className='opts';
     opts.innerHTML=q.o.map((t,k)=>`<button class="opt" type="button" data-k="${k}"><span class="key">${KEYS[k]}</span><span class="txt">${t}</span></button>`).join('');
   }
-  $('#exp').hidden=true; $('#btnNext').hidden=true; $('#btnReveal').hidden=q.type==='short';
+  $('#exp').hidden=true; $('#btnNext').hidden=true; $('#btnReveal').hidden=q.type==='short'||q.type==='steps';
   $('#timerBox').hidden=!isTimed();
   if(isTimed()) startTimer(); else stopTimer();
 }
@@ -1112,6 +1129,38 @@ function finishReveal(n){
 }
 
 /* answer + reveal */
+/* hướng dẫn từng bước: mỗi lần bấm hiện thêm một bước, hết bước thì hiện đáp số */
+function stepHTML(st,k){
+  return `<li class="step"><div class="step-h"><span class="step-n">Bước ${k+1}</span>${st.t||''}</div><div class="exp-grid"><div class="exp-text step-b">${st.c||''}${st.fm?`<div class="formula">${st.fm}</div>`:''}</div>${st.fig?`<div class="exp-fig">${st.fig()}</div>`:''}</div></li>`;
+}
+function stepSync(){
+  const q=S.qs[S.i], n=q.steps.length, nb=$('#stepNext');
+  nb.textContent= S.step===0 ? 'Bước 1 ▶' : S.step<n ? 'Bước tiếp theo ▶' : '';
+  nb.hidden=S.step>=n; $('#stepAll').hidden=S.step>=n;
+  $('#stepPrev').hidden=S.step===0||S.revealed;
+  $('#stepProg').textContent=`Đã xem ${S.step}/${n} bước`;
+}
+function stepGo(d){
+  const q=S.qs[S.i], n=q.steps.length, list=$('#stepList');
+  if(!list||S.revealed&&d<0) return;
+  const to=d==='all'?n:Math.max(0,Math.min(n,S.step+d));
+  while(S.step>to){ list.lastElementChild.remove(); S.step--; }
+  let last=null;
+  while(S.step<to){ list.insertAdjacentHTML('beforeend',stepHTML(q.steps[S.step],S.step)); last=list.lastElementChild; S.step++; }
+  if(S.step===n&&!S.revealed){
+    list.insertAdjacentHTML('beforeend',`<li class="step final"><div class="step-h"><span class="step-n">Đáp số</span></div><p class="answer">${q.ans}</p></li>`);
+    last=list.lastElementChild;
+    S.revealed=true; S.ans[S.i]={type:'steps'}; finishReveal(N()); ding();
+  }
+  stepSync();
+  if(last) requestAnimationFrame(()=>{   // cuộn tới bước vừa mở, chừa chỗ cho thanh tiêu đề dính ở trên
+    const head=document.querySelector('.top').getBoundingClientRect().bottom;
+    const r=last.getBoundingClientRect();
+    if(r.top<head+8 || r.bottom>innerHeight-8)
+      scrollTo({top:scrollY+r.top-head-16, behavior:reduceMotion?'auto':'smooth'});
+  });
+}
+
 function reveal(picked,timedOut,instant){
   if(S.revealed) return;
   stopTimer(); S.revealed=true;
@@ -1192,7 +1241,7 @@ function plain(html){
   return t.length>90 ? t.slice(0,88)+'…' : t;
 }
 function showResult(){
-  const qs=S.qs, n=qs.filter(q=>q.type!=='short').length; let score=0;
+  const qs=S.qs, n=qs.filter(q=>q.type!=='short'&&q.type!=='steps').length; let score=0;
   const items=qs.map((q,i)=>{
     const a=S.ans[i]||{picked:null,timedOut:false,self:null,marked:false};
     let st,icon,yours;
@@ -1203,13 +1252,15 @@ function showResult(){
       yours= a.marked?`Đúng ${a.correct}/${a.total} ý`:'Không chọn';
     } else if(q.type==='short'){
       st='skip'; icon='✎'; yours='Tự luận, không tính điểm';
+    } else if(q.type==='steps'){
+      st=a.type?'ok':'skip'; icon=a.type?'✓':'–'; yours=a.type?'Đã xem hết các bước':'Chưa xem hết';
     } else {
       const ok=a.picked===q.a; if(ok) score++;
       st= ok?'ok' : a.picked===null?'skip' : 'bad';
       icon= ok?'✓' : a.picked===null?'–' : '✗';
       yours= (a.picked===null ? (a.timedOut?'Hết giờ':'Không chọn') : `Bạn chọn ${KEYS[a.picked]}`) + (ok?'':', đáp án '+KEYS[q.a]);
     }
-    const tag= q.tag ? `<span class="topic ${q.tag}">${TAG[q.tag]}</span>` : q.type==='tf'?'<span class="topic kind">Đúng / Sai</span>':q.type==='short'?'<span class="topic kind">Tự luận</span>':'';
+    const tag= q.tag ? `<span class="topic ${q.tag}">${TAG[q.tag]}</span>` : q.type==='tf'?'<span class="topic kind">Đúng / Sai</span>':q.type==='short'?'<span class="topic kind">Tự luận</span>':q.type==='steps'?'<span class="topic kind">Hướng dẫn giải</span>':'';
     return `<li class="${st}"><span class="st">${icon}</span><span class="rq">${i+1}. ${plain(q.q)}${tag}</span><span class="ra">${yours}</span></li>`;
   });
   score=Math.round(score*100)/100;
@@ -1217,6 +1268,12 @@ function showResult(){
   $('#scoreDen').textContent=`/${n}`;
   $('#scoreMsg').textContent= score===n ? 'Tuyệt đối. Nắm chắc bài rồi!' : score>=n*0.8 ? 'Rất tốt, chỉ còn vài chỗ cần để ý.' : score>=n*0.5 ? 'Khá ổn, xem lại mấy câu sai nhé.' : 'Ôn lại bài này thêm một lượt rồi thử lại nhé.';
   $('#review').innerHTML=items.join('');
+  if(n===0){   // bài chỉ có hướng dẫn giải, không chấm điểm
+    const seen=qs.filter((q,i)=>S.ans[i]).length;
+    $('#scoreNum').textContent=seen; $('#scoreDen').textContent=`/${qs.length} câu`;
+    $('#scoreMsg').textContent= seen===qs.length ? 'Đã ôn xong tất cả các câu. Thử tự giải lại không xem hướng dẫn nhé!' : 'Còn vài câu chưa xem hết các bước, làm lại để ôn kĩ hơn nhé.';
+    show(result); clearFx(); if(seen===qs.length){ confetti(); ding(); } return;
+  }
   show(result); clearFx();
   if(score===n){ confetti(); setTimeout(confetti,500); ding(); }
 }
@@ -1309,7 +1366,7 @@ $('#opts').addEventListener('click',e=>{
 });
 $('#exp').addEventListener('click',e=>{ const b=e.target.closest('.sg'); if(b&&!b.disabled) selfGrade(b.dataset.v==='1'); });
 $('#btnReveal').addEventListener('click',()=>reveal(null,false));
-$('#opts').addEventListener('click',e=>{ if(e.target.closest('#btnShowAns')) reveal(null,false); });
+$('#opts').addEventListener('click',e=>{ if(e.target.closest('#btnShowAns')) reveal(null,false); if(e.target.closest('#stepNext')) stepGo(1); if(e.target.closest('#stepPrev')) stepGo(-1); if(e.target.closest('#stepAll')) stepGo('all'); });
 $('#btnNext').addEventListener('click',next);
 $('#btnHome').addEventListener('click',renderHome);
 $('#btnAgain').addEventListener('click',()=>startSet(SETS.indexOf(S.set), S.mode&&S.mode.id));
@@ -1344,7 +1401,7 @@ document.addEventListener('keydown',e=>{
     if(k==='enter'||k===' '){
       if(e.target.closest('button')) return;
       e.preventDefault();
-      S.revealed ? next() : reveal(null,false);
+      S.revealed ? next() : q.type==='steps' ? stepGo(1) : reveal(null,false);
     }
     return;
   }
