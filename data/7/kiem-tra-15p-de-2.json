@@ -19,12 +19,11 @@
     },
     {
       "pts": 5,
-      "q": "Hình bên là đồ thị quãng đường – thời gian của một vật chuyển động.<span class=\"ql\">a) Dựa vào đồ thị, sau 3 s vật đi được bao nhiêu mét?</span><span class=\"ql\">b) Tính tốc độ của vật.</span>",
-      "fig": "graph({alt:'Đồ thị quãng đường – thời gian là đường thẳng đi qua O, mỗi ô ngang 1 s, mỗi ô đứng 10 m', xMax:5.4, yMax:55, xTicks:[0,1,2,3,4,5], yTicks:[0,10,20,30,40,50], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[5,50]]}]})",
-      "ans": "a) s = 30 m<br>b) v = 10 m/s",
-      "e": "a) Từ vạch <span class=\"k\">3 s</span> trên trục thời gian, dóng thẳng lên gặp đường đồ thị rồi dóng ngang sang trục quãng đường: gặp vạch <span class=\"k\">30 m</span>. b) Lấy quãng đường chia thời gian.",
-      "fm": "v = s : t = 30 : 3 = 10 m/s",
-      "ef": "graph({alt:'Dóng từ 3 s lên đồ thị rồi sang trục quãng đường được 30 m', xMax:5.4, yMax:55, xTicks:[0,1,2,3,4,5], yTicks:[0,10,20,30,40,50], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[5,50]]}], guides:[{x:3,y:30,xl:'3 s',yl:'30 m',hl:true}], points:[{x:3,y:30}]})"
+      "q": "Một ô tô đồ chơi chuyển động đều. Quãng đường ô tô đi được theo thời gian cho trong bảng:<table class=\"ex-table\"><tr><th>t (s)</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><th>s (m)</th><td>0</td><td>10</td><td>20</td><td>30</td><td>40</td></tr></table><span class=\"ql\">a) Vẽ đồ thị quãng đường – thời gian của ô tô.</span><span class=\"ql\">b) Dựa vào đồ thị, tính tốc độ của ô tô.</span>",
+      "ans": "a) Đồ thị là đường thẳng đi qua gốc O và điểm (4&nbsp;s;&nbsp;40&nbsp;m).<br>b) v = 10 m/s",
+      "e": "a) Trục ngang Ot ghi thời gian (mỗi ô 1 s), trục đứng Os ghi quãng đường (mỗi ô 10 m). Chấm 5 điểm trong bảng rồi nối lại được <span class=\"k\">một đường thẳng đi qua O</span>.<br>b) Chọn một điểm dễ đọc trên đồ thị, ví dụ (4&nbsp;s;&nbsp;40&nbsp;m), rồi lấy quãng đường chia thời gian.",
+      "fm": "v = s : t = 40 : 4 = 10 m/s",
+      "ef": "graph({alt:'Đường thẳng đi qua O và các điểm (1 s; 10 m), (2 s; 20 m), (3 s; 30 m), (4 s; 40 m)', xMax:4.4, yMax:46, xTicks:[0,1,2,3,4], yTicks:[0,10,20,30,40], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[4,40]]}], guides:[{x:4,y:40,xl:'4 s',yl:'40 m',hl:true}], points:[[1,10],[2,20],[3,30],[4,40]].map(([x,y])=>({x,y}))})"
     }
   ]
 }
