@@ -262,6 +262,9 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 
 /* đề kiểm tra: một đồng hồ chung cho cả đề, các câu hiện cùng lúc */
 .app.wide{max-width:min(1480px,100%);padding-bottom:16px}
+.app.wide.two{max-width:100%}
+.ex-list.two{column-count:2;column-gap:2.4em;column-rule:2px dashed var(--line)}
+.ex-list.two .ex-q{break-inside:avoid}
 /* cỡ chữ theo cả chiều rộng lẫn chiều cao để cả đề vừa một màn hình HD trên máy chiếu */
 .ex-layout{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(20px,3vw,48px);align-items:start;margin-top:clamp(10px,2.4vh,28px);font-size:clamp(1rem,min(1.5vw,2.9vh),1.7rem)}
 .ex-main h2{font-size:1.05em;font-weight:800;line-height:1.3;margin:0 0 .35em}
@@ -276,8 +279,8 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 .ex-table th,.ex-table td{border:1.5px solid var(--line);padding:.2em .9em;text-align:center}
 .ex-table th{background:var(--accent-bg);color:var(--accent);font-weight:700}
 .ex-table.ex-tf{width:100%;font-size:1em;line-height:1.45;margin:.7em 0 .4em;border:2px solid color-mix(in srgb,var(--ink-2) 55%,transparent)}
-.ex-table.ex-tf th,.ex-table.ex-tf td{border:1.5px solid color-mix(in srgb,var(--ink-2) 45%,transparent);padding:.6em .8em}
-.ex-table.ex-tf th{font-size:1.02em;padding:.5em .8em}
+.ex-table.ex-tf th,.ex-table.ex-tf td{border:1.5px solid color-mix(in srgb,var(--ink-2) 45%,transparent);padding:.4em .8em}
+.ex-table.ex-tf th{font-size:1.02em;padding:.35em .8em}
 .ex-table.ex-tf tr:nth-child(odd) td{background:color-mix(in srgb,var(--accent-bg) 45%,transparent)}
 .ex-table.ex-tf td:first-child{text-align:left}
 .ex-table.ex-tf td+td,.ex-table.ex-tf th+th{width:4.2em}
@@ -1497,8 +1500,34 @@ function startExam(s){
   $('#exOver').hidden=true; exSyncAll();
   exTimerEl.classList.remove('low','over'); exTimerEl.classList.add('paused');
   exLab.textContent='phút'; exPaint(E.left); exSync();
-  show(exam);
+  show(exam); fitExam();
 }
+/* thu nhỏ chữ của đề cho vừa đúng một màn hình (chỉ khi chưa mở đáp án, màn hình rộng) */
+function fitExam(){
+  const el=$('.ex-layout');
+  if(exam.hidden || document.querySelector('.ex-q .exp:not([hidden])')) return;
+  const list=$('#exList'), wide=innerWidth>900;
+  const page=document.documentElement, fits=()=>page.scrollHeight<=innerHeight+1;
+  const fitFont=()=>{
+    el.style.fontSize='';
+    const base=parseFloat(getComputedStyle(el).fontSize);
+    if(fits()) return base;
+    let lo=10, hi=base;
+    for(let k=0;k<10;k++){ const mid=(lo+hi)/2; el.style.fontSize=mid+'px'; if(fits()) lo=mid; else hi=mid; }
+    el.style.fontSize=lo+'px';
+    while(!fits() && lo>10){ lo-=.5; el.style.fontSize=lo+'px'; }  // cột tự cân lại nên kiểm tra lần cuối
+    return lo;
+  };
+  list.classList.remove('two'); app.classList.remove('two'); el.style.fontSize='';
+  if(!wide) return;
+  const one=fitFont();
+  if(one>=parseFloat(getComputedStyle(document.body).fontSize)*1.4 || innerWidth<1300) return;
+  /* chữ bị thu nhỏ nhiều: thử chia đề thành hai cột, giữ cách nào cho chữ to hơn */
+  list.classList.add('two'); app.classList.add('two');
+  const two=fitFont();
+  if(two<=one){ list.classList.remove('two'); app.classList.remove('two'); el.style.fontSize=one+'px'; }
+}
+addEventListener('resize',()=>{ if(!exam.hidden) fitExam(); });
 function exPaint(ms){
   exRing.style.strokeDashoffset=C*(1-ms/E.total);
   exNum.textContent=mmss(ms);
@@ -1550,7 +1579,7 @@ function exReveal(li,show){
   if(exp) exp.hidden=!show;
   b.textContent=show?'Ẩn đáp án':'Hiện đáp án';
   b.classList.toggle('on',show);
-  exSyncAll();
+  exSyncAll(); if(!show) fitExam();
 }
 function exSyncAll(){
   const all=[...document.querySelectorAll('#exList .exp')].filter(x=>!x.hidden).length===E.set.questions.length;
