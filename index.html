@@ -274,6 +274,19 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 .ex-q .qtext{font-size:1em;max-width:none;line-height:1.6}
 .ex-q .qtext .ql,.ex-q .qtext .ql:first-of-type{margin-top:.3em}
 .ex-q .qtext b{color:var(--accent)}
+.ex-fig{max-width:min(520px,100%);margin:.4em 0 .2em}
+.ex-fig .fig{margin:0;max-width:none}
+#exam .fig{overflow:visible}
+/* đồ thị trong đề kiểm tra: nét đậm, chữ to để chiếu lên bảng */
+#exam .g-grid{stroke:var(--ink-2);stroke-width:1.2;opacity:.35}
+#exam .g-axis{stroke-width:2.6}
+#exam .g-arrow{transform-box:fill-box;transform-origin:center;transform:scale(1.25)}
+#exam .g-line{stroke-width:5}
+#exam .g-lab{font-size:15px;font-weight:600;fill:var(--ink)}
+#exam .g-title{font-size:15px;font-weight:800}
+#exam .g-hl{font-size:15px}
+#exam .g-guide{stroke-width:2}
+#exam .g-pt{r:6}
 .ex-pts{font-size:.8em;font-weight:600;color:var(--ink-2)}
 .ex-table{border-collapse:collapse;margin:.5em 0 .3em;font-size:.92em;font-variant-numeric:tabular-nums}
 .ex-table th,.ex-table td{border:1.5px solid var(--line);padding:.2em .9em;text-align:center}
@@ -997,7 +1010,7 @@ function startExam(s){
   $('#topSub').textContent=`${s.kind}, ${s.questions.length} câu, ${total} điểm`;
   $('#exTitle').textContent=s.title;
   $('#exSub').textContent=`${s.exam} phút · ${s.questions.length} câu · ${total} điểm`;
-  $('#exList').innerHTML=s.questions.map((q,k)=>`<li class="ex-q" data-k="${k}"><div class="qtext"><b>Câu ${k+1}</b> <span class="ex-pts">(${fmt(q.pts)} điểm)</span>: ${q.q}</div><button type="button" class="btn ghost show-ans">Hiện đáp án</button></li>`).join('');
+  $('#exList').innerHTML=s.questions.map((q,k)=>`<li class="ex-q" data-k="${k}"><div class="qtext"><b>Câu ${k+1}</b> <span class="ex-pts">(${fmt(q.pts)} điểm)</span>: ${q.q}${q.fig?`<div class="ex-fig">${q.fig()}</div>`:''}</div><button type="button" class="btn ghost show-ans">Hiện đáp án</button></li>`).join('');
   $('#exOver').hidden=true; exSyncAll();
   exTimerEl.classList.remove('low','over'); exTimerEl.classList.add('paused');
   exLab.textContent='phút'; exPaint(E.left); exSync();

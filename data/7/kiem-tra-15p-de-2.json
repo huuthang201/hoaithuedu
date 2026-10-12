@@ -1,0 +1,30 @@
+{
+  "grade": "7",
+  "lesson": "Kiểm tra 15 phút",
+  "title": "Tốc độ chuyển động và đồ thị quãng đường – thời gian (Đề 2)",
+  "sub": "Khoa học tự nhiên 7, Kết nối tri thức",
+  "kind": "Tự luận",
+  "accent": "#1E6FD9",
+  "accentBg": "#E4EEFC",
+  "accentDark": "#6CA6FF",
+  "accentBgDark": "#1B2B4B",
+  "exam": 15,
+  "questions": [
+    {
+      "pts": 5,
+      "q": "Một bạn đi xe đạp đều với tốc độ 5 m/s. Tính quãng đường bạn đó đi được trong 2 phút.",
+      "ans": "s = 600 m",
+      "e": "Tốc độ cho theo m/s nên phải <span class=\"k\">đổi phút ra giây</span> trước: 2 phút = 2 × 60 = 120 s. Sau đó lấy tốc độ nhân thời gian.",
+      "fm": "s = v · t = 5 · 120 = 600 m"
+    },
+    {
+      "pts": 5,
+      "q": "Hình bên là đồ thị quãng đường – thời gian của một vật chuyển động.<span class=\"ql\">a) Dựa vào đồ thị, sau 3 s vật đi được bao nhiêu mét?</span><span class=\"ql\">b) Tính tốc độ của vật.</span>",
+      "fig": "graph({alt:'Đồ thị quãng đường – thời gian là đường thẳng đi qua O, mỗi ô ngang 1 s, mỗi ô đứng 10 m', xMax:5.4, yMax:55, xTicks:[0,1,2,3,4,5], yTicks:[0,10,20,30,40,50], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[5,50]]}]})",
+      "ans": "a) s = 30 m<br>b) v = 10 m/s",
+      "e": "a) Từ vạch <span class=\"k\">3 s</span> trên trục thời gian, dóng thẳng lên gặp đường đồ thị rồi dóng ngang sang trục quãng đường: gặp vạch <span class=\"k\">30 m</span>. b) Lấy quãng đường chia thời gian.",
+      "fm": "v = s : t = 30 : 3 = 10 m/s",
+      "ef": "graph({alt:'Dóng từ 3 s lên đồ thị rồi sang trục quãng đường được 30 m', xMax:5.4, yMax:55, xTicks:[0,1,2,3,4,5], yTicks:[0,10,20,30,40,50], xLabel:'t (s)', yLabel:'s (m)', series:[{pts:[[0,0],[5,50]]}], guides:[{x:3,y:30,xl:'3 s',yl:'30 m',hl:true}], points:[{x:3,y:30}]})"
+    }
+  ]
+}
