@@ -1,0 +1,196 @@
+{
+  "grade": "6",
+  "lesson": "Bài 13",
+  "title": "Một số nguyên liệu",
+  "sub": "Khoa học tự nhiên 6, Kết nối tri thức",
+  "note": "",
+  "kind": "Trắc nghiệm + Đúng/Sai",
+  "accent": "#0E8A6E",
+  "accentBg": "#DCF4EC",
+  "accentDark": "#3FD1A9",
+  "accentBgDark": "#12342B",
+  "questions": [
+    {
+      "lv": "easy",
+      "q": "Vật thể nào sau đây được xem là nguyên liệu?",
+      "o": [
+        "Ngói.",
+        "Đất sét.",
+        "Xi măng.",
+        "Gạch xây dựng."
+      ],
+      "a": 1,
+      "e": "Nguyên liệu là thứ lấy từ tự nhiên, dùng làm <span class=\"k\">đầu vào</span> cho quá trình sản xuất. Đất sét được khai thác rồi đem nung để làm gạch, ngói. Ngói, xi măng, gạch là <span class=\"k\">sản phẩm đã qua chế biến</span>, dùng làm vật liệu xây dựng.",
+      "ef": "figChain(['Đất sét (nguyên liệu)','Nhào, nặn, nung','Gạch, ngói (vật liệu xây dựng)'],'Từ nguyên liệu đất sét đến gạch, ngói')"
+    },
+    {
+      "lv": "easy",
+      "q": "Khi dùng gỗ để sản xuất giấy thì người ta sẽ gọi gỗ là",
+      "o": [
+        "nhiên liệu.",
+        "nguyên liệu.",
+        "phế liệu.",
+        "vật liệu."
+      ],
+      "a": 1,
+      "e": "Gỗ là đầu vào của quá trình sản xuất giấy nên gỗ là <span class=\"k\">nguyên liệu</span>. Gỗ chỉ là nhiên liệu khi đem đốt lấy nhiệt, là vật liệu khi dùng trực tiếp để đóng bàn ghế, làm nhà.",
+      "ef": "figChain(['Gỗ (nguyên liệu)','Nghiền, nấu thành bột giấy','Giấy (sản phẩm)'],'Từ gỗ đến giấy')"
+    },
+    {
+      "lv": "mid",
+      "q": "Gang và thép đều là hợp kim được tạo bởi 2 thành phần chính là sắt và carbon, gang cứng hơn sắt. Vì sao gang ít được sử dụng trong các công trình xây dựng?",
+      "o": [
+        "Vì gang khó sản xuất hơn thép.",
+        "Vì gang dẫn nhiệt kém hơn thép.",
+        "Vì gang được sản xuất ít hơn thép.",
+        "Vì gang giòn hơn thép."
+      ],
+      "a": 3,
+      "e": "Gang chứa nhiều carbon hơn (2 – 5%) nên cứng nhưng <span class=\"k\">giòn</span>, dễ gãy vỡ khi bị va đập hay uốn. Công trình xây dựng cần vật liệu chịu lực, dẻo dai nên dùng thép.",
+      "ef": "figBars({alt:'Hàm lượng carbon trong gang và thép', max:5.5, rows:[{label:'Gang (giòn)',val:5,text:'2 – 5% C'},{label:'Thép (dẻo)',val:1.8,text:'dưới 2% C',color:'var(--alt)'}]})"
+    },
+    {
+      "lv": "easy",
+      "q": "Vật liệu nào sau đây hầu như <b>không thể</b> tái sinh?",
+      "o": [
+        "Bông.",
+        "Gỗ.",
+        "Dầu thô.",
+        "Nông sản."
+      ],
+      "a": 2,
+      "e": "Bông, gỗ, nông sản do cây trồng tạo ra, trồng lại được. <span class=\"k\">Dầu thô</span> hình thành dưới lòng đất qua hàng triệu năm, dùng hết thì gần như không có lại."
+    },
+    {
+      "lv": "easy",
+      "q": "Nguyên liệu nào sau đây được sử dụng trong lò nung vôi?",
+      "o": [
+        "Đá vôi.",
+        "Đất sét.",
+        "Cát.",
+        "Gạch."
+      ],
+      "a": 0,
+      "e": "Lò nung vôi nung <span class=\"k\">đá vôi</span> (thành phần chính là calcium carbonate) ở nhiệt độ cao để tạo ra vôi sống.",
+      "fm": "Đá vôi → vôi sống + khí carbon dioxide (nung nóng)"
+    },
+    {
+      "lv": "mid",
+      "q": "Khi khai thác quặng sắt, ý nào sau đây là <u>không</u> đúng?",
+      "o": [
+        "Chế biến quặng thành sản phẩm có giá trị để nâng cao kinh tế.",
+        "Nên sử dụng các phương pháp khai thác thủ công.",
+        "Tránh làm ô nhiễm môi trường.",
+        "Khai thác tiết kiệm vì nguồn quặng có hạn."
+      ],
+      "a": 1,
+      "e": "Khai thác <span class=\"k\">thủ công</span> cho hiệu quả thấp, lãng phí tài nguyên, kém an toàn và dễ gây ô nhiễm môi trường, nên không nên dùng. Ba ý còn lại đều đúng."
+    },
+    {
+      "lv": "easy",
+      "q": "Sau khi lấy quặng ra khỏi mỏ cần thực hiện quá trình nào để thu được kim loại từ quặng?",
+      "o": [
+        "Bay hơi.",
+        "Lắng gạn.",
+        "Nấu chảy.",
+        "Chế biến."
+      ],
+      "a": 3,
+      "e": "Quặng là hỗn hợp nhiều chất, phải qua <span class=\"k\">chế biến</span> (nghiền, tuyển, luyện…) mới tách được kim loại ra.",
+      "ef": "figChain(['Khai thác quặng từ mỏ','Chế biến quặng','Kim loại'],'Từ quặng đến kim loại')"
+    },
+    {
+      "lv": "easy",
+      "q": "Nguyên liệu chính để sản xuất gạch là gì?",
+      "o": [
+        "Đất sét.",
+        "Cát.",
+        "Đá vôi.",
+        "Đá."
+      ],
+      "a": 0,
+      "e": "Gạch được làm từ <span class=\"k\">đất sét</span>: nhào đất với nước, đóng khuôn, phơi khô rồi nung trong lò."
+    },
+    {
+      "lv": "easy",
+      "q": "Nguyên liệu được sử dụng để sản xuất vôi sống, phấn viết bảng, tạc tượng,... là gì?",
+      "o": [
+        "Cát.",
+        "Đá vôi.",
+        "Đất sét.",
+        "Đá."
+      ],
+      "a": 1,
+      "e": "<span class=\"k\">Đá vôi</span> có nhiều ứng dụng: nung thành vôi sống, làm phấn viết bảng, tạc tượng, làm đá ốp lát, sản xuất xi măng…"
+    },
+    {
+      "lv": "easy",
+      "q": "Để sản xuất gang và thép, người ta chế biến từ quặng gì?",
+      "o": [
+        "Quặng bauxite.",
+        "Quặng sắt.",
+        "Quặng đồng.",
+        "Quặng titanium."
+      ],
+      "a": 1,
+      "e": "Gang và thép là hợp kim của <span class=\"k\">sắt</span> nên được sản xuất từ <span class=\"k\">quặng sắt</span>. Quặng bauxite dùng để sản xuất nhôm.",
+      "ef": "figChain(['Quặng sắt','Luyện trong lò cao','Gang → luyện tiếp thành thép'],'Từ quặng sắt đến gang, thép')"
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Trong các phát biểu sau về đá vôi, phát biểu nào đúng, phát biểu nào sai?",
+      "items": [
+        {
+          "t": "Từ đá vôi sản xuất ra vôi sống.",
+          "ans": true,
+          "e": "Đúng. Nung đá vôi ở nhiệt độ cao thu được vôi sống."
+        },
+        {
+          "t": "Đá vôi có thành phần chính là sodium carbonate.",
+          "ans": false,
+          "e": "Sai. Đá vôi có thành phần chính là <b>calcium carbonate</b>."
+        },
+        {
+          "t": "Ở nước ta có nhiều vùng núi đá vôi, tập trung ở các tỉnh phía Bắc và Bắc Trung Bộ.",
+          "ans": true,
+          "e": "Đúng. Ví dụ: Hà Giang, Ninh Bình, Quảng Bình…"
+        },
+        {
+          "t": "Nhỏ hydrochloric acid lên đá vôi thấy sủi bọt khí.",
+          "ans": true,
+          "e": "Đúng. Acid tác dụng với đá vôi sinh ra khí carbon dioxide nên thấy sủi bọt."
+        }
+      ],
+      "e": "Nhớ: đá vôi là <span class=\"k\">calcium carbonate</span>, không phải sodium carbonate."
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Trong các phát biểu sau về khai thác quặng sắt, phát biểu nào đúng, phát biểu nào sai?",
+      "items": [
+        {
+          "t": "Khai thác tiết kiệm vì nguồn quặng có hạn.",
+          "ans": true,
+          "e": "Đúng. Quặng là tài nguyên không tái sinh."
+        },
+        {
+          "t": "Tránh làm ô nhiễm môi trường.",
+          "ans": true,
+          "e": "Đúng. Khai thác mỏ dễ gây ô nhiễm đất, nước, không khí."
+        },
+        {
+          "t": "Nên sử dụng các phương pháp khai thác thủ công.",
+          "ans": false,
+          "e": "Sai. <b>Không nên</b> khai thác thủ công vì hiệu quả thấp, kém an toàn và gây ô nhiễm."
+        },
+        {
+          "t": "Chế biến quặng thành sản phẩm có giá trị để nâng cao hiệu quả kinh tế.",
+          "ans": true,
+          "e": "Đúng. Chế biến sâu giúp tăng giá trị thay vì bán quặng thô."
+        }
+      ],
+      "e": "Ý nào khuyên <span class=\"k\">khai thác thủ công</span> là sai; các ý về tiết kiệm, bảo vệ môi trường, chế biến sâu đều đúng."
+    }
+  ]
+}

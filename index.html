@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Trắc nghiệm KHTN 7, 8, 9: Đồ thị, Khối lượng riêng, Động năng</title>
+<title>Trắc nghiệm KHTN 6, 7, 8, 9</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E6FD9'/%3E%3Cpath d='M14 50V14M14 50h36' stroke='%23fff' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M16 46l12-14 8 6 12-18' stroke='%23FFD34D' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -423,7 +423,7 @@ section:not([hidden]){animation:fade .35s var(--ease)}
       <h1>Chọn bài để bắt đầu</h1>
       <p class="lead">Bài trắc nghiệm: 25 giây cho câu dễ, 30 giây cho câu vừa và vận dụng; hết giờ tự hiện đáp án kèm giải thích, công thức và hình minh hoạ. Bài Đúng/Sai và tự luận: không tính giờ, làm xong tự đối chiếu đáp án.</p>
       <div class="toc" id="toc"></div>
-      <p class="hint">Phím tắt: bấm 7, 8 hoặc 9 để nhảy tới lớp đó; 1–4 hoặc A–D để chọn đáp án; Enter để hiện đáp án hoặc sang câu tiếp; P để tạm dừng đồng hồ; M bật/tắt âm thanh; Esc để quay lại.</p>
+      <p class="hint">Phím tắt: bấm 6, 7, 8 hoặc 9 để nhảy tới lớp đó; 1–4 hoặc A–D để chọn đáp án; Enter để hiện đáp án hoặc sang câu tiếp; P để tạm dừng đồng hồ; M bật/tắt âm thanh; Esc để quay lại.</p>
     </section>
 
     <section id="quiz" hidden>
@@ -1389,7 +1389,7 @@ document.addEventListener('keydown',e=>{
   if(e.target.matches('textarea,input')){ if(k==='escape') e.target.blur(); return; }
   if(k==='m' && !e.target.closest('button')){ toggleSound(); return; }
   if(!home.hidden){
-    if(k==='7'||k==='8'||k==='9'){ const b=document.querySelector(`.grade-group[data-grade="${k}"] button`); if(b){ b.scrollIntoView({block:'center'}); b.focus(); } }
+    if('6789'.includes(k)&&k!==''){ const b=document.querySelector(`.grade-group[data-grade="${k}"] button`); if(b){ b.scrollIntoView({block:'center'}); b.focus(); } }
     return;
   }
   if(!quiz.hidden){
