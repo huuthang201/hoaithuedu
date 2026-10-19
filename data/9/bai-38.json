@@ -1,0 +1,296 @@
+{
+  "grade": "9",
+  "lesson": "Bài 38",
+  "title": "Nucleic acid và gene",
+  "sub": "Khoa học tự nhiên 9, Kết nối tri thức",
+  "note": "",
+  "kind": "Trắc nghiệm + Đúng/Sai",
+  "accent": "#0B7FA6",
+  "accentBg": "#DDF1F8",
+  "accentDark": "#4CC3EA",
+  "accentBgDark": "#0F2F3B",
+  "questions": [
+    {
+      "lv": "easy",
+      "q": "Đơn phân cấu tạo nên nucleic acid là",
+      "o": [
+        "amino acid.",
+        "protein.",
+        "nucleotide.",
+        "glucose."
+      ],
+      "a": 2,
+      "e": "Nucleic acid (DNA, RNA) là đại phân tử được cấu tạo theo nguyên tắc đa phân, mỗi đơn phân là một <span class=\"k\">nucleotide</span>. Amino acid là đơn phân của protein, glucose là đơn phân của tinh bột.",
+      "ef": "figChain(['Nucleotide (đơn phân)','Nối với nhau thành chuỗi polynucleotide','Nucleic acid: DNA, RNA'],'Từ nucleotide đến nucleic acid')"
+    },
+    {
+      "lv": "easy",
+      "q": "Nucleic acid được tìm thấy chủ yếu ở đâu trong tế bào sinh vật?",
+      "o": [
+        "Tế bào chất.",
+        "Màng tế bào.",
+        "Ribosome.",
+        "Nhân tế bào."
+      ],
+      "a": 3,
+      "e": "Nucleic acid được tìm thấy chủ yếu ở <span class=\"k\">nhân tế bào</span>, nơi chứa DNA mang thông tin di truyền."
+    },
+    {
+      "lv": "easy",
+      "q": "Phân tử DNA có đường kính là bao nhiêu? (quy đổi 1 Å = 0,1 nm)",
+      "o": [
+        "10 Å.",
+        "20 Å.",
+        "34 Å.",
+        "3,4 Å."
+      ],
+      "a": 1,
+      "e": "Phân tử DNA có đường kính <span class=\"k\">20 Å</span> (2 nm). Số 34 Å là chiều dài một chu kì xoắn, 3,4 Å là khoảng cách giữa hai cặp nucleotide liền nhau.",
+      "ef": "figTable({alt:'Các số liệu cấu trúc của phân tử DNA', title:'Các số liệu cần nhớ của phân tử DNA', head:['Đại lượng','Giá trị'], cols:[14,320], rows:[['Đường kính','20 Å'],['Chiều dài 1 chu kì xoắn','34 Å'],['Số cặp nucleotide / chu kì','10 cặp']], hl:0})"
+    },
+    {
+      "lv": "mid",
+      "q": "Mỗi chu kì xoắn của phân tử DNA dài ...(1)... Å, tương ứng với ...(2)... cặp nucleotide. Điền vào (1) và (2) lần lượt là",
+      "o": [
+        "20 và 10.",
+        "34 và 20.",
+        "34 và 10.",
+        "3,4 và 10."
+      ],
+      "a": 2,
+      "e": "Mỗi chu kì xoắn dài <span class=\"k\">34 Å</span>, gồm <span class=\"k\">10 cặp nucleotide</span>, nên mỗi cặp nucleotide cách nhau 3,4 Å.",
+      "fm": "34 Å : 10 cặp = 3,4 Å mỗi cặp nucleotide",
+      "ef": "figTable({alt:'Các số liệu cấu trúc của phân tử DNA', title:'Các số liệu cần nhớ của phân tử DNA', head:['Đại lượng','Giá trị'], cols:[14,320], rows:[['Đường kính','20 Å'],['Chiều dài 1 chu kì xoắn','34 Å'],['Số cặp nucleotide / chu kì','10 cặp']], hl:1})"
+    },
+    {
+      "lv": "mid",
+      "q": "Trong phân tử DNA, các nucleotide liên kết với nhau bằng liên kết ...(1)... để tạo thành chuỗi polynucleotide. Đồng thời chúng cũng liên kết ...(2)... giữa hai mạch với nhau. Điền vào (1) và (2) lần lượt là",
+      "o": [
+        "hydrogen và cộng hoá trị.",
+        "cộng hoá trị và hydrogen.",
+        "ion và hydrogen.",
+        "cộng hoá trị và ion."
+      ],
+      "a": 1,
+      "e": "Trên <span class=\"k\">cùng một mạch</span>, các nucleotide nối với nhau bằng liên kết <span class=\"k\">cộng hoá trị</span> (bền) tạo chuỗi polynucleotide. <span class=\"k\">Giữa hai mạch</span>, các nucleotide đối diện liên kết <span class=\"k\">hydrogen</span> theo nguyên tắc bổ sung.",
+      "ef": "figChain(['Các nucleotide trên cùng một mạch','Nối bằng liên kết cộng hoá trị → chuỗi polynucleotide','Hai mạch ghép lại bằng liên kết hydrogen (A – T, G – C)'],'Hai loại liên kết trong phân tử DNA')"
+    },
+    {
+      "lv": "easy",
+      "q": "Một đoạn phân tử DNA có chức năng di truyền xác định được gọi là",
+      "o": [
+        "nucleotide.",
+        "gene.",
+        "nhiễm sắc thể.",
+        "chuỗi polypeptide."
+      ],
+      "a": 1,
+      "e": "<span class=\"k\">Gene</span> là một đoạn của phân tử DNA mang thông tin quy định một sản phẩm nhất định (RNA hoặc chuỗi polypeptide)."
+    },
+    {
+      "lv": "mid",
+      "q": "DNA rất đa dạng là bởi phân tử DNA có",
+      "o": [
+        "nhiều hình dạng, cấu trúc khác nhau.",
+        "số lượng nucleotide lớn.",
+        "nhiều loại nucleotide khác nhau.",
+        "nhiều cách sắp xếp các nucleotide."
+      ],
+      "a": 3,
+      "e": "DNA chỉ có <span class=\"k\">4 loại nucleotide</span> (A, T, G, C) nhưng rất đa dạng vì chúng được <span class=\"k\">sắp xếp theo nhiều trình tự khác nhau</span>. Chỉ cần đổi thứ tự là đã thành một phân tử DNA khác.",
+      "fm": "Đoạn chỉ dài 10 nucleotide đã có 4<sup>10</sup> ≈ 1 triệu cách sắp xếp"
+    },
+    {
+      "lv": "mid",
+      "q": "Trong phân tử DNA, các nucleotide giữa hai mạch liên kết hydrogen với nhau theo nguyên tắc bổ sung là",
+      "o": [
+        "A với T, G với C.",
+        "A với G, T với C.",
+        "A với C, G với T.",
+        "A với A, T với T, G với G, C với C."
+      ],
+      "a": 0,
+      "e": "Theo nguyên tắc bổ sung: <span class=\"k\">A liên kết với T</span> và ngược lại, <span class=\"k\">G liên kết với C</span> và ngược lại.",
+      "ef": "figTable({alt:'Nguyên tắc bổ sung giữa hai mạch DNA', title:'Nguyên tắc bổ sung giữa hai mạch DNA', head:['Mạch 1','Mạch 2'], cols:[60,300], rows:[['A','T'],['T','A'],['G','C'],['C','G']]})"
+    },
+    {
+      "lv": "mid",
+      "q": "Nối các loại RNA với chức năng tương ứng: mRNA, tRNA, rRNA. Cách nối nào sau đây đúng?",
+      "o": [
+        "mRNA – vận chuyển amino acid; tRNA – truyền đạt thông tin di truyền; rRNA – cấu tạo nên ribosome.",
+        "mRNA – cấu tạo nên ribosome; tRNA – vận chuyển amino acid; rRNA – truyền đạt thông tin di truyền.",
+        "mRNA – truyền đạt thông tin di truyền; tRNA – vận chuyển amino acid; rRNA – cấu tạo nên ribosome.",
+        "mRNA – truyền đạt thông tin di truyền; tRNA – cấu tạo nên ribosome; rRNA – vận chuyển amino acid."
+      ],
+      "a": 2,
+      "e": "Mẹo nhớ theo chữ cái đầu: <span class=\"k\">m</span>RNA là RNA thông tin (<i>messenger</i>), <span class=\"k\">t</span>RNA là RNA vận chuyển (<i>transfer</i>), <span class=\"k\">r</span>RNA là RNA ribosome.",
+      "ef": "figTable({alt:'Chức năng của ba loại RNA', title:'Ba loại RNA và chức năng', head:['Loại RNA','Chức năng'], cols:[14,250], rows:[['mRNA','truyền đạt thông tin di truyền'],['tRNA','vận chuyển các amino acid'],['rRNA','cấu tạo nên ribosome']]})"
+    },
+    {
+      "lv": "mid",
+      "q": "Trong tế bào sinh vật nhân thực, các RNA chủ yếu được tổng hợp ở ...(1)... nhưng lại thực hiện chức năng ở ...(2)... Điền vào (1) và (2) lần lượt là",
+      "o": [
+        "tế bào chất và nhân.",
+        "nhân và màng tế bào.",
+        "ribosome và nhân.",
+        "nhân và tế bào chất."
+      ],
+      "a": 3,
+      "e": "RNA được <span class=\"k\">tổng hợp ở nhân</span> (dựa trên khuôn DNA), sau đó đi ra <span class=\"k\">tế bào chất</span> để tham gia tổng hợp protein tại ribosome.",
+      "ef": "figChain(['Nhân: DNA làm khuôn tổng hợp RNA','RNA đi ra ngoài nhân','Tế bào chất: RNA tham gia tổng hợp protein'],'Nơi tổng hợp và nơi hoạt động của RNA')"
+    },
+    {
+      "type": "tf",
+      "lv": "easy",
+      "q": "Các nucleotide sau đây có tham gia cấu tạo phân tử <b>DNA</b> không? Chọn Đúng nếu có, Sai nếu không.",
+      "items": [
+        {
+          "t": "Uracil (U).",
+          "ans": false,
+          "e": "Sai. Uracil chỉ có trong RNA, DNA không có U."
+        },
+        {
+          "t": "Adenine (A).",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Thymine (T).",
+          "ans": true,
+          "e": "Đúng. Thymine chỉ có trong DNA."
+        },
+        {
+          "t": "Cytosine (C).",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Guanine (G).",
+          "ans": true,
+          "e": "Đúng."
+        }
+      ],
+      "e": "DNA gồm 4 loại nucleotide: <span class=\"k\">A, T, G, C</span>. Không có U."
+    },
+    {
+      "type": "tf",
+      "lv": "easy",
+      "q": "Các nucleotide sau đây có tham gia cấu tạo phân tử <b>RNA</b> không? Chọn Đúng nếu có, Sai nếu không.",
+      "items": [
+        {
+          "t": "Cytosine (C).",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Thymine (T).",
+          "ans": false,
+          "e": "Sai. Thymine chỉ có trong DNA; trong RNA, vị trí của T được thay bằng U."
+        },
+        {
+          "t": "Uracil (U).",
+          "ans": true,
+          "e": "Đúng. Uracil chỉ có trong RNA."
+        },
+        {
+          "t": "Adenine (A).",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Guanine (G).",
+          "ans": true,
+          "e": "Đúng."
+        }
+      ],
+      "e": "RNA gồm 4 loại nucleotide: <span class=\"k\">A, U, G, C</span>. Nhớ nhanh: DNA có <b>T</b>, RNA có <b>U</b>.",
+      "ef": "figTable({alt:'So sánh các loại nucleotide của DNA và RNA', title:'Nucleotide của DNA và RNA', head:['Phân tử','Các loại nucleotide'], cols:[14,260], rows:[['DNA','A, T, G, C'],['RNA','A, U, G, C']], hl:1})"
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Trong tế bào, DNA đảm nhận các chức năng sau đây, đúng hay sai?",
+      "items": [
+        {
+          "t": "Cấu trúc nên nhân tế bào.",
+          "ans": false,
+          "e": "Sai. DNA nằm trong nhân nhưng không có chức năng cấu trúc nên nhân."
+        },
+        {
+          "t": "Truyền đạt thông tin di truyền.",
+          "ans": true,
+          "e": "Đúng. DNA truyền thông tin di truyền qua các thế hệ tế bào và cơ thể."
+        },
+        {
+          "t": "Lưu trữ thông tin di truyền.",
+          "ans": true,
+          "e": "Đúng. Thông tin di truyền được mã hoá bằng trình tự các nucleotide."
+        },
+        {
+          "t": "Xúc tác các phản ứng sinh hoá.",
+          "ans": false,
+          "e": "Sai. Xúc tác là chức năng của enzyme (bản chất là protein)."
+        }
+      ],
+      "e": "DNA có chức năng <span class=\"k\">lưu trữ</span> và <span class=\"k\">truyền đạt</span> thông tin di truyền."
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Các sản phẩm do gene mã hoá bao gồm những chất nào sau đây?",
+      "items": [
+        {
+          "t": "Chuỗi polypeptide.",
+          "ans": true,
+          "e": "Đúng. Gene mã hoá protein cho sản phẩm là chuỗi polypeptide."
+        },
+        {
+          "t": "DNA.",
+          "ans": false,
+          "e": "Sai. Gene chính là một đoạn DNA, không phải sản phẩm của gene."
+        },
+        {
+          "t": "Phospholipid.",
+          "ans": false,
+          "e": "Sai. Phospholipid là lipid, không do gene mã hoá trực tiếp."
+        },
+        {
+          "t": "RNA.",
+          "ans": true,
+          "e": "Đúng. Có những gene chỉ mã hoá RNA (ví dụ tRNA, rRNA)."
+        }
+      ],
+      "e": "Sản phẩm do gene mã hoá là <span class=\"k\">RNA</span> hoặc <span class=\"k\">chuỗi polypeptide</span>.",
+      "ef": "figChain(['Gene (một đoạn DNA)','RNA','Chuỗi polypeptide → protein'],'Sản phẩm của gene')"
+    },
+    {
+      "type": "tf",
+      "lv": "apply",
+      "q": "Xếp các đặc điểm vào phân tử phù hợp. Mỗi phát biểu sau đúng hay sai?",
+      "items": [
+        {
+          "t": "DNA có dạng mạch kép, kích thước lớn.",
+          "ans": true,
+          "e": "Đúng. DNA gồm hai mạch xoắn quanh một trục, chứa rất nhiều nucleotide."
+        },
+        {
+          "t": "RNA có dạng mạch kép, kích thước nhỏ.",
+          "ans": false,
+          "e": "Sai. RNA có dạng <b>mạch đơn</b>, kích thước nhỏ."
+        },
+        {
+          "t": "DNA có chức năng lưu trữ thông tin di truyền.",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "RNA (mRNA, tRNA, rRNA) trực tiếp tham gia quá trình tạo ra protein.",
+          "ans": true,
+          "e": "Đúng. Cả ba loại RNA đều tham gia trực tiếp vào quá trình dịch mã."
+        }
+      ],
+      "e": "DNA: <span class=\"k\">mạch kép, kích thước lớn, lưu trữ thông tin di truyền</span>. RNA: <span class=\"k\">mạch đơn, kích thước nhỏ, tham gia tạo ra protein</span>.",
+      "ef": "figTable({alt:'So sánh DNA và RNA', title:'So sánh DNA và RNA', head:['Đặc điểm','DNA','RNA'], cols:[14,210,330], rows:[['Số mạch','Mạch kép','Mạch đơn'],['Kích thước','Lớn','Nhỏ'],['Chức năng','Lưu trữ TTDT','Tạo protein']]})"
+    }
+  ]
+}
