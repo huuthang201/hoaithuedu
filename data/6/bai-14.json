@@ -1,0 +1,195 @@
+{
+  "grade": "6",
+  "lesson": "Bài 14",
+  "title": "Một số nhiên liệu",
+  "sub": "Khoa học tự nhiên 6, Kết nối tri thức",
+  "note": "",
+  "kind": "Trắc nghiệm + Đúng/Sai",
+  "accent": "#D9631E",
+  "accentBg": "#FCEBDD",
+  "accentDark": "#FF9A5C",
+  "accentBgDark": "#3A2416",
+  "questions": [
+    {
+      "lv": "easy",
+      "q": "Thế nào là nhiên liệu?",
+      "o": [
+        "Nhiên liệu là những vật liệu dùng cho quá trình xây dựng.",
+        "Nhiên liệu là những chất oxi hóa để cung cấp năng lượng cho cơ thể sống.",
+        "Nhiên liệu là một số chất hoặc hỗn hợp chất được dùng làm nguyên liệu đầu vào cho các quá trình sản xuất hoặc chế tạo.",
+        "Nhiên liệu là những chất cháy được để cung cấp năng lượng dưới dạng nhiệt hoặc ánh sáng nhằm phục vụ mục đích sử dụng của con người."
+      ],
+      "a": 3,
+      "e": "Nhiên liệu là những chất <span class=\"k\">cháy được</span> để cung cấp năng lượng dưới dạng <span class=\"k\">nhiệt hoặc ánh sáng</span> phục vụ con người. Phương án C là định nghĩa của nguyên liệu, A là của vật liệu."
+    },
+    {
+      "lv": "easy",
+      "q": "Để củi dễ cháy khi đun nấu, người ta <b>không</b> dùng biện pháp nào sau đây?",
+      "o": [
+        "Cung cấp đầy đủ oxygen cho quá trình cháy.",
+        "Chẻ nhỏ củi.",
+        "Xếp củi chồng lên nhau, càng sít càng tốt.",
+        "Phơi củi cho thật khô."
+      ],
+      "a": 2,
+      "e": "Xếp củi <span class=\"k\">càng sít</span> thì không khí càng khó lọt vào giữa các thanh củi, thiếu oxygen nên củi <span class=\"k\">càng khó cháy</span>. Muốn củi cháy tốt phải xếp thưa để không khí lưu thông."
+    },
+    {
+      "lv": "easy",
+      "q": "Nhiên liệu nào sau đây <b>không</b> phải nhiên liệu hóa thạch?",
+      "o": [
+        "Khí tự nhiên.",
+        "Dầu mỏ.",
+        "Than đá.",
+        "Ethanol."
+      ],
+      "a": 3,
+      "e": "<span class=\"k\">Than đá, dầu mỏ, khí tự nhiên</span> là ba loại nhiên liệu hóa thạch, hình thành từ xác sinh vật bị chôn vùi hàng triệu năm. Ethanol (cồn) được sản xuất từ ngũ cốc, mía… nên không phải nhiên liệu hóa thạch.",
+      "ef": "figTable({alt:'Nhiên liệu hóa thạch và không phải hóa thạch', title:'Nhiên liệu hóa thạch?', head:['Nhiên liệu','Hóa thạch?'], cols:[14,320], rows:[['Than đá','Có'],['Dầu mỏ','Có'],['Khí tự nhiên','Có'],['Ethanol (cồn)','Không']], hl:3})"
+    },
+    {
+      "lv": "mid",
+      "q": "Người ta khai thác than đá để cung cấp cho các nhà máy nhiệt điện để sản xuất điện. Lúc này, than đá được gọi là",
+      "o": [
+        "nguyên liệu.",
+        "nhiên liệu.",
+        "vật liệu.",
+        "vật liệu hoặc nguyên liệu."
+      ],
+      "a": 1,
+      "e": "Ở nhà máy nhiệt điện, than đá được <span class=\"k\">đốt cháy</span> để cung cấp nhiệt cho quá trình sản xuất điện, nên than đá đóng vai trò <span class=\"k\">nhiên liệu</span>.",
+      "ef": "figChain(['Than đá','Đốt cháy, tỏa nhiệt','Làm quay tua-bin → sản xuất điện'],'Than đá trong nhà máy nhiệt điện')"
+    },
+    {
+      "lv": "easy",
+      "q": "Để sử dụng gas tiết kiệm, hiệu quả người ta sử dụng biện pháp nào dưới đây?",
+      "o": [
+        "Tùy nhiệt độ cần thiết để điều chỉnh lượng gas.",
+        "Tốt nhất nên để gas ở mức độ nhỏ nhất.",
+        "Tốt nhất nên để gas ở mức độ lớn nhất.",
+        "Ngăn không cho khí gas tiếp xúc với carbon dioxide."
+      ],
+      "a": 0,
+      "e": "Cần nhiệt nhiều thì vặn to, cần ít thì vặn nhỏ: <span class=\"k\">điều chỉnh lượng gas theo nhiệt độ cần thiết</span>. Lúc nào cũng để to thì lãng phí, lúc nào cũng để nhỏ thì nấu lâu, cũng tốn gas."
+    },
+    {
+      "lv": "easy",
+      "q": "Nhiên liệu hóa thạch",
+      "o": [
+        "là nguồn nhiên liệu tái tạo.",
+        "là đá chứa ít nhất 50% xác động và thực vật.",
+        "là nhiên liệu hình thành từ xác sinh vật bị chôn vùi và biến đổi hàng triệu năm trước.",
+        "chỉ bao gồm dầu mỏ, than đá."
+      ],
+      "a": 2,
+      "e": "Nhiên liệu hóa thạch hình thành từ <span class=\"k\">xác động, thực vật bị chôn vùi</span> và phân hủy qua <span class=\"k\">hàng triệu năm</span>. Vì cần thời gian quá dài nên nó <span class=\"k\">không tái tạo</span> được; ngoài dầu mỏ, than đá còn có khí tự nhiên.",
+      "ef": "figChain(['Xác động, thực vật bị chôn vùi','Biến đổi qua hàng triệu năm','Than đá, dầu mỏ, khí tự nhiên'],'Sự hình thành nhiên liệu hóa thạch')"
+    },
+    {
+      "lv": "easy",
+      "q": "Loại nhiên liệu nào sau đây có năng suất tỏa nhiệt cao, dễ cháy hoàn toàn?",
+      "o": [
+        "Nhiên liệu khí.",
+        "Nhiên liệu lỏng.",
+        "Nhiên liệu rắn.",
+        "Nhiên liệu hóa thạch."
+      ],
+      "a": 0,
+      "e": "<span class=\"k\">Nhiên liệu khí</span> (gas, khí tự nhiên, biogas…) dễ trộn đều với không khí nên dễ cháy hoàn toàn và tỏa nhiều nhiệt."
+    },
+    {
+      "lv": "easy",
+      "q": "Đâu là nguồn năng lượng <b>không</b> thể tái tạo được?",
+      "o": [
+        "Thủy điện.",
+        "Năng lượng mặt trời.",
+        "Năng lượng gió.",
+        "Than đá."
+      ],
+      "a": 3,
+      "e": "<span class=\"k\">Than đá</span> là nhiên liệu hóa thạch, dùng hết là không có lại. Nước, ánh nắng mặt trời, gió thì luôn được tự nhiên bổ sung nên là năng lượng tái tạo.",
+      "ef": "figTable({alt:'Năng lượng tái tạo và không tái tạo', title:'Năng lượng tái tạo hay không?', head:['Nguồn năng lượng','Tái tạo?'], cols:[14,320], rows:[['Thủy điện','Có'],['Mặt trời','Có'],['Gió','Có'],['Than đá','Không']], hl:3})"
+    },
+    {
+      "lv": "mid",
+      "q": "Để sử dụng nhiên liệu có hiệu quả cần phải cung cấp không khí hoặc oxygen",
+      "o": [
+        "vừa đủ.",
+        "thiếu.",
+        "dư.",
+        "cả B và C đều đúng."
+      ],
+      "a": 0,
+      "e": "Cung cấp không khí <span class=\"k\">vừa đủ</span>. Thiếu oxygen thì nhiên liệu cháy không hết, sinh khói, khí độc carbon monoxide và lãng phí. Dư quá nhiều không khí thì không khí lấy bớt nhiệt, làm hao nhiệt."
+    },
+    {
+      "lv": "mid",
+      "q": "Hãy giải thích tại sao các chất khí dễ cháy hoàn toàn hơn các chất rắn và chất lỏng?",
+      "o": [
+        "Vì chất khí nhẹ hơn chất rắn và chất lỏng.",
+        "Vì chất khí có nhiệt độ sôi thấp hơn chất rắn và chất lỏng.",
+        "Vì diện tích tiếp xúc của chất khí với không khí lớn hơn.",
+        "Vì chất khí có khối lượng riêng lớn hơn chất rắn và lỏng."
+      ],
+      "a": 2,
+      "e": "Chất khí dễ tạo được <span class=\"k\">hỗn hợp với không khí</span>, khi đó <span class=\"k\">diện tích tiếp xúc</span> giữa nhiên liệu và oxygen lớn hơn nhiều so với chất lỏng và chất rắn, nên cháy hoàn toàn dễ hơn. Cũng vì vậy mà chẻ nhỏ củi giúp củi cháy tốt hơn."
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Trong các phát biểu sau về nhiên liệu, phát biểu nào đúng, phát biểu nào sai?",
+      "items": [
+        {
+          "t": "Nhiên liệu là những chất cháy được và khi cháy tỏa nhiều nhiệt.",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Than đá, gỗ là các nhiên liệu tồn tại ở thể rắn.",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Xăng, dầu hỏa là các nhiên liệu tồn tại ở thể khí.",
+          "ans": false,
+          "e": "Sai. Xăng, dầu hỏa là các nhiên liệu tồn tại ở <b>thể lỏng</b>."
+        },
+        {
+          "t": "Hầu hết các nhiên liệu tan trong nước.",
+          "ans": false,
+          "e": "Sai. Hầu hết các nhiên liệu <b>không tan</b> trong nước."
+        }
+      ],
+      "e": "Nhớ ba thể của nhiên liệu: <span class=\"k\">rắn</span> (than, gỗ), <span class=\"k\">lỏng</span> (xăng, dầu hỏa, cồn), <span class=\"k\">khí</span> (gas, khí tự nhiên).",
+      "ef": "figTable({alt:'Phân loại nhiên liệu theo thể', title:'Nhiên liệu ở ba thể', head:['Thể','Ví dụ'], cols:[14,260], rows:[['Rắn','than đá, gỗ, củi'],['Lỏng','xăng, dầu hỏa, cồn'],['Khí','gas, khí tự nhiên, biogas']]})"
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Trong các phát biểu sau về nhiên liệu, phát biểu nào đúng, phát biểu nào sai?",
+      "items": [
+        {
+          "t": "Gỗ, than, dầu mỏ, khí đốt, xăng là các nhiên liệu thường gặp trong đời sống.",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Than đá nặng hơn nước.",
+          "ans": true,
+          "e": "Đúng. Than đá chìm trong nước."
+        },
+        {
+          "t": "Nhiên liệu cồn không tan trong nước.",
+          "ans": false,
+          "e": "Sai. Cồn <b>tan</b> trong nước."
+        },
+        {
+          "t": "Hầu hết các nhiên liệu nhẹ hơn nước.",
+          "ans": true,
+          "e": "Đúng. Ví dụ xăng, dầu nổi trên mặt nước."
+        }
+      ],
+      "e": "Cồn là ngoại lệ dễ nhầm: hầu hết nhiên liệu không tan trong nước, nhưng <span class=\"k\">cồn tan</span> được trong nước."
+    }
+  ]
+}
