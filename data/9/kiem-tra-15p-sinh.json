@@ -1,0 +1,34 @@
+{
+  "grade": "9",
+  "lesson": "Kiểm tra 15 phút",
+  "title": "Nucleic acid và gene",
+  "sub": "Khoa học tự nhiên 9, Kết nối tri thức",
+  "kind": "Đúng/Sai + tự luận + trắc nghiệm",
+  "accent": "#0B7FA6",
+  "accentBg": "#DDF1F8",
+  "accentDark": "#4CC3EA",
+  "accentBgDark": "#0F2F3B",
+  "exam": 15,
+  "questions": [
+    {
+      "pts": 4,
+      "q": "Trong tế bào, DNA đảm nhận các chức năng nào sau đây? Chọn Đúng hoặc Sai cho mỗi phát biểu:<table class=\"ex-table ex-tf\"><tr><th>Phát biểu</th><th>Đúng</th><th>Sai</th></tr><tr><td><b>a.</b> DNA có chức năng cấu trúc nên nhân tế bào.</td><td></td><td></td></tr><tr><td><b>b.</b> DNA có chức năng truyền đạt thông tin di truyền.</td><td></td><td></td></tr><tr><td><b>c.</b> DNA có chức năng lưu trữ thông tin di truyền.</td><td></td><td></td></tr><tr><td><b>d.</b> DNA có chức năng xúc tác các phản ứng sinh hóa.</td><td></td><td></td></tr></table>",
+      "ans": "a) Sai<br>b) Đúng<br>c) Đúng<br>d) Sai",
+      "e": "DNA trong tế bào có chức năng <span class=\"k\">lưu trữ</span> và <span class=\"k\">truyền đạt</span> thông tin di truyền.<br>a) Sai: DNA nằm trong nhân nhưng không có chức năng cấu trúc nên nhân tế bào.<br>d) Sai: xúc tác các phản ứng sinh hóa là chức năng của <span class=\"k\">enzyme</span>, không phải của DNA."
+    },
+    {
+      "pts": 4,
+      "q": "Một đoạn mạch đơn của phân tử DNA có trình tự nucleotide như sau:<span class=\"ql\"><b>– A – T – G – C – T – A – C – G – G – A –</b></span><span class=\"ql\">Hãy viết trình tự nucleotide của đoạn mạch bổ sung với đoạn mạch trên.</span>",
+      "ans": "– T – A – C – G – A – T – G – C – C – T –",
+      "e": "Hai mạch của DNA liên kết với nhau theo <span class=\"k\">nguyên tắc bổ sung</span>: <span class=\"k\">A liên kết với T</span> và ngược lại, <span class=\"k\">G liên kết với C</span> và ngược lại. Lần lượt thay từng nucleotide của mạch đã cho bằng nucleotide bổ sung với nó.",
+      "fm": "A → T, T → A, G → C, C → G",
+      "ef": "figTable({alt:'Mạch đã cho và mạch bổ sung, ghép từng cặp nucleotide', title:'Ghép từng cặp theo nguyên tắc bổ sung', head:['Mạch','1','2','3','4','5','6','7','8','9','10'], cols:[14,132,158,184,210,236,262,288,314,340,366], rows:[['Đã cho','A','T','G','C','T','A','C','G','G','A'],['Bổ sung','T','A','C','G','A','T','G','C','C','T']], hl:1})"
+    },
+    {
+      "pts": 2,
+      "q": "Phát biểu nào sau đây là <b>đúng</b>?<span class=\"ql\">A. Nucleic acid gồm hai loại là DNA và gene.</span><span class=\"ql\">B. Gene là một đoạn của phân tử DNA mang thông tin di truyền xác định.</span><span class=\"ql\">C. Nucleic acid được cấu tạo từ các đơn phân là amino acid.</span><span class=\"ql\">D. Mỗi phân tử DNA chỉ chứa một gene.</span>",
+      "ans": "B",
+      "e": "A sai: nucleic acid gồm hai loại là <span class=\"k\">DNA và RNA</span>; gene chỉ là một đoạn của DNA.<br>C sai: đơn phân của nucleic acid là <span class=\"k\">nucleotide</span>; amino acid là đơn phân của protein.<br>D sai: một phân tử DNA chứa <span class=\"k\">rất nhiều gene</span>."
+    }
+  ]
+}
