@@ -164,6 +164,8 @@ h1{font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);font-weight:800;margin:36px 0 8px
 .opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
 .opt.wrong .key{background:var(--bad);color:#fff}
 .opt.dim{opacity:.45}
+.opt.sel{border-color:var(--accent);background:var(--accent-bg)}
+.opt.sel .key{background:var(--accent);color:#fff}
 
 /* explanation + actions */
 .exp{margin-top:18px;padding:16px 20px;border-left:4px solid var(--accent);background:var(--surface);border-radius:0 12px 12px 0;font-size:1.02rem}
@@ -818,6 +820,17 @@ function figChain(steps,alt){
     if(i<steps.length-1) s+=arrow(200,y+bh+1,200,y+bh+gap-1); });
   return s+'</svg>';
 }
+/* câu nối: hai cột ô; lw = độ rộng cột trái; pairs = [[i,j],...] thì vẽ thêm đường nối ô trái i với ô phải j */
+function figMatch(left,right,alt,lw,pairs){
+  const W=400, mid=50, bh=36, gap=12, n=Math.max(left.length,right.length), H=n*(bh+gap)-gap+12;
+  lw=lw||(W-20-mid)/2; const rw=W-20-mid-lw, xr=10+lw+mid, Y=i=>6+i*(bh+gap);
+  let s=`<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="${alt||'Nối cột trái với cột phải'}">`;
+  (pairs||[]).forEach(([i,j])=>{ s+=`<line x1="${10+lw}" y1="${Y(i)+bh/2}" x2="${xr}" y2="${Y(j)+bh/2}" style="stroke:var(--accent);stroke-width:2.5"/>`; });
+  const box=(t,x,y,w)=>`<rect class="s-box" x="${x}" y="${y}" width="${w}" height="${bh}" rx="8"/><text class="s-txt" x="${x+w/2}" y="${y+(t.length<3?24:23)}" text-anchor="middle"${t.length<3?' style="font-size:17px"':''}>${t}</text>`;
+  left.forEach((t,i)=>{ s+=box(t,10,Y(i),lw); });
+  right.forEach((t,j)=>{ s+=box(t,xr,Y(j),rw); });
+  return s+'</svg>';
+}
 
 /* bảng Đúng/Sai để trống cho đề kiểm tra */
 const exTF=list=>'<table class="ex-table ex-tf"><tr><th>Phát biểu</th><th>Đúng</th><th>Sai</th></tr>'+list.map((t,k)=>`<tr><td><b>${'abcd'[k]}.</b> ${t}</td><td></td><td></td></tr>`).join('')+'</table>';
@@ -849,7 +862,7 @@ let dur=30;
 const durFor=q=>DUR_OF[q.lv]||30;
 const LV={easy:'Dễ', mid:'Vừa', apply:'Vận dụng'};
 const TAG={dn:'Động năng', tn:'Thế năng', both:'Động năng + Thế năng', td:'Tốc độ', dt:'Đồ thị'};
-const KEYS=['A','B','C','D'];
+const KEYS=['A','B','C','D','E'];
 let S={set:null, qs:[], mode:null, i:0, ans:[], pick:null, revealed:false};
 let T={end:0, left:30000, on:false, iv:0};
 const N=()=>S.qs.length;
@@ -880,7 +893,7 @@ function renderHome(){
         return `<li><div class="row has-modes"><span class="rt"><span class="rt-title">${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}${s.timed===false?'Không tính giờ.':'25–30 giây mỗi câu.'} Chọn phần muốn ôn:</span><span class="modes">${btns}</span></span></div></li>`;
       }
       const mixed=s.questions.some(q=>q.type);
-      const info=s.exam?`${s.questions.length} câu, làm bài trong ${s.exam} phút, ${s.questions.reduce((a,q)=>a+(q.pts||0),0)} điểm`:s.timed===false?`${s.questions.length} câu, không tính giờ, làm xong tự đối chiếu đáp án`:mixed?`${s.questions.length} câu; trắc nghiệm 25–30 giây mỗi câu, ${[s.questions.some(q=>q.type==='tf')&&'Đúng/Sai',s.questions.some(q=>q.type==='short')&&'tự luận'].filter(Boolean).join(' và ')} không tính giờ`:`${s.questions.length} câu, 25–30 giây mỗi câu`;
+      const info=s.exam?`${s.questions.length} câu, làm bài trong ${s.exam} phút, ${s.questions.reduce((a,q)=>a+(q.pts||0),0)} điểm`:s.timed===false?`${s.questions.length} câu, không tính giờ, làm xong tự đối chiếu đáp án`:mixed?`${s.questions.length} câu; trắc nghiệm 25–30 giây mỗi câu, ${[s.questions.some(q=>q.type==='multi')&&'nhiều đáp án',s.questions.some(q=>q.type==='tf')&&'Đúng/Sai',s.questions.some(q=>q.type==='short')&&(s.questions.some(q=>q.type==='short'&&!q.kl)?'tự luận':'trả lời ngắn')].filter(Boolean).join(' và ')} không tính giờ`:`${s.questions.length} câu, 25–30 giây mỗi câu`;
       return `<li><button class="row" type="button" data-i="${i}"><span class="rt"><span class="rt-title">${s.exam?'<span class="lock" title="Cần mật khẩu">🔒</span>':''}${s.lesson}. ${s.title}</span><span class="rt-sub">${meta}${info}</span></span><span class="go">Bắt đầu</span></button></li>`;
     }).join('');
     return `<div class="grade-group" data-grade="${g}" style="${setVars(first)}"><div class="grade-head"><span class="grade">${g}</span><span class="grade-sub">${first.sub}</span></div><ul class="sets">${rows}</ul></div>`;
@@ -943,7 +956,8 @@ function renderQ(){
   const tp=$('#topic');
   if(q.tag){ tp.textContent=TAG[q.tag]; tp.className='topic '+q.tag; tp.hidden=false; }
   else if(q.type==='tf'){ tp.textContent='Đúng / Sai'; tp.className='topic kind'; tp.hidden=false; }
-  else if(q.type==='short'){ tp.textContent='Tự luận'; tp.className='topic kind'; tp.hidden=false; }
+  else if(q.type==='multi'){ tp.textContent='Nhiều đáp án'; tp.className='topic kind'; tp.hidden=false; }
+  else if(q.type==='short'){ tp.textContent=q.kl||'Tự luận'; tp.className='topic kind'; tp.hidden=false; }
   else if(q.type==='steps'){ tp.textContent='Hướng dẫn giải'; tp.className='topic kind'; tp.hidden=false; }
   else tp.hidden=true;
   const qc=document.querySelector('.qcard'); qc.classList.remove('enter'); void qc.offsetWidth; qc.classList.add('enter');
@@ -961,10 +975,11 @@ function renderQ(){
     opts.className='short-wrap';
     opts.innerHTML=`<button type="button" class="btn primary show-ans" id="btnShowAns">Hiện đáp án</button>`;
   } else {
-    opts.className='opts';
+    opts.className='opts'; if(q.type==='multi') S.pick=[];
     opts.innerHTML=q.o.map((t,k)=>`<button class="opt" type="button" data-k="${k}"><span class="key">${KEYS[k]}</span><span class="txt">${t}</span></button>`).join('');
   }
   $('#exp').hidden=true; $('#btnNext').hidden=true; $('#btnReveal').hidden=q.type==='short'||q.type==='steps';
+  $('#btnReveal').textContent=q.type==='multi'?'Kiểm tra':'Hiện đáp án';
   $('#timerBox').hidden=!isTimed();
   if(isTimed()) startTimer(); else stopTimer();
 }
@@ -1195,6 +1210,22 @@ function reveal(picked,timedOut,instant){
     return;
   }
 
+  if(q.type==='multi'){
+    const pick=S.pick||[], marked=pick.length>0, ok=marked&&pick.length===q.a.length&&q.a.every(k=>pick.includes(k));
+    S.ans[S.i]={type:'multi',picked:pick.slice(),ok};
+    document.querySelectorAll('.opt').forEach(b=>{
+      const k=+b.dataset.k; b.disabled=true; b.classList.remove('sel');
+      if(q.a.includes(k)) b.classList.add('correct'); else if(pick.includes(k)) b.classList.add('wrong'); else b.classList.add('dim');
+    });
+    const L=q.a.map(k=>KEYS[k]).join(', ');
+    const head= ok ? 'Chính xác!' : marked ? `Chưa đúng. Đáp án đúng là ${L}.` : `Đáp án đúng là ${L}.`;
+    exp.className='exp '+(ok?'good':marked?'bad':'neutral');
+    exp.innerHTML=`<strong>${head}</strong>${expBody(q)}`;
+    exp.hidden=false; finishReveal(n);
+    if(ok){ confetti(); ding(); } else if(marked){ wrongFx(true); buzz(); }
+    return;
+  }
+
   S.ans[S.i]={picked,timedOut};
   document.querySelectorAll('.opt').forEach(b=>{
     const k=+b.dataset.k; b.disabled=true;
@@ -1220,6 +1251,12 @@ function tfAnswer(tb){
   row.classList.add(v===it.ans?'ok':'bad');
   if(S.pick.every(x=>x!==null)) reveal(null,false,true);
   else if(v===it.ans) ding(); else buzz();
+}
+/* nhiều đáp án: bấm để chọn/bỏ chọn, bấm "Kiểm tra" mới chấm */
+function multiToggle(k){
+  if(S.revealed) return;
+  const i=S.pick.indexOf(k); if(i<0) S.pick.push(k); else S.pick.splice(i,1);
+  document.querySelector(`.opt[data-k="${k}"]`).classList.toggle('sel',i<0);
 }
 function selfGrade(v){
   const a=S.ans[S.i]; if(!a||a.type!=='short'||a.self!==null) return;
@@ -1250,8 +1287,12 @@ function showResult(){
       st= !a.marked?'skip' : a.correct===a.total?'ok' : a.correct>0?'part':'bad';
       icon= st==='ok'?'✓':st==='skip'?'–':st==='part'?'½':'✗';
       yours= a.marked?`Đúng ${a.correct}/${a.total} ý`:'Không chọn';
+    } else if(q.type==='multi'){
+      const p=a.picked||[]; if(a.ok) score++;
+      st= a.ok?'ok' : p.length?'bad':'skip'; icon= a.ok?'✓' : p.length?'✗':'–';
+      yours= (p.length?`Bạn chọn ${p.slice().sort().map(k=>KEYS[k]).join(', ')}`:'Không chọn') + (a.ok?'':', đáp án '+q.a.map(k=>KEYS[k]).join(', '));
     } else if(q.type==='short'){
-      st='skip'; icon='✎'; yours='Tự luận, không tính điểm';
+      st='skip'; icon='✎'; yours=`${q.kl||'Tự luận'}, không tính điểm`;
     } else if(q.type==='steps'){
       st=a.type?'ok':'skip'; icon=a.type?'✓':'–'; yours=a.type?'Đã xem hết các bước':'Chưa xem hết';
     } else {
@@ -1260,7 +1301,7 @@ function showResult(){
       icon= ok?'✓' : a.picked===null?'–' : '✗';
       yours= (a.picked===null ? (a.timedOut?'Hết giờ':'Không chọn') : `Bạn chọn ${KEYS[a.picked]}`) + (ok?'':', đáp án '+KEYS[q.a]);
     }
-    const tag= q.tag ? `<span class="topic ${q.tag}">${TAG[q.tag]}</span>` : q.type==='tf'?'<span class="topic kind">Đúng / Sai</span>':q.type==='short'?'<span class="topic kind">Tự luận</span>':q.type==='steps'?'<span class="topic kind">Hướng dẫn giải</span>':'';
+    const tag= q.tag ? `<span class="topic ${q.tag}">${TAG[q.tag]}</span>` : q.type==='tf'?'<span class="topic kind">Đúng / Sai</span>':q.type==='multi'?'<span class="topic kind">Nhiều đáp án</span>':q.type==='short'?`<span class="topic kind">${q.kl||'Tự luận'}</span>`:q.type==='steps'?'<span class="topic kind">Hướng dẫn giải</span>':'';
     return `<li class="${st}"><span class="st">${icon}</span><span class="rq">${i+1}. ${plain(q.q)}${tag}</span><span class="ra">${yours}</span></li>`;
   });
   score=Math.round(score*100)/100;
@@ -1362,7 +1403,8 @@ $('#toc').addEventListener('click',e=>{
 $('#opts').addEventListener('click',e=>{
   const tb=e.target.closest('.tf-btn');
   if(tb){ if(S.revealed||!S.pick||tb.disabled) return; tfAnswer(tb); return; }
-  const b=e.target.closest('.opt'); if(b&&!b.disabled) reveal(+b.dataset.k,false);
+  const b=e.target.closest('.opt'); if(!b||b.disabled) return;
+  if(S.qs[S.i].type==='multi') multiToggle(+b.dataset.k); else reveal(+b.dataset.k,false);
 });
 $('#exp').addEventListener('click',e=>{ const b=e.target.closest('.sg'); if(b&&!b.disabled) selfGrade(b.dataset.v==='1'); });
 $('#btnReveal').addEventListener('click',()=>reveal(null,false));
@@ -1396,6 +1438,7 @@ document.addEventListener('keydown',e=>{
     const q=S.qs[S.i], mcq=!q.type;
     if(mcq && '1234'.includes(k)&&k!==''&&+k<=q.o.length){ reveal(+k-1,false); return; }
     if(mcq && 'abcd'.includes(k)&&k!==''&&'abcd'.indexOf(k)<q.o.length){ reveal('abcd'.indexOf(k),false); return; }
+    if(q.type==='multi' && k!==''){ const j='12345'.includes(k)?+k-1:'abcde'.indexOf(k); if(j>=0&&j<q.o.length){ multiToggle(j); return; } }
     if(k==='p'){ togglePause(); return; }
     if(k==='escape'){ renderHome(); return; }
     if(k==='enter'||k===' '){
