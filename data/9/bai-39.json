@@ -1,0 +1,167 @@
+{
+  "grade": "9",
+  "lesson": "Bài 39",
+  "title": "Tái bản DNA và phiên mã tạo RNA",
+  "sub": "Khoa học tự nhiên 9, Kết nối tri thức",
+  "note": "",
+  "kind": "Trắc nghiệm + trả lời ngắn",
+  "accent": "#0B7FA6",
+  "accentBg": "#DDF1F8",
+  "accentDark": "#4CC3EA",
+  "accentBgDark": "#0F2F3B",
+  "questions": [
+    {
+      "lv": "easy",
+      "q": "Hai nguyên tắc quan trọng trong quá trình tái bản DNA là nguyên tắc",
+      "o": [
+        "bổ sung và bảo toàn.",
+        "bổ sung và bán bảo toàn.",
+        "tổng hợp và bán bảo toàn.",
+        "tổng hợp và bảo toàn."
+      ],
+      "a": 1,
+      "e": "Hai nguyên tắc quan trọng trong quá trình tái bản DNA là nguyên tắc <span class=\"k\">bổ sung</span> và <span class=\"k\">bán bảo toàn</span>.<br><br><b>Nguyên tắc bổ sung:</b> các nucleotide mới liên kết với nhau theo trật tự trên mạch DNA khuôn theo nguyên tắc: A liên kết với T, G liên kết với C và ngược lại.<br><br><b>Nguyên tắc bán bảo toàn:</b> hai phân tử con được tạo ra mang một mạch được tổng hợp mới hoàn toàn, một mạch được lấy từ chính phân tử DNA mẹ.",
+      "ef": "figTable({alt:'Hai nguyên tắc của tái bản DNA', title:'Hai nguyên tắc của tái bản DNA', head:['Nguyên tắc','Nội dung'], cols:[14,245], rows:[['Bổ sung','A – T, G – C và ngược lại'],['Bán bảo toàn','1 mạch cũ (mẹ) + 1 mạch mới']]})"
+    },
+    {
+      "lv": "easy",
+      "q": "Phiên mã là quá trình tổng hợp",
+      "o": [
+        "RNA trên mạch khuôn mRNA.",
+        "DNA trên mạch khuôn DNA.",
+        "RNA trên mạch khuôn DNA.",
+        "DNA trên mạch khuôn mRNA."
+      ],
+      "a": 2,
+      "e": "Phiên mã là quá trình tổng hợp <span class=\"k\">RNA</span> trên <span class=\"k\">mạch khuôn DNA</span>.",
+      "ef": "figChain(['Gene trên DNA (mạch khuôn)','Phiên mã (RNA polymerase)','RNA (mRNA, tRNA, rRNA)'],'Sơ đồ phiên mã')"
+    },
+    {
+      "type": "short",
+      "kl": "Điền vào chỗ trống",
+      "lv": "mid",
+      "q": "Trong quá trình phiên mã, các nucleotide môi trường (A, T, U, G và C) sẽ được ghép với các nucleotide mạch khuôn DNA để tạo thành RNA theo nguyên tắc bổ sung như sau: <span class=\"ql\">- Nucleotide loại A mạch khuôn liên kết với nucleotide loại ............ môi trường nội bào.</span><span class=\"ql\">- Nucleotide loại T mạch khuôn liên kết với nucleotide loại ............ môi trường nội bào.</span><span class=\"ql\">- Nucleotide loại G mạch khuôn liên kết với nucleotide loại ............ môi trường nội bào.</span><span class=\"ql\">- Nucleotide loại C mạch khuôn liên kết với nucleotide loại ............ môi trường nội bào.</span>",
+      "ans": "Theo nguyên tắc bổ sung, trong quá trình phiên mã:<br>- Nucleotide loại A<sub>DNA</sub> liên kết với nucleotide loại U<sub>môi trường</sub>.<br>- Nucleotide loại T<sub>DNA</sub> liên kết với nucleotide loại A<sub>môi trường</sub>.<br>- Nucleotide loại G<sub>DNA</sub> liên kết với nucleotide loại C<sub>môi trường</sub>.<br>- Nucleotide loại C<sub>DNA</sub> liên kết với nucleotide loại G<sub>môi trường</sub>.",
+      "ef": "figTable({alt:'Nguyên tắc bổ sung trong phiên mã', title:'Nguyên tắc bổ sung trong phiên mã (T của DNA ghép với U của RNA)', head:['Mạch khuôn DNA','Nucleotide môi trường (RNA)'], cols:[14,260], rows:[['A','U'],['T','A'],['G','C'],['C','G']]})"
+    },
+    {
+      "type": "short",
+      "kl": "Hoàn thành thông tin",
+      "lv": "easy",
+      "q": "Hoàn thành thông tin dưới đây. <span class=\"ql\">Kết quả của quá trình tái bản DNA là tạo ra ............ phân tử DNA con ............ nhau và ............ với phân tử DNA mẹ.</span>",
+      "ans": "Kết quả của quá trình tái bản DNA là tạo ra <b>hai</b> phân tử DNA con <b>giống</b> nhau và <b>giống hệt</b> với phân tử DNA mẹ.",
+      "ef": "figChain(['1 phân tử DNA mẹ','Tái bản (bổ sung + bán bảo toàn)','2 DNA con giống nhau và giống hệt DNA mẹ'],'Kết quả của tái bản DNA')"
+    },
+    {
+      "lv": "mid",
+      "q": "Sự tái bản DNA có ý nghĩa để truyền đạt thông tin di truyền",
+      "o": [
+        "từ gene ra tính trạng.",
+        "qua các cá thể ở sinh vật đa bào.",
+        "qua các thế hệ tế bào.",
+        "từ gene ra mRNA."
+      ],
+      "a": 2,
+      "e": "DNA mang thông tin di truyền trong nhân tế bào. Khi tế bào nhân đôi (phân bào hay nguyên phân), DNA cũng sẽ được chia đều cho hai tế bào con, bằng cơ chế tái bản DNA. Bởi vậy sự tái bản DNA nhằm mục đích truyền đạt thông tin di truyền <span class=\"k\">qua các thế hệ tế bào</span>.",
+      "ef": "figChain(['Tế bào mẹ: DNA tái bản → 2 bản giống hệt','Phân bào: mỗi tế bào con nhận 1 bản DNA','Thế hệ tế bào sau giữ nguyên thông tin di truyền'],'Ý nghĩa của tái bản DNA')"
+    },
+    {
+      "type": "short",
+      "kl": "Sắp xếp",
+      "lv": "mid",
+      "q": "Sắp xếp các diễn biến dưới đây theo đúng trật tự của quá trình tái bản DNA. <span class=\"ql\">Phân tử DNA tháo xoắn dưới tác dụng của các enzyme.</span><span class=\"ql\">DNA polymerase tổng hợp mạch mới theo chiều 5' - 3'.</span><span class=\"ql\">Enzyme phá vỡ liên kết hydrogen để tách hai mạch DNA.</span><span class=\"ql\">Hai phân tử DNA con được tạo ra xoắn trở lại.</span><span class=\"ql\">Các nucleotide tự do được lắp ghép theo nguyên tắc bổ sung.</span>",
+      "ans": "Trật tự đúng là:<br>1. Phân tử DNA tháo xoắn dưới tác dụng của các enzyme.<br>2. Enzyme phá vỡ liên kết hydrogen để tách hai mạch DNA.<br>3. DNA polymerase tổng hợp mạch mới theo chiều 5' - 3'.<br>4. Các nucleotide tự do được lắp ghép theo nguyên tắc bổ sung.<br>5. Hai phân tử DNA con được tạo ra xoắn trở lại.",
+      "ef": "figChain(['1. DNA tháo xoắn (enzyme)','2. Phá vỡ liên kết hydrogen, tách 2 mạch','3. DNA polymerase tổng hợp mạch mới 5\\' – 3\\'','4. Lắp ghép nucleotide theo nguyên tắc bổ sung','5. Hai DNA con xoắn trở lại'],'Các bước của tái bản DNA')"
+    },
+    {
+      "lv": "mid",
+      "q": "Quá trình phiên mã xảy ra trên",
+      "o": [
+        "một phần và trên một mạch phân tử DNA.",
+        "toàn bộ và trên cả hai mạch phân tử DNA.",
+        "một phần và trên cả hai mạch phân tử DNA.",
+        "toàn bộ và trên một mạch phân tử DNA."
+      ],
+      "a": 0,
+      "e": "Quá trình phiên mã xảy ra trên <span class=\"k\">một phần</span> phân tử DNA, là các đoạn mang gene hay có trình tự mang thông tin di truyền. Phiên mã chỉ xảy ra trên <span class=\"k\">một mạch</span> phân tử DNA.",
+      "ef": "figTable({alt:'So sánh phạm vi của tái bản và phiên mã', title:'Tái bản và phiên mã diễn ra ở đâu trên DNA?', head:['Quá trình','Phạm vi','Số mạch khuôn'], cols:[14,190,320], rows:[['Tái bản','Toàn bộ DNA','Cả 2 mạch'],['Phiên mã','Một đoạn (gene)','1 mạch']], hl:1})"
+    },
+    {
+      "type": "short",
+      "kl": "Hoàn thiện chú thích",
+      "lv": "apply",
+      "q": "Hoàn thiện chú thích cho hình ảnh sơ lược quá trình tái bản DNA dưới đây:<figure class=\"qimg\"><img src=\"data/9/img/bai-39-tai-ban-dna.png\" alt=\"Sơ lược quá trình tái bản DNA: chạc tái bản với các vị trí đánh số từ (1) đến (7)\"><figcaption>Sơ lược quá trình tái bản DNA</figcaption></figure><span class=\"ql\">Quá trình tái bản DNA bắt đầu khi (6) ............ tách DNA thành hai mạch đơn làm khuôn cho sự tổng hợp mạch mới. Mạch mới được tổng hợp bởi (7) ............ bằng cách lắp ráp các đơn phân (5) ............ dựa theo nguyên tắc bổ sung. Ở mạch khuôn có chiều (1) ............ - (3) ............, mạch mới được tổng hợp liên tục. Ngược lại, ở mạch khuôn chiều (2) ............ - (4) ............, mạch mới được tổng hợp gián đoạn.</span><span class=\"ql bank-lab\">Từ gợi ý (chọn từ phù hợp để điền):</span><span class=\"bank\"><span>enzyme RNA polymerase</span><span>3'</span><span>5'</span><span>enzyme DNA polymerase</span><span>amino acid</span><span>3'</span><span>nucleotide</span><span>5'</span><span>lipid</span><span>enzyme tháo xoắn</span></span>",
+      "ans": "(6) enzyme tháo xoắn; (7) enzyme DNA polymerase; (5) nucleotide; (1) 3'; (3) 5'; (2) 5'; (4) 3'.<br><br>Quá trình tái bản DNA bắt đầu khi <b>enzyme tháo xoắn</b> tách DNA thành hai mạch đơn làm khuôn cho sự tổng hợp mạch mới. Mạch mới được tổng hợp bởi <b>enzyme DNA polymerase</b> bằng cách lắp ráp các đơn phân <b>nucleotide</b> dựa theo nguyên tắc bổ sung. Ở mạch khuôn có chiều <b>3' - 5'</b>, mạch mới được tổng hợp liên tục. Ngược lại, ở mạch khuôn chiều <b>5' - 3'</b>, mạch mới được tổng hợp gián đoạn.",
+      "ef": "figTable({alt:'Đáp án chú thích hình tái bản DNA', title:'Chú thích các vị trí trên hình', head:['Vị trí','Chú thích'], cols:[20,230], rh:28, rows:[['(1)','3\\''],['(2)','5\\''],['(3)','5\\''],['(4)','3\\''],['(5)','nucleotide'],['(6)','enzyme tháo xoắn'],['(7)','enzyme DNA polymerase']]})"
+    },
+    {
+      "type": "short",
+      "kl": "Nối",
+      "lv": "easy",
+      "q": "Nối các nucleotide mạch khuôn sẽ liên kết với nucleotide môi trường theo nguyên tắc bổ sung quá trình tổng hợp mạch mới ở tái bản DNA.",
+      "fig": "figMatch(['A mạch khuôn','T mạch khuôn','G mạch khuôn','C mạch khuôn'],['C môi trường','T môi trường','A môi trường','G môi trường'],'Nối nucleotide mạch khuôn với nucleotide môi trường',150)",
+      "ans": "Theo nguyên tắc bổ sung:<br>- A mạch khuôn liên kết với T môi trường.<br>- T mạch khuôn liên kết với A môi trường.<br>- G mạch khuôn liên kết với C môi trường.<br>- C mạch khuôn liên kết với G môi trường.",
+      "ef": "figMatch(['A mạch khuôn','T mạch khuôn','G mạch khuôn','C mạch khuôn'],['C môi trường','T môi trường','A môi trường','G môi trường'],'Đáp án: A – T, T – A, G – C, C – G',150,[[0,1],[1,2],[2,0],[3,3]])"
+    },
+    {
+      "lv": "easy",
+      "q": "Trong quá trình tái bản DNA, enzyme nào sau đây chịu trách nhiệm tháo xoắn phân tử DNA?",
+      "o": [
+        "DNA polymerase.",
+        "RNA polymerase.",
+        "Enzyme ligase.",
+        "Enzyme helicase."
+      ],
+      "a": 3,
+      "e": "<span class=\"k\">Helicase</span> là enzyme có vai trò phá vỡ các liên kết hydrogen giữa hai mạch của DNA mẹ, giúp tách chúng ra để làm khuôn cho quá trình tổng hợp mạch mới.",
+      "ef": "figTable({alt:'Vai trò của các enzyme trong tái bản DNA', title:'Các enzyme trong tái bản DNA', head:['Enzyme','Vai trò'], cols:[14,250], rows:[['Helicase','Tháo xoắn, tách 2 mạch DNA'],['DNA polymerase','Tổng hợp mạch mới 5\\' – 3\\''],['Ligase','Nối các đoạn mạch mới']], hl:0})"
+    },
+    {
+      "type": "short",
+      "kl": "Hoàn thành thông tin",
+      "lv": "easy",
+      "q": "Hoàn thành thông tin dưới đây. <span class=\"ql\">Trong quá trình tái bản DNA, mạch mới được tổng hợp bởi enzyme DNA polymerase theo chiều từ ............ đến ............</span>",
+      "ans": "Trong quá trình tái bản DNA, mạch mới được tổng hợp bởi enzyme DNA polymerase theo chiều từ <b>5'</b> đến <b>3'</b> do enzyme này chỉ chạy duy nhất theo một chiều 5' - 3'.",
+      "ef": "figChain(['Mạch khuôn 3\\' → 5\\'','DNA polymerase chỉ chạy một chiều','Mạch mới được tổng hợp 5\\' → 3\\''],'Chiều tổng hợp mạch mới')"
+    },
+    {
+      "lv": "easy",
+      "q": "Trong quá trình phiên mã, enzyme nào sau đây chịu trách nhiệm tổng hợp mạch mới tạo ra RNA?",
+      "o": [
+        "Enzyme nối.",
+        "RNA polymerase.",
+        "Enzyme tháo xoắn.",
+        "DNA polymerase."
+      ],
+      "a": 1,
+      "e": "Enzyme chịu trách nhiệm tổng hợp mạch mới tạo ra RNA là <span class=\"k\">RNA polymerase</span>.",
+      "ef": "figTable({alt:'Enzyme tổng hợp mạch mới trong tái bản và phiên mã', title:'Enzyme tổng hợp mạch mới', head:['Quá trình','Enzyme','Sản phẩm'], cols:[14,190,320], rows:[['Tái bản','DNA polymerase','DNA'],['Phiên mã','RNA polymerase','RNA']], hl:1})"
+    },
+    {
+      "lv": "easy",
+      "q": "Quá trình phiên mã xảy ra ở đâu trong tế bào sinh vật nhân thực?",
+      "o": [
+        "Không bào.",
+        "Màng sinh chất.",
+        "Nhân.",
+        "Tế bào chất."
+      ],
+      "a": 2,
+      "e": "Quá trình phiên mã xảy ra trên DNA, DNA nằm trong <span class=\"k\">nhân tế bào</span>.",
+      "ef": "figChain(['Nhân: DNA → phiên mã → RNA','RNA đi ra khỏi nhân','Tế bào chất: RNA tham gia tổng hợp protein'],'Nơi diễn ra phiên mã ở tế bào nhân thực')"
+    },
+    {
+      "lv": "easy",
+      "q": "Tái bản DNA là quá trình tạo ra",
+      "o": [
+        "hai phân tử DNA được sắp xếp lại từ DNA ban đầu.",
+        "một phân tử DNA mang trình tự hoàn toàn mới.",
+        "hai phân tử DNA mang trình tự hoàn toàn mới.",
+        "hai phân tử DNA mang trình tự giống DNA ban đầu."
+      ],
+      "a": 3,
+      "e": "Tái bản DNA là quá trình tạo ra <span class=\"k\">hai phân tử DNA</span> mang trình tự <span class=\"k\">giống DNA ban đầu</span>.",
+      "ef": "figChain(['1 phân tử DNA mẹ','Tái bản (bổ sung + bán bảo toàn)','2 DNA con giống nhau và giống hệt DNA mẹ'],'Kết quả của tái bản DNA')"
+    }
+  ]
+}
