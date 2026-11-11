@@ -115,6 +115,53 @@
       "a": 3,
       "e": "<span class=\"k\">Helicase</span> là enzyme có vai trò phá vỡ các liên kết hydrogen giữa hai mạch của DNA mẹ, giúp tách chúng ra để làm khuôn cho quá trình tổng hợp mạch mới.",
       "ef": "figTable({alt:'Vai trò của các enzyme trong tái bản DNA', title:'Các enzyme trong tái bản DNA', head:['Enzyme','Vai trò'], cols:[14,250], rows:[['Helicase','Tháo xoắn, tách 2 mạch DNA'],['DNA polymerase','Tổng hợp mạch mới 5\\' – 3\\''],['Ligase','Nối các đoạn mạch mới']], hl:0})"
+    },
+    {
+      "type": "short",
+      "kl": "Hoàn thành thông tin",
+      "lv": "easy",
+      "q": "Hoàn thành thông tin dưới đây. <span class=\"ql\">Trong quá trình tái bản DNA, mạch mới được tổng hợp bởi enzyme DNA polymerase theo chiều từ ............ đến ............</span>",
+      "ans": "Trong quá trình tái bản DNA, mạch mới được tổng hợp bởi enzyme DNA polymerase theo chiều từ <b>5'</b> đến <b>3'</b> do enzyme này chỉ chạy duy nhất theo một chiều 5' - 3'.",
+      "ef": "figChain(['Mạch khuôn 3\\' → 5\\'','DNA polymerase chỉ chạy một chiều','Mạch mới được tổng hợp 5\\' → 3\\''],'Chiều tổng hợp mạch mới')"
+    },
+    {
+      "lv": "easy",
+      "q": "Trong quá trình phiên mã, enzyme nào sau đây chịu trách nhiệm tổng hợp mạch mới tạo ra RNA?",
+      "o": [
+        "Enzyme nối.",
+        "RNA polymerase.",
+        "Enzyme tháo xoắn.",
+        "DNA polymerase."
+      ],
+      "a": 1,
+      "e": "Enzyme chịu trách nhiệm tổng hợp mạch mới tạo ra RNA là <span class=\"k\">RNA polymerase</span>.",
+      "ef": "figTable({alt:'Enzyme tổng hợp mạch mới trong tái bản và phiên mã', title:'Enzyme tổng hợp mạch mới', head:['Quá trình','Enzyme','Sản phẩm'], cols:[14,190,320], rows:[['Tái bản','DNA polymerase','DNA'],['Phiên mã','RNA polymerase','RNA']], hl:1})"
+    },
+    {
+      "lv": "easy",
+      "q": "Quá trình phiên mã xảy ra ở đâu trong tế bào sinh vật nhân thực?",
+      "o": [
+        "Không bào.",
+        "Màng sinh chất.",
+        "Nhân.",
+        "Tế bào chất."
+      ],
+      "a": 2,
+      "e": "Quá trình phiên mã xảy ra trên DNA, DNA nằm trong <span class=\"k\">nhân tế bào</span>.",
+      "ef": "figChain(['Nhân: DNA → phiên mã → RNA','RNA đi ra khỏi nhân','Tế bào chất: RNA tham gia tổng hợp protein'],'Nơi diễn ra phiên mã ở tế bào nhân thực')"
+    },
+    {
+      "lv": "easy",
+      "q": "Tái bản DNA là quá trình tạo ra",
+      "o": [
+        "hai phân tử DNA được sắp xếp lại từ DNA ban đầu.",
+        "một phân tử DNA mang trình tự hoàn toàn mới.",
+        "hai phân tử DNA mang trình tự hoàn toàn mới.",
+        "hai phân tử DNA mang trình tự giống DNA ban đầu."
+      ],
+      "a": 3,
+      "e": "Tái bản DNA là quá trình tạo ra <span class=\"k\">hai phân tử DNA</span> mang trình tự <span class=\"k\">giống DNA ban đầu</span>.",
+      "ef": "figChain(['1 phân tử DNA mẹ','Tái bản (bổ sung + bán bảo toàn)','2 DNA con giống nhau và giống hệt DNA mẹ'],'Kết quả của tái bản DNA')"
     }
   ]
 }
