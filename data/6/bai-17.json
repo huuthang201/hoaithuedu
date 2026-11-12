@@ -4,7 +4,7 @@
   "title": "Tách chất khỏi hỗn hợp",
   "sub": "Khoa học tự nhiên 6, Kết nối tri thức",
   "note": "",
-  "kind": "Trắc nghiệm",
+  "kind": "Trắc nghiệm + Đúng/Sai",
   "accent": "#4F5BD5",
   "accentBg": "#E6E8FB",
   "accentDark": "#8F98FF",
@@ -100,6 +100,102 @@
       "a": 3,
       "e": "Tác dụng của các lớp lót:<br>- Lớp than củi có tác dụng <span class=\"k\">hút các chất hữu cơ, vi khuẩn</span>.<br>- Lớp cát mịn có tác dụng <span class=\"k\">giữ các hạt đất, cát</span> ở lại.<br>- Lớp sỏi có tác dụng <span class=\"k\">lọc và giữ lại</span> các thành phần lơ lửng có kích thước nhỏ.<br>Lớp sỏi chỉ lọc, không làm nước có vị ngọt.",
       "ef": "figTable({alt:'Tác dụng các lớp lót bể lọc nước', title:'Tác dụng các lớp lót bể lọc', head:['Lớp lót','Tác dụng'], cols:[14,270], rows:[['Than củi','hút chất hữu cơ, vi khuẩn'],['Cát mịn','giữ hạt đất, cát'],['Sỏi','giữ thành phần lơ lửng nhỏ']]})"
+    },
+    {
+      "lv": "mid",
+      "q": "Hỗn hợp nào dưới đây có thể tách riêng các chất khi cho hỗn hợp vào nước, sau đó khuấy kĩ và lọc?",
+      "o": [
+        "Bột đá vôi và muối ăn.",
+        "Bột than và sắt.",
+        "Đường và muối.",
+        "Giấm và rượu."
+      ],
+      "a": 0,
+      "e": "Muốn tách bằng cách hòa vào nước rồi lọc thì phải có <span class=\"k\">một chất tan, một chất không tan</span>.<br>- Bột đá vôi và muối ăn: chỉ có <span class=\"k\">muối ăn tan</span>, lọc thu được bột đá vôi.<br>- Bột than và sắt đều không tan trong nước nên không tách được.<br>- Đường và muối đều tan trong nước nên không tách được.<br>- Giấm và rượu là chất lỏng tan tốt trong nước tạo thành dung dịch nên không tách được.",
+      "ef": "figTable({alt:'Các hỗn hợp khi cho vào nước', title:'Cho hỗn hợp vào nước thì sao?', head:['Hỗn hợp','Khi cho vào nước'], cols:[14,280], rows:[['Đá vôi + muối ăn','chỉ muối tan → lọc được'],['Bột than + sắt','cả hai không tan'],['Đường + muối','cả hai đều tan'],['Giấm + rượu','cả hai đều tan']], hl:0})"
+    },
+    {
+      "lv": "easy",
+      "q": "Cách hợp lí nhất để tách muối từ nước biển là",
+      "o": [
+        "lọc.",
+        "chưng cất.",
+        "bay hơi.",
+        "để yên cho muối lắng xuống rồi gạn nước."
+      ],
+      "a": 2,
+      "e": "Hiện nay muối được sản xuất chủ yếu bằng cách cho <span class=\"k\">bay hơi</span> nước biển (phơi nắng ở ruộng muối), thu được <span class=\"k\">muối kết tinh</span>. Muối đã tan hết trong nước biển nên lọc hay để lắng đều không tách ra được; chưng cất thì tốn nhiên liệu, thường dùng để lấy nước cất.",
+      "ef": "figChain(['Dẫn nước biển vào ruộng muối','Nắng, gió làm nước bay hơi','Muối kết tinh lại, thu hoạch muối'],'Làm muối từ nước biển')"
+    },
+    {
+      "lv": "easy",
+      "q": "Một hỗn hợp gồm bột sắt và đồng, có thể tách riêng hai chất bằng cách nào sau đây?",
+      "o": [
+        "Hòa tan vào nước.",
+        "Lắng, lọc.",
+        "Dùng nam châm để hút.",
+        "Tất cả đều đúng."
+      ],
+      "a": 2,
+      "e": "<span class=\"k\">Sắt bị nam châm hút</span>, còn đồng thì không. Cả sắt và đồng đều không tan trong nước nên hòa tan, lắng hay lọc đều không tách riêng được hai chất."
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Trong các phát biểu sau về phương pháp tách chất, phát biểu nào đúng, phát biểu nào sai?",
+      "items": [
+        {
+          "t": "Lọc: tách các chất rắn không tan ra khỏi chất lỏng.",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Lắng: tách các chất lỏng không tan vào nhau ra khỏi nhau.",
+          "ans": false,
+          "e": "Sai. <b>Chiết</b> mới là tách các chất lỏng không tan vào nhau ra khỏi nhau."
+        },
+        {
+          "t": "Cô cạn: tách các chất khó bay hơi ra khỏi các chất dễ bay hơi.",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Chiết: tách các chất rắn lơ lửng nặng hơn ra khỏi các chất nhẹ hơn.",
+          "ans": false,
+          "e": "Sai. <b>Lắng</b> mới là tách các chất rắn lơ lửng nặng hơn ra khỏi các chất nhẹ hơn."
+        }
+      ],
+      "e": "Ý b và d bị tráo cho nhau: tách các chất lỏng không tan vào nhau là <span class=\"k\">chiết</span>; để chất rắn lơ lửng nặng hơn chìm xuống đáy là <span class=\"k\">lắng</span>.",
+      "ef": "figTable({alt:'Mỗi cách tách dùng cho trường hợp nào', title:'Mỗi cách tách dùng khi nào?', head:['Cách tách','Dùng để tách'], cols:[14,240], rows:[['Lọc','chất rắn không tan khỏi chất lỏng'],['Lắng','chất rắn nặng hơn lắng xuống đáy'],['Cô cạn','chất khó bay hơi khỏi chất dễ bay hơi'],['Chiết','các chất lỏng không tan vào nhau']]})"
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Trong các phát biểu sau về phương pháp tách chất, phát biểu nào đúng, phát biểu nào sai?",
+      "items": [
+        {
+          "t": "Làm bay hơi nước biển thu được muối ăn.",
+          "ans": true,
+          "e": "Đúng. Nước bay hơi hết, muối ăn kết tinh còn lại."
+        },
+        {
+          "t": "Sulfur là chất rắn không tan trong nước. Sử dụng phương pháp chiết để tách riêng bột sulfur ra khỏi nước.",
+          "ans": false,
+          "e": "Sai. Sulfur là chất rắn không tan trong nước nên dùng phương pháp <b>lọc</b> để tách riêng bột sulfur ra khỏi nước."
+        },
+        {
+          "t": "Tách dầu ăn ra khỏi nước bằng phương pháp chưng cất.",
+          "ans": false,
+          "e": "Sai. Tách dầu ăn ra khỏi nước bằng phương pháp <b>chiết</b>."
+        },
+        {
+          "t": "Mỗi hỗn hợp có tính chất khác nhau, cần áp dụng cách phù hợp để tách chất ra khỏi hỗn hợp.",
+          "ans": true,
+          "e": "Đúng."
+        }
+      ],
+      "e": "Chọn cách tách theo tính chất của hỗn hợp: chất rắn không tan → <span class=\"k\">lọc</span>; chất rắn đã tan → <span class=\"k\">cô cạn, bay hơi</span>; chất lỏng không tan vào nhau → <span class=\"k\">chiết</span>.",
+      "ef": "figSep()"
     }
   ]
 }
