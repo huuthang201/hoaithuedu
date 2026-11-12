@@ -839,6 +839,10 @@ function figMatch(left,right,alt,lw,pairs){
   return s+'</svg>';
 }
 
+/* ---------- Bài 16 lớp 6: hỗn hợp các chất ---------- */
+const figMix=hl=>figTable({alt:'Ba loại hỗn hợp: dung dịch, huyền phù, nhũ tương', title:'Các loại hỗn hợp', head:['Loại','Đặc điểm','Ví dụ'], cols:[14,180,322], rows:[['Dung dịch','chất tan hết, đồng nhất','nước muối'],['Huyền phù','chất rắn lơ lửng','bột mì + nước'],['Nhũ tương','chất lỏng không tan','dầu ăn + nước']], hl});
+const figPure=hl=>figTable({alt:'So sánh chất tinh khiết và hỗn hợp', title:'Chất tinh khiết và hỗn hợp', head:['','Chất tinh khiết','Hỗn hợp'], cols:[14,190,322], rows:[['Số chất','1 chất','từ 2 chất trở lên'],['Tính chất','xác định','thay đổi'],['Ví dụ','nước cất, muối ăn','nước biển, sữa']], hl});
+
 /* bảng Đúng/Sai để trống cho đề kiểm tra */
 const exTF=list=>'<table class="ex-table ex-tf"><tr><th>Phát biểu</th><th>Đúng</th><th>Sai</th></tr>'+list.map((t,k)=>`<tr><td><b>${'abcd'[k]}.</b> ${t}</td><td></td><td></td></tr>`).join('')+'</table>';
 /* ---------- question bank ---------- */
