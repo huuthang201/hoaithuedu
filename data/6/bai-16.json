@@ -1,0 +1,199 @@
+{
+  "grade": "6",
+  "lesson": "Bài 16",
+  "title": "Hỗn hợp các chất",
+  "sub": "Khoa học tự nhiên 6, Kết nối tri thức",
+  "note": "",
+  "kind": "Trắc nghiệm + Đúng/Sai",
+  "accent": "#C2387A",
+  "accentBg": "#FBE4EF",
+  "accentDark": "#FF7FB6",
+  "accentBgDark": "#3A1A2A",
+  "questions": [
+    {
+      "lv": "easy",
+      "q": "Trường hợp nào sau đây là chất tinh khiết?",
+      "o": [
+        "Nước khoáng.",
+        "Nước biển.",
+        "Sodium chloride.",
+        "Gỗ."
+      ],
+      "a": 2,
+      "e": "Chất tinh khiết chỉ gồm <span class=\"k\">một chất</span>, không lẫn chất khác. <span class=\"k\">Sodium chloride</span> (muối ăn tinh khiết) là chất tinh khiết. Nước khoáng và nước biển là nước có hòa tan nhiều chất; gỗ cũng gồm nhiều chất, nên đều là hỗn hợp.",
+      "ef": "figTable({alt:'Chất tinh khiết hay hỗn hợp', title:'Chất tinh khiết hay hỗn hợp?', head:['Ví dụ','Loại'], cols:[14,300], rows:[['Nước khoáng','Hỗn hợp'],['Nước biển','Hỗn hợp'],['Sodium chloride','Chất tinh khiết'],['Gỗ','Hỗn hợp']], hl:2})"
+    },
+    {
+      "lv": "easy",
+      "q": "Khi cho bột mì vào nước và khuấy đều, ta thu được",
+      "o": [
+        "dung dịch.",
+        "huyền phù.",
+        "dung môi.",
+        "nhũ tương."
+      ],
+      "a": 1,
+      "e": "Bột mì <span class=\"k\">không tan</span> trong nước. Khuấy đều thì các hạt bột <span class=\"k\">lơ lửng</span> trong nước, tạo thành <span class=\"k\">huyền phù</span>. Để yên một lúc, bột mì sẽ lắng xuống đáy.",
+      "ef": "figMix(1)"
+    },
+    {
+      "lv": "mid",
+      "q": "Để phân biệt chất tinh khiết và hỗn hợp ta dựa vào",
+      "o": [
+        "thể của chất.",
+        "mùi vị của chất.",
+        "tính chất của chất.",
+        "số chất tạo nên."
+      ],
+      "a": 3,
+      "e": "Để phân biệt chất tinh khiết và hỗn hợp cần dựa vào <span class=\"k\">số chất tạo nên</span>, cụ thể:<br>- Chất tinh khiết là chất không có lẫn chất khác (<span class=\"k\">1 chất</span>).<br>- Hỗn hợp gồm <span class=\"k\">từ 2 chất trở lên</span>.",
+      "ef": "figPure(0)"
+    },
+    {
+      "lv": "easy",
+      "q": "Cho các vật thể: áo sơ mi, bút chì, đôi giày, viên kim cương. Vật thể chỉ chứa một chất duy nhất là",
+      "o": [
+        "áo sơ mi.",
+        "bút chì.",
+        "viên kim cương.",
+        "đôi giày."
+      ],
+      "a": 2,
+      "e": "<span class=\"k\">Kim cương</span> chỉ chứa một chất duy nhất là <span class=\"k\">carbon</span>. Áo sơ mi (sợi vải, phẩm màu…), bút chì (gỗ, ruột chì, sơn…), đôi giày (da, vải, cao su, keo…) đều được làm từ nhiều chất."
+    },
+    {
+      "lv": "easy",
+      "q": "Chất nào sau đây tan nhiều trong nước nóng?",
+      "o": [
+        "Muối ăn.",
+        "Nến.",
+        "Khí carbon dioxide.",
+        "Dầu ăn."
+      ],
+      "a": 0,
+      "e": "<span class=\"k\">Muối ăn</span> tan được trong nước, và nước càng nóng thì muối tan càng nhiều. Nến và dầu ăn hầu như không tan trong nước. Khí carbon dioxide thì ngược lại: nước càng nóng, khí <span class=\"k\">tan càng ít</span> (vì vậy nước ngọt có ga để ấm thì ga thoát ra hết)."
+    },
+    {
+      "lv": "mid",
+      "q": "Muốn hòa tan được nhiều muối ăn vào nước, ta <b>không nên</b> sử dụng phương pháp nào dưới đây?",
+      "o": [
+        "Vừa cho muối ăn vào nước vừa khuấy đều.",
+        "Nghiền nhỏ muối ăn.",
+        "Đun nóng nước.",
+        "Bỏ thêm đá lạnh vào."
+      ],
+      "a": 3,
+      "e": "Nhiệt độ của nước <span class=\"k\">càng thấp</span>, muối hòa tan <span class=\"k\">càng ít</span>. Bỏ đá lạnh làm nước lạnh đi nên muối tan kém hơn. Ba cách còn lại (khuấy đều, nghiền nhỏ, đun nóng) đều giúp muối tan nhanh và nhiều hơn.",
+      "ef": "figTable({alt:'Các cách làm và tác dụng với việc hòa tan muối', title:'Cách làm muối tan tốt hơn', head:['Cách làm','Tác dụng'], cols:[14,290], rows:[['Khuấy đều','tan nhanh hơn'],['Nghiền nhỏ muối','tan nhanh hơn'],['Đun nóng nước','tan nhanh và nhiều hơn'],['Bỏ đá lạnh','tan ít hơn ✗']], hl:3})"
+    },
+    {
+      "lv": "easy",
+      "q": "Hỗn hợp nào sau đây là dung dịch chỉ chứa một chất tan?",
+      "o": [
+        "Nước mắm.",
+        "Sữa.",
+        "Nước chanh đường.",
+        "Nước đường."
+      ],
+      "a": 3,
+      "e": "Dung dịch <span class=\"k\">nước đường</span> chỉ chứa một chất tan là <span class=\"k\">đường</span>, dung môi là nước. Nước chanh đường có cả đường và nước cốt chanh; nước mắm có muối và nhiều chất đạm; sữa chứa chất béo, chất đạm…, nên đều có nhiều hơn một chất."
+    },
+    {
+      "lv": "mid",
+      "q": "Hỗn hợp nào sau đây <b>không</b> được xem là dung dịch?",
+      "o": [
+        "Hỗn hợp nước muối.",
+        "Hỗn hợp nước đường.",
+        "Hỗn hợp bột mì và nước khuấy đều.",
+        "Hỗn hợp nước và rượu."
+      ],
+      "a": 2,
+      "e": "Bột mì <span class=\"k\">không tan</span> trong nước, khuấy đều chỉ làm các hạt bột lơ lửng tạo thành <span class=\"k\">huyền phù</span>, nên không phải dung dịch. Muối, đường, rượu đều tan hoàn toàn trong nước tạo thành dung dịch đồng nhất.",
+      "ef": "figMix(1)"
+    },
+    {
+      "lv": "easy",
+      "q": "Hai chất lỏng không hòa tan vào nhau nhưng khi chịu tác động, chúng lại phân tán vào nhau thì được gọi là",
+      "o": [
+        "chất tinh khiết.",
+        "dung dịch.",
+        "nhũ tương.",
+        "huyền phù."
+      ],
+      "a": 2,
+      "e": "Hai chất lỏng không hòa tan vào nhau nhưng khi chịu tác động (khuấy, lắc), chúng lại phân tán vào nhau thì được gọi là <span class=\"k\">nhũ tương</span>. Ví dụ: lắc mạnh chai dầu ăn với nước.",
+      "ef": "figMix(2)"
+    },
+    {
+      "lv": "mid",
+      "q": "Khi hòa tan bột đá vôi vào nước, chỉ một lượng chất này tan trong nước, phần còn lại làm cho nước vôi trong bị đục. Hỗn hợp này được gọi là",
+      "o": [
+        "huyền phù.",
+        "dung dịch.",
+        "nhũ tương.",
+        "chất tan."
+      ],
+      "a": 0,
+      "e": "Phần bột đá vôi không tan, các hạt <span class=\"k\">chất rắn lơ lửng</span> trong chất lỏng làm nước đục. Hỗn hợp này được gọi là <span class=\"k\">huyền phù</span>.",
+      "ef": "figMix(1)"
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Cho các phát biểu sau về chất tinh khiết và hỗn hợp, phát biểu nào đúng, phát biểu nào sai?",
+      "items": [
+        {
+          "t": "Chất tinh khiết chỉ chứa một chất duy nhất và có những tính chất xác định.",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Nước đường, nước cam, nước biển là các chất tinh khiết.",
+          "ans": false,
+          "e": "Sai. Nước đường, nước cam, nước biển là các <b>hỗn hợp</b>."
+        },
+        {
+          "t": "Hỗn hợp chứa từ hai chất trở lên.",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Hỗn hợp có những tính chất xác định.",
+          "ans": false,
+          "e": "Sai. Tính chất của hỗn hợp <b>thay đổi</b> tùy thuộc vào thành phần các chất có trong hỗn hợp."
+        }
+      ],
+      "e": "Ghi nhớ: <span class=\"k\">chất tinh khiết</span> gồm 1 chất, tính chất xác định; <span class=\"k\">hỗn hợp</span> gồm từ 2 chất trở lên, tính chất thay đổi theo thành phần.",
+      "ef": "figPure()"
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Trong các phát biểu sau, phát biểu nào đúng, phát biểu nào sai?",
+      "items": [
+        {
+          "t": "Dung dịch là hỗn hợp đồng nhất của dung môi và chất tan.",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Huyền phù gồm các giọt chất lỏng lơ lửng trong lòng chất lỏng khác.",
+          "ans": false,
+          "e": "Sai. <b>Nhũ tương</b> mới gồm các giọt chất lỏng lơ lửng trong lòng chất lỏng khác."
+        },
+        {
+          "t": "Nhũ tương gồm các hạt chất rắn lơ lửng trong chất lỏng.",
+          "ans": false,
+          "e": "Sai. <b>Huyền phù</b> mới gồm các hạt chất rắn lơ lửng trong chất lỏng."
+        },
+        {
+          "t": "Nước muối, giấm ăn là các dung dịch.",
+          "ans": true,
+          "e": "Đúng."
+        }
+      ],
+      "e": "Ý b và c bị tráo định nghĩa cho nhau. Mẹo nhớ: <span class=\"k\">huyền phù</span> là chất <span class=\"k\">rắn</span> lơ lửng trong chất lỏng (bột mì + nước); <span class=\"k\">nhũ tương</span> là giọt chất <span class=\"k\">lỏng</span> lơ lửng trong chất lỏng khác (dầu ăn + nước).",
+      "ef": "figMix()"
+    }
+  ]
+}
