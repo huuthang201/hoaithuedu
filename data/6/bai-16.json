@@ -165,6 +165,35 @@
       ],
       "e": "Ghi nhớ: <span class=\"k\">chất tinh khiết</span> gồm 1 chất, tính chất xác định; <span class=\"k\">hỗn hợp</span> gồm từ 2 chất trở lên, tính chất thay đổi theo thành phần.",
       "ef": "figPure()"
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Trong các phát biểu sau, phát biểu nào đúng, phát biểu nào sai?",
+      "items": [
+        {
+          "t": "Dung dịch là hỗn hợp đồng nhất của dung môi và chất tan.",
+          "ans": true,
+          "e": "Đúng."
+        },
+        {
+          "t": "Huyền phù gồm các giọt chất lỏng lơ lửng trong lòng chất lỏng khác.",
+          "ans": false,
+          "e": "Sai. <b>Nhũ tương</b> mới gồm các giọt chất lỏng lơ lửng trong lòng chất lỏng khác."
+        },
+        {
+          "t": "Nhũ tương gồm các hạt chất rắn lơ lửng trong chất lỏng.",
+          "ans": false,
+          "e": "Sai. <b>Huyền phù</b> mới gồm các hạt chất rắn lơ lửng trong chất lỏng."
+        },
+        {
+          "t": "Nước muối, giấm ăn là các dung dịch.",
+          "ans": true,
+          "e": "Đúng."
+        }
+      ],
+      "e": "Ý b và c bị tráo định nghĩa cho nhau. Mẹo nhớ: <span class=\"k\">huyền phù</span> là chất <span class=\"k\">rắn</span> lơ lửng trong chất lỏng (bột mì + nước); <span class=\"k\">nhũ tương</span> là giọt chất <span class=\"k\">lỏng</span> lơ lửng trong chất lỏng khác (dầu ăn + nước).",
+      "ef": "figMix()"
     }
   ]
 }
