@@ -1,0 +1,105 @@
+{
+  "grade": "6",
+  "lesson": "Bài 17",
+  "title": "Tách chất khỏi hỗn hợp",
+  "sub": "Khoa học tự nhiên 6, Kết nối tri thức",
+  "note": "",
+  "kind": "Trắc nghiệm",
+  "accent": "#4F5BD5",
+  "accentBg": "#E6E8FB",
+  "accentDark": "#8F98FF",
+  "accentBgDark": "#1F2348",
+  "questions": [
+    {
+      "lv": "easy",
+      "q": "Ở nông thôn, để tách thóc lép ra khỏi thóc, người dân thường đổ thóc rơi trước một cái quạt gió. Những hạt thóc lép sẽ bị gió thổi bay ra, đó là do thóc lép có",
+      "o": [
+        "kích thước hạt nhỏ hơn.",
+        "tốc độ rơi nhỏ hơn.",
+        "khối lượng nhẹ hơn.",
+        "lớp vỏ trấu dễ tróc hơn."
+      ],
+      "a": 2,
+      "e": "Hạt thóc lép bên trong rỗng nên có <span class=\"k\">khối lượng nhỏ</span> (nhẹ hơn) hạt thóc chắc, vì vậy bị quạt gió thổi bay ra xa. Hạt thóc chắc nặng hơn nên rơi xuống gần.",
+      "ef": "figChain(['Đổ thóc rơi trước quạt gió','Thóc lép nhẹ → bị gió thổi bay ra xa','Thóc chắc nặng → rơi xuống gần'],'Tách thóc lép bằng quạt gió')"
+    },
+    {
+      "lv": "easy",
+      "q": "Phương pháp nào dưới đây là đơn giản nhất để tách cát lẫn trong nước?",
+      "o": [
+        "Chiết.",
+        "Dùng máy li tâm.",
+        "Cô cạn.",
+        "Lọc."
+      ],
+      "a": 3,
+      "e": "Cát <span class=\"k\">không tan</span> trong nước nên chỉ cần <span class=\"k\">lọc</span>: hạt cát bị giữ lại trên giấy lọc, nước chảy qua. Chiết dùng cho hai chất lỏng không tan vào nhau; cô cạn phải đun cho nước bay hơi hết; máy li tâm thì phức tạp, không cần thiết.",
+      "ef": "figSep(0)"
+    },
+    {
+      "lv": "mid",
+      "q": "Việc làm nào sau đây là quá trình tách chất dựa theo sự khác nhau về kích thước hạt?",
+      "o": [
+        "Giặt giẻ lau bảng bằng nước từ vòi nước.",
+        "Ngâm quả dâu với đường để lấy nước dâu.",
+        "Lọc nước bị vẩn đục bằng giấy lọc.",
+        "Dùng nam châm hút bột sắt từ hỗn hợp bột sắt và lưu huỳnh."
+      ],
+      "a": 2,
+      "e": "Lọc nước bị vẩn đục bằng giấy lọc là tách chất dựa theo sự khác nhau về <span class=\"k\">kích thước hạt</span>: các hạt vẩn đục đủ lớn nên bị giữ lại trên giấy lọc, còn nước đi qua được. Dùng nam châm thì dựa vào tính chất <span class=\"k\">bị nam châm hút</span> của sắt, không phải kích thước hạt.",
+      "ef": "figTable({alt:'Mỗi việc làm dựa vào điều gì', title:'Mỗi việc làm dựa vào điều gì?', head:['Việc làm','Dựa vào'], cols:[14,290], rows:[['Giặt giẻ lau bảng','nước cuốn trôi bụi phấn'],['Ngâm dâu với đường','sự hòa tan'],['Lọc nước vẩn đục','kích thước hạt'],['Nam châm hút sắt','sắt bị nam châm hút']], hl:2})"
+    },
+    {
+      "lv": "easy",
+      "q": "Nếu không may làm đổ dầu ăn vào nước, ta dùng phương pháp nào để tách riêng dầu ăn ra khỏi nước?",
+      "o": [
+        "Dùng máy li tâm.",
+        "Cô cạn.",
+        "Chiết.",
+        "Lọc."
+      ],
+      "a": 2,
+      "e": "Dầu ăn <span class=\"k\">không tan</span> trong nước và nhẹ hơn nước nên nổi thành một lớp riêng ở trên. Dùng phương pháp <span class=\"k\">chiết</span> (phễu chiết): mở khóa cho lớp nước ở dưới chảy ra trước, dầu ăn được giữ lại.",
+      "ef": "figFunnel(true)"
+    },
+    {
+      "lv": "easy",
+      "q": "Tác dụng chủ yếu của việc đeo khẩu trang là gì?",
+      "o": [
+        "Tách oxygen ra khỏi không khí hít vào.",
+        "Tách khí carbon dioxide ra khỏi không khí hít vào.",
+        "Tách hơi nước ra khỏi không khí hít vào.",
+        "Tách khói bụi ra khỏi không khí hít vào."
+      ],
+      "a": 3,
+      "e": "Đeo khẩu trang giúp <span class=\"k\">lọc và giữ lại khói bụi</span> trong không khí ở mặt ngoài khẩu trang, giúp ta hít thở không khí sạch hơn. Oxygen, carbon dioxide, hơi nước đều là chất khí nên vẫn đi qua khẩu trang được. Đây cũng là cách tách chất dựa vào <span class=\"k\">kích thước hạt</span>, giống như lọc."
+    },
+    {
+      "lv": "mid",
+      "q": "Cho hình ảnh về dụng cụ bên dưới. Theo em, dụng cụ này có thể dùng để tách riêng các chất trong hỗn hợp nào dưới đây?",
+      "fig": "figFunnel()",
+      "o": [
+        "Dầu ăn và nước.",
+        "Bột mì lẫn trong nước.",
+        "Cát lẫn trong nước.",
+        "Rượu và nước."
+      ],
+      "a": 0,
+      "e": "Dụng cụ trên là <span class=\"k\">phễu chiết</span>, dùng để tách riêng hỗn hợp gồm các <span class=\"k\">chất lỏng không hòa tan</span> vào nhau như dầu ăn và nước. Bột mì, cát lẫn trong nước thì dùng cách lọc; rượu tan hoàn toàn trong nước nên không tách bằng phễu chiết được.",
+      "ef": "figFunnel(true)"
+    },
+    {
+      "lv": "mid",
+      "q": "Nước giếng khoan thường lẫn nhiều tạp chất. Để tách bỏ tạp chất, người dân cho nước giếng khoan vào bể lọc, đáy bể lót các lớp cát mịn, sỏi và than củi. Nước chảy qua các lớp này sẽ trong hơn. Nhận định nào sau đây là <b>không</b> đúng?",
+      "o": [
+        "Lớp than củi có tác dụng hút các chất hữu cơ, vi khuẩn.",
+        "Lớp cát mịn có tác dụng giữ các hạt đất, cát ở lại.",
+        "Sau một thời gian sử dụng, ta phải thay rửa các lớp đáy bể lọc.",
+        "Lớp sỏi làm cho nước có vị ngọt."
+      ],
+      "a": 3,
+      "e": "Tác dụng của các lớp lót:<br>- Lớp than củi có tác dụng <span class=\"k\">hút các chất hữu cơ, vi khuẩn</span>.<br>- Lớp cát mịn có tác dụng <span class=\"k\">giữ các hạt đất, cát</span> ở lại.<br>- Lớp sỏi có tác dụng <span class=\"k\">lọc và giữ lại</span> các thành phần lơ lửng có kích thước nhỏ.<br>Lớp sỏi chỉ lọc, không làm nước có vị ngọt.",
+      "ef": "figTable({alt:'Tác dụng các lớp lót bể lọc nước', title:'Tác dụng các lớp lót bể lọc', head:['Lớp lót','Tác dụng'], cols:[14,270], rows:[['Than củi','hút chất hữu cơ, vi khuẩn'],['Cát mịn','giữ hạt đất, cát'],['Sỏi','giữ thành phần lơ lửng nhỏ']]})"
+    }
+  ]
+}

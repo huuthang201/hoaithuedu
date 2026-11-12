@@ -843,6 +843,30 @@ function figMatch(left,right,alt,lw,pairs){
 const figMix=hl=>figTable({alt:'Ba loại hỗn hợp: dung dịch, huyền phù, nhũ tương', title:'Các loại hỗn hợp', head:['Loại','Đặc điểm','Ví dụ'], cols:[14,180,322], rows:[['Dung dịch','chất tan hết, đồng nhất','nước muối'],['Huyền phù','chất rắn lơ lửng','bột mì + nước'],['Nhũ tương','chất lỏng không tan','dầu ăn + nước']], hl});
 const figPure=hl=>figTable({alt:'So sánh chất tinh khiết và hỗn hợp', title:'Chất tinh khiết và hỗn hợp', head:['','Chất tinh khiết','Hỗn hợp'], cols:[14,190,322], rows:[['Số chất','1 chất','từ 2 chất trở lên'],['Tính chất','xác định','thay đổi'],['Ví dụ','nước cất, muối ăn','nước biển, sữa']], hl});
 
+/* ---------- Bài 17 lớp 6: tách chất khỏi hỗn hợp ---------- */
+const figSep=hl=>figTable({alt:'Ba cách tách chất: lọc, cô cạn, chiết', title:'Các cách tách chất khỏi hỗn hợp', head:['Cách tách','Tách được','Ví dụ'], cols:[14,178,328], rows:[['Lọc','chất rắn không tan','cát + nước'],['Cô cạn','chất rắn đã hòa tan','nước muối'],['Chiết','chất lỏng không tan','dầu ăn + nước']], hl});
+/* phễu chiết; fill = true thì có lớp dầu ăn ở trên, nước ở dưới và chú thích */
+function figFunnel(fill){
+  const cx=fill?120:200, id='fn'+Math.random().toString(36).slice(2,8);
+  const side=`M${cx-8} 44 C${cx-58} 74 ${cx-56} 128 ${cx-4} 178 L${cx+4} 178 C${cx+56} 128 ${cx+58} 74 ${cx+8} 44`;
+  let s=`<svg class="fig" viewBox="0 0 400 ${fill?244:232}" role="img" aria-label="${fill?'Phễu chiết: lớp dầu ăn nổi ở trên, lớp nước ở dưới, mở khóa cho nước chảy ra trước':'Dụng cụ thủy tinh hình quả lê, có nút ở trên, khóa và ống nhỏ ở dưới'}">`;
+  if(fill){
+    s+=`<clipPath id="${id}"><path d="${side} Z"/></clipPath><g clip-path="url(#${id})">`;
+    s+=`<rect x="${cx-60}" y="80" width="120" height="44" style="fill:#E8B530;opacity:.6"/><rect class="c-water" x="${cx-60}" y="124" width="120" height="60" style="opacity:.55"/>`;
+    s+=`<line x1="${cx-60}" y1="124" x2="${cx+60}" y2="124" style="stroke:var(--ink-2);stroke-width:1.2;stroke-dasharray:4 3"/></g>`;
+  }
+  s+=`<path class="c-glass" d="${side}"/><line class="c-glass" x1="${cx-8}" y1="30" x2="${cx-8}" y2="44"/><line class="c-glass" x1="${cx+8}" y1="30" x2="${cx+8}" y2="44"/>`;
+  s+=`<rect x="${cx-11}" y="14" width="22" height="17" rx="4" style="fill:var(--ink-2)"/>`;
+  s+=`<line class="c-glass" x1="${cx-4}" y1="178" x2="${cx-3}" y2="226"/><line class="c-glass" x1="${cx+4}" y1="178" x2="${cx+3}" y2="226"/>`;
+  s+=`<rect x="${cx-22}" y="191" width="44" height="9" rx="4" style="fill:var(--ink-2)"/><circle cx="${cx}" cy="195.5" r="6" style="fill:var(--surface);stroke:var(--ink-2);stroke-width:2"/>`;
+  if(fill){
+    s+=`<circle class="c-water" cx="${cx}" cy="236" r="3.5" style="opacity:.8"/>`;
+    const lab=(y,y0,a,b)=>`<line class="c-tick" x1="${cx+18}" y1="${y0}" x2="208" y2="${y0}"/><text class="c-call" x="214" y="${y}">${a}</text><text class="c-note" x="214" y="${y+16}">${b}</text>`;
+    s+=lab(98,102,'Dầu ăn','nhẹ hơn, nổi lên trên')+lab(146,150,'Nước','nặng hơn, chìm xuống dưới')+lab(192,196,'Khóa','mở cho nước chảy ra trước');
+  }
+  return s+'</svg>';
+}
+
 /* bảng Đúng/Sai để trống cho đề kiểm tra */
 const exTF=list=>'<table class="ex-table ex-tf"><tr><th>Phát biểu</th><th>Đúng</th><th>Sai</th></tr>'+list.map((t,k)=>`<tr><td><b>${'abcd'[k]}.</b> ${t}</td><td></td><td></td></tr>`).join('')+'</table>';
 /* ---------- question bank ---------- */
