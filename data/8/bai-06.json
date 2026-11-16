@@ -1,0 +1,124 @@
+{
+  "grade": "8",
+  "lesson": "Bài 6",
+  "title": "Tính theo phương trình hóa học",
+  "sub": "Khoa học tự nhiên 8, Kết nối tri thức",
+  "note": "",
+  "kind": "Trắc nghiệm",
+  "accent": "#0F8B8D",
+  "accentBg": "#DFF3F3",
+  "accentDark": "#4FD1D3",
+  "accentBgDark": "#123536",
+  "questions": [
+    {
+      "lv": "easy",
+      "q": "Cho phương trình hóa học sau:<span class=\"ql\">Zn + 2HCl → ZnCl<sub>2</sub> + H<sub>2</sub></span><span class=\"ql\">Tỉ lệ số mol của Zn và H<sub>2</sub> là</span>",
+      "o": [
+        "1 : 1.",
+        "1 : 2.",
+        "2 : 1.",
+        "1 : 3."
+      ],
+      "a": 0,
+      "e": "Tỉ lệ số mol chính là <span class=\"k\">tỉ lệ hệ số</span> đứng trước các chất trong phương trình. Trước Zn và trước H<sub>2</sub> đều là hệ số 1 (không ghi), nên tỉ lệ là 1 : 1. Số 2 trước HCl là của HCl, đừng nhầm sang H<sub>2</sub> nha.",
+      "fm": "n<sub>Zn</sub> : n<sub>H₂</sub> = 1 : 1",
+      "ef": "figTable({alt:'Hệ số của các chất trong phương trình Zn + 2HCl → ZnCl2 + H2', title:'Zn + 2HCl → ZnCl₂ + H₂', head:['Chất','Zn','HCl','ZnCl₂','H₂'], cols:[14,140,205,275,345], rows:[['Hệ số','1','2','1','1']], hl:0})"
+    },
+    {
+      "lv": "easy",
+      "q": "Cho phương trình hóa học sau:<span class=\"ql\">CuO + H<sub>2</sub>SO<sub>4</sub> → CuSO<sub>4</sub> + H<sub>2</sub>O</span><span class=\"ql\">Khi cho 1 mol CuO tác dụng vừa đủ với H<sub>2</sub>SO<sub>4</sub> thu được x mol CuSO<sub>4</sub>. Giá trị của x là</span>",
+      "o": [
+        "0,5 mol.",
+        "1,0 mol.",
+        "2,0 mol.",
+        "2,5 mol."
+      ],
+      "a": 1,
+      "e": "Phương trình đã cân bằng với toàn <span class=\"k\">hệ số 1</span>, nghĩa là cứ 1 mol CuO phản ứng vừa đủ với H<sub>2</sub>SO<sub>4</sub> sinh ra đúng 1 mol CuSO<sub>4</sub>.",
+      "fm": "n<sub>CuSO₄</sub> = n<sub>CuO</sub> = 1 mol ⇒ x = 1,0",
+      "ef": "figTable({alt:'Hệ số và số mol của CuO, H2SO4, CuSO4, H2O', title:'CuO + H₂SO₄ → CuSO₄ + H₂O', head:['','CuO','H₂SO₄','CuSO₄','H₂O'], cols:[14,140,210,280,350], rows:[['Hệ số','1','1','1','1'],['Số mol','1','1','x = 1','1']], hl:1})"
+    },
+    {
+      "lv": "easy",
+      "q": "Công thức tính hiệu suất phản ứng theo chất sản phẩm là",
+      "o": [
+        "H = <span class=\"frac\"><span>m<sub>LT</sub></span><span>m<sub>TT</sub></span></span> . 100%.",
+        "H = <span class=\"frac\"><span>m<sub>TT</sub></span><span>m<sub>LT</sub></span></span> . 100%.",
+        "H = <span class=\"frac\"><span>m<sub>LT</sub></span><span>n<sub>TT</sub></span></span> . 100%.",
+        "H = m<sub>LT</sub> . m<sub>TT</sub> . 100%."
+      ],
+      "a": 1,
+      "e": "Tính theo sản phẩm thì <span class=\"k\">thực tế (TT) ở trên, lí thuyết (LT) ở dưới</span>. Thực tế luôn thu được ít hơn hoặc bằng lí thuyết, nên phân số này không vượt quá 1, tức H ≤ 100%. Lật ngược lại (đáp án A) thì H sẽ lớn hơn 100%, vô lí.",
+      "fm": "H = <span class=\"frac\"><span>m<sub>TT</sub></span><span>m<sub>LT</sub></span></span> . 100%<small>m<sub>TT</sub>: khối lượng sản phẩm thu được theo thực tế; m<sub>LT</sub>: khối lượng sản phẩm tính theo lí thuyết (theo phương trình).</small>"
+    },
+    {
+      "lv": "easy",
+      "q": "Cho phương trình hóa học:<span class=\"ql\">N<sub>2</sub> + 3H<sub>2</sub> → 2NH<sub>3</sub></span><span class=\"ql\">Tỉ lệ mol của các chất N<sub>2</sub> : H<sub>2</sub> : NH<sub>3</sub> lần lượt là</span>",
+      "o": [
+        "1 : 2 : 3.",
+        "1 : 3 : 2.",
+        "2 : 1 : 3.",
+        "2 : 3 : 1."
+      ],
+      "a": 1,
+      "e": "Đọc lần lượt <span class=\"k\">hệ số</span> trước mỗi chất theo đúng thứ tự đề hỏi: N<sub>2</sub> có hệ số 1, H<sub>2</sub> có hệ số 3, NH<sub>3</sub> có hệ số 2.",
+      "fm": "n<sub>N₂</sub> : n<sub>H₂</sub> : n<sub>NH₃</sub> = 1 : 3 : 2",
+      "ef": "figBars({alt:'Tỉ lệ mol N2 : H2 : NH3 = 1 : 3 : 2', max:3, rows:[{label:'N_{2}',val:1,text:'1'},{label:'H_{2}',val:3,text:'3',color:'var(--alt)'},{label:'NH_{3}',val:2,text:'2',color:'var(--ink-2)'}]})"
+    },
+    {
+      "lv": "easy",
+      "q": "Hiệu suất phản ứng là",
+      "o": [
+        "tỉ lệ số mol giữa chất sản phẩm và chất tham gia phản ứng.",
+        "tích số mol giữa chất sản phẩm và chất tham gia phản ứng.",
+        "tỉ lệ giữa lượng sản phẩm thu được theo thực tế với lượng sản phẩm thu được theo lí thuyết.",
+        "tỉ lệ giữa lượng chất tham gia phản ứng theo thực tế với lượng chất tham gia phản ứng theo lí thuyết."
+      ],
+      "a": 2,
+      "e": "Hiệu suất cho biết phản ứng \"làm ra\" được bao nhiêu phần so với mức tối đa: lấy <span class=\"k\">lượng sản phẩm thực tế</span> chia cho <span class=\"k\">lượng sản phẩm lí thuyết</span>. Ví dụ tính ra được 10 g nhưng thực tế chỉ thu 8 g thì H = 80%.",
+      "fm": "H = 8 : 10 × 100% = 80%",
+      "ef": "figBars({alt:'Ví dụ: sản phẩm lí thuyết 10 g, thực tế 8 g, hiệu suất 80%', max:10, rows:[{label:'Lí thuyết',val:10,text:'10 g'},{label:'Thực tế',val:8,text:'8 g → H = 80%',color:'var(--alt)'}]})"
+    },
+    {
+      "lv": "mid",
+      "q": "Khi hiệu suất phản ứng nhỏ hơn 100% thì",
+      "o": [
+        "lượng chất phản ứng dùng trên thực tế sẽ nhỏ hơn lượng tính theo phương trình hóa học.",
+        "lượng sản phẩm thu được trên thực tế sẽ lớn hơn lượng tính theo phương trình hóa học.",
+        "lượng sản phẩm thu được trên thực tế sẽ nhỏ hơn lượng tính theo phương trình hóa học.",
+        "lượng sản phẩm thu được trên thực tế sẽ lớn hơn hoặc bằng lượng tính theo phương trình hóa học."
+      ],
+      "a": 2,
+      "e": "H &lt; 100% nghĩa là có hao hụt: <span class=\"k\">sản phẩm thực tế ít hơn</span> lượng tính theo phương trình. Ngược lại, muốn bù hao hụt thì lượng chất phản ứng phải dùng <span class=\"k\">nhiều hơn</span> lượng tính toán, nên A sai.",
+      "ef": "figTable({alt:'So sánh hiệu suất bằng 100% và nhỏ hơn 100%', title:'Hiệu suất và lượng thực tế', head:['Hiệu suất','Sản phẩm thực tế','Chất phản ứng cần'], cols:[14,190,330], rows:[['H = 100%','= lí thuyết','= lí thuyết'],['H &lt; 100%','&lt; lí thuyết','&gt; lí thuyết']], hl:1})"
+    },
+    {
+      "lv": "apply",
+      "q": "Cho miếng đồng (Cu) dư vào 200 mL dung dịch AgNO<sub>3</sub>, thu được muối Cu(NO<sub>3</sub>)<sub>2</sub> và Ag bám vào miếng đồng. Khối lượng Cu phản ứng là 6,4 g. Khối lượng Ag tạo ra là",
+      "o": [
+        "8,8 g.",
+        "10,8 g.",
+        "15,2 g.",
+        "21,6 g."
+      ],
+      "a": 3,
+      "e": "n<sub>Cu</sub> = 6,4 : 64 = 0,1 mol.<br>Theo phương trình, cứ <span class=\"k\">1 mol Cu sinh ra 2 mol Ag</span>, nên 0,1 mol Cu sinh ra 0,2 mol Ag.<br>Bẫy hay gặp: quên nhân 2 thì ra 10,8 g (B).",
+      "fm": "Cu + 2AgNO<sub>3</sub> → Cu(NO<sub>3</sub>)<sub>2</sub> + 2Ag<small>m<sub>Ag</sub> = 0,2 × 108 = 21,6 g</small>",
+      "ef": "figChain(['m_{Cu} = 6,4 g → n_{Cu} = 6,4 : 64 = 0,1 mol','Tỉ lệ n_{Cu} : n_{Ag} = 1 : 2','n_{Ag} = 2 × 0,1 = 0,2 mol','m_{Ag} = 0,2 × 108 = 21,6 g'],'Các bước tính khối lượng Ag')"
+    },
+    {
+      "lv": "apply",
+      "q": "Cho phương trình hóa học:<span class=\"ql\">CaCO<sub>3</sub> <span class=\"arr\"><small>t°</small>→</span> CaO + CO<sub>2</sub></span><span class=\"ql\">Số mol CaCO<sub>3</sub> đã phản ứng để điều chế được 11,2 gam CaO là</span>",
+      "o": [
+        "0,2 mol.",
+        "0,3 mol.",
+        "0,4 mol.",
+        "0,1 mol."
+      ],
+      "a": 0,
+      "e": "Đổi khối lượng CaO ra mol trước: M<sub>CaO</sub> = 40 + 16 = 56 g/mol ⇒ n<sub>CaO</sub> = 11,2 : 56 = 0,2 mol.<br>Theo phương trình, cứ <span class=\"k\">1 mol CaCO<sub>3</sub> tạo ra 1 mol CaO</span>, nên cần đúng 0,2 mol CaCO<sub>3</sub>.",
+      "fm": "n<sub>CaCO₃</sub> = n<sub>CaO</sub> = 0,2 mol",
+      "ef": "figChain(['m_{CaO} = 11,2 g → n_{CaO} = 11,2 : 56 = 0,2 mol','CaCO_{3} → CaO + CO_{2}: tỉ lệ 1 : 1','n_{CaCO₃} = 0,2 mol'],'Các bước tính số mol CaCO3')"
+    }
+  ]
+}
