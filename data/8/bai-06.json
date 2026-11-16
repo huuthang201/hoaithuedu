@@ -4,7 +4,7 @@
   "title": "Tính theo phương trình hóa học",
   "sub": "Khoa học tự nhiên 8, Kết nối tri thức",
   "note": "",
-  "kind": "Trắc nghiệm",
+  "kind": "Trắc nghiệm + Đúng/Sai + trả lời ngắn",
   "accent": "#0F8B8D",
   "accentBg": "#DFF3F3",
   "accentDark": "#4FD1D3",
@@ -119,6 +119,154 @@
       "e": "Đổi khối lượng CaO ra mol trước: M<sub>CaO</sub> = 40 + 16 = 56 g/mol ⇒ n<sub>CaO</sub> = 11,2 : 56 = 0,2 mol.<br>Theo phương trình, cứ <span class=\"k\">1 mol CaCO<sub>3</sub> tạo ra 1 mol CaO</span>, nên cần đúng 0,2 mol CaCO<sub>3</sub>.",
       "fm": "n<sub>CaCO₃</sub> = n<sub>CaO</sub> = 0,2 mol",
       "ef": "figChain(['m_{CaO} = 11,2 g → n_{CaO} = 11,2 : 56 = 0,2 mol','CaCO_{3} → CaO + CO_{2}: tỉ lệ 1 : 1','n_{CaCO₃} = 0,2 mol'],'Các bước tính số mol CaCO3')"
+    },
+    {
+      "lv": "mid",
+      "q": "Đốt cháy hoàn toàn 12,8 g lưu huỳnh bằng khí oxygen, thu được khí SO<sub>2</sub>. Số mol oxygen đã phản ứng là",
+      "o": [
+        "0,2.",
+        "0,4.",
+        "0,6.",
+        "0,8."
+      ],
+      "a": 1,
+      "e": "Đổi khối lượng lưu huỳnh ra mol: n<sub>S</sub> = 12,8 : 32 = 0,4 mol.<br>Phương trình S + O<sub>2</sub> → SO<sub>2</sub> có toàn hệ số 1, nên <span class=\"k\">cứ 1 mol S phản ứng hết với 1 mol O<sub>2</sub></span>.",
+      "fm": "S + O<sub>2</sub> → SO<sub>2</sub><small>n<sub>O₂</sub> = n<sub>S</sub> = 0,4 mol</small>",
+      "ef": "figChain(['m_{S} = 12,8 g → n_{S} = 12,8 : 32 = 0,4 mol','S + O_{2} → SO_{2}: tỉ lệ 1 : 1','n_{O₂} = n_{S} = 0,4 mol'],'Các bước tính số mol oxygen')"
+    },
+    {
+      "lv": "mid",
+      "q": "Cho phương trình hóa học sau:<span class=\"ql\">2KClO<sub>3</sub> <span class=\"arr\"><small>t°, xt</small>→</span> 2KCl + 3O<sub>2</sub></span><span class=\"ql\">Giả sử phản ứng xảy ra hoàn toàn, từ 0,6 mol KClO<sub>3</sub> sẽ thu được bao nhiêu mol khí oxygen?</span>",
+      "o": [
+        "0,9 mol.",
+        "0,45 mol.",
+        "0,2 mol.",
+        "0,4 mol."
+      ],
+      "a": 0,
+      "e": "Theo phương trình, <span class=\"k\">cứ 2 mol KClO<sub>3</sub> thu được 3 mol O<sub>2</sub></span>. Vậy số mol O<sub>2</sub> bằng số mol KClO<sub>3</sub> nhân 3 rồi chia 2.<br>Nhầm thành nhân 2 chia 3 thì ra 0,4 mol (D).",
+      "fm": "n<sub>O₂</sub> = 0,6 × 3 : 2 = 0,9 mol",
+      "ef": "figTable({alt:'Hệ số và số mol của KClO3, KCl, O2', title:'2KClO₃ → 2KCl + 3O₂', head:['','KClO₃','KCl','O₂'], cols:[14,170,260,350], rows:[['Hệ số','2','2','3'],['Số mol','0,6','0,6','0,9']], hl:1})"
+    },
+    {
+      "lv": "apply",
+      "q": "Cho 4,8 gam Mg tác dụng với dung dịch chứa 3,65 gam hydrochloric acid (HCl) thu được magnesium chloride (MgCl<sub>2</sub>) và khí hydrogen. Thể tích khí H<sub>2</sub> thu được ở đkc là",
+      "o": [
+        "2,2400 lít.",
+        "2,4790 lít.",
+        "1,2395 lít.",
+        "4,5980 lít."
+      ],
+      "a": 2,
+      "e": "Đề cho số liệu của <span class=\"k\">cả hai chất tham gia</span> thì phải xem chất nào hết trước.<br>n<sub>Mg</sub> = 4,8 : 24 = 0,2 mol; n<sub>HCl</sub> = 3,65 : 36,5 = 0,1 mol.<br>0,2 mol Mg cần tới 0,4 mol HCl mà chỉ có 0,1 mol, nên <span class=\"k\">HCl hết, Mg dư</span>: số mol H<sub>2</sub> phải tính theo HCl.<br>Tính theo Mg (0,2 mol H<sub>2</sub>) sẽ ra 4,958 L, sai.",
+      "fm": "Mg + 2HCl → MgCl<sub>2</sub> + H<sub>2</sub><small>n<sub>H₂</sub> = 0,1 : 2 = 0,05 mol ⇒ V = 0,05 × 24,79 = 1,2395 L</small>",
+      "ef": "figTable({alt:'So sánh số mol chia hệ số để tìm chất hết', title:'Chất nào hết? So sánh số mol : hệ số', head:['Chất','Số mol','Hệ số','Số mol : hệ số'], cols:[14,140,230,330], rows:[['Mg','0,2','1','0,2 → dư'],['HCl','0,1','2','0,05 → hết']], hl:1})"
+    },
+    {
+      "lv": "mid",
+      "q": "Cho sơ đồ phản ứng hóa học sau:<span class=\"ql\">Al + H<sub>2</sub>SO<sub>4</sub> ---→ Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub> + H<sub>2</sub></span><span class=\"ql\">Số mol H<sub>2</sub>SO<sub>4</sub> phản ứng hết với 6 mol Al là</span>",
+      "o": [
+        "6 mol.",
+        "9 mol.",
+        "3 mol.",
+        "5 mol."
+      ],
+      "a": 1,
+      "e": "Đây mới là <span class=\"k\">sơ đồ</span>, phải cân bằng trước rồi mới đọc tỉ lệ. Bên phải có 2 Al và 3 nhóm SO<sub>4</sub> nên thêm 2 trước Al, 3 trước H<sub>2</sub>SO<sub>4</sub> và 3 trước H<sub>2</sub>.<br>Cứ 2 mol Al phản ứng hết với 3 mol H<sub>2</sub>SO<sub>4</sub>.",
+      "fm": "2Al + 3H<sub>2</sub>SO<sub>4</sub> → Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub> + 3H<sub>2</sub><small>n<sub>H₂SO₄</sub> = 6 × 3 : 2 = 9 mol</small>",
+      "ef": "figChain(['Sơ đồ: Al + H_{2}SO_{4} → Al_{2}(SO_{4})_{3} + H_{2}','Cân bằng: 2Al + 3H_{2}SO_{4} → Al_{2}(SO_{4})_{3} + 3H_{2}','Tỉ lệ n_{Al} : n_{H₂SO₄} = 2 : 3','n_{H₂SO₄} = 6 × 3 : 2 = 9 mol'],'Cân bằng rồi tính số mol H2SO4')"
+    },
+    {
+      "lv": "mid",
+      "q": "Mg phản ứng với HCl theo sơ đồ phản ứng:<span class=\"ql\">Mg + HCl ---→ MgCl<sub>2</sub> + H<sub>2</sub></span><span class=\"ql\">Sau phản ứng thu được 2,479 lít (đkc) khí hydrogen ở 25 °C và 1 bar thì khối lượng của Mg đã tham gia phản ứng là</span>",
+      "o": [
+        "2,4 gam.",
+        "12 gam.",
+        "2,3 gam.",
+        "7,2 gam."
+      ],
+      "a": 0,
+      "e": "Ở đkc (25 °C, 1 bar), <span class=\"k\">1 mol khí chiếm 24,79 L</span>, nên n<sub>H₂</sub> = 2,479 : 24,79 = 0,1 mol.<br>Cân bằng: Mg + 2HCl → MgCl<sub>2</sub> + H<sub>2</sub>. Cứ 1 mol Mg sinh ra 1 mol H<sub>2</sub>, nên cần 0,1 mol Mg.",
+      "fm": "m<sub>Mg</sub> = 0,1 × 24 = 2,4 g",
+      "ef": "figChain(['V_{H₂} = 2,479 L → n_{H₂} = 2,479 : 24,79 = 0,1 mol','Mg + 2HCl → MgCl_{2} + H_{2}: n_{Mg} = n_{H₂}','m_{Mg} = 0,1 × 24 = 2,4 g'],'Các bước tính khối lượng Mg')"
+    },
+    {
+      "lv": "apply",
+      "q": "Đốt cháy hoàn toàn 7,5 gam than đá có chứa 4% tạp chất không cháy, thể tích khí oxygen ở điều kiện chuẩn vừa đủ cần dùng là",
+      "o": [
+        "49,58 lít.",
+        "74,37 lít.",
+        "37,185 lít.",
+        "14,874 lít."
+      ],
+      "a": 3,
+      "e": "Tạp chất không cháy nên chỉ <span class=\"k\">phần carbon (100% − 4% = 96%)</span> mới phản ứng với oxygen.<br>m<sub>C</sub> = 7,5 × 96% = 7,2 g ⇒ n<sub>C</sub> = 7,2 : 12 = 0,6 mol.<br>C + O<sub>2</sub> → CO<sub>2</sub> có tỉ lệ 1 : 1 ⇒ n<sub>O₂</sub> = 0,6 mol.",
+      "fm": "C + O<sub>2</sub> <span class=\"arr\"><small>t°</small>→</span> CO<sub>2</sub><small>V<sub>O₂</sub> = 0,6 × 24,79 = 14,874 L</small>",
+      "ef": "figBars({alt:'7,5 g than đá gồm 96% carbon (7,2 g) và 4% tạp chất (0,3 g)', max:100, rows:[{label:'Carbon (cháy)',val:96,text:'96% → 7,2 g'},{label:'Tạp chất',val:4,text:'4% → 0,3 g',color:'var(--ink-2)'}]})"
+    },
+    {
+      "lv": "apply",
+      "q": "Khi phân hủy hoàn toàn 47,4 gam KMnO<sub>4</sub>, phản ứng xảy ra như sau:<span class=\"ql\">2KMnO<sub>4</sub> <span class=\"arr\"><small>t°</small>→</span> K<sub>2</sub>MnO<sub>4</sub> + MnO<sub>2</sub> + O<sub>2</sub></span><span class=\"ql\">Thể tích khí oxygen thu được ở 25 °C và 1 bar là</span>",
+      "o": [
+        "3,72 lít.",
+        "3,36 lít.",
+        "11,2 lít.",
+        "1,12 lít."
+      ],
+      "a": 0,
+      "e": "M<sub>KMnO₄</sub> = 39 + 55 + 4 × 16 = 158 g/mol ⇒ n<sub>KMnO₄</sub> = 47,4 : 158 = 0,3 mol.<br>Theo phương trình, <span class=\"k\">cứ 2 mol KMnO<sub>4</sub> chỉ cho 1 mol O<sub>2</sub></span> ⇒ n<sub>O₂</sub> = 0,3 : 2 = 0,15 mol.<br>Kết quả 3,7185 L làm tròn thành 3,72 L. Đáp án B (3,36 L) là dùng nhầm 22,4 L/mol của điều kiện cũ.",
+      "fm": "V<sub>O₂</sub> = 0,15 × 24,79 = 3,7185 ≈ 3,72 L",
+      "ef": "figTable({alt:'Hệ số và số mol các chất khi nhiệt phân KMnO4', title:'2KMnO₄ → K₂MnO₄ + MnO₂ + O₂', head:['','KMnO₄','K₂MnO₄','MnO₂','O₂'], cols:[14,140,218,292,358], rows:[['Hệ số','2','1','1','1'],['Số mol','0,3','0,15','0,15','0,15']], hl:1})"
+    },
+    {
+      "type": "tf",
+      "lv": "mid",
+      "q": "Cho 5,6 gam sắt (iron) phản ứng vừa đủ với hydrochloric acid (HCl), sau phản ứng thu được muối iron(II) chloride (FeCl<sub>2</sub>) và khí H<sub>2</sub>. Trong các phát biểu sau, phát biểu nào đúng, phát biểu nào sai?",
+      "items": [
+        {
+          "t": "Phương trình hóa học của phản ứng là: Fe + HCl → FeCl<sub>2</sub> + H<sub>2</sub>.",
+          "ans": false,
+          "e": "Sai. Phương trình chưa cân bằng (bên phải có 2 Cl, 2 H). Đúng phải là <b>Fe + 2HCl → FeCl<sub>2</sub> + H<sub>2</sub></b>."
+        },
+        {
+          "t": "Áp dụng định luật bảo toàn khối lượng: m<sub>Fe</sub> + m<sub>HCl</sub> = m<sub>FeCl₂</sub> + m<sub>H₂</sub>.",
+          "ans": true,
+          "e": "Đúng. Tổng khối lượng các chất tham gia bằng tổng khối lượng các sản phẩm."
+        },
+        {
+          "t": "Số mol FeCl<sub>2</sub> thu được là 0,1 mol.",
+          "ans": true,
+          "e": "Đúng. n<sub>Fe</sub> = 5,6 : 56 = 0,1 mol, tỉ lệ Fe : FeCl<sub>2</sub> = 1 : 1 ⇒ n<sub>FeCl₂</sub> = 0,1 mol."
+        },
+        {
+          "t": "Thể tích khí H<sub>2</sub> ở điều kiện chuẩn thu được là 2,24 lít.",
+          "ans": false,
+          "e": "Sai. n<sub>H₂</sub> = n<sub>Fe</sub> = 0,1 mol ⇒ V = 0,1 × 24,79 = <b>2,479 L</b>. Con số 2,24 L là tính theo 22,4 L/mol (điều kiện cũ), không phải điều kiện chuẩn 25 °C, 1 bar."
+        }
+      ],
+      "e": "Hai bẫy cần nhớ: luôn <span class=\"k\">cân bằng phương trình</span> trước khi dùng tỉ lệ, và ở điều kiện chuẩn (25 °C, 1 bar) thì <span class=\"k\">1 mol khí = 24,79 L</span>, không phải 22,4 L.",
+      "fm": "Fe + 2HCl → FeCl<sub>2</sub> + H<sub>2</sub>",
+      "ef": "figChain(['n_{Fe} = 5,6 : 56 = 0,1 mol','Fe + 2HCl → FeCl_{2} + H_{2}: tỉ lệ Fe : FeCl_{2} : H_{2} = 1 : 1 : 1','n_{FeCl₂} = n_{H₂} = 0,1 mol','V_{H₂} = 0,1 × 24,79 = 2,479 L'],'Các bước tính cho 5,6 g Fe')"
+    },
+    {
+      "type": "short",
+      "kl": "Trả lời ngắn",
+      "lv": "apply",
+      "q": "Ba tác dụng với H<sub>2</sub>O theo phản ứng: Ba + H<sub>2</sub>O → Ba(OH)<sub>2</sub> + H<sub>2</sub>. Cho 13,7 gam Ba tác dụng với nước dư, sau phản ứng thu được V lít H<sub>2</sub> (ở đkc). Giá trị của V là bao nhiêu?",
+      "ans": "V = 2,479",
+      "e": "Cân bằng trước: Ba + 2H<sub>2</sub>O → Ba(OH)<sub>2</sub> + H<sub>2</sub>. Cứ 1 mol Ba sinh ra 1 mol H<sub>2</sub>.<br>n<sub>Ba</sub> = 13,7 : 137 = 0,1 mol ⇒ n<sub>H₂</sub> = 0,1 mol. Nước dư nên Ba phản ứng hết.",
+      "fm": "V<sub>H₂</sub> = 0,1 × 24,79 = 2,479 L",
+      "ef": "figChain(['n_{Ba} = 13,7 : 137 = 0,1 mol','Ba + 2H_{2}O → Ba(OH)_{2} + H_{2}: n_{H₂} = n_{Ba}','V_{H₂} = 0,1 × 24,79 = 2,479 L'],'Các bước tính thể tích H2')"
+    },
+    {
+      "type": "short",
+      "kl": "Trả lời ngắn",
+      "lv": "apply",
+      "q": "Nung 316 gam KMnO<sub>4</sub> sau một thời gian thấy còn lại 300 gam chất rắn. Hiệu suất phản ứng nhiệt phân là bao nhiêu phần trăm?",
+      "ans": "H = 50%",
+      "e": "Trong 3 sản phẩm chỉ có O<sub>2</sub> là khí bay đi, nên <span class=\"k\">khối lượng chất rắn giảm chính là khối lượng O<sub>2</sub></span>: m<sub>O₂</sub> = 316 − 300 = 16 g ⇒ n<sub>O₂</sub> = 16 : 32 = 0,5 mol.<br>2KMnO<sub>4</sub> <span class=\"arr\"><small>t°</small>→</span> K<sub>2</sub>MnO<sub>4</sub> + MnO<sub>2</sub> + O<sub>2</sub>: cứ 2 mol KMnO<sub>4</sub> cho 1 mol O<sub>2</sub> ⇒ KMnO<sub>4</sub> đã phản ứng 1 mol, tức 158 g.<br>Hiệu suất = lượng đã phản ứng so với lượng đem nung.",
+      "fm": "H = <span class=\"frac\"><span>158</span><span>316</span></span> × 100% = 50%",
+      "ef": "figBars({alt:'Đem nung 316 g KMnO4, chỉ 158 g phản ứng, hiệu suất 50%', max:316, rows:[{label:'Đem nung',val:316,text:'316 g'},{label:'Đã phản ứng',val:158,text:'158 g → H = 50%',color:'var(--alt)'}]})"
     }
   ]
 }
